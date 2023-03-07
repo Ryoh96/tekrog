@@ -13,7 +13,8 @@ const BlogNameImage = styled(Image)`
   z-index: 10;
 `
 const Container = styled.div<BlogNameProps>`
-  margin: auto;
+  margin-inline: auto;
+  margin-block-start: 0.2em;
   width: ${(props) => String(props.small) + 'px'};
   @media (min-width: 768px) {
     width: ${(props) => String(props.large) + 'px'};

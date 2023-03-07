@@ -52,7 +52,7 @@ const Hero = () => {
   return (
     <HeroWrapper>
       <PageContainer>
-        <BlogName width={168} />
+        <BlogName large={168} small={130} />
         <Text>プログラミングの備忘録と情報発信</Text>
         <Gear src={Gear1} width={200} height={200} bottom={-130} left={0} />
         <Gear src={Gear2} width={300} height={300} top={-160} left={200} />

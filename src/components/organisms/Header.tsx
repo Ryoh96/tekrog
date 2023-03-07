@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 import PageContainer from '../layout/PageContainer'
+import Logo from '../molecules/Logo'
 
 const HeaderWrapper = styled.header`
   position: relative;
   top: 0;
-  height: 50px;
   background: ${({ theme }) => theme.gradient.main};
   color: #fff;
   transition: 0.3s ease;
@@ -24,7 +24,9 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <PageContainer>
-        <HeaderContainer>Header</HeaderContainer>
+        <HeaderContainer>
+          <Logo/>
+        </HeaderContainer>
       </PageContainer>
     </HeaderWrapper>
   )
