@@ -1,19 +1,20 @@
 import styled from 'styled-components'
 
+import MainArea from '@/components/layout/MainArea'
+import PageContainer from '@/components/layout/PageContainer'
+import SideArea from '@/components/layout/SideArea'
+import TwoColumnContainer from '@/components/layout/TwoColumnsContainer'
 import Breadcrumb from '@/components/molecules/Breadcrumb'
+import Archive from '@/components/organisms/Archive'
+import Category from '@/components/organisms/Category'
 import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import Hero from '@/components/organisms/Hero'
-import SideContent from '@/components/organisms/SideContent'
-
-import MainArea from '../components/layout/MainArea'
-import PageContainer from '../components/layout/PageContainer'
-import SideArea from '../components/layout/SideArea'
-import TwoColumnContainer from '../components/layout/TwoColumnsContainer'
+import RecentPosts from '@/components/organisms/RecentPosts'
 
 const Contents = styled.div`
   width: 100%;
-  height: 500px;
+  height: 300px;
   background-color: tomato;
 `
 
@@ -30,13 +31,10 @@ const Test = () => {
               <Contents />
             </MainArea>
             <SideArea>
-              <SideContent title="最近の記事">
-                hoge
-                hoge
-              </SideContent>
+              <RecentPosts />
+              <Category />
               <Contents />
-              <Contents />
-              <Contents />
+              <Archive />
             </SideArea>
           </TwoColumnContainer>
         </PageContainer>

@@ -12,12 +12,8 @@ type TitleBlockProps = {
   title: string
 }
 
-const TitleBlock = ({
-  title
-}: TitleBlockProps) => {
-  return (
-    <TitleWrapper>{title}</TitleWrapper>
-  )
+const TitleBlock = ({ title }: TitleBlockProps) => {
+  return <TitleWrapper>{title}</TitleWrapper>
 }
 
 export default TitleBlock
