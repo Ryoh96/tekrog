@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import Breadcrumb from '@/components/molecules/Breadcrumb'
 import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import Hero from '@/components/organisms/Hero'
@@ -20,6 +21,7 @@ const Test = () => {
     <>
       <Header />
       <Hero />
+      <Breadcrumb />
       <main>
         <PageContainer>
           <TwoColumnContainer>
