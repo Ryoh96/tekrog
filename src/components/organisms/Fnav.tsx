@@ -13,7 +13,8 @@ const FnavItem = styled.li`
   transition: transform 0.2s;
   position: relative;
 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.2);
   }
 `

@@ -7,8 +7,8 @@ import Gear2 from '@/images/gear02.svg'
 import Gear3 from '@/images/gear03.svg'
 import Gear4 from '@/images/gear04.svg'
 import Gear5 from '@/images/gear05.svg'
-import Logo from '@/images/logo.png'
 
+import BlogName from '../atoms/BlogName'
 import PageContainer from '../layout/PageContainer'
 
 const HeroWrapper = styled.div`
@@ -52,7 +52,7 @@ const Hero = () => {
   return (
     <HeroWrapper>
       <PageContainer>
-        <TitleImage src={Logo} alt="TekRog" width={168} />
+        <BlogName width={168} />
         <Text>プログラミングの備忘録と情報発信</Text>
         <Gear src={Gear1} width={200} height={200} bottom={-130} left={0} />
         <Gear src={Gear2} width={300} height={300} top={-160} left={200} />
