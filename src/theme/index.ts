@@ -1,5 +1,5 @@
-import gradient from "./gradient"
+import gradient from './gradient'
 
 export const theme = {
-  gradient
+  gradient,
 } as const

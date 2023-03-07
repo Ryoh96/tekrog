@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import Header from '@/components/organisms/Header'
+
 import MainArea from '../components/layout/MainArea'
 import PageContainer from '../components/layout/PageContainer'
 import SideArea from '../components/layout/SideArea'
@@ -13,16 +15,21 @@ const Contents = styled.div`
 
 const Test = () => {
   return (
-    <PageContainer>
-      <TwoColumnContainer>
-        <MainArea>
-          <Contents />
-        </MainArea>
-        <SideArea>
-          <Contents />
-        </SideArea>
-      </TwoColumnContainer>
-    </PageContainer>
+    <>
+      <Header />
+      <main>
+        <PageContainer>
+          <TwoColumnContainer>
+            <MainArea>
+              <Contents />
+            </MainArea>
+            <SideArea>
+              <Contents />
+            </SideArea>
+          </TwoColumnContainer>
+        </PageContainer>
+      </main>
+    </>
   )
 }
 
