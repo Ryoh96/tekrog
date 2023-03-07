@@ -12,6 +12,10 @@ const FnavList = styled.ul`
 const FnavItem = styled.li`
   transition: transform 0.2s;
   position: relative;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `
 
 const Fnav = () => {
