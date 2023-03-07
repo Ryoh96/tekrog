@@ -15,9 +15,10 @@ const BlogNameImage = styled(Image)`
 const Container = styled.div<BlogNameProps>`
   margin-inline: auto;
   margin-block-start: 0.2em;
-  width: ${(props) => String(props.small) + 'px'};
-  @media (min-width: 768px) {
-    width: ${(props) => String(props.large) + 'px'};
+  width: ${(props) => String(props.large) + 'px'};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {
+    width: ${(props) => String(props.small) + 'px'};
   }
 `
 

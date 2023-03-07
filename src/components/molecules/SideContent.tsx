@@ -6,6 +6,10 @@ import TitleBlock from '../atoms/TitleBlock'
 const SideContentContainer = styled.div`
   padding: 20px 16px;
   background-color: #fff;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {
+    padding: 15px;
+  }
 `
 
 type SideContentProps = {

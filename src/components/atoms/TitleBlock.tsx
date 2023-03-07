@@ -6,6 +6,10 @@ const TitleWrapper = styled.p`
   color: #fff;
   padding: 16px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {
+    padding: 15px;
+  }
 `
 
 type TitleBlockProps = {
