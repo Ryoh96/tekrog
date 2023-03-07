@@ -1,4 +1,4 @@
-import SideContent from "../molecules/SideContent"
+import SideContent from '../molecules/SideContent'
 
 const Archive = () => {
   return (

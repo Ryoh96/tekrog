@@ -22,6 +22,10 @@ const HeroWrapper = styled.div`
   padding-block: 50px;
   text-align: center;
 
+  @media (max-width: 767px) {
+    padding-block: clamp(36px, 6.5vw, 50px);
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -34,11 +38,6 @@ const HeroWrapper = styled.div`
   }
 `
 
-const TitleImage = styled(Image)`
-  position: relative;
-  z-index: 10;
-`
-
 const Text = styled.p`
   font-size: 16px;
   min-height: 0;
@@ -46,6 +45,11 @@ const Text = styled.p`
   position: relative;
   z-index: 10;
   margin-block-start: 10px;
+
+  @media (max-width: 767px) {
+    font-size: clamp(14px, 2vw, 16px);
+    min-height: 0;
+  }
 `
 
 const Hero = () => {
