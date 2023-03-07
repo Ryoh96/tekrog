@@ -4,6 +4,7 @@ import Breadcrumb from '@/components/molecules/Breadcrumb'
 import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import Hero from '@/components/organisms/Hero'
+import SideContent from '@/components/organisms/SideContent'
 
 import MainArea from '../components/layout/MainArea'
 import PageContainer from '../components/layout/PageContainer'
@@ -29,6 +30,12 @@ const Test = () => {
               <Contents />
             </MainArea>
             <SideArea>
+              <SideContent title="最近の記事">
+                hoge
+                hoge
+              </SideContent>
+              <Contents />
+              <Contents />
               <Contents />
             </SideArea>
           </TwoColumnContainer>
