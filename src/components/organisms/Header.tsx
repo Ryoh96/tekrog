@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import PageContainer from '../layout/PageContainer'
 import Logo from '../molecules/Logo'
+import Gnav from '../organisms/Gnav'
 
 const HeaderWrapper = styled.header`
   position: relative;
@@ -25,7 +26,8 @@ const Header = () => {
     <HeaderWrapper>
       <PageContainer>
         <HeaderContainer>
-          <Logo/>
+          <Logo />
+          <Gnav />
         </HeaderContainer>
       </PageContainer>
     </HeaderWrapper>
