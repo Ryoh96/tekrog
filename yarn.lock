@@ -2370,7 +2370,7 @@ strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
   resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
 
-styled-components@^5.3.8, "styled-components@>= 2":
+styled-components@^5.3.8, "styled-components@>= 2", "styled-components@>=4.0.0 || >=5.0.0":
   version "5.3.8"
   resolved "https://registry.npmjs.org/styled-components/-/styled-components-5.3.8.tgz"
   integrity sha512-6jQrlvaJQ16uWVVO0rBfApaTPItkqaG32l3746enNZzpMDxMvzmHzj8rHUg39bvVtom0Y8o8ZzWuchEXKGjVsg==
@@ -2392,6 +2392,11 @@ styled-jsx@5.1.1:
   integrity sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==
   dependencies:
     client-only "0.0.1"
+
+styled-reset@^4.4.5:
+  version "4.4.5"
+  resolved "https://registry.npmjs.org/styled-reset/-/styled-reset-4.4.5.tgz"
+  integrity sha512-uEQzbCqSBbx1ZT9VuquoGOJyVzs3kMIMCyjxmtSo4/JoTCrq92UFTJx91KcdMncDaymz6NE8sgSvstHHcJjExg==
 
 supports-color@^5.3.0, supports-color@^5.5.0:
   version "5.5.0"

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import Hero from '@/components/organisms/Hero'
 
@@ -31,6 +32,7 @@ const Test = () => {
           </TwoColumnContainer>
         </PageContainer>
       </main>
+      <Footer />
     </>
   )
 }
