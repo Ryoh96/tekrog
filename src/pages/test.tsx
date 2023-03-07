@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import Header from '@/components/organisms/Header'
+import Hero from '@/components/organisms/Hero'
 
 import MainArea from '../components/layout/MainArea'
 import PageContainer from '../components/layout/PageContainer'
@@ -17,6 +18,7 @@ const Test = () => {
   return (
     <>
       <Header />
+      <Hero />
       <main>
         <PageContainer>
           <TwoColumnContainer>
