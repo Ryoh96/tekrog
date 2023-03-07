@@ -6,5 +6,9 @@ const MainArea = styled.div`
   background-color: #fff;
   padding: 40px 34px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {
+    padding: 26px 22px;
+  }
 `
 export default MainArea
