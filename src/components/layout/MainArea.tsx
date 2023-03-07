@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const MainArea = styled.div`
   flex: 1 1 auto;

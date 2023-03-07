@@ -9,7 +9,6 @@ const Contents = styled.div`
   width: 100%;
   height: 500px;
   background-color: tomato;
-  
 `
 
 const Test = () => {
@@ -17,7 +16,7 @@ const Test = () => {
     <PageContainer>
       <TwoColumnContainer>
         <MainArea>
-          <Contents/>
+          <Contents />
         </MainArea>
         <SideArea>
           <Contents />

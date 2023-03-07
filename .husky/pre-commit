@@ -10,10 +10,10 @@ yarn lint || {
     false;
 }
 
-# yarn typecheck || {
-#     echo "\n ❌🟦 Type check ${RED}Failed${NC}.\n"
-#     false;
-# }
+yarn typecheck || {
+    echo "\n ❌🟦 Type check ${RED}Failed${NC}.\n"
+    false;
+}
 
 yarn build || {
     echo "\n ❌🟩 Next build ${RED}Failed${NC}.\n"
