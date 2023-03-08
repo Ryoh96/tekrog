@@ -5,6 +5,7 @@ import PageContainer from '@/components/layout/PageContainer'
 import SideArea from '@/components/layout/SideArea'
 import TwoColumnContainer from '@/components/layout/TwoColumnsContainer'
 import Breadcrumb from '@/components/molecules/Breadcrumb'
+import SearchForm from '@/components/molecules/SearchForm'
 import Archive from '@/components/organisms/Archive'
 import Category from '@/components/organisms/Category'
 import Footer from '@/components/organisms/Footer'
@@ -24,20 +25,21 @@ const Test = () => {
       <Header />
       <Hero />
       <Breadcrumb />
-      <main>
-        <PageContainer>
-          <TwoColumnContainer>
-            <MainArea>
+      <PageContainer>
+        <TwoColumnContainer>
+          <MainArea>
+            <main>
               <Contents />
-            </MainArea>
-            <SideArea>
-              <RecentPosts />
-              <Category />
-              <Archive />
-            </SideArea>
-          </TwoColumnContainer>
-        </PageContainer>
-      </main>
+            </main>
+          </MainArea>
+          <SideArea as="aside">
+            <SearchForm />
+            <RecentPosts />
+            <Category />
+            <Archive />
+          </SideArea>
+        </TwoColumnContainer>
+      </PageContainer>
       <Footer />
     </>
   )
