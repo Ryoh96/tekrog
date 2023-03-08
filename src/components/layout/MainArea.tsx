@@ -5,6 +5,7 @@ const MainArea = styled.div`
   overflow-x: hidden;
   background-color: #fff;
   padding: 40px 34px;
+  border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {

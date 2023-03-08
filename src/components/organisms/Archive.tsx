@@ -1,11 +1,10 @@
+import DropDown from '../atoms/DropDown'
 import SideContent from '../molecules/SideContent'
 
 const Archive = () => {
   return (
     <SideContent title="アーカイブ">
-      <select>
-        <option value="">月を選択</option>
-      </select>
+      <DropDown />
     </SideContent>
   )
 }
