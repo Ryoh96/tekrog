@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import styled, { useTheme } from 'styled-components'
 
-import Tag from '@/components/atoms/Tag'
 import CategoryTag from '@/components/molecules/CategoryTag'
 import SideContent from '@/components/molecules/SideContent'
 

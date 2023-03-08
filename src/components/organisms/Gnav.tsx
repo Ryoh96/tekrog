@@ -17,7 +17,8 @@ const GnavItem = styled.li`
   position: relative;
   color: #fff;
 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.2);
   }
 `

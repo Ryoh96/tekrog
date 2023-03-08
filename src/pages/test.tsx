@@ -33,7 +33,6 @@ const Test = () => {
             <SideArea>
               <RecentPosts />
               <Category />
-              <Contents />
               <Archive />
             </SideArea>
           </TwoColumnContainer>
