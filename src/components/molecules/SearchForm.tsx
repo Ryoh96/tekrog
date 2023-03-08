@@ -38,7 +38,7 @@ const SearchForm = () => {
   return (
     <SearchFormWarpper>
       <SearchIconButton icon={<FontAwesomeIcon icon={faSearch} />} />
-      <Input placeholder="検索ワード"/>
+      <Input placeholder="検索ワード" />
     </SearchFormWarpper>
   )
 }

@@ -6,7 +6,7 @@ declare module 'styled-components' {
       main: string
     }
     breakpoints: {
-      sp: string
+      sp: number
     }
     color: {
       category: Record<string, `#${string}`>

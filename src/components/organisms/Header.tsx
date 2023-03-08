@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 
+import HumbuggerButton from '../atoms/HumbuggerButton'
 import PageContainer from '../layout/PageContainer'
 import Logo from '../molecules/Logo'
 import Gnav from '../organisms/Gnav'
+import PcOnly from '../utils/PcOnly'
+import SpOnly from '../utils/SpOnly'
 
 const HeaderWrapper = styled.header`
   position: relative;
@@ -27,7 +30,12 @@ const Header = () => {
       <PageContainer>
         <HeaderContainer>
           <Logo />
-          <Gnav />
+          <PcOnly>
+            <Gnav />
+          </PcOnly>
+          <SpOnly>
+            <HumbuggerButton />
+          </SpOnly>
         </HeaderContainer>
       </PageContainer>
     </HeaderWrapper>

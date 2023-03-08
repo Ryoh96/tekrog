@@ -8,7 +8,7 @@ const TitleWrapper = styled.p`
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   font-weight: 700;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
     font-size: 18px;
     padding: 15px;
   }

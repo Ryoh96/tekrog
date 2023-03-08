@@ -14,7 +14,7 @@ const BreadcrumbWrapper = styled.div`
   gap: 10px;
   padding: 20px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
     padding: 14px 20px;
   }
 `

@@ -22,7 +22,7 @@ const HeroWrapper = styled.div`
   padding-block: 50px;
   text-align: center;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
     padding-block: clamp(36px, 6.5vw, 50px);
   }
 

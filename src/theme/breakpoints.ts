@@ -1,3 +1,3 @@
-const breadkpoints = { sp: '767px' }
+const breadkpoints = { sp: 767 }
 
 export default breadkpoints
