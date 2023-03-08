@@ -4,6 +4,7 @@ import { Reset } from 'styled-reset'
 const Base = createGlobalStyle`
   * {
     font-size: 16px;
+    box-sizing: border-box;
   }
 
   html {
@@ -16,10 +17,17 @@ const Base = createGlobalStyle`
   body {
     background-color: #383838;
     font-family: YuGothic, Hiragino Kaku Gothic Pro, Meiryo, sans-serif;;
+    word-break: break-all;
   }
 
   a {
     text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  p {
+    line-height: 1.7;
   }
 `
 
