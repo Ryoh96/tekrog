@@ -4,12 +4,12 @@ import styled from 'styled-components'
 import TitleBlock from '../atoms/TitleBlock'
 
 const SideContentContainer = styled.div`
-  padding: 20px 16px;
+  padding: 20px 12px;
   background-color: #fff;
   border-radius: 0 0 10px 10px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {
-    padding: 15px;
+    padding: 12px;
   }
 
   /* @media (prefers-color-scheme: dark) {

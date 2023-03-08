@@ -1,5 +1,7 @@
 import 'styled-components'
 
+import type { CategoryType } from '@/types/CategoryType'
+
 declare module 'styled-components' {
   export interface DefaultTheme {
     gradient: {
@@ -9,7 +11,7 @@ declare module 'styled-components' {
       sp: number
     }
     color: {
-      category: Record<string, `#${string}`>
+      category: Record<CategoryType, `#${string}`>
     }
   }
 }

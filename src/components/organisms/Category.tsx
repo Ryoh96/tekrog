@@ -1,10 +1,11 @@
 import Link from 'next/link'
-import styled, { useTheme } from 'styled-components'
+import styled from 'styled-components'
 
 import CategoryTag from '@/components/molecules/CategoryTag'
 import SideContent from '@/components/molecules/SideContent'
+import type { CategoryType } from '@/types/CategoryType'
 
-const categoryList = [
+const categoryList: CategoryType[] = [
   'appli',
   'css',
   'html',
@@ -24,11 +25,10 @@ const categoryList = [
 const CategoryTagWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
 `
 
 const Category = () => {
-  const theme = useTheme()
   return (
     <SideContent title="カテゴリー">
       <CategoryTagWrapper>

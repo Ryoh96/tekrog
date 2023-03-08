@@ -1,10 +1,13 @@
 import Image from 'next/image'
 import styled, { useTheme } from 'styled-components'
 
+import type { CategoryType } from '@/types/CategoryType'
+import { cat2Name } from '@/utils/cat2name'
+
 import Tag from '../atoms/Tag'
 
 type CategoryTagProps = {
-  category: string
+  category: CategoryType
   count?: number
 }
 
@@ -33,8 +36,8 @@ const CategoryTag = ({ category, count }: CategoryTagProps) => {
       </ImageWrapper>
       <TagText>
         <>
-          {category}
-          {count && <span>({count})</span>}
+          {cat2Name[category]}
+          {count && <span> ({count})</span>}
         </>
       </TagText>
     </Tag>

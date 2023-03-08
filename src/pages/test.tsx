@@ -27,11 +27,7 @@ const Test = () => {
       <Breadcrumb />
       <PageContainer>
         <TwoColumnContainer>
-          <MainArea>
-            <main>
-              <Contents />
-            </main>
-          </MainArea>
+          <MainArea/>
           <SideArea as="aside">
             <SearchForm />
             <RecentPosts />
