@@ -17,7 +17,7 @@ const HorizontalCardWrapper = styled.div`
   text-overflow: ellipsis;
   align-items: center;
   height: 100px;
-  transition: all .3s;
+  transition: all 0.3s;
 
   &:hover {
     transform: scale(1.05);
