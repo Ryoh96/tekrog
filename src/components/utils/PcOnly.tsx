@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const PcOnly = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {

@@ -1,13 +1,11 @@
 import Image from 'next/image'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 
 import Tag from '../atoms/Tag'
 
 type CategoryTagProps = {
-  imgUrl: string
-  text: string
-  bgColor: `#${string}`
-  count: number
+  category: string
+  count?: number
 }
 
 const ImageWrapper = styled.div`
@@ -20,12 +18,13 @@ const TagText = styled.span`
   word-break: keep-all;
 `
 
-const CategoryTag = ({ imgUrl, text, count, bgColor }: CategoryTagProps) => {
+const CategoryTag = ({ category, count }: CategoryTagProps) => {
+  const theme = useTheme()
   return (
-    <Tag color="#fff" bgColor={bgColor}>
+    <Tag color="#fff" bgColor={theme.color.category[category]}>
       <ImageWrapper>
         <Image
-          src={imgUrl}
+          src={`/logo-${category}.png`}
           alt=""
           width={20}
           height={20}
@@ -33,7 +32,10 @@ const CategoryTag = ({ imgUrl, text, count, bgColor }: CategoryTagProps) => {
         />
       </ImageWrapper>
       <TagText>
-        {text} ({count})
+        <>
+          {category}
+          {count && <span>({count})</span>}
+        </>
       </TagText>
     </Tag>
   )

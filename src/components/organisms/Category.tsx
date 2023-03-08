@@ -34,12 +34,7 @@ const Category = () => {
       <CategoryTagWrapper>
         {categoryList.map((category) => (
           <Link href={`/category/${category}`} key={category}>
-            <CategoryTag
-              imgUrl={`/logo-${category}.png`}
-              bgColor={theme.color.category[category]}
-              count={3}
-              text={category}
-            />
+            <CategoryTag category={category} count={3} />
           </Link>
         ))}
       </CategoryTagWrapper>
