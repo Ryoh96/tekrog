@@ -11,5 +11,10 @@ const MainArea = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {
     padding: 26px 22px;
   }
+
+  /* @media (prefers-color-scheme: dark) {
+    background-color: #292a2d;
+    color: #fff;
+  } */
 `
 export default MainArea

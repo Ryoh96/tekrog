@@ -11,6 +11,11 @@ const SideContentContainer = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}) {
     padding: 15px;
   }
+
+  /* @media (prefers-color-scheme: dark) {
+    background-color: #292a2d;
+    color: #fff;
+  } */
 `
 
 const SideContentTitleBlock = styled(TitleBlock)`
