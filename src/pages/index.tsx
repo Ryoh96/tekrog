@@ -9,21 +9,22 @@ const Title = styled.h1`
 `
 
 export default function Home() {
-  const [items, setItems] = useState<TopPagePostsQuery>()
-  const { data, loading, error } = useTopPagePostsQuery()
-  useEffect(() => {
-    setItems(data)
-  }, [data])
+  // const [items, setItems] = useState<TopPagePostsQuery>()
+  // const { data, loading, error } = useTopPagePostsQuery()
+  // useEffect(() => {
+  //   setItems(data)
+  // }, [data])
 
-  if (error) return <p>error</p>
-  if (loading) return <p>loading...</p>
+  // if (error) return <p>error</p>
+  // if (loading) return <p>loading...</p>
 
-  return (
-    <>
-      <Title>Hello!</Title>
-      {items?.posts?.edges.map(({ node }) => (
-        <p key={node.title}>{node.title}</p>
-      ))}
-    </>
-  )
+  // return (
+  //   <>
+  //     <Title>Hello!</Title>
+  //     {items?.posts?.edges.map(({ node }) => (
+  //       <p key={node.title}>{node.title}</p>
+  //     ))}
+  //   </>
+  // )
+  return <Title>Hello</Title>
 }

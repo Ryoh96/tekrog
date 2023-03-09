@@ -4,14 +4,17 @@ import styled from 'styled-components'
 
 import CategoryTag from '@/components/molecules/CategoryTag'
 import type { CategoryType } from '@/types/CategoryType'
+import { name2Cat } from '@/utils/cat2name'
 
-import DateTime from '../atoms/DateTime'
+import _DateTime from '../atoms/DateTime'
 
 type CardProps = {
   imgUrl: string
   date?: string
   title: string
-  categories: CategoryType[]
+  categories: {
+    name: string
+  }[]
   desc?: string
 }
 
@@ -49,7 +52,7 @@ const ImageWrapper = styled.figure`
 const Meta = styled.div`
   width: 100%;
   padding-inline: 10px;
-  gap: 10px;
+  gap: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -73,6 +76,10 @@ const Description = styled.p`
   font-size: 14px;
 `
 
+const DateTime = styled(_DateTime)`
+  /* margin-left: auto; */
+`
+
 const Card = ({ imgUrl, title, categories, date, desc }: CardProps) => {
   return (
     <CardWrapper>
@@ -84,18 +91,20 @@ const Card = ({ imgUrl, title, categories, date, desc }: CardProps) => {
           style={{ objectFit: 'contain', aspectRatio: 'auto 2000 / 1125' }}
         />
       </ImageWrapper>
+      <Title>{title}</Title>
+      {desc && <Description>{desc}</Description>}
       <Meta>
+        {date && <DateTime date={date} />}
         <CategoryTagWrapper>
           {categories.map((category) => (
-            <Link href={`/category/${category}`} key={category}>
-              <CategoryTag category={category} count={3} />
+            <Link href={`/category/${category.name}`} key={category.name}>
+              <CategoryTag
+                category={name2Cat[category.name]}
+              />
             </Link>
           ))}
         </CategoryTagWrapper>
-        {date && <DateTime date={date} />}
       </Meta>
-      <Title>{title}</Title>
-      {desc && <Description>{desc}</Description>}
     </CardWrapper>
   )
 }
