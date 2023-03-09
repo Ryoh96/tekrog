@@ -1,0 +1,14 @@
+overwrite: true
+schema: 'https://tekrog.com/graphql'
+generates:
+  src/graphql/generated/:
+    preset: 'client'
+    plugins:
+      - typescript
+      - typescript-resolvers
+  src/graphql/generated/request.ts:
+    documents: 'src/graphql/operations/**/*.graphql'
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo

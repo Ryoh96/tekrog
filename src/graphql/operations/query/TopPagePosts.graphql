@@ -1,0 +1,22 @@
+query TopPagePosts {
+  posts {
+    edges {
+      cursor
+      node {
+        title
+        date
+        excerpt
+        categories {
+          nodes {
+            name
+          }
+        }
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+      }
+    }
+  }
+}
