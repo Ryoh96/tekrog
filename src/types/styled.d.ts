@@ -12,7 +12,7 @@ declare module 'styled-components' {
       sp: number
     }
     color: {
-      category: Record<CategoryType, `#${string}`>,
+      category: Record<CategoryType, `#${string}`>
       share: Record<ShareType, `#${string}`>
     }
   }

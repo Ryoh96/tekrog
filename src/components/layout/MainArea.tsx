@@ -4,6 +4,7 @@ import type { CategoryType } from '@/types/CategoryType'
 
 import ShareIcons from '../molecules/ShareIcons'
 import Card from '../organisms/Card'
+import PrevNextPager from '../organisms/PrevNextPager'
 
 const MainAreaWrapper = styled.div`
   flex: 1 1 auto;
@@ -80,6 +81,12 @@ const CardWrapperArticle = styled.div`
   }
 `
 
+const PrevNextPagerWrapper = styled.div`
+  display: grid;
+  justify-items: center;
+  gap: 30px;
+`
+
 const MainArea = () => {
   return (
     <MainAreaWrapper>
@@ -99,6 +106,18 @@ const MainArea = () => {
         ))}
       </CardWrapperArticle>
       <ShareIcons />
+      <PrevNextPagerWrapper>
+        <PrevNextPager
+          mode="prev"
+          imgUrl="/thumb.jpg"
+          title="Themeの使い方～TypeScriptでstyled-components〜"
+        />
+        <PrevNextPager
+          mode="next"
+          imgUrl="/thumb.jpg"
+          title="Themeの使い方～TypeScriptでstyled-components〜"
+        />
+      </PrevNextPagerWrapper>
     </MainAreaWrapper>
   )
 }

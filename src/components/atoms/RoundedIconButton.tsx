@@ -53,8 +53,8 @@ const RoundedIconButtonWrapper = styled.div<
     width: 30px;
   }
 
-  ${({bgColor}) => {
-    if (bgColor === "#05c756") {
+  ${({ bgColor }) => {
+    if (bgColor === '#05c756') {
       return css`
         svg {
           color: ${bgColor};
