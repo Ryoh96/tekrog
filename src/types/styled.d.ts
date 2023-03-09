@@ -1,6 +1,7 @@
 import 'styled-components'
 
 import type { CategoryType } from '@/types/CategoryType'
+import type { ShareType } from '@/types/ShareType'
 
 declare module 'styled-components' {
   export interface DefaultTheme {
@@ -11,7 +12,8 @@ declare module 'styled-components' {
       sp: number
     }
     color: {
-      category: Record<CategoryType, `#${string}`>
+      category: Record<CategoryType, `#${string}`>,
+      share: Record<ShareType, `#${string}`>
     }
   }
 }

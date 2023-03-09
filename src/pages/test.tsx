@@ -27,7 +27,7 @@ const Test = () => {
       <Breadcrumb />
       <PageContainer>
         <TwoColumnContainer>
-          <MainArea/>
+          <MainArea />
           <SideArea as="aside">
             <SearchForm />
             <RecentPosts />

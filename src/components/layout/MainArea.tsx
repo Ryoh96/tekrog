@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import type { CategoryType } from '@/types/CategoryType'
 
+import ShareIcons from '../molecules/ShareIcons'
 import Card from '../organisms/Card'
 
 const MainAreaWrapper = styled.div`
@@ -97,6 +98,7 @@ const MainArea = () => {
           />
         ))}
       </CardWrapperArticle>
+      <ShareIcons />
     </MainAreaWrapper>
   )
 }

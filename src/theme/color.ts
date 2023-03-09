@@ -1,4 +1,10 @@
-const color: { category: Record<string, `#${string}`> } = {
+import type { CategoryType } from '@/types/CategoryType'
+import type { ShareType } from '@/types/ShareType'
+
+const color: {
+  category: Record<CategoryType, `#${string}`>
+  share: Record<ShareType, `#${string}`>
+} = {
   category: {
     javascript: '#f9bb2b',
     html: '#f98343',
@@ -14,6 +20,13 @@ const color: { category: Record<string, `#${string}`> } = {
     php: '#7f80be',
     math: '#9261a7',
     news: '#a4ca66',
+  },
+  share: {
+    twitter: '#1e9af0',
+    facebook: '#3b5998',
+    'get-pocket': '#ef4156',
+    line: '#05c756',
+    hatena: '#029dd4',
   },
 }
 
