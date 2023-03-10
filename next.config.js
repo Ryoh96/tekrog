@@ -5,8 +5,8 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ['tekrog.com']
-  }
+    domains: ['tekrog.com'],
+  },
 }
 
 module.exports = nextConfig

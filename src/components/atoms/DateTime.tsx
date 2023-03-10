@@ -7,7 +7,7 @@ type DateTimeProps = {
   className?: string
 }
 
-const DateTimeWrapper = styled.div<{className?: string}>`
+const DateTimeWrapper = styled.div<{ className?: string }>`
   display: flex;
   gap: 6px;
   font-size: 12px;

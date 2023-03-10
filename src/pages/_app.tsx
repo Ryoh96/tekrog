@@ -1,3 +1,5 @@
+import '@/prism/prism.css'
+
 import { ApolloProvider } from '@apollo/client'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'

@@ -289,7 +289,7 @@ const Test = () => {
                     locale: ja,
                   })}
                   imgUrl={node.featuredImage.node.sourceUrl}
-                  desc={node.excerpt.slice(3, node.excerpt.length -5)}
+                  desc={node.excerpt.slice(3, node.excerpt.length - 5)}
                 />
               ))}
             </CardWrapper>

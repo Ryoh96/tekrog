@@ -102,7 +102,6 @@ const cardList: {
     ],
     desc: 'この記事では、React＋TypeScriptでstyled-componentsのThemeを利用する方法について解説します。Themeに型付けする方法等の説明していますが、型情報を無視すればJavaSciripterでも読めます。',
   },
-
 ]
 
 const CardWrapperTop = styled.div`

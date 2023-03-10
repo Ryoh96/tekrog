@@ -15,8 +15,8 @@ const Base = createGlobalStyle`
   }
 
   body {
-    /* background-color: #383838; */
-    background-color: #eee;
+    background-color: #585858;
+    /* background-color: #6b7bb3; */
     font-family: YuGothic, Hiragino Kaku Gothic Pro, Meiryo, sans-serif;;
     word-break: break-all;
   }
