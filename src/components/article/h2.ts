@@ -10,7 +10,6 @@ const h2 = css`
   padding-top: 14px;
   padding-left: 14px;
   border-left: 10px solid #ffcf08;
-  
 
   > * + * {
     margin-top: 80px;

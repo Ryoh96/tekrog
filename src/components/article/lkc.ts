@@ -8,8 +8,6 @@ const lkc = css`
     gap: 0.5em;
     position: relative;
     z-index: 1;
-
-
   }
 
   &-internal-wrap {

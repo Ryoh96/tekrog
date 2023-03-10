@@ -13,7 +13,7 @@ import Header from '@/components/organisms/Header'
 import Hero from '@/components/organisms/Hero'
 import PrevNextPager from '@/components/organisms/PrevNextPager'
 import RecentPosts from '@/components/organisms/RecentPosts'
-import type { CategoryType } from '@/types/CategoryType'
+import SideTOC from '@/components/organisms/SideTOC'
 
 import Postbody from '../components/organisms/PostBody'
 
@@ -51,6 +51,7 @@ const Test = () => {
             <RecentPosts />
             <Category />
             <Archive />
+            <SideTOC />
           </SideArea>
         </TwoColumnContainer>
       </PageContainer>
