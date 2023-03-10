@@ -81,6 +81,8 @@ const toc = css`
     line-height: 1;
     overflow: hidden;
     align-items: center;
+    padding-top: 0.1em;
+    padding-right: 0.05em;
   }
 
   &_depth_2 {

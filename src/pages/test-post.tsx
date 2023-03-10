@@ -46,7 +46,7 @@ const Test = () => {
               />
             </PrevNextPagerWrapper>
           </MainArea>
-          <SideArea as="aside">
+          <SideArea>
             <SearchForm />
             <RecentPosts />
             <Category />

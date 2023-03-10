@@ -294,7 +294,7 @@ const Test = () => {
               ))}
             </CardWrapper>
           </MainArea>
-          <SideArea as="aside">
+          <SideArea>
             <SearchForm />
             <RecentPosts />
             <Category />

@@ -2,7 +2,7 @@
  * 見出しレベルの要素へ割り振られたID値を取得するフック
  */
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
 const useHeadingAnchors = () => {
   const [headingAnchors, setHeadingAnchors] = useState<string[]>([])

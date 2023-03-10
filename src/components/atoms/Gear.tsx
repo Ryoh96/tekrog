@@ -20,6 +20,18 @@ const GearImage = styled(Image)<GearImageProps>`
     props.bottom !== undefined ? String(props.bottom) + 'px' : 'auto'};
   left: ${(props) =>
     props.left !== undefined ? String(props.left) + 'px' : 'auto'};
+
+  animation: rotation infinite 30s linear;
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `
 
 type GearProps = GearImageProps & {
