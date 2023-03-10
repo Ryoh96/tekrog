@@ -1,3 +1,5 @@
+import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styled from 'styled-components'
 
@@ -39,7 +41,10 @@ const HorizontalCardWrapper = styled.div`
 
 const RecentPosts = () => {
   return (
-    <SideContent title="最近の記事">
+    <SideContent
+      title="最近の記事"
+      icon={<FontAwesomeIcon icon={faNoteSticky} />}
+    >
       <HorizontalCardWrapper>
         {dummy.map((data, index) => (
           <Link href={data.href} key={index}>

@@ -11,10 +11,17 @@ import Category from '@/components/organisms/Category'
 import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import Hero from '@/components/organisms/Hero'
+import PrevNextPager from '@/components/organisms/PrevNextPager'
 import RecentPosts from '@/components/organisms/RecentPosts'
 import type { CategoryType } from '@/types/CategoryType'
 
 import Postbody from '../components/organisms/PostBody'
+
+const PrevNextPagerWrapper = styled.div`
+  display: grid;
+  justify-items: center;
+  gap: 30px;
+`
 
 const Test = () => {
   return (
@@ -26,6 +33,18 @@ const Test = () => {
         <TwoColumnContainer>
           <MainArea>
             <Postbody />
+            <PrevNextPagerWrapper>
+              <PrevNextPager
+                mode="prev"
+                imgUrl="/thumb.jpg"
+                title="Themeの使い方～TypeScriptでstyled-components〜"
+              />
+              <PrevNextPager
+                mode="next"
+                imgUrl="/thumb.jpg"
+                title="Themeの使い方～TypeScriptでstyled-components〜"
+              />
+            </PrevNextPagerWrapper>
           </MainArea>
           <SideArea as="aside">
             <SearchForm />

@@ -1,3 +1,5 @@
+import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styled from 'styled-components'
 
@@ -30,7 +32,10 @@ const CategoryTagWrapper = styled.div`
 
 const Category = () => {
   return (
-    <SideContent title="カテゴリー">
+    <SideContent
+      title="カテゴリー"
+      icon={<FontAwesomeIcon icon={faProjectDiagram} />}
+    >
       <CategoryTagWrapper>
         {categoryList.map((category) => (
           <Link href={`/category/${category}`} key={category}>

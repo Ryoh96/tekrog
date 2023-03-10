@@ -12,7 +12,7 @@ const data = {
   },
 }
 
-const PostBodyWrapper = styled.div`
+const WordPressText = styled.div`
   h2 {
     ${styles.h2}
   }
@@ -28,7 +28,7 @@ const PostBodyWrapper = styled.div`
   p {
     margin-bottom: 1em;
     padding-inline: 0.5em;
-    line-height: 1.8;
+    line-height: 2;
   }
 
   strong {
@@ -41,38 +41,20 @@ const PostBodyWrapper = styled.div`
   }
 
   pre {
-    &[class*='language-'] {
-      overflow: visible !important;
-      border-radius: 10px;
-      margin-bottom: 2em;
-      margin-top: -0.8em;
-    }
+    ${styles.pre}
+  }
 
-    &[class*='language-ts'] {
-      box-sizing: border-box;
-    }
+  .lkc {
+    ${styles.lkc}
+  }
 
-    &[class*='language-ts']::before {
-      white-space: pre-wrap;
-      font-weight: 700;
-      font-size: 15px;
-      content: 'TypeScript';
-      margin: -16px -16px 16px -16px;
-      background: linear-gradient(90deg, #1f2a82, #de15ca);
-      color: #fff;
-      display: block;
-      padding: 6px 18px 6px 16px;
-      width: calc(100% + 32px);
-      height: 40px;
-      box-sizing: border-box;
-      border-radius: 10px 10px 0 0;
-      line-height: 1.8;
-    }
+  .point {
+    ${styles.point}
   }
 `
 
 const Postbody = () => {
-  return <PostBodyWrapper>{parse(data.post.content)}</PostBodyWrapper>
+  return <WordPressText>{parse(data.post.content)}</WordPressText>
 }
 
 export default Postbody

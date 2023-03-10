@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 
-import TitleBlock from '../atoms/TitleBlock'
+import TitleBlock from '../layout/TitleBlock'
 
 const SideContentContainer = styled.div`
   padding: 20px 12px;
@@ -26,12 +26,13 @@ const SideContentTitleBlock = styled(TitleBlock)`
 type SideContentProps = {
   title: string
   children: ReactNode
+  icon?: ReactNode
 }
 
-const SideContent = ({ title, children }: SideContentProps) => {
+const SideContent = ({ title, children, icon }: SideContentProps) => {
   return (
     <div>
-      <SideContentTitleBlock title={title} />
+      <SideContentTitleBlock title={title} icon={icon} />
       <SideContentContainer>{children}</SideContentContainer>
     </div>
   )
