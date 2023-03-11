@@ -20,4 +20,4 @@ export const cat2Name: Record<CategoryType, string> = {
   wordpress: 'WordPress',
 }
 
-export const name2Cat = invertObject(cat2Name)
+export const name2Cat: Record<string, CategoryType> = invertObject(cat2Name)

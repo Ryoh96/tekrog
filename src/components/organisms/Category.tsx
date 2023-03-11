@@ -39,7 +39,7 @@ const Category = () => {
       <CategoryTagWrapper>
         {categoryList.map((category) => (
           <Link href={`/category/${category}`} key={category}>
-            <CategoryTag category={category} count={3} />
+            {/* <CategoryTag category={category} count={3} /> */}
           </Link>
         ))}
       </CategoryTagWrapper>

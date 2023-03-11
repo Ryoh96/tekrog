@@ -2,8 +2,10 @@ import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
+import formatDate from '../../utils/formatDate'
+
 type DateTimeProps = {
-  date: string
+  children: string
   className?: string
 }
 
@@ -13,13 +15,23 @@ const DateTimeWrapper = styled.div<{ className?: string }>`
   font-size: 12px;
   color: #333;
   width: 10em;
+  align-items: center;
 `
 
-const DateTime = ({ date, className }: DateTimeProps) => {
+const IconWrapper = styled.div`
+  svg {
+    font-size: 14px;
+    color: #333;
+  }
+`
+
+const DateTime = ({ children, className }: DateTimeProps) => {
   return (
     <DateTimeWrapper className={className}>
-      <FontAwesomeIcon icon={faClock} />
-      <p>{date}</p>
+      <IconWrapper>
+        <FontAwesomeIcon icon={faClock} />
+      </IconWrapper>
+      <time dateTime={children}>{formatDate(children)}</time>
     </DateTimeWrapper>
   )
 }

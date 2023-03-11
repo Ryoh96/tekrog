@@ -1,5 +1,3 @@
-import { format, parseISO } from 'date-fns'
-import ja from 'date-fns/locale/ja'
 import { useState } from 'react'
 import styled from 'styled-components'
 
@@ -16,6 +14,8 @@ import Footer from '@/components/organisms/Footer'
 import Header from '@/components/organisms/Header'
 import Hero from '@/components/organisms/Hero'
 import RecentPosts from '@/components/organisms/RecentPosts'
+
+import formatDate from '../utils/formatDate'
 
 const data = {
   posts: {
@@ -285,9 +285,7 @@ const Test = () => {
                   key={cursor}
                   title={node.title}
                   categories={node.categories.nodes}
-                  date={format(parseISO(node.date), 'yyyy年MM月dd日', {
-                    locale: ja,
-                  })}
+                  date={formatDate(node.date)}
                   imgUrl={node.featuredImage.node.sourceUrl}
                   desc={node.excerpt.slice(3, node.excerpt.length - 5)}
                 />

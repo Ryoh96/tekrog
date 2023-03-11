@@ -2,12 +2,12 @@ import Image from 'next/image'
 import styled, { useTheme } from 'styled-components'
 
 import type { CategoryType } from '@/types/CategoryType'
-import { cat2Name } from '@/utils/cat2name'
+import { cat2Name, name2Cat } from '@/utils/cat2name'
 
 import Tag from '../atoms/Tag'
 
 type CategoryTagProps = {
-  category: CategoryType
+  categoryName: string
   count?: number
 }
 
@@ -21,8 +21,9 @@ const TagText = styled.span`
   word-break: keep-all;
 `
 
-const CategoryTag = ({ category, count }: CategoryTagProps) => {
+const CategoryTag = ({ categoryName, count }: CategoryTagProps) => {
   const theme = useTheme()
+  const category = name2Cat[categoryName]
   return (
     <Tag color="#fff" bgColor={theme.color.category[category]}>
       <ImageWrapper>
@@ -36,7 +37,7 @@ const CategoryTag = ({ category, count }: CategoryTagProps) => {
       </ImageWrapper>
       <TagText>
         <>
-          {cat2Name[category]}
+          {categoryName}
           {count && <span> ({count})</span>}
         </>
       </TagText>

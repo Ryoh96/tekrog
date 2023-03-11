@@ -94,11 +94,11 @@ const Card = ({ imgUrl, title, categories, date, desc }: CardProps) => {
       <Title>{title}</Title>
       {desc && <Description>{desc}</Description>}
       <Meta>
-        {date && <DateTime date={date} />}
+        {date && <DateTime>{date}</DateTime>}
         <CategoryTagWrapper>
           {categories.map((category) => (
             <Link href={`/category/${category.name}`} key={category.name}>
-              <CategoryTag category={name2Cat[category.name]} />
+              <CategoryTag categoryName={category.name} />
             </Link>
           ))}
         </CategoryTagWrapper>
