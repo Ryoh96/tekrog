@@ -1,0 +1,9 @@
+query Categories {
+  categories {
+    nodes {
+      count
+      name
+      link
+    }
+  }
+}

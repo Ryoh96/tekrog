@@ -154,18 +154,6 @@ const Test = () => {
               ))}
             </CardWrapperArticle>
             <ShareIcons />
-            <PrevNextPagerWrapper>
-              <PrevNextPager
-                mode="prev"
-                imgUrl="/thumb.jpg"
-                title="Themeの使い方～TypeScriptでstyled-components〜"
-              />
-              <PrevNextPager
-                mode="next"
-                imgUrl="/thumb.jpg"
-                title="Themeの使い方～TypeScriptでstyled-components〜"
-              />
-            </PrevNextPagerWrapper>
           </MainArea>
           <SideArea>
             <SearchForm />

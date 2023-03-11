@@ -1,0 +1,20 @@
+query RecentPostAndCategory {
+  posts(first: 5) {
+    nodes {
+      title
+      link
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      count
+      name
+      uri
+    }
+  }
+}

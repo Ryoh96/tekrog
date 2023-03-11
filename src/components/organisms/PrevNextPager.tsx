@@ -4,7 +4,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
+import Link from 'next/link'
 import styled, { css } from 'styled-components'
+
+import type { Post } from '@/graphql/generated/graphql'
 
 type PrevNextPagerProps = {
   mode: 'prev' | 'next'
@@ -72,7 +75,7 @@ const PrevNextPagerWrapper = styled.div<{ mode: 'prev' | 'next' }>`
 `
 
 const IconWrapper = styled.div<{ mode: 'prev' | 'next' }>`
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   text-align: center;
   z-index: 2;
 
@@ -125,4 +128,39 @@ const PrevNextPager = ({ mode, imgUrl, title }: PrevNextPagerProps) => {
   )
 }
 
-export default PrevNextPager
+const PrevNextPagersWrapper = styled.div`
+  display: grid;
+  gap: 30px;
+`
+
+type PrevNextPagersProp = {
+  prevPost: {
+    nodes: Post[]
+  }
+  nextPost: {
+    nodes: Post[]
+  }
+}
+
+const PrevNextPagers = ({ prevPost, nextPost }: PrevNextPagersProp) => {
+  return (
+    <PrevNextPagersWrapper>
+      <Link href={prevPost.nodes[0].uri}>
+        <PrevNextPager
+          mode="prev"
+          imgUrl={prevPost.nodes[0].featuredImage.node.sourceUrl}
+          title={prevPost.nodes[0].title}
+        />
+      </Link>
+      <Link href={nextPost.nodes[0].uri}>
+        <PrevNextPager
+          mode="next"
+          imgUrl={nextPost.nodes[0].featuredImage.node.sourceUrl}
+          title={nextPost.nodes[0].title}
+        />
+      </Link>
+    </PrevNextPagersWrapper>
+  )
+}
+
+export default PrevNextPagers

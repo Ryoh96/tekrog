@@ -1,0 +1,58 @@
+query PostPage {
+  post(id: "YXJyYXljb25uZWN0aW9uOjIxNTc=") {
+    content
+    date
+    categories {
+      nodes {
+        name
+      }
+    }
+    title
+    featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+    link
+  }
+    nextPost: posts(after: "\"YXJyYXljb25uZWN0aW9uOjIxNTc=\"", first: 1) {
+    nodes {
+      title
+          featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+    uri
+    }
+  }
+    prevPost: posts(before: "\"YXJyYXljb25uZWN0aW9uOjIxNTc=\"", last: 1) {
+    nodes {
+      title
+          featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+    uri
+    }
+  }
+  recentPost: posts(first: 5) {
+    nodes {
+      title
+      link
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+  categories {
+    nodes {
+      count
+      name
+      link
+    }
+  }
+}

@@ -7725,9 +7725,9 @@ export enum UserRoleEnum {
   /** User role with specific capabilities */
   Backwpup = 'BACKWPUP_______',
   /** User role with specific capabilities */
-  // Backwpup = 'BACKWPUP________________',
+  Backwpup = 'BACKWPUP________________',
   /** User role with specific capabilities */
-  // Backwpup = 'BACKWPUP_________________________',
+  Backwpup = 'BACKWPUP_________________________',
   /** User role with specific capabilities */
   Contributor = 'CONTRIBUTOR',
   /** User role with specific capabilities */
@@ -8226,12 +8226,201 @@ export type WritingSettings = {
   useSmilies?: Maybe<Scalars['Boolean']>;
 };
 
+export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CategoriesQuery = { __typename?: 'RootQuery', categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, link?: string | null }> } | null };
+
+export type PostPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PostPageQuery = { __typename?: 'RootQuery', post?: { __typename?: 'Post', content?: string | null, date?: string | null, title?: string | null, link?: string | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null } | null, nextPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, prevPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, link?: string | null }> } | null };
+
+export type RecentPostAndCategoryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type RecentPostAndCategoryQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null };
+
 export type TopPagePostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type TopPagePostsQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null, node: { __typename?: 'Post', title?: string | null, date?: string | null, excerpt?: string | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null } }> } | null };
 
 
+export const CategoriesDocument = gql`
+    query Categories {
+  categories {
+    nodes {
+      count
+      name
+      link
+    }
+  }
+}
+    `;
+
+/**
+ * __useCategoriesQuery__
+ *
+ * To run a query within a React component, call `useCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options);
+      }
+export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options);
+        }
+export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
+export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
+export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
+export const PostPageDocument = gql`
+    query PostPage {
+  post(id: "YXJyYXljb25uZWN0aW9uOjIxNTc=") {
+    content
+    date
+    categories {
+      nodes {
+        name
+      }
+    }
+    title
+    featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+    link
+  }
+  nextPost: posts(after: "\\"YXJyYXljb25uZWN0aW9uOjIxNTc=\\"", first: 1) {
+    nodes {
+      title
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      uri
+    }
+  }
+  prevPost: posts(before: "\\"YXJyYXljb25uZWN0aW9uOjIxNTc=\\"", last: 1) {
+    nodes {
+      title
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      uri
+    }
+  }
+  recentPost: posts(first: 5) {
+    nodes {
+      title
+      link
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+  categories {
+    nodes {
+      count
+      name
+      link
+    }
+  }
+}
+    `;
+
+/**
+ * __usePostPageQuery__
+ *
+ * To run a query within a React component, call `usePostPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostPageQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePostPageQuery(baseOptions?: Apollo.QueryHookOptions<PostPageQuery, PostPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PostPageQuery, PostPageQueryVariables>(PostPageDocument, options);
+      }
+export function usePostPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostPageQuery, PostPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PostPageQuery, PostPageQueryVariables>(PostPageDocument, options);
+        }
+export type PostPageQueryHookResult = ReturnType<typeof usePostPageQuery>;
+export type PostPageLazyQueryHookResult = ReturnType<typeof usePostPageLazyQuery>;
+export type PostPageQueryResult = Apollo.QueryResult<PostPageQuery, PostPageQueryVariables>;
+export const RecentPostAndCategoryDocument = gql`
+    query RecentPostAndCategory {
+  posts(first: 5) {
+    nodes {
+      title
+      link
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      count
+      name
+      uri
+    }
+  }
+}
+    `;
+
+/**
+ * __useRecentPostAndCategoryQuery__
+ *
+ * To run a query within a React component, call `useRecentPostAndCategoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRecentPostAndCategoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRecentPostAndCategoryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useRecentPostAndCategoryQuery(baseOptions?: Apollo.QueryHookOptions<RecentPostAndCategoryQuery, RecentPostAndCategoryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<RecentPostAndCategoryQuery, RecentPostAndCategoryQueryVariables>(RecentPostAndCategoryDocument, options);
+      }
+export function useRecentPostAndCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RecentPostAndCategoryQuery, RecentPostAndCategoryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<RecentPostAndCategoryQuery, RecentPostAndCategoryQueryVariables>(RecentPostAndCategoryDocument, options);
+        }
+export type RecentPostAndCategoryQueryHookResult = ReturnType<typeof useRecentPostAndCategoryQuery>;
+export type RecentPostAndCategoryLazyQueryHookResult = ReturnType<typeof useRecentPostAndCategoryLazyQuery>;
+export type RecentPostAndCategoryQueryResult = Apollo.QueryResult<RecentPostAndCategoryQuery, RecentPostAndCategoryQueryVariables>;
 export const TopPagePostsDocument = gql`
     query TopPagePosts {
   posts {

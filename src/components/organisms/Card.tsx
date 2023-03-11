@@ -12,8 +12,9 @@ type CardProps = {
   imgUrl: string
   date?: string
   title: string
-  categories: {
+  categories?: {
     name: string
+    uri: string
   }[]
   desc?: string
 }
@@ -96,10 +97,8 @@ const Card = ({ imgUrl, title, categories, date, desc }: CardProps) => {
       <Meta>
         {date && <DateTime>{date}</DateTime>}
         <CategoryTagWrapper>
-          {categories.map((category) => (
-            <Link href={`/category/${category.name}`} key={category.name}>
-              <CategoryTag categoryName={category.name} />
-            </Link>
+          {categories?.map((category) => (
+            <CategoryTag categoryName={category.name} key={category.name} link={category.uri} />
           ))}
         </CategoryTagWrapper>
       </Meta>
