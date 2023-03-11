@@ -15,7 +15,7 @@ const toc = css`
     margin: 0 !important;
     background: linear-gradient(273deg, #038fba, #117caf 41%, #1f2a82);
     color: #fff;
-    font-size: 18px;
+    font-size: 20px;
     display: flex;
     align-items: center;
     font-weight: 400;
@@ -40,7 +40,7 @@ const toc = css`
     padding: 12px;
     font-size: 16px;
     display: grid;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 
     a:hover {
       opacity: 0.6;
@@ -51,9 +51,24 @@ const toc = css`
 
       ul {
         padding-left: 1em;
-        padding-top: 0.2em;
+        padding-top: 0.3em;
         font-weight: normal;
         display: grid;
+
+        > li {
+          display: flex;
+
+          &::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: #175a9c;
+            border-radius: 50%;
+            margin-top: 0.2em;
+            margin-right: -1.3em;
+          }
+        }
       }
 
       > a {
@@ -87,6 +102,7 @@ const toc = css`
 
   &_depth_2 {
     font-size: 0.9em;
+    color: transparent;
   }
 `
 export default toc

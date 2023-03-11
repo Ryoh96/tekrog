@@ -4,7 +4,7 @@ import {
   faCircleCheck,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback } from 'react'
 import styled from 'styled-components'
 
 import useCurrentHeadingIndex from '@/hooks/useCurrentHeadingIndex'
@@ -44,7 +44,6 @@ const IconWrapper = styled.div<{ isActive: boolean; isLast: boolean }>`
   svg {
     font-size: 11px;
     color: ${({ isActive }) => (isActive ? 'darkblue' : '#777')};
-    box-shadow: ${({ isActive }) => (isActive ? 'darkblue' : '#777')};
   }
   position: relative;
 
@@ -55,8 +54,8 @@ const IconWrapper = styled.div<{ isActive: boolean; isLast: boolean }>`
     display: block;
     position: absolute;
     height: 60px;
-    width: 3px;
-    background-color: ${({ isLast }) => (isLast ? '#fff' : '#ccc')};
+    width: 2px;
+    background-color: ${({ isLast }) => (isLast ? '#fff' : '#ddd')};
     top: 10px;
     left: 50%;
     transform: translateX(-50%);

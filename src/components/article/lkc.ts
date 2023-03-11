@@ -66,13 +66,13 @@ const lkc = css`
   }
 
   &-domain {
-    font-size: 16px;
+    font-size: 14px;
     margin-right: 0.5em;
     font-weight: bold;
   }
 
   &-url-info {
-    font-size: 14px;
+    font-size: 12px;
     color: blue;
   }
 
@@ -91,6 +91,12 @@ const lkc = css`
 
   &-thumbnail {
     grid-area: figure;
+    width: 110px;
+
+    > img {
+      width: 100%;
+      height: auto;
+    }
   }
 
   &-title {
@@ -105,7 +111,8 @@ const lkc = css`
   &-excerpt {
     grid-area: excerpt;
     align-self: center;
-    line-height: 1.4;
+    line-height: 1.6;
+    font-size: 15px;
   }
 `
 
