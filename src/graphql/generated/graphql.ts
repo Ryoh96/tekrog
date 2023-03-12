@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { GraphQLResolveInfo } from 'graphql';
-export type Maybe<T> = T;
+export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
@@ -3006,7 +3006,6 @@ export enum MimeTypeEnum {
 
 /** An object with an ID */
 export type Node = {
-  [x: string]: any;
   /** The globally unique ID for the object */
   id: Scalars['ID'];
 };

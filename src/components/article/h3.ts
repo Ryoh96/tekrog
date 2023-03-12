@@ -8,9 +8,15 @@ const h3 = css`
   padding-left: 20px;
   border-top: 3px solid #1f2a82;
   border-bottom: 3px solid #1f2a82;
+  line-height: 1.5;
 
-  &:not(:first-of-type) {
-    margin-top: 60px;
+
+  + * {
+    margin-top: 0 !important;
+  }
+
+  &:not(:first-child) {
+    margin-top: 40px;
   }
 `
 

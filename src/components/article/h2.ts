@@ -10,6 +10,11 @@ const h2 = css`
   padding-top: 18px;
   padding-left: 14px;
   border-left: 10px solid #ffcf08;
+  line-height: 1.5;
+
+  + * {
+    margin-top: 0 !important;
+  }
 
   > * + * {
     margin-top: 80px;

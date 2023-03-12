@@ -10,7 +10,8 @@ const lkc = css`
     z-index: 1;
   }
 
-  &-internal-wrap {
+  &-internal-wrap,
+  &-external-wrap {
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.5),
       0 1px 3px 1px rgba(60, 64, 67, 0.2);
     padding: 14px 24px 0;
@@ -55,6 +56,10 @@ const lkc = css`
     align-self: center;
     justify-self: end;
     opacity: 0.7;
+
+    img {
+      margin-right: 0.3em;
+    }
 
     /* &::before {
       content: '『';

@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 import { Reset } from 'styled-reset'
 
+
 const Base = createGlobalStyle`
   * {
     font-size: 16px;
@@ -41,6 +42,7 @@ const Base = createGlobalStyle`
   p {
     line-height: 1.7;
   }
+
 `
 
 const GlobalStyle = () => {

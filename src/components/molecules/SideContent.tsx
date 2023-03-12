@@ -27,11 +27,17 @@ type SideContentProps = {
   title: string
   children: ReactNode
   icon?: ReactNode
+  className?: string
 }
 
-const SideContent = ({ title, children, icon }: SideContentProps) => {
+const SideContent = ({
+  title,
+  children,
+  icon,
+  className,
+}: SideContentProps) => {
   return (
-    <div>
+    <div className={className}>
       <SideContentTitleBlock title={title} icon={icon} />
       <SideContentContainer>{children}</SideContentContainer>
     </div>

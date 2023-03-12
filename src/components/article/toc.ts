@@ -54,6 +54,7 @@ const toc = css`
         padding-top: 0.3em;
         font-weight: normal;
         display: grid;
+        font-size: 14px;
 
         > li {
           display: flex;
@@ -84,7 +85,7 @@ const toc = css`
   }
 
   &_depth_1 {
-    font-size: 0.9em;
+    font-size: 0.8em;
     /* font-weight: normal; */
     display: inline-flex;
     place-content: center;
@@ -96,8 +97,7 @@ const toc = css`
     line-height: 1;
     overflow: hidden;
     align-items: center;
-    padding-top: 0.1em;
-    padding-right: 0.05em;
+    /* padding-top: 0.1em; */
   }
 
   &_depth_2 {

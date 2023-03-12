@@ -10,8 +10,12 @@ generates:
       maybeValue: T
       avoidOptionals: true
   src/graphql/generated/request.ts:
+    # preset: import-types
+    # presetConfig:
+      # typesPath: "./types"
     documents: 'src/graphql/operations/**/*.graphql'
     plugins:
-      - typescript
+      # - typescript
       - typescript-operations
-      - typescript-react-apollo
+      # - typescript-react-apollo
+      - typescript-graphql-request

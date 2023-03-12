@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
-import type { Category } from '@/graphql/generated/graphql'
+import type { Category, Post } from '@/graphql/generated/graphql'
 
+import PrevNextPagers from '@/components/organisms/PrevNextPager'
 import CategoryTags from './CategoryTags'
 import RelatedPosts from './RelatedPosts'
 import _Share from './Share'
@@ -27,9 +28,16 @@ type PostFootProps = {
   categories: {
     nodes: Category[]
   }
+  prevPost: {
+    nodes: Post[]
+  }
+  nextPost: {
+    nodes: Post[]
+  }
 }
 
-const PostFoot = ({ categories }: PostFootProps) => {
+const PostFoot = ({ categories, prevPost, nextPost }: PostFootProps) => {
+  console.log(10,prevPost)
   return (
     <>
       <Meta>
@@ -39,6 +47,7 @@ const PostFoot = ({ categories }: PostFootProps) => {
         <Share />
       </Meta>
       <RelatedPosts categories={categories} />
+      <PrevNextPagers prevPost={prevPost} nextPost={nextPost} />
     </>
   )
 }

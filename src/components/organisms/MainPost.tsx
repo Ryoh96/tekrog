@@ -18,7 +18,11 @@ const MainPost = ({ post }: MainPostProps) => {
         categories={post.categories}
       />
       <Postbody content={post.content} />
-      <PostFoot categories={post.categories} />
+      <PostFoot
+        categories={post.categories}
+        prevPost={post.prevPost}
+        nextPost={post.nextPost}
+      />
     </>
   )
 }
