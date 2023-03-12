@@ -18,7 +18,7 @@ const CategoryTags = ({ categories }: CategoryTagsProps) => {
               key={category.name}
               categoryName={category.name}
               count={category.count}
-              link={category.link}
+              link={category.uri}
             />
           )
       )}

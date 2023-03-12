@@ -26,7 +26,7 @@ const SideRecentPosts = ({ posts }: SideRecentPostsProps) => {
     >
       <HorizontalCardWrapper>
         {posts.nodes.map((post, index) => (
-          <Link href={post.link} key={index}>
+          <Link href={post.uri} key={index}>
             <article>
               <HorizontalCard
                 src={post.featuredImage.node.sourceUrl}

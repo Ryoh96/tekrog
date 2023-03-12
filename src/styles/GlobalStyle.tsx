@@ -19,6 +19,17 @@ const Base = createGlobalStyle`
     /* background-color: #6b7bb3; */
     font-family: YuGothic, Hiragino Kaku Gothic Pro, Meiryo, sans-serif;;
     word-break: break-all;
+    animation: fadeIn 1s;
+
+    @keyframes fadeIn {
+      0%{
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
   }
 
   a {

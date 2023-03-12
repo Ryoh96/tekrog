@@ -39,12 +39,18 @@ const Option = styled.option`
   font-size: 14px;
 `
 
-const DropDown = () => {
+type DropDownProps = {
+  value: string[]
+}
+
+const DropDown = ({
+  value
+}: DropDownProps) => {
   return (
     <Select>
-      {archiveList.map((archive) => (
-        <Option key={archive} value={archive}>
-          {archive}
+      {value.map((v) => (
+        <Option key={v} value={v}>
+          {v}
         </Option>
       ))}
     </Select>
