@@ -6,8 +6,8 @@ const h2 = css`
   font-weight: 700;
   background: linear-gradient(273deg, #038fba, #117caf 41%, #1f2a82);
   color: #fff;
-  padding: 10px;
-  padding-top: 14px;
+  padding-bottom: 16px;
+  padding-top: 18px;
   padding-left: 14px;
   border-left: 10px solid #ffcf08;
 

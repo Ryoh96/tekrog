@@ -133,7 +133,7 @@ const Test = () => {
   return (
     <>
       <Header />
-      <Hero />
+      {/* <Hero />
       <Breadcrumb />
       <PageContainer>
         <TwoColumnContainer>
@@ -163,7 +163,7 @@ const Test = () => {
           </SideArea>
         </TwoColumnContainer>
       </PageContainer>
-      <Footer />
+      <Footer /> */}
     </>
   )
 }

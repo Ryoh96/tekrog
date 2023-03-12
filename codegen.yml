@@ -7,8 +7,8 @@ generates:
       - typescript
       - typescript-resolvers
     config:
-       maybeValue: T
-       avoidOptionals: true
+      maybeValue: T
+      avoidOptionals: true
   src/graphql/generated/request.ts:
     documents: 'src/graphql/operations/**/*.graphql'
     plugins:

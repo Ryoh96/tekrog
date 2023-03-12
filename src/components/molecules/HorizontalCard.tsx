@@ -30,6 +30,20 @@ const ImageWrapper = styled.figure`
   flex: 0 0 100px;
   position: relative;
   height: 100%;
+
+  img {
+    animation: fade 2s;
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 `
 
 const Title = styled.p`
@@ -46,10 +60,13 @@ const HorizontalCard = ({ src, title }: HorizontalCardProps) => {
         <Image
           src={src}
           alt={title}
-          fill
+          width={100}
+          height={100}
           style={{
             objectFit: 'cover',
           }}
+          sizes="200px"
+          quality={70}
         />
       </ImageWrapper>
       <Title>{title}</Title>

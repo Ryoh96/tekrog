@@ -90,6 +90,8 @@ const Card = ({ imgUrl, title, categories, date, desc }: CardProps) => {
           alt={title}
           fill
           style={{ objectFit: 'contain', aspectRatio: 'auto 2000 / 1125' }}
+          sizes="20vw"
+          quality={70}
         />
       </ImageWrapper>
       <Title>{title}</Title>
@@ -98,7 +100,11 @@ const Card = ({ imgUrl, title, categories, date, desc }: CardProps) => {
         {date && <DateTime>{date}</DateTime>}
         <CategoryTagWrapper>
           {categories?.map((category) => (
-            <CategoryTag categoryName={category.name} key={category.name} link={category.uri} />
+            <CategoryTag
+              categoryName={category.name}
+              key={category.name}
+              link={category.uri}
+            />
           ))}
         </CategoryTagWrapper>
       </Meta>

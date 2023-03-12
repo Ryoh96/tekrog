@@ -274,13 +274,13 @@ const Test = () => {
   return (
     <>
       <Header />
-      <Hero />
+      {/* <Hero />
       <Breadcrumb />
       <PageContainer>
         <TwoColumnContainer>
           <MainArea>
-            <CardWrapper>
-              {data?.posts?.edges.map(({ cursor, node }) => (
+            <CardWrapper> */}
+              {/* {data?.posts?.edges.map(({ cursor, node }) => (
                 <Card
                   key={cursor}
                   title={node.title}
@@ -289,8 +289,8 @@ const Test = () => {
                   imgUrl={node.featuredImage.node.sourceUrl}
                   desc={node.excerpt.slice(3, node.excerpt.length - 5)}
                 />
-              ))}
-            </CardWrapper>
+              ))} */}
+            {/* </CardWrapper>
           </MainArea>
           <SideArea>
             <SearchForm />
@@ -300,7 +300,7 @@ const Test = () => {
           </SideArea>
         </TwoColumnContainer>
       </PageContainer>
-      <Footer />
+      <Footer /> */}
     </>
   )
 }

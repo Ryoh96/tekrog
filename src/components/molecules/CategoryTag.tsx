@@ -27,7 +27,7 @@ const CategoryTag = ({ categoryName, count, link }: CategoryTagProps) => {
   const theme = useTheme()
   const category = name2Cat[categoryName]
   return (
-    <Link href={link ?? ""}>
+    <Link href={link ?? ''}>
       <Tag color="#fff" bgColor={theme.color.category[category]}>
         <ImageWrapper>
           <Image

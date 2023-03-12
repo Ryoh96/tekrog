@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 import SideContent from '@/components/molecules/SideContent'
-import { Category } from '@/graphql/generated/graphql'
+import type { Category } from '@/graphql/generated/graphql'
+
 import CategoryTags from './CategoryTags'
 
 const CategoryTagWrapper = styled.div`
@@ -18,16 +19,14 @@ type SideCategoryProps = {
   }
 }
 
-const SideCategory = ({
-  categories
-}: SideCategoryProps) => {
+const SideCategory = ({ categories }: SideCategoryProps) => {
   return (
     <SideContent
       title="カテゴリー"
       icon={<FontAwesomeIcon icon={faProjectDiagram} />}
     >
       <CategoryTagWrapper>
-        <CategoryTags categories={categories}/>
+        <CategoryTags categories={categories} />
       </CategoryTagWrapper>
     </SideContent>
   )

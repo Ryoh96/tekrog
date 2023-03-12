@@ -1,11 +1,10 @@
 import { faChevronRight, faHome } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
 import PageContainer from './../layout/PageContainer'
-
-const breadcrumbList = ['ホーム', 'カテゴリA', 'タイトル']
 
 const BreadcrumbWrapper = styled.div`
   font-size: 13px;
@@ -20,18 +19,53 @@ const BreadcrumbWrapper = styled.div`
   }
 `
 
-const Breadcrumb = () => {
+const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  transition: all .3s;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.06);
+    text-decoration: underline;
+    
+}
+`
+
+const Title = styled.p`
+  margin-top: 0.2em;
+`
+
+const IconWrapper = styled.div``
+
+type BreadcrumbProps = {
+  breadcrumbList: {
+    name: string
+    href: string
+  }[]
+}
+
+const Breadcrumb = ({ breadcrumbList }: BreadcrumbProps) => {
+  const list = [
+    { name: 'ホーム', href: 'https://tekrog.com' },
+    ...breadcrumbList,
+  ]
   return (
     <PageContainer>
       <BreadcrumbWrapper>
-        <FontAwesomeIcon icon={faHome} />
-        {breadcrumbList.map((breadcrumb, index) => (
-          <React.Fragment key={breadcrumb}>
-            <p>{breadcrumb}</p>
-            {index !== breadcrumbList.length - 1 && (
+        {list.map((item, index) => (
+          <StyledLink key={index} href={item.href}>
+            {index === 0 && (
+              <IconWrapper>
+                <FontAwesomeIcon icon={faHome} />
+              </IconWrapper>
+            )}
+            <Title>{item.name}</Title>
+            {index !== list.length - 1 && (
               <FontAwesomeIcon icon={faChevronRight} />
             )}
-          </React.Fragment>
+          </StyledLink>
         ))}
       </BreadcrumbWrapper>
     </PageContainer>

@@ -68,6 +68,8 @@ const PostHead = ({ title, date, imgUrl, categories }: PostHeadProps) => {
           style={{
             objectFit: 'contain',
           }}
+          sizes="50vw"
+          quality={75}
         />
       </Thumbnail>
       <Share />

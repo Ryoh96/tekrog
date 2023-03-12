@@ -1,10 +1,10 @@
 import '@/prism/prism.js'
 
 import parse from 'html-react-parser'
+import Image from 'next/image'
 import styled from 'styled-components'
 
 import { styles } from '@/components/article'
-
 
 const WordPressText = styled.div`
   h2 {
@@ -58,7 +58,23 @@ type PostBodyProps = {
 const Postbody = ({ content }: PostBodyProps) => {
   return (
     <>
-      <WordPressText>{parse(content)}</WordPressText>
+      <WordPressText>
+        {parse(content, {
+          replace: (node) => {
+            //@ts-ignore
+            if (node.name === 'img') {
+              //@ts-ignore
+              const { src, alt, width, height, class: clazz } = node.attribs
+              console.log(203, clazz)
+              const url = String(src).startsWith('//') ? 'https:' + src : src
+              if (clazz === 'lkc-thumbnail-img') {
+                return <Image src={url} alt={alt} width={150} height={150} />
+              }
+              return <Image src={url} width={width} alt={alt} height={height} />
+            }
+          },
+        })}
+      </WordPressText>
     </>
   )
 }

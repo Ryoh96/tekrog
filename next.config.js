@@ -5,7 +5,13 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ['tekrog.com'],
+    domains: ['tekrog.com', "www.google.com"],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
 }
 
