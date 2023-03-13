@@ -48,7 +48,7 @@ type BreadcrumbProps = {
 
 const Breadcrumb = ({ breadcrumbList }: BreadcrumbProps) => {
   const list = [
-    { name: 'ホーム', href: 'https://tekrog.com' },
+    { name: 'ホーム', href: '/' },
     ...breadcrumbList,
   ]
   return (

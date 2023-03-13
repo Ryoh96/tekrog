@@ -12,6 +12,7 @@ type MainTopProps = {
 const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
   gap: 32px 3%;
   margin-block: 20px;
 `

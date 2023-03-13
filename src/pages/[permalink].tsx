@@ -2,7 +2,6 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import type { PostPageQueryVariables } from '@/graphql/generated/request.ts'
 import { getSdk } from '@/graphql/generated/request.ts'
 
 import MainPost from '../components/organisms/MainPost'
@@ -46,8 +45,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const allPaths: { uri: string }[] = await client
     .getAllPaths()
     .then((data) => data.posts.nodes)
-    
-   const paths = allPaths.map(({uri}) => uri)
+
+  const paths = allPaths.map(({ uri }) => uri)
 
   return {
     paths,
@@ -55,9 +54,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-// const id = 'YXJyYXljb25uZWN0aW9uOjE4OTI='
-
-export const getStaticProps: GetStaticProps<PostProps> = async ({params}) => {
+export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
   const permalink = params?.permalink as string
   const graphQLCluent = new GraphQLClient(
     process.env.END_POINT ?? 'https://tekrog.com/graphql'
@@ -66,17 +63,15 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({params}) => {
   const edges = await client
     .getAllPathsAndCursor()
     .then((data) => data.posts.edges)
-    
-    const target = edges.filter((edge) => edge.node.uri === `/${permalink}/`)
 
-    const cursor :string = target[0].cursor
-    
-    console.error(22222222222222222222222222222,target)
+  const target = edges.filter((edge) => edge.node.uri === `/${permalink}/`)
+
+  const cursor: string = target[0].cursor
+
   const queryParams = {
     id: cursor,
     key: cursor,
   }
-
 
   const data = await client.getPostPage(queryParams)
   return {

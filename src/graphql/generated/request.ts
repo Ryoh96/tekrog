@@ -11,6 +11,11 @@ export type RecentPostAndCategoryQueryVariables = Exact<{ [key: string]: never; 
 
 export type RecentPostAndCategoryQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null };
 
+export type GetAllCursorQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllCursorQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null };
+
 export type GetAllPathsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -73,6 +78,15 @@ export const RecentPostAndCategoryDocument = gql`
       count
       name
       uri
+    }
+  }
+}
+    `;
+export const GetAllCursorDocument = gql`
+    query getAllCursor {
+  posts(first: 1000) {
+    edges {
+      cursor
     }
   }
 }
@@ -256,6 +270,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     RecentPostAndCategory(variables?: RecentPostAndCategoryQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<RecentPostAndCategoryQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<RecentPostAndCategoryQuery>(RecentPostAndCategoryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'RecentPostAndCategory', 'query');
+    },
+    getAllCursor(variables?: GetAllCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAllCursorQuery>(GetAllCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCursor', 'query');
     },
     getAllPaths(variables?: GetAllPathsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllPathsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllPathsQuery>(GetAllPathsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPaths', 'query');

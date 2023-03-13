@@ -1,10 +1,7 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import styled from 'styled-components'
 
 import CategoryTag from '@/components/molecules/CategoryTag'
-import type { CategoryType } from '@/types/CategoryType'
-import { name2Cat } from '@/utils/cat2name'
 
 import _DateTime from '../atoms/DateTime'
 
@@ -27,17 +24,22 @@ const CardWrapper = styled.div`
   transition: 0.3s;
   z-index: 1;
   display: grid;
-  align-items: center;
+  align-content: space-between;
   gap: 10px;
   padding: 10px;
   background-color: #fff;
   border-radius: 10px;
+  height: 100%;
 
   &:hover {
     transform: scale(1.05);
     z-index: 2;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   }
+`
+
+const CardContentWrapper = styled.div`
+  display: grid;
 `
 
 const ImageWrapper = styled.figure`
@@ -58,6 +60,7 @@ const Meta = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: auto;
 `
 
 const Title = styled.p`
@@ -84,18 +87,20 @@ const DateTime = styled(_DateTime)`
 const Card = ({ imgUrl, title, categories, date, desc }: CardProps) => {
   return (
     <CardWrapper>
-      <ImageWrapper>
-        <Image
-          src={imgUrl}
-          alt={title}
-          fill
-          style={{ objectFit: 'contain', aspectRatio: 'auto 2000 / 1125' }}
-          sizes="20vw"
-          quality={70}
-        />
-      </ImageWrapper>
-      <Title>{title}</Title>
-      {desc && <Description>{desc}</Description>}
+      <CardContentWrapper>
+        <ImageWrapper>
+          <Image
+            src={imgUrl}
+            alt={title}
+            fill
+            style={{ objectFit: 'contain', aspectRatio: 'auto 2000 / 1125' }}
+            sizes="20vw"
+            quality={70}
+          />
+        </ImageWrapper>
+        <Title>{title}</Title>
+        {desc && <Description>{desc}</Description>}
+      </CardContentWrapper>
       <Meta>
         {date && <DateTime>{date}</DateTime>}
         <CategoryTagWrapper>

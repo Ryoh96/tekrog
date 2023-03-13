@@ -3,17 +3,24 @@ import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
 import MainTop from '@/components/organisms/MainTop'
+import { POSTS_PER_PAGE } from '@/constants/number'
 import { getSdk } from '@/graphql/generated/request.ts'
 
 type PageProps = {
   data: any
+  pageNum: number
 }
 
-const Page = ({ data }: PageProps) => {
+const Page = ({ data, pageNum }: PageProps) => {
   const breadcrumbList: {
     name: string
     href: string
-  }[] = []
+  }[] = [
+    {
+      name: `ページ${pageNum}`,
+      href: `/page/${pageNum}`,
+    },
+  ]
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
@@ -26,7 +33,19 @@ const Page = ({ data }: PageProps) => {
 export default Page
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = ['/page/2', '/page/3']
+  const graphQLClient = new GraphQLClient(
+    process.env.END_POINT ?? 'https://tekrog.com/graphql'
+  )
+  const client = getSdk(graphQLClient)
+
+  const allCursor: { cursor: string }[] = await client
+    .getAllCursor()
+    .then((data) => data.posts.edges)
+
+  const totalPosts = allCursor.length
+  const totalPage = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)
+  const paths = [...Array(totalPage)].map((_, i) => `/page/${i + 1}`)
+  console.log(paths)
   return {
     paths,
     fallback: false,
@@ -35,25 +54,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   const pageNum = Number(params?.id)
-  console.log(20, Number(process.env.POST_PER_PAGE) * (pageNum - 1))
-  const graphQLCluent = new GraphQLClient(
+  const graphQLClient = new GraphQLClient(
     process.env.END_POINT ?? 'https://tekrog.com/graphql'
   )
-  const client = getSdk(graphQLCluent)
+  const client = getSdk(graphQLClient)
 
-  const startCursor: string = await client.getStartCursor({
-    index: 10 * (pageNum - 1),
-  })
+  const allCursor: { cursor: string }[] = await client
+    .getAllCursor()
+    .then((data) => data.posts.edges)
 
   const queryParams = {
-    after: startCursor,
-    first: 10,
+    after: allCursor[(pageNum - 1) * POSTS_PER_PAGE - 1].cursor,
+    first: POSTS_PER_PAGE,
   }
   const data = await client.getTopPage(queryParams)
 
   return {
     props: {
       data,
+      pageNum,
     },
   }
 }

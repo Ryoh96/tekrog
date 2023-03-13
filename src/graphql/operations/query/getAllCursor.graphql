@@ -1,0 +1,7 @@
+query getAllCursor {
+  posts(first: 1000) {
+    edges {
+      cursor
+    }
+  }
+}
