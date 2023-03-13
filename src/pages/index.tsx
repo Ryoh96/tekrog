@@ -1,46 +1,46 @@
 import { GraphQLClient } from 'graphql-request'
-import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import type { PostPageQueryVariables } from '@/graphql/generated/request.ts'
+import MainTop from '@/components/organisms/MainTop'
 import { getSdk } from '@/graphql/generated/request.ts'
 
-import MainPost from '../components/organisms/MainPost'
 
-
-
-type PostProps = {
+type IndexProps = {
   data: any
 }
 
-const Post = ({ data }: PostProps) => {
-
+const Index = ({
+  data
+}: IndexProps) => {
   const breadcrumbList: {
     name: string
     href: string
   }[] = []
-
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainPost post={data} />
+        <MainTop posts={data.posts} />
       </Layout>
     </>
   )
 }
 
-export default Post
+export default Index
 
-export const getStaticProps: GetStaticProps<PostProps> = async () => {
-  // const graphQLCluent = new GraphQLClient(
-  //   process.env.END_POINT ?? 'https://tekrog.com/graphql'
+export const getStaticProps: GetStaticProps<IndexProps> = async () => {
+  const params = {
+    first: 10,
+  }
+  const graphQLCluent = new GraphQLClient(
+    process.env.END_POINT ?? 'https://tekrog.com/graphql'
   )
   const client = getSdk(graphQLCluent)
-  const data = await client.PostPage({id, key: id})
-  console.log(data)
+  const data = await client.getTopPage(params)
+
   return {
     props: {
-      data,
-    },
+      data
+    }
   }
 }

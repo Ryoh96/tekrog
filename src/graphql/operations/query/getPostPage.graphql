@@ -1,4 +1,4 @@
-query PostPage($id: ID!) {
+query getPostPage($id: ID!) {
   post(id: $id) {
     content
     date

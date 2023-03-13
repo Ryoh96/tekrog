@@ -6,7 +6,7 @@ import type { PostConnection } from '@/graphql/generated/graphql'
 import Card from './Card'
 
 type MainTopProps = {
-  posts: PostConnection
+  posts: PostConnection & {edges: {cursor: string}[]}
 }
 
 const CardWrapper = styled.div`

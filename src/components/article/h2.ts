@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 
 const h2 = css`
   font-size: 26px;
-  margin-bottom: 20px;
+  margin-bottom: 0.5em;
   font-weight: 700;
   background: linear-gradient(273deg, #038fba, #117caf 41%, #1f2a82);
   color: #fff;
@@ -21,7 +21,7 @@ const h2 = css`
   }
 
   &:not(:first-of-type) {
-    margin-top: 60px;
+    margin-top: 80px;
   }
 `
 

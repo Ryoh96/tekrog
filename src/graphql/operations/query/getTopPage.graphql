@@ -1,5 +1,5 @@
-query TopPage($last: Int!, $first: Int!) {
-  posts(first: $first, last: $last) {
+query getTopPage($after: String, $first: Int!) {
+  posts(first: $first, after: $after) {
     nodes {
       title
       uri

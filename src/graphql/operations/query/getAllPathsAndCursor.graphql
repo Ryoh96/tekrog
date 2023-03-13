@@ -1,0 +1,10 @@
+query getAllPathsAndCursor {
+  posts(first: 1000) {
+    edges {
+      cursor
+      node {
+        uri
+      }
+    }
+  }
+}

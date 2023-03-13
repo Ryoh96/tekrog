@@ -46,6 +46,12 @@ const lkc = css`
     }
   }
 
+  &-external-wrap {
+    > a > div >*:first-child {
+      margin-top: 10px;
+    }
+  }
+
   &-info {
     display: flex;
     align-items: center;

@@ -1,0 +1,7 @@
+query getAllPaths {
+  posts(first: 1000) {
+    nodes {
+      uri
+    }
+  }
+}

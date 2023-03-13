@@ -26,6 +26,14 @@ const pre = css`
     }
   }
 
+  &[class*='language-'].line-numbers,
+  &[class*='file-httpd'].line-numbers  {
+    &::before {
+      width: calc(100% + 77px);
+      margin-inline: -61px;
+    }
+  }
+
   &[class*='language-ts']::before {
     content: 'TypeScript';
   }

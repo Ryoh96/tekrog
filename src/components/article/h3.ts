@@ -3,7 +3,7 @@ import { css } from 'styled-components'
 const h3 = css`
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 0.8em;
+  margin-bottom: 0.3em;
   padding: 8px;
   padding-left: 20px;
   border-top: 3px solid #1f2a82;
@@ -16,7 +16,7 @@ const h3 = css`
   }
 
   &:not(:first-child) {
-    margin-top: 40px;
+    margin-top: 60px;
   }
 `
 
