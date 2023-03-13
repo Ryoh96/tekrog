@@ -1,0 +1,50 @@
+query TopPage($last: Int!, $first: Int!) {
+  posts(first: $first, last: $last) {
+    nodes {
+      title
+      uri
+      date
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      excerpt
+      categories {
+     		nodes{
+          name
+          uri
+        }
+      }
+    }
+    edges {
+      cursor
+    }
+  }
+  recentPost: posts(first: 5) {
+    nodes {
+      title
+      uri
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      excerpt
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      count
+      name
+      uri
+    }
+  }
+    archivePosts: posts(first: 100) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+}

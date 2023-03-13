@@ -121,7 +121,7 @@ const PrevNextPager = ({ mode, imgUrl, title }: PrevNextPagerProps) => {
           style={{
             objectFit: 'cover',
           }}
-          sizes="5vw"
+          sizes="15vw"
           quality={60}
         />
       </ImageWrapper>

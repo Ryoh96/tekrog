@@ -316,6 +316,31 @@ const data ={
         "count": 13,
         "name": "Vue.js",
         "uri": "/category/vue-js/"
+      },
+      {
+        "count": 1,
+        "name": "WordPress",
+        "uri": "/category/wordpress/"
+      },
+      {
+        "count": 3,
+        "name": "アプリ",
+        "uri": "/category/appli/"
+      },
+      {
+        "count": null,
+        "name": "お知らせ",
+        "uri": "/category/news/"
+      },
+      {
+        "count": null,
+        "name": "三角関数",
+        "uri": "/category/math/trigonometric/"
+      },
+      {
+        "count": 5,
+        "name": "数学",
+        "uri": "/category/math/"
       }
     ]
   },

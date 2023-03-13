@@ -8,7 +8,6 @@ export type CategoriesQuery = { __typename?: 'RootQuery', categories?: { __typen
 
 export type PostPageQueryVariables = Exact<{
   id: Scalars['ID'];
-  key: Scalars['String'];
 }>;
 
 
@@ -19,10 +18,13 @@ export type RecentPostAndCategoryQueryVariables = Exact<{ [key: string]: never; 
 
 export type RecentPostAndCategoryQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null };
 
-export type TopPagePostsQueryVariables = Exact<{ [key: string]: never; }>;
+export type TopPageQueryVariables = Exact<{
+  last: Scalars['Int'];
+  first: Scalars['Int'];
+}>;
 
 
-export type TopPagePostsQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null, node: { __typename?: 'Post', title?: string | null, date?: string | null, excerpt?: string | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null } }> } | null };
+export type TopPageQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
 
 
 export const CategoriesDocument = gql`
@@ -37,7 +39,7 @@ export const CategoriesDocument = gql`
 }
     `;
 export const PostPageDocument = gql`
-    query PostPage($id: ID!, $key: String!) {
+    query PostPage($id: ID!) {
   post(id: $id) {
     content
     date
@@ -71,7 +73,7 @@ export const PostPageDocument = gql`
     }
     uri
   }
-  nextPost: posts(after: $key, first: 1) {
+  nextPost: posts(after: "YXJyYXljb25uZWN0aW9uOjE4OTI=", first: 1) {
     nodes {
       title
       featuredImage {
@@ -82,7 +84,7 @@ export const PostPageDocument = gql`
       uri
     }
   }
-  prevPost: posts(before: $key, last: 1) {
+  prevPost: posts(before: "YXJyYXljb25uZWN0aW9uOjE4OTI=", last: 1) {
     nodes {
       title
       featuredImage {
@@ -104,7 +106,7 @@ export const PostPageDocument = gql`
       }
     }
   }
-  categories {
+  categories(first: 30) {
     nodes {
       count
       name
@@ -142,25 +144,53 @@ export const RecentPostAndCategoryDocument = gql`
   }
 }
     `;
-export const TopPagePostsDocument = gql`
-    query TopPagePosts {
-  posts {
+export const TopPageDocument = gql`
+    query TopPage($last: Int!, $first: Int!) {
+  posts(first: $first, last: $last) {
+    nodes {
+      title
+      uri
+      date
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      excerpt
+      categories {
+        nodes {
+          name
+          uri
+        }
+      }
+    }
     edges {
       cursor
+    }
+  }
+  recentPost: posts(first: 5) {
+    nodes {
+      title
+      uri
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      excerpt
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      count
+      name
+      uri
+    }
+  }
+  archivePosts: posts(first: 100) {
+    edges {
       node {
-        title
         date
-        excerpt
-        categories {
-          nodes {
-            name
-          }
-        }
-        featuredImage {
-          node {
-            sourceUrl
-          }
-        }
       }
     }
   }
@@ -183,8 +213,8 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     RecentPostAndCategory(variables?: RecentPostAndCategoryQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<RecentPostAndCategoryQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<RecentPostAndCategoryQuery>(RecentPostAndCategoryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'RecentPostAndCategory', 'query');
     },
-    TopPagePosts(variables?: TopPagePostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<TopPagePostsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<TopPagePostsQuery>(TopPagePostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'TopPagePosts', 'query');
+    TopPage(variables: TopPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<TopPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<TopPageQuery>(TopPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'TopPage', 'query');
     }
   };
 }

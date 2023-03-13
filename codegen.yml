@@ -7,7 +7,7 @@ generates:
       - typescript
       - typescript-resolvers
     config:
-      maybeValue: T
+      maybeValue: "T"
       avoidOptionals: true
   src/graphql/generated/request.ts:
     # preset: import-types

@@ -1,4 +1,4 @@
-query PostPage($id: ID!, $key: String!) {
+query PostPage($id: ID!) {
   post(id: $id) {
     content
     date
@@ -32,7 +32,7 @@ query PostPage($id: ID!, $key: String!) {
     }
     uri
   }
-  nextPost: posts(after: $key, first: 1) {
+  nextPost: posts(after: "YXJyYXljb25uZWN0aW9uOjE4OTI=", first: 1) {
     nodes {
       title
       featuredImage {
@@ -43,7 +43,7 @@ query PostPage($id: ID!, $key: String!) {
       uri
     }
   }
-  prevPost: posts(before: $key, last: 1) {
+  prevPost: posts(before: "YXJyYXljb25uZWN0aW9uOjE4OTI=", last: 1) {
     nodes {
       title
       featuredImage {
@@ -65,7 +65,7 @@ query PostPage($id: ID!, $key: String!) {
       }
     }
   }
-  categories {
+  categories(first: 30) {
     nodes {
       count
       name

@@ -18,7 +18,7 @@ const TagWrapper = styled.span<TagProps>`
   border-width: ${({ border }) => border?.width};
   border-color: ${({ border }) => border?.color};
   font-size: 12px;
-  padding: 5px 10px;
+  padding: 5px 5px;
   display: inline-flex;
   gap: 5px;
   flex-wrap: nowrap;
