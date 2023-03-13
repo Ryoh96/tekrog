@@ -49,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPaths.map(({ uri }) => uri)
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
 

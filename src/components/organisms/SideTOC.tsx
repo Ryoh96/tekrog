@@ -4,8 +4,7 @@ import {
   faCircleCheck,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import type { RefObject } from 'react'
-import { createRef, use, useCallback, useEffect, useRef } from 'react'
+import { useCallback } from 'react'
 import styled from 'styled-components'
 
 import PageBottomButton from '@/components/atoms/PageBottomButton'
@@ -15,6 +14,7 @@ import useHeadingAnchors from '@/hooks/useHeadingAnchors'
 import useHeadingElements from '@/hooks/useHeadingElements'
 import useHeadingNames from '@/hooks/useHeadingNames'
 import useHeadingPositions from '@/hooks/useHeadingPositions'
+import useSideTOCRefs from '@/hooks/useSideTOCRefs'
 
 import _SideContent from '../molecules/SideContent'
 
@@ -142,21 +142,10 @@ const SideTOC = () => {
     [headingElements]
   )
 
-  const sideContentInnerRef = useRef<HTMLDivElement | null>()
-  const offset = 60
-  const titleRef = useRef<RefObject<HTMLAnchorElement>[]>([])
-
-  headingNames.forEach((_, index) => {
-    titleRef.current[index] = createRef<HTMLAnchorElement>()
-  })
-
-  useEffect(() => {
-    sideContentInnerRef.current?.scroll({
-      top:
-        (titleRef.current?.[currentHeadingIndex]?.current
-          ?.offsetTop as number) - offset,
-    })
-  }, [currentHeadingIndex])
+  const [sideContentInnerRef, titleRef] = useSideTOCRefs(
+    headingNames,
+    currentHeadingIndex
+  )
 
   return (
     <SideTOCWrapper>
