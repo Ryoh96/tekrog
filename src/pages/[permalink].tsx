@@ -47,7 +47,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     .then((data) => data.posts.nodes)
 
   const paths = allPaths.map(({ uri }) => uri)
-
   return {
     paths,
     fallback: true,
@@ -74,6 +73,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
   }
 
   const data = await client.getPostPage(queryParams)
+  console.log(101010101010101010,data)
   return {
     props: {
       data,

@@ -5,7 +5,14 @@ import PostFoot from './PostFoot'
 import PostHead from './PostHead'
 
 type MainPostProps = {
-  post: Post
+  post: Post & {
+    prevPost: {
+      nodes: Post[]
+    }
+    nextPost: {
+      nodes: Post[]
+    }
+  }
 }
 
 const MainPost = ({ post }: MainPostProps) => {

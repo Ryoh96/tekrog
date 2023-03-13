@@ -5,6 +5,7 @@ import Layout from '@/components/layout/Layout'
 import MainTop from '@/components/organisms/MainTop'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import { getSdk } from '@/graphql/generated/request.ts'
+import path from 'path'
 
 type PageProps = {
   data: any
@@ -46,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const totalPosts = allCursor.length
   const totalPage = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)
   const paths = [...Array(totalPage)].map((_, i) => `/page/${i + 1}`)
-  console.log(paths)
+  paths.shift()
   return {
     paths,
     fallback: false,
