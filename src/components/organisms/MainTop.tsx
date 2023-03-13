@@ -4,9 +4,12 @@ import styled from 'styled-components'
 import type { PostConnection } from '@/graphql/generated/graphql'
 
 import Card from './Card'
+import NumericPager from './NumericPager'
 
 type MainTopProps = {
-  posts: PostConnection & {edges: {cursor: string}[]}
+  posts: PostConnection & { edges: { cursor: string }[] }
+  totalPages: number
+  current?: number
 }
 
 const CardWrapper = styled.div`
@@ -19,14 +22,18 @@ const CardWrapper = styled.div`
 
 const MainTopWrapper = styled.div``
 
-const MainTop = ({ posts }: MainTopProps) => {
+const NumericPagerWrapper = styled.div`
+  margin-block-start: 40px;
+`
+
+const MainTop = ({ posts, totalPages, current = 1 }: MainTopProps) => {
   return (
     <MainTopWrapper>
       <CardWrapper>
         {posts.nodes.map((node) => (
           <Link key={node.uri} href={node.uri}>
             <Card
-            key={node.uri}
+              key={node.uri}
               title={node.title}
               categories={node.categories.nodes}
               date={node.date}
@@ -36,6 +43,9 @@ const MainTop = ({ posts }: MainTopProps) => {
           </Link>
         ))}
       </CardWrapper>
+      <NumericPagerWrapper>
+        <NumericPager total={totalPages} current={current} />
+      </NumericPagerWrapper>
     </MainTopWrapper>
   )
 }

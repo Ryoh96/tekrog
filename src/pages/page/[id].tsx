@@ -9,9 +9,10 @@ import { getSdk } from '@/graphql/generated/request.ts'
 type PageProps = {
   data: any
   pageNum: number
+  totalPages: number
 }
 
-const Page = ({ data, pageNum }: PageProps) => {
+const Page = ({ data, pageNum, totalPages }: PageProps) => {
   const breadcrumbList: {
     name: string
     href: string
@@ -24,7 +25,7 @@ const Page = ({ data, pageNum }: PageProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainTop posts={data.posts} />
+        <MainTop posts={data.posts} totalPages={totalPages} current={pageNum} />
       </Layout>
     </>
   )
@@ -63,16 +64,21 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
     .getAllCursor()
     .then((data) => data.posts.edges)
 
+    console.log(allCursor[(pageNum - 1) * POSTS_PER_PAGE - 1])
   const queryParams = {
     after: allCursor[(pageNum - 1) * POSTS_PER_PAGE - 1].cursor,
     first: POSTS_PER_PAGE,
   }
   const data = await client.getTopPage(queryParams)
 
+  const totalPosts = allCursor.length
+  const totalPages = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)
+
   return {
     props: {
       data,
       pageNum,
+      totalPages,
     },
   }
 }

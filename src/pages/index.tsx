@@ -3,16 +3,15 @@ import type { GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
 import MainTop from '@/components/organisms/MainTop'
+import { POSTS_PER_PAGE } from '@/constants/number'
 import { getSdk } from '@/graphql/generated/request.ts'
-
 
 type IndexProps = {
   data: any
+  totalPages: number
 }
 
-const Index = ({
-  data
-}: IndexProps) => {
+const Index = ({ data, totalPages }: IndexProps) => {
   const breadcrumbList: {
     name: string
     href: string
@@ -20,7 +19,7 @@ const Index = ({
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainTop posts={data.posts} />
+        <MainTop posts={data.posts} totalPages={totalPages}/>
       </Layout>
     </>
   )
@@ -38,9 +37,17 @@ export const getStaticProps: GetStaticProps<IndexProps> = async () => {
   const client = getSdk(graphQLCluent)
   const data = await client.getTopPage(params)
 
+  const allCursor: { cursor: string }[] = await client
+    .getAllCursor()
+    .then((data: { posts: { edges: any } }) => data.posts.edges)
+
+  const totalPosts = allCursor.length
+  const totalPages = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)
+
   return {
     props: {
-      data
-    }
+      data,
+      totalPages
+    },
   }
 }
