@@ -20,6 +20,7 @@ const ulOnly = css`
   font-size: 16px;
   display: grid;
   gap: 1em;
+  line-height: 1.6;
 
   li {
     display: flex;

@@ -3,7 +3,7 @@ import { css } from 'styled-components'
 const olUI = css`
   p {
     margin-bottom: 0;
-    padding: 6px 26px 4px 10px;
+    padding: 6px 26px 1px 26px;
     display: inline-block;
     color: #fff;
     background-color: #3626bf;

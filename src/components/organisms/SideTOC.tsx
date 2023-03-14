@@ -46,6 +46,10 @@ const SideTOCWrapper = styled.div`
   position: sticky;
   top: 30px;
   overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    display: none;
+  }
 `
 
 const SideTocTitle = styled.a`

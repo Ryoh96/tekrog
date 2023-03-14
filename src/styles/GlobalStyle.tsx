@@ -44,6 +44,9 @@ const Base = createGlobalStyle`
     line-height: 1.7;
   }
 
+  article {
+    height: 100%;
+  }
 `
 
 const GlobalStyle = () => {

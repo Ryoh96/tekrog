@@ -1,11 +1,12 @@
+import { faPencil } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
 import styled from 'styled-components'
 
 import type { Category } from '@/graphql/generated/graphql'
 import shuffleArray from '@/utils/shuffleArray'
 
 import Card from './Card'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencil } from '@fortawesome/free-solid-svg-icons'
 
 const RelatedPostsWrapper = styled.div``
 
@@ -38,7 +39,7 @@ const RelatedTitleWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5em;
-  margin-left:0.3em;
+  margin-left: 0.3em;
 
   svg {
     font-size: 24px;
@@ -57,30 +58,39 @@ const RelatedPosts = ({ categories }: RelatedPostsProps) => {
       title: n.title,
       categories: n.categories.nodes,
       imgUrl: n.featuredImage.node.sourceUrl,
+      uri: n.uri,
     }))
   )
 
-  const relatedPostsShuffled = shuffleArray(relatedPostsAll)
-  const posts = relatedPostsAll.slice(relatedPostsShuffled.length - 7)
-  console.info(posts)
+  console.log(333333, relatedPostsAll)
+
+  const titles: string[] = []
+  const uniqueRelatedPosts = relatedPostsAll.filter((post) => {
+    return titles.includes(post?.title) ? false : titles.push(post?.title)
+  })
+
+  const relatedPostsShuffled = shuffleArray(uniqueRelatedPosts)
+  const posts = relatedPostsShuffled.slice(0, 6)
 
   return (
     <RelatedPostsWrapper>
       <RelatedTitleWrapper>
-        <FontAwesomeIcon icon={faPencil}/>
+        <FontAwesomeIcon icon={faPencil} />
         <RelatedPostTitle>関連記事</RelatedPostTitle>
       </RelatedTitleWrapper>
       <CardWrapper>
         {posts.map((post, index) => (
           <>
-            {/* {console.log(post)} */}
             {post && (
-              <Card
-                key={index}
-                title={post.title}
-                categories={post.categories}
-                imgUrl={post.imgUrl}
-              />
+              <Link key={index} href={post.uri}>
+                <article>
+                  <Card
+                    title={post.title}
+                    categories={post.categories}
+                    imgUrl={post.imgUrl}
+                  />
+                </article>
+              </Link>
             )}
           </>
         ))}

@@ -151,20 +151,24 @@ type PrevNextPagersProp = {
 const PrevNextPagers = ({ prevPost, nextPost }: PrevNextPagersProp) => {
   return (
     <PrevNextPagersWrapper>
-      <Link href={prevPost.nodes[0].uri}>
-        <PrevNextPager
-          mode="prev"
-          imgUrl={prevPost.nodes[0].featuredImage.node.sourceUrl}
-          title={prevPost.nodes[0].title}
-        />
-      </Link>
-      <Link href={nextPost.nodes[0].uri}>
-        <PrevNextPager
-          mode="next"
-          imgUrl={nextPost.nodes[0].featuredImage.node.sourceUrl}
-          title={nextPost.nodes[0].title}
-        />
-      </Link>
+      {prevPost.nodes[0] && (
+        <Link href={prevPost.nodes[0].uri}>
+          <PrevNextPager
+            mode="prev"
+            imgUrl={prevPost.nodes[0].featuredImage.node.sourceUrl}
+            title={prevPost.nodes[0].title}
+          />
+        </Link>
+      )}
+      {nextPost.nodes[0] && (
+        <Link href={nextPost.nodes[0].uri}>
+          <PrevNextPager
+            mode="next"
+            imgUrl={nextPost.nodes[0].featuredImage.node.sourceUrl}
+            title={nextPost.nodes[0].title}
+          />
+        </Link>
+      )}
     </PrevNextPagersWrapper>
   )
 }

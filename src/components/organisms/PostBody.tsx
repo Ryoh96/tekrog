@@ -7,6 +7,11 @@ import styled from 'styled-components'
 import { styles } from '@/components/article'
 
 const WordPressText = styled.div`
+  ul,
+  ol{
+    line-height: 1.6;
+  }
+
   h2 {
     ${styles.h2}
   }
@@ -35,10 +40,15 @@ const WordPressText = styled.div`
 
     }
 
+    img {
+    max-width: 100%;
+    height: auto;
+  }
+
     @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
       font-size: 14px;
     }
-  }
+  
 
   strong {
     font-weight: bold;

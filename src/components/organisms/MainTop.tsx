@@ -57,14 +57,16 @@ const MainTop = ({
         <CardWrapper>
           {posts.nodes.map((node) => (
             <Link key={node.uri} href={node.uri}>
-              <Card
-                key={node.uri}
-                title={node.title}
-                categories={node.categories.nodes}
-                date={node.date}
-                imgUrl={node.featuredImage.node.sourceUrl}
-                desc={node.excerpt.slice(3, node.excerpt.length - 5)}
-              />
+              <article>
+                <Card
+                  key={node.uri}
+                  title={node.title}
+                  categories={node.categories.nodes}
+                  date={node.date}
+                  imgUrl={node.featuredImage.node.sourceUrl}
+                  desc={node.excerpt.slice(3, node.excerpt.length - 5)}
+                />
+              </article>
             </Link>
           ))}
         </CardWrapper>

@@ -52,7 +52,7 @@ const Layout = ({
             <SideRecentPosts posts={data.recentPost} />
             <SideCategory categories={data.categories} />
             <Archive posts={data.archivePosts} />
-            <PcOnly>{isPostPage && <SideTOC />}</PcOnly>
+           {isPostPage && <SideTOC />}
           </SideArea>
         </TwoColumnContainer>
       </PageContainer>

@@ -35,6 +35,12 @@ const CardWrapper = styled.div`
     transform: scale(1.05);
     z-index: 2;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+
+    figure {
+      img {
+        transform: scale(1.1);
+      }
+    }
   }
 `
 
@@ -46,16 +52,18 @@ const ImageWrapper = styled.figure`
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: hidden;
 
   img {
     position: static !important;
+    transition: all 0.2s;
   }
 `
 
 const Meta = styled.div`
   width: 100%;
   padding-inline: 10px;
-  gap: 8px;
+  gap: 14px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -82,6 +90,10 @@ const CategoryTagWrapper = styled.div`
 
 const Description = styled.p`
   font-size: 14px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 12px;
+  }
 `
 
 const DateTime = styled(_DateTime)`
