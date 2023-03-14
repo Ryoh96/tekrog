@@ -5,7 +5,6 @@ import Layout from '@/components/layout/Layout'
 import MainTop from '@/components/organisms/MainTop'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import { getSdk } from '@/graphql/generated/request.ts'
-import path from 'path'
 
 type CategoryPageProps = {
   data: any

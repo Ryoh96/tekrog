@@ -72,7 +72,7 @@ query getPostPage($id: ID!) {
       uri
     }
   }
-    archivePosts: posts(first: 100) {
+    archivePosts: posts(first: 1000) {
     edges {
       node {
         date

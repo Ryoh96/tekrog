@@ -27,6 +27,19 @@ export type GetAllPathsAndCursorQueryVariables = Exact<{ [key: string]: never; }
 
 export type GetAllPathsAndCursorQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null, node: { __typename?: 'Post', uri?: string | null } }> } | null };
 
+export type GetAllPostDateQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllPostDateQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+
+export type GetArchivePageQueryVariables = Exact<{
+  year: Scalars['Int'];
+  month: Scalars['Int'];
+}>;
+
+
+export type GetArchivePageQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+
 export type GetCategoryCursorQueryVariables = Exact<{
   categoryName: Scalars['String'];
 }>;
@@ -105,7 +118,7 @@ export const TopPageInfoFragmentDoc = gql`
     `;
 export const GetAllCategoryNameDocument = gql`
     query getAllCategoryName {
-  categories {
+  categories(first: 100) {
     nodes {
       slug
     }
@@ -142,6 +155,45 @@ export const GetAllPathsAndCursorDocument = gql`
   }
 }
     `;
+export const GetAllPostDateDocument = gql`
+    query getAllPostDate {
+  posts(first: 1000) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+}
+    `;
+export const GetArchivePageDocument = gql`
+    query getArchivePage($year: Int!, $month: Int!) {
+  posts(first: 1000, where: {dateQuery: {year: $year, month: $month}}) {
+    nodes {
+      ...TopPageInfo
+    }
+  }
+  recentPost: posts(first: 5) {
+    nodes {
+      ...RecentPost
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      ...Category
+    }
+  }
+  archivePosts: posts(first: 1000) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+}
+    ${TopPageInfoFragmentDoc}
+${RecentPostFragmentDoc}
+${CategoryFragmentDoc}`;
 export const GetCategoryCursorDocument = gql`
     query getCategoryCursor($categoryName: String!) {
   posts(first: 1000, where: {categoryName: $categoryName}) {
@@ -171,7 +223,7 @@ export const GetCategoryPageDocument = gql`
       ...Category
     }
   }
-  archivePosts: posts(first: 100) {
+  archivePosts: posts(first: 1000) {
     edges {
       node {
         date
@@ -257,7 +309,7 @@ export const GetPostPageDocument = gql`
       uri
     }
   }
-  archivePosts: posts(first: 100) {
+  archivePosts: posts(first: 1000) {
     edges {
       node {
         date
@@ -295,7 +347,7 @@ export const GetTopPageDocument = gql`
       ...Category
     }
   }
-  archivePosts: posts(first: 100) {
+  archivePosts: posts(first: 1000) {
     edges {
       node {
         date
@@ -325,6 +377,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getAllPathsAndCursor(variables?: GetAllPathsAndCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllPathsAndCursorQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllPathsAndCursorQuery>(GetAllPathsAndCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPathsAndCursor', 'query');
+    },
+    getAllPostDate(variables?: GetAllPostDateQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllPostDateQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAllPostDateQuery>(GetAllPostDateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPostDate', 'query');
+    },
+    getArchivePage(variables: GetArchivePageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetArchivePageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetArchivePageQuery>(GetArchivePageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getArchivePage', 'query');
     },
     getCategoryCursor(variables: GetCategoryCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCategoryCursorQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCategoryCursorQuery>(GetCategoryCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryCursor', 'query');

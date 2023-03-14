@@ -1,0 +1,7 @@
+query getAllAPostDate {
+  posts(first: 1000) {
+    nodes {
+      date
+    }
+  }
+}

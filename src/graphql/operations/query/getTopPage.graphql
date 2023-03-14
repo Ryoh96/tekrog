@@ -17,7 +17,7 @@ query getTopPage($after: String, $first: Int!) {
       ...Category
     }
   }
-    archivePosts: posts(first: 100) {
+    archivePosts: posts(first: 1000) {
     edges {
       node {
         date

@@ -1,13 +1,6 @@
+import { useRouter } from 'next/router'
+import { ChangeEvent, useCallback } from 'react'
 import styled from 'styled-components'
-
-const archiveList = [
-  '月を選択',
-  '2023年3月',
-  '2023年2月',
-  '2023年1月',
-  '2022年12月',
-  '2022年11月',
-]
 
 const Select = styled.select`
   width: 100%;
@@ -41,15 +34,21 @@ const Option = styled.option`
 
 type DropDownProps = {
   value: string[]
+  links: string[]
 }
 
-const DropDown = ({
-  value
-}: DropDownProps) => {
+const DropDown = ({ value, links }: DropDownProps) => {
+  console.log(links)
+  const router = useRouter()
+
+  const selectValue = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
+    router.push(links[Number(e.target.value)])
+  }, [router])
+
   return (
-    <Select>
-      {value.map((v) => (
-        <Option key={v} value={v}>
+    <Select onChange={(e) => selectValue(e)}>
+      {value.map((v, index) => (
+        <Option key={v} value={index}>
           {v}
         </Option>
       ))}

@@ -1,0 +1,9 @@
+query getAllPostDate {
+  posts(first: 1000) {
+    edges{
+    node {
+      date
+    }
+    }
+  }
+}

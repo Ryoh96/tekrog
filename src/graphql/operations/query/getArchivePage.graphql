@@ -1,0 +1,24 @@
+query getArchivePage($year: Int!, $month: Int!) {
+  posts(first: 1000, where: {dateQuery: {year: $year, month: $month}}) {
+    nodes {
+      ...TopPageInfo
+    }
+  }
+    recentPost: posts(first: 5) {
+    nodes {
+      ...RecentPost
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      ...Category
+    }
+  }
+    archivePosts: posts(first: 1000) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+}

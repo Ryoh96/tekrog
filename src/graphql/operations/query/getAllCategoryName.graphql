@@ -1,5 +1,5 @@
 query getAllCategoryName {
-  categories {
+  categories(first: 100) {
     nodes {
       slug
     }
