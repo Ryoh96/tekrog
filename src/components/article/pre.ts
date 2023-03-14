@@ -14,7 +14,7 @@ const pre = css`
       font-size: 15px;
       content: 'TypeScript';
       margin: -16px -16px 16px -16px;
-      background: linear-gradient(90deg, #1f2a82, #de15ca);
+      background: linear-gradient(132deg, rgba(8,68,163,1) 0%, rgba(162,31,149,1) 100%);
       color: #fff;
       display: block;
       padding: 6px 18px 6px 16px;

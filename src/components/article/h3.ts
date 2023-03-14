@@ -16,7 +16,7 @@ const h3 = css`
   }
 
   &:not(:first-child) {
-    margin-top: 60px;
+    margin-top: 80px;
   }
 `
 

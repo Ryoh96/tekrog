@@ -60,9 +60,9 @@ const SideTocTitle = styled.a`
 const IconWrapper = styled.div<{ isActive: boolean; isLast: boolean }>`
   svg {
     font-size: 11px;
-    color: ${({ isActive }) => (isActive ? 'darkblue' : '#afc2c4')};
-    border: 5px solid;
-    border-color: ${({ isActive }) => (isActive ? '#ee0' : 'transparent')};
+    color: ${({ isActive }) => (isActive ? '#3f2fc8' : '#afc2c4')};
+    border: 4px solid;
+    border-color: ${({ isActive }) => (isActive ? '#ff0' : 'transparent')};
     border-radius: 50%;
   }
   position: relative;
@@ -112,7 +112,7 @@ const SideContentInner = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #4b66b1;
+    background-color: #4228b6;
     box-shadow: inset 0 0 6px #fff;
   }
 

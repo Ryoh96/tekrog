@@ -13,7 +13,7 @@ const toc = css`
     padding-top: 16px !important;
     padding-bottom: 12px !important;
     margin: 0 !important;
-    background: linear-gradient(273deg, #038fba, #117caf 41%, #1f2a82);
+    background: ${({theme}) => theme.gradient.main};
     color: #fff;
     font-size: 20px;
     display: flex;

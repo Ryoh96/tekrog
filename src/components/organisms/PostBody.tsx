@@ -54,8 +54,20 @@ const WordPressText = styled.div`
     ${styles.ulOnly}
   }
 
+  .olUI {
+    ${styles.olUI}
+  }
+
   table {
     ${styles.table}
+  }
+
+  blockquote {
+    ${styles.blockquote}
+  }
+
+  .error {
+    ${styles.error}
   }
 
   > *:last-child {
@@ -68,7 +80,6 @@ type PostBodyProps = {
 }
 
 const Postbody = ({ content }: PostBodyProps) => {
-
   return (
     <>
       <WordPressText>

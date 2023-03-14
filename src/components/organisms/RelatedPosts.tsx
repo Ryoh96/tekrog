@@ -4,8 +4,12 @@ import type { Category } from '@/graphql/generated/graphql'
 import shuffleArray from '@/utils/shuffleArray'
 
 import Card from './Card'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencil } from '@fortawesome/free-solid-svg-icons'
 
-const RelatedPostsWrapper = styled.div`
+const RelatedPostsWrapper = styled.div``
+
+const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px 3%;
@@ -14,6 +18,22 @@ const RelatedPostsWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 32px 3%;
+  }
+`
+
+const RelatedPostTitle = styled.p`
+  font-size: 24px;
+  margin-top: 0.2em;
+`
+
+const RelatedTitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-left:0.3em;
+
+  svg {
+    font-size: 24px;
   }
 `
 
@@ -38,19 +58,25 @@ const RelatedPosts = ({ categories }: RelatedPostsProps) => {
 
   return (
     <RelatedPostsWrapper>
-      {posts.map((post, index) => (
-        <>
-          {/* {console.log(post)} */}
-          {post && (
-            <Card
-              key={index}
-              title={post.title}
-              categories={post.categories}
-              imgUrl={post.imgUrl}
-            />
-          )}
-        </>
-      ))}
+      <RelatedTitleWrapper>
+        <FontAwesomeIcon icon={faPencil}/>
+        <RelatedPostTitle>関連記事</RelatedPostTitle>
+      </RelatedTitleWrapper>
+      <CardWrapper>
+        {posts.map((post, index) => (
+          <>
+            {/* {console.log(post)} */}
+            {post && (
+              <Card
+                key={index}
+                title={post.title}
+                categories={post.categories}
+                imgUrl={post.imgUrl}
+              />
+            )}
+          </>
+        ))}
+      </CardWrapper>
     </RelatedPostsWrapper>
   )
 }

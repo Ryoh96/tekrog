@@ -1,0 +1,11 @@
+query getAllFixedPage {
+  pages {
+    edges {
+      node {
+        uri
+        slug
+      }
+      cursor
+    }
+  }
+}

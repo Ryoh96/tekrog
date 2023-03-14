@@ -105,6 +105,7 @@ const ImageWrapper = styled.figure`
 const Title = styled.p`
   flex: 1 1 auto;
   z-index: 2;
+  font-weight: bold;
 `
 
 const PrevNextPager = ({ mode, imgUrl, title }: PrevNextPagerProps) => {

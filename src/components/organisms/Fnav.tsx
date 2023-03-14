@@ -1,6 +1,20 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 
-const fnavItems = ['HOME', 'プライバシーポリシー', 'お問い合わせ']
+const fnavItems = [
+  {
+    name: 'HOME',
+    link: '/',
+  },
+  {
+    name: 'プライバシーポリシー',
+    link: '/privacy-policy',
+  },
+  {
+    name: 'お問い合わせ',
+    link: '/contact',
+  },
+]
 
 const FnavList = styled.ul`
   display: flex;
@@ -23,7 +37,9 @@ const Fnav = () => {
   return (
     <FnavList>
       {fnavItems.map((item) => (
-        <FnavItem key={item}>{item}</FnavItem>
+        <Link href={item.link} key={item.name}>
+          <FnavItem >{item.name}</FnavItem>
+        </Link>
       ))}
     </FnavList>
   )

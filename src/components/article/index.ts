@@ -1,7 +1,10 @@
+import blockquote from './blockquote'
+import error from './error'
 import h2 from './h2'
 import h3 from './h3'
 import h4 from './h4'
 import lkc from './lkc'
+import olUI from './olUI'
 import point from './point'
 import pre from './pre'
 import table from './table'
@@ -17,5 +20,8 @@ export const styles = {
   point,
   h4,
   ulOnly,
-  table
+  table,
+  olUI,
+  error,
+  blockquote
 }

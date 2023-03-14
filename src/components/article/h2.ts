@@ -4,7 +4,7 @@ const h2 = css`
   font-size: 26px;
   margin-bottom: 0.5em;
   font-weight: 700;
-  background: linear-gradient(273deg, #038fba, #117caf 41%, #1f2a82);
+  background: ${({theme}) => theme.gradient.main};
   color: #fff;
   padding-bottom: 16px;
   padding-top: 18px;
@@ -21,7 +21,7 @@ const h2 = css`
   }
 
   &:not(:first-of-type) {
-    margin-top: 80px;
+    margin-top: 90px;
   }
 `
 
