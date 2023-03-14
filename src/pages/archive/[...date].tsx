@@ -29,6 +29,10 @@ const Archive = ({ data, year, month }: ArchiveProps) => {
           posts={data.posts}
           totalPages={1}
           type={`/archive/${year}/${month}/`}
+          pageInfo = {{
+            type: "archive",
+            name: `${year}年${month}月`
+          }}
         />
       </Layout>
     </>
@@ -62,17 +66,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<ArchiveProps> = async ({
   params,
 }) => {
-  const [year, month] = params?.date as string[]
+  const [year, month] = params?.date as any as number[]
   const graphQLClient = new GraphQLClient(
     process.env.END_POINT ?? 'https://tekrog.com/graphql'
   )
   const client = getSdk(graphQLClient)
 
-  const data = await client
-    .getArchivePage({
-      year: Number(year),
-      month: Number(month),
-    })
+  const data = await client.getArchivePage({
+    year: Number(year),
+    month: Number(month),
+  })
 
   return {
     props: {

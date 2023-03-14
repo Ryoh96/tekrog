@@ -28,7 +28,7 @@ const Post = ({ data }: PostProps) => {
   ]
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList}>
+      <Layout data={data} breadcrumbList={breadcrumbList} isPostPage={true}>
         <MainPost post={postData} />
       </Layout>
     </>

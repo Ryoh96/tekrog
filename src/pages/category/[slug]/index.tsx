@@ -26,7 +26,15 @@ const Category = ({ data, categoryName, totalPages }: CategoryProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainTop posts={data.posts} totalPages={totalPages} type={`/category/${categoryName}/`} />
+        <MainTop
+          posts={data.posts}
+          totalPages={totalPages}
+          type={`/category/${categoryName}/`}
+          pageInfo={{
+            type: 'category',
+            name: categoryName,
+          }}
+        />
       </Layout>
     </>
   )

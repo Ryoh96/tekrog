@@ -40,6 +40,10 @@ const CategoryPage = ({
           totalPages={totalPages}
           type={`/category/${categoryName}/`}
           current={pageNum}
+          pageInfo={{
+            type: 'category',
+            name: categoryName,
+          }}
         />
       </Layout>
     </>
@@ -61,16 +65,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = []
   for (const categoryName of allCategoryNames) {
     const allCursor: { cursor: string }[] = await client
-    .getCategoryCursor({ categoryName })
-    .then((data) => data.posts.edges)
+      .getCategoryCursor({ categoryName })
+      .then((data) => data.posts.edges)
     const totalPosts = allCursor.length
     const totalPage = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)
 
     if (totalPage > 1) {
-      for(let i = 2; i <= totalPage; i++) {
+      for (let i = 2; i <= totalPage; i++) {
         paths.push(`/category/${categoryName}/page/${i}`)
       }
-    } 
+    }
   }
   console.log(paths)
   return {

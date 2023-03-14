@@ -18,9 +18,15 @@ type LayoutProps = {
   children: ReactNode
   data: any
   breadcrumbList: { name: string; href: string }[]
+  isPostPage: boolean
 }
 
-const Layout = ({ children, data, breadcrumbList }: LayoutProps) => {
+const Layout = ({
+  children,
+  data,
+  breadcrumbList,
+  isPostPage,
+}: LayoutProps) => {
   return (
     <>
       <Header />
@@ -34,7 +40,7 @@ const Layout = ({ children, data, breadcrumbList }: LayoutProps) => {
             <SideRecentPosts posts={data.recentPost} />
             <SideCategory categories={data.categories} />
             <Archive posts={data.archivePosts} />
-            <SideTOC />
+            {isPostPage && <SideTOC />}
           </SideArea>
         </TwoColumnContainer>
       </PageContainer>
