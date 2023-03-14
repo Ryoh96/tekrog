@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import styled from 'styled-components'
 
 import MainArea from '@/components/layout/MainArea'
 import PageContainer from '@/components/layout/PageContainer'
@@ -13,6 +14,17 @@ import Hero from '@/components/organisms/Hero'
 import SideCategory from '@/components/organisms/SideCategory'
 import SideRecentPosts from '@/components/organisms/SideRecentPosts'
 import SideTOC from '@/components/organisms/SideTOC'
+
+import PageTopButton from '../atoms/PageTopButton'
+import PcOnly from '../utils/PcOnly'
+import SpOnly from '../utils/SpOnly'
+
+const PageTopButtonWrapper = styled.div`
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 10;
+`
 
 type LayoutProps = {
   children: ReactNode
@@ -40,10 +52,15 @@ const Layout = ({
             <SideRecentPosts posts={data.recentPost} />
             <SideCategory categories={data.categories} />
             <Archive posts={data.archivePosts} />
-            {isPostPage && <SideTOC />}
+            <PcOnly>{isPostPage && <SideTOC />}</PcOnly>
           </SideArea>
         </TwoColumnContainer>
       </PageContainer>
+      <SpOnly>
+        <PageTopButtonWrapper>
+          <PageTopButton />
+        </PageTopButtonWrapper>
+      </SpOnly>
       <Footer />
     </>
   )

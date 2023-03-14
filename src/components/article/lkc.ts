@@ -47,7 +47,7 @@ const lkc = css`
   }
 
   &-external-wrap {
-    > a > div >*:first-child {
+    > a > div > *:first-child {
       margin-top: 10px;
     }
   }
@@ -80,11 +80,17 @@ const lkc = css`
     font-size: 14px;
     margin-right: 0.5em;
     font-weight: bold;
+    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+      font-size: 12px;
+    }
   }
 
   &-url-info {
     font-size: 12px;
     color: blue;
+    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+      font-size: 10px;
+    }
   }
 
   &-content {
@@ -95,6 +101,7 @@ const lkc = css`
       'figure title'
       'figure excerpt';
     column-gap: 1em;
+    row-gap: 0.5em;
     grid-row: 1;
     grid-column: 1 / -1;
     z-index: 2;
@@ -103,6 +110,7 @@ const lkc = css`
   &-thumbnail {
     grid-area: figure;
     width: 110px;
+    align-self: center;
 
     > img {
       width: 100%;
@@ -117,6 +125,9 @@ const lkc = css`
     font-weight: bold;
     line-height: 1.4;
     text-decoration: underline;
+    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+      font-size: 15px;
+    }
   }
 
   &-excerpt {
@@ -124,6 +135,9 @@ const lkc = css`
     align-self: center;
     line-height: 1.6;
     font-size: 15px;
+    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+      font-size: 12px;
+    }
   }
 `
 

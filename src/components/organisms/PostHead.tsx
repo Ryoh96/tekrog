@@ -22,6 +22,10 @@ const Title = styled.h1`
   font-weight: 700;
   margin-bottom: 24px;
   line-height: 1.6;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+   font-size: 26px;
+  }
 `
 
 const Meta = styled.div`
@@ -48,6 +52,10 @@ const Share = styled(_Share)`
   margin-bottom: 28px;
   justify-content: flex-end;
   padding-right: 20px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    justify-content: center;
+  }
 `
 
 const PostHead = ({ title, date, imgUrl, categories }: PostHeadProps) => {

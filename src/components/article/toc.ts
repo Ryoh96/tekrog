@@ -5,6 +5,7 @@ const toc = css`
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     border-radius: 10px;
     margin-block: 32px;
+    line-height: 1.4;
     /* background-color: #fcfceb; */
   }
 
@@ -13,7 +14,7 @@ const toc = css`
     padding-top: 16px !important;
     padding-bottom: 12px !important;
     margin: 0 !important;
-    background: ${({theme}) => theme.gradient.main};
+    background: ${({ theme }) => theme.gradient.main};
     color: #fff;
     font-size: 20px;
     display: flex;
@@ -22,6 +23,9 @@ const toc = css`
     border-radius: 10px 10px 0 0;
     line-height: 1;
     padding-inline-start: 30px;
+    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+      font-size: 18px;
+    }
 
     &::before {
       content: '';
@@ -48,6 +52,9 @@ const toc = css`
 
     li {
       margin: 8px 1em;
+      @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+        font-size: 14px;
+      }
 
       ul {
         padding-left: 1em;
@@ -55,6 +62,9 @@ const toc = css`
         font-weight: normal;
         display: grid;
         font-size: 14px;
+        @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+          font-size: 12px;
+        }
 
         > li {
           display: flex;

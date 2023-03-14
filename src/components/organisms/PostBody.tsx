@@ -27,6 +27,17 @@ const WordPressText = styled.div`
     margin-bottom: 1em;
     padding-inline: 0.5em;
     line-height: 2;
+
+    /* &::before {
+      content: "";
+      display: inline-block;
+      width: 1em; */
+
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+      font-size: 14px;
+    }
   }
 
   strong {

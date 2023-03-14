@@ -17,6 +17,9 @@ const error = css`
   box-sizing: border-box;
   font-size: 16px;
   background-color: #e8c7ce;
+  line-height: 1.5;
+  display: grid;
+  gap: 1em;
 
   &::before {
     white-space: pre-wrap;
@@ -32,6 +35,25 @@ const error = css`
     box-sizing: border-box;
     border-radius: 5px 5px 0 0;
     line-height: 2;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 14px;
+  }
+
+  > li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6em;
+    &::before {
+      flex: 0 0 auto;
+      content: '';
+      display: grid;
+      width: 6px;
+      height: 6px;
+      background-color: #821f32;
+      border-radius: 50%;
+      margin-top: 0.5em;
+    }
   }
 `
 

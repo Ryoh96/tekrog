@@ -19,6 +19,7 @@ const point = css`
     rgba(65, 49, 200, 1) 100%
   );
   border-image-slice: 1;
+  line-height: 1.5;
 
   &::before {
     white-space: pre-wrap;
@@ -35,6 +36,25 @@ const point = css`
     border-radius: 5px 5px 0 0;
     line-height: 2;
   }
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 14px;
+  }
+  > li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6em;
+    &::before {
+      flex: 0 0 auto;
+      content: '';
+      display: grid;
+      width: 6px;
+      height: 6px;
+      background-color: #3626bf;
+      border-radius: 50%;
+      margin-top: 0.5em;
+    }
+  }
+
 `
 
 export default point

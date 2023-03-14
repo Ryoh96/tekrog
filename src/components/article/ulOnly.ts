@@ -35,6 +35,11 @@ const ulOnly = css`
       margin-right: 0.6em;
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 14px;
+  }
+
 `
 
 export default ulOnly

@@ -1,20 +1,34 @@
 import { css } from 'styled-components'
 
 const pre = css`
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 12px;
+  }
+
+ >  code {
+    /* overflow: auto !important; */
+    white-space: pre-wrap!important;
+    word-wrap: break-word!important;
+    overflow: auto!important;
+  }
+
   &[class*='language-'],
   &[class*='file-httpd'] {
-    overflow: visible !important;
     border-radius: 10px;
     margin-bottom: 2em;
     margin-top: -0.5em;
-
+    
     &::before {
       white-space: pre-wrap;
       font-weight: 700;
       font-size: 15px;
       content: 'TypeScript';
       margin: -16px -16px 16px -16px;
-      background: linear-gradient(132deg, rgba(8,68,163,1) 0%, rgba(162,31,149,1) 100%);
+      background: linear-gradient(
+        132deg,
+        rgba(8, 68, 163, 1) 0%,
+        rgba(162, 31, 149, 1) 100%
+      );
       color: #fff;
       display: block;
       padding: 6px 18px 6px 16px;
@@ -23,14 +37,26 @@ const pre = css`
       box-sizing: border-box;
       border-radius: 10px 10px 0 0;
       line-height: 1.8;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+        margin-inline: -14px 0px;
+        width: calc(100% + 28px);
+        padding-left: 20px;
+        padding-top: 8px;
+      }
     }
   }
 
   &[class*='language-'].line-numbers,
-  &[class*='file-httpd'].line-numbers  {
+  &[class*='file-httpd'].line-numbers {
     &::before {
       width: calc(100% + 77px);
       margin-inline: -61px;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+        margin-inline: -53px;
+        width: calc(100% + 67px);
+      }
     }
   }
 

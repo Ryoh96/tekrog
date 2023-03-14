@@ -3,7 +3,7 @@ import { css } from 'styled-components'
 const olUI = css`
   p {
     margin-bottom: 0;
-    padding: 6px 26px 4px 18px;
+    padding: 6px 26px 4px 10px;
     display: inline-block;
     color: #fff;
     background-color: #3626bf;
@@ -14,6 +14,7 @@ const olUI = css`
 
   ol {
     border: 5px solid #1f2a82;
+    line-height: 1.5;
     border-image: linear-gradient(
       317deg,
       rgba(34, 93, 195, 1) 0%,
@@ -35,7 +36,10 @@ const olUI = css`
 
     li {
       display: flex;
-      align-items: center;
+      align-items: start;
+      @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+        font-size: 14px;
+      }
 
       &::before {
         text-align: center;

@@ -24,6 +24,10 @@ const CardWrapper = styled.div`
   grid-template-rows: 1fr;
   gap: 32px 3%;
   margin-block: 20px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const MainTopWrapper = styled.div`

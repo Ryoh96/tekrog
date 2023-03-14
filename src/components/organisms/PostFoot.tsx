@@ -11,6 +11,8 @@ const Meta = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
 `
 
 const CategoryTagsWrapper = styled.div`

@@ -68,6 +68,10 @@ const Title = styled.p`
   font-weight: 700;
   margin-top: 10px;
   margin-bottom: 10px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 14px;
+  }
 `
 
 const CategoryTagWrapper = styled.div`
@@ -94,8 +98,8 @@ const Card = ({ imgUrl, title, categories, date, desc }: CardProps) => {
             alt={title}
             fill
             style={{ objectFit: 'contain', aspectRatio: 'auto 2000 / 1125' }}
-            sizes="20vw"
-            quality={70}
+            sizes="(max-width: 560px) 40vw, 30vw"
+            quality={75}
           />
         </ImageWrapper>
         <Title>{title}</Title>

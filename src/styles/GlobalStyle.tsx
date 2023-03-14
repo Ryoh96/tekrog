@@ -6,6 +6,7 @@ const Base = createGlobalStyle`
   * {
     font-size: 16px;
     box-sizing: border-box;
+    line-height: 1.5;
   }
 
   html {

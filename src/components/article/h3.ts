@@ -10,13 +10,20 @@ const h3 = css`
   border-bottom: 3px solid #1f2a82;
   line-height: 1.5;
 
-
   + * {
     margin-top: 0 !important;
   }
 
   &:not(:first-child) {
     margin-top: 80px;
+    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+      margin-top: 40px;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 18px;
+    padding: 4px 16px;
   }
 `
 

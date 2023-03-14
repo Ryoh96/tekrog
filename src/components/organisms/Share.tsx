@@ -6,10 +6,14 @@ const ShareWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
+  flex-wrap: wrap;
 `
 
 const Text = styled.p`
   font-weight: bold;
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 14px;
+  }
 `
 
 type ShareProps = {

@@ -106,6 +106,9 @@ const Title = styled.p`
   flex: 1 1 auto;
   z-index: 2;
   font-weight: bold;
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 14px;
+  }
 `
 
 const PrevNextPager = ({ mode, imgUrl, title }: PrevNextPagerProps) => {

@@ -10,6 +10,7 @@ declare module 'styled-components' {
     }
     breakpoints: {
       sp: number
+      sm: number
     }
     color: {
       category: Record<CategoryType, `#${string}`>

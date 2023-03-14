@@ -19,11 +19,19 @@ const CardWrapper = styled.div`
     grid-template-columns: repeat(2, 1fr);
     gap: 32px 3%;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const RelatedPostTitle = styled.p`
   font-size: 24px;
   margin-top: 0.2em;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 18px;
+  }
 `
 
 const RelatedTitleWrapper = styled.div`

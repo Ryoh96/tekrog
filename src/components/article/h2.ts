@@ -4,7 +4,7 @@ const h2 = css`
   font-size: 26px;
   margin-bottom: 0.5em;
   font-weight: 700;
-  background: ${({theme}) => theme.gradient.main};
+  background: ${({ theme }) => theme.gradient.main};
   color: #fff;
   padding-bottom: 16px;
   padding-top: 18px;
@@ -22,6 +22,15 @@ const h2 = css`
 
   &:not(:first-of-type) {
     margin-top: 90px;
+    
+    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+      margin-top: 60px;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 22px;
+    padding-block: 11px;
   }
 `
 

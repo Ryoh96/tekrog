@@ -27,6 +27,10 @@ const FnavItem = styled.li`
   transition: transform 0.2s;
   position: relative;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 14px;
+  }
+
   &:hover,
   &:focus {
     transform: scale(1.2);
