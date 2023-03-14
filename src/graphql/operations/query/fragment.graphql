@@ -1,0 +1,34 @@
+fragment RecentPost on Post {
+      title
+      uri
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      excerpt
+}
+
+fragment Category on Category {
+  count
+  name
+  uri
+}
+
+fragment TopPageInfo on Post {
+   title
+      uri
+      date
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      excerpt
+      categories {
+        nodes {
+          name
+          uri
+        }
+      }
+}

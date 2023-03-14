@@ -1,0 +1,8 @@
+query getCategoryCursor($categoryName: String!) {
+  posts(first: 1000, where: {categoryName: $categoryName})
+  {
+    edges {
+      cursor
+    }
+  }
+}

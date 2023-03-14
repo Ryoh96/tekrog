@@ -1,21 +1,7 @@
 query getTopPage($after: String, $first: Int!) {
   posts(first: $first, after: $after) {
     nodes {
-      title
-      uri
-      date
-      featuredImage {
-        node {
-          sourceUrl
-        }
-      }
-      excerpt
-      categories {
-     		nodes{
-          name
-          uri
-        }
-      }
+      ...TopPageInfo
     }
     edges {
       cursor
@@ -23,21 +9,12 @@ query getTopPage($after: String, $first: Int!) {
   }
   recentPost: posts(first: 5) {
     nodes {
-      title
-      uri
-      featuredImage {
-        node {
-          sourceUrl
-        }
-      }
-      excerpt
+      ...RecentPost
     }
   }
   categories(first: 30) {
     nodes {
-      count
-      name
-      uri
+      ...Category
     }
   }
     archivePosts: posts(first: 100) {

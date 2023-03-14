@@ -26,7 +26,6 @@ const NumericPagerItemWrapper = styled.div<{ current: boolean }>`
 `
 
 const NumericPagerItem = ({ children, current = false }: NumericPagerItem) => {
-  console.log(777777, current)
   return <NumericPagerItemWrapper current={current}>{children}</NumericPagerItemWrapper>
 }
 

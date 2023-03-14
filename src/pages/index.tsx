@@ -19,7 +19,7 @@ const Index = ({ data, totalPages }: IndexProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainTop posts={data.posts} totalPages={totalPages}/>
+        <MainTop posts={data.posts} totalPages={totalPages} />
       </Layout>
     </>
   )
@@ -28,14 +28,14 @@ const Index = ({ data, totalPages }: IndexProps) => {
 export default Index
 
 export const getStaticProps: GetStaticProps<IndexProps> = async () => {
-  const params = {
-    first: 10,
+  const queryParams = {
+    first: POSTS_PER_PAGE,
   }
   const graphQLCluent = new GraphQLClient(
     process.env.END_POINT ?? 'https://tekrog.com/graphql'
   )
   const client = getSdk(graphQLCluent)
-  const data = await client.getTopPage(params)
+  const data = await client.getTopPage(queryParams)
 
   const allCursor: { cursor: string }[] = await client
     .getAllCursor()
@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps<IndexProps> = async () => {
   return {
     props: {
       data,
-      totalPages
+      totalPages,
     },
   }
 }

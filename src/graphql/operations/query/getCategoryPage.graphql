@@ -1,0 +1,27 @@
+query getCategoryPage($after: String, $first: Int!, $categoryName: String!) {
+  posts(first: $first, after: $after, where: {categoryName: $categoryName}) {
+    nodes {
+      ...TopPageInfo
+    }
+    edges {
+      cursor
+    }
+  }
+  recentPost: posts(first: 5) {
+    nodes {
+      ...RecentPost
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      ...Category
+    }
+  }
+  archivePosts: posts(first: 100) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+}

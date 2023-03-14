@@ -1,15 +1,16 @@
 import { GraphQLClient } from 'graphql-request';
 import * as Dom from 'graphql-request/dist/types.dom';
 import gql from 'graphql-tag';
-export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+export type RecentPostFragment = { __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null };
+
+export type CategoryFragment = { __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null };
+
+export type TopPageInfoFragment = { __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null };
+
+export type GetAllCategoryNameQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CategoriesQuery = { __typename?: 'RootQuery', categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, link?: string | null }> } | null };
-
-export type RecentPostAndCategoryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type RecentPostAndCategoryQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, link?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null };
+export type GetAllCategoryNameQuery = { __typename?: 'RootQuery', categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', slug?: string | null }> } | null };
 
 export type GetAllCursorQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -25,6 +26,22 @@ export type GetAllPathsAndCursorQueryVariables = Exact<{ [key: string]: never; }
 
 
 export type GetAllPathsAndCursorQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null, node: { __typename?: 'Post', uri?: string | null } }> } | null };
+
+export type GetCategoryCursorQueryVariables = Exact<{
+  categoryName: Scalars['String'];
+}>;
+
+
+export type GetCategoryCursorQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null };
+
+export type GetCategoryPageQueryVariables = Exact<{
+  after?: InputMaybe<Scalars['String']>;
+  first: Scalars['Int'];
+  categoryName: Scalars['String'];
+}>;
+
+
+export type GetCategoryPageQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
 
 export type GetPostPageQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -48,36 +65,49 @@ export type GetTopPageQueryVariables = Exact<{
 
 export type GetTopPageQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
 
-
-export const CategoriesDocument = gql`
-    query Categories {
+export const RecentPostFragmentDoc = gql`
+    fragment RecentPost on Post {
+  title
+  uri
+  featuredImage {
+    node {
+      sourceUrl
+    }
+  }
+  excerpt
+}
+    `;
+export const CategoryFragmentDoc = gql`
+    fragment Category on Category {
+  count
+  name
+  uri
+}
+    `;
+export const TopPageInfoFragmentDoc = gql`
+    fragment TopPageInfo on Post {
+  title
+  uri
+  date
+  featuredImage {
+    node {
+      sourceUrl
+    }
+  }
+  excerpt
   categories {
     nodes {
-      count
       name
-      link
+      uri
     }
   }
 }
     `;
-export const RecentPostAndCategoryDocument = gql`
-    query RecentPostAndCategory {
-  posts(first: 5) {
+export const GetAllCategoryNameDocument = gql`
+    query getAllCategoryName {
+  categories {
     nodes {
-      title
-      link
-      featuredImage {
-        node {
-          sourceUrl
-        }
-      }
-    }
-  }
-  categories(first: 30) {
-    nodes {
-      count
-      name
-      uri
+      slug
     }
   }
 }
@@ -112,6 +142,46 @@ export const GetAllPathsAndCursorDocument = gql`
   }
 }
     `;
+export const GetCategoryCursorDocument = gql`
+    query getCategoryCursor($categoryName: String!) {
+  posts(first: 1000, where: {categoryName: $categoryName}) {
+    edges {
+      cursor
+    }
+  }
+}
+    `;
+export const GetCategoryPageDocument = gql`
+    query getCategoryPage($after: String, $first: Int!, $categoryName: String!) {
+  posts(first: $first, after: $after, where: {categoryName: $categoryName}) {
+    nodes {
+      ...TopPageInfo
+    }
+    edges {
+      cursor
+    }
+  }
+  recentPost: posts(first: 5) {
+    nodes {
+      ...RecentPost
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      ...Category
+    }
+  }
+  archivePosts: posts(first: 100) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+}
+    ${TopPageInfoFragmentDoc}
+${RecentPostFragmentDoc}
+${CategoryFragmentDoc}`;
 export const GetPostPageDocument = gql`
     query getPostPage($id: ID!) {
   post(id: $id) {
@@ -209,21 +279,7 @@ export const GetTopPageDocument = gql`
     query getTopPage($after: String, $first: Int!) {
   posts(first: $first, after: $after) {
     nodes {
-      title
-      uri
-      date
-      featuredImage {
-        node {
-          sourceUrl
-        }
-      }
-      excerpt
-      categories {
-        nodes {
-          name
-          uri
-        }
-      }
+      ...TopPageInfo
     }
     edges {
       cursor
@@ -231,21 +287,12 @@ export const GetTopPageDocument = gql`
   }
   recentPost: posts(first: 5) {
     nodes {
-      title
-      uri
-      featuredImage {
-        node {
-          sourceUrl
-        }
-      }
-      excerpt
+      ...RecentPost
     }
   }
   categories(first: 30) {
     nodes {
-      count
-      name
-      uri
+      ...Category
     }
   }
   archivePosts: posts(first: 100) {
@@ -256,7 +303,9 @@ export const GetTopPageDocument = gql`
     }
   }
 }
-    `;
+    ${TopPageInfoFragmentDoc}
+${RecentPostFragmentDoc}
+${CategoryFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -265,11 +314,8 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    Categories(variables?: CategoriesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CategoriesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<CategoriesQuery>(CategoriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Categories', 'query');
-    },
-    RecentPostAndCategory(variables?: RecentPostAndCategoryQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<RecentPostAndCategoryQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<RecentPostAndCategoryQuery>(RecentPostAndCategoryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'RecentPostAndCategory', 'query');
+    getAllCategoryName(variables?: GetAllCategoryNameQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllCategoryNameQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAllCategoryNameQuery>(GetAllCategoryNameDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoryName', 'query');
     },
     getAllCursor(variables?: GetAllCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllCursorQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllCursorQuery>(GetAllCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCursor', 'query');
@@ -279,6 +325,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getAllPathsAndCursor(variables?: GetAllPathsAndCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllPathsAndCursorQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllPathsAndCursorQuery>(GetAllPathsAndCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPathsAndCursor', 'query');
+    },
+    getCategoryCursor(variables: GetCategoryCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCategoryCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetCategoryCursorQuery>(GetCategoryCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryCursor', 'query');
+    },
+    getCategoryPage(variables: GetCategoryPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCategoryPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetCategoryPageQuery>(GetCategoryPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryPage', 'query');
     },
     getPostPage(variables: GetPostPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPostPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPostPageQuery>(GetPostPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPostPage', 'query');

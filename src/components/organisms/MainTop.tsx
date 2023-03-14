@@ -10,6 +10,7 @@ type MainTopProps = {
   posts: PostConnection & { edges: { cursor: string }[] }
   totalPages: number
   current?: number
+  type?: string
 }
 
 const CardWrapper = styled.div`
@@ -26,7 +27,7 @@ const NumericPagerWrapper = styled.div`
   margin-block-start: 40px;
 `
 
-const MainTop = ({ posts, totalPages, current = 1 }: MainTopProps) => {
+const MainTop = ({ posts, totalPages, current = 1, type="/" }: MainTopProps) => {
   return (
     <MainTopWrapper>
       <CardWrapper>
@@ -44,7 +45,7 @@ const MainTop = ({ posts, totalPages, current = 1 }: MainTopProps) => {
         ))}
       </CardWrapper>
       <NumericPagerWrapper>
-        <NumericPager total={totalPages} current={current} />
+        <NumericPager total={totalPages} current={current} type={type} />
       </NumericPagerWrapper>
     </MainTopWrapper>
   )
