@@ -2,10 +2,9 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainTop from '@/components/organisms/MainTop'
+import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import { getSdk } from '@/graphql/generated/request.ts'
-import path from 'path'
 
 type PageProps = {
   data: any
@@ -26,7 +25,11 @@ const Page = ({ data, pageNum, totalPages }: PageProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainTop posts={data.posts} totalPages={totalPages} current={pageNum} />
+        <MainTopPage
+          posts={data.posts}
+          totalPages={totalPages}
+          current={pageNum}
+        />
       </Layout>
     </>
   )

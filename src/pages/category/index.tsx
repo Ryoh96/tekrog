@@ -2,8 +2,8 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainCategory from '@/components/organisms/MainCategory'
-import { getSdk } from '@/graphql/generated/request.ts'
+import MainAllCategories from '@/components/organisms/parts/main/category/MainAllCategories'
+import { getSdk } from '@/graphql/generated/request'
 
 type CategoryProps = {
   data: any
@@ -22,7 +22,7 @@ const Category = ({ data }: CategoryProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainCategory nodes={data.mainCategory.nodes} />
+        <MainAllCategories nodes={data.mainCategory.nodes} />
       </Layout>
     </>
   )

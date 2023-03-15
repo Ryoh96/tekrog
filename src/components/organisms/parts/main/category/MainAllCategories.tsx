@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 
-type MainCategoryProps = {
+type MainAllCategoriesProps = {
   nodes: {
     name: string
     uri: string
@@ -52,7 +52,7 @@ const Text = styled.p`
   }
 `
 
-const MainCategory = ({ nodes }: MainCategoryProps) => {
+const MainAllCategories = ({ nodes }: MainAllCategoriesProps) => {
   return (
     <>
       <Title>カテゴリー一覧</Title>
@@ -76,4 +76,4 @@ const MainCategory = ({ nodes }: MainCategoryProps) => {
   )
 }
 
-export default MainCategory
+export default MainAllCategories

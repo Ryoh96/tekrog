@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import ShareIcons from '../molecules/ShareIcons'
+import ShareIcons from '@/components/molecules/ShareIcons'
 
 const ShareWrapper = styled.div`
   display: flex;

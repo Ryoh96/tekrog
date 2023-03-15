@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
-import Fnav from '@/components/organisms/Fnav'
-
-import PageContainer from './../layout/PageContainer'
+import PageContainer from '@/components/layout/PageContainer'
+import Fnav from '@/components/organisms/parts/footer/Fnav'
 
 const FooterWrapper = styled.footer`
   padding-block: 20px 50px;

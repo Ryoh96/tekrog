@@ -1,15 +1,13 @@
-import Image from 'next/image'
 import styled from 'styled-components'
 
+import BlogName from '@/components/atoms/BlogName'
 import Gear from '@/components/atoms/Gear'
+import PageContainer from '@/components/layout/PageContainer'
 import Gear1 from '@/images/gear01.svg'
 import Gear2 from '@/images/gear02.svg'
 import Gear3 from '@/images/gear03.svg'
 import Gear4 from '@/images/gear04.svg'
 import Gear5 from '@/images/gear05.svg'
-
-import BlogName from '../atoms/BlogName'
-import PageContainer from '../layout/PageContainer'
 
 const HeroWrapper = styled.div`
   background-color: #ccc;

@@ -3,10 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styled from 'styled-components'
 
+import Card from '@/components/organisms/ui/Card'
 import type { Category } from '@/graphql/generated/graphql'
 import shuffleArray from '@/utils/shuffleArray'
-
-import Card from './Card'
 
 const RelatedPostsWrapper = styled.div``
 
@@ -83,7 +82,7 @@ const RelatedPosts = ({ categories }: RelatedPostsProps) => {
           <>
             {post && (
               <Link key={index} href={post.uri}>
-                <article>
+                <article key={index}>
                   <Card
                     title={post.title}
                     categories={post.categories}

@@ -1,31 +1,27 @@
 import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import DropDown from '@/components/atoms/DropDown'
+import SideContent from '@/components/molecules/SideContent'
 import type { Post } from '@/graphql/generated/graphql'
 import getYearMonth from '@/utils/getYearMonth'
 
-import DropDown from '../atoms/DropDown'
-import SideContent from '../molecules/SideContent'
-
-type ArchiveProps = {
+type SideArchiveProps = {
   posts: Partial<Post>
 }
 
-const Archive = ({ posts }: ArchiveProps) => {
+const SideArchive = ({ posts }: SideArchiveProps) => {
   const yearMonth = getYearMonth(posts)
-  const archives = [
-    '月を選択',
-    ...yearMonth.map((ym) => ym.join('年') + '月'),
-  ]
-  const links = yearMonth.map(ym => `/archive/${ym.join("/")}`)
+  const archives = ['月を選択', ...yearMonth.map((ym) => ym.join('年') + '月')]
+  const links = yearMonth.map((ym) => `/archive/${ym.join('/')}`)
   return (
     <SideContent
       title="アーカイブ"
       icon={<FontAwesomeIcon icon={faCalendar} />}
     >
-      <DropDown value={archives} links={links}/>
+      <DropDown value={archives} links={links} />
     </SideContent>
   )
 }
 
-export default Archive
+export default SideArchive

@@ -2,7 +2,7 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainTop from '@/components/organisms/MainTop'
+import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import { getSdk } from '@/graphql/generated/request.ts'
 
@@ -19,7 +19,7 @@ const Index = ({ data, totalPages }: IndexProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainTop posts={data.posts} totalPages={totalPages} />
+        <MainTopPage posts={data.posts} totalPages={totalPages} />
       </Layout>
     </>
   )

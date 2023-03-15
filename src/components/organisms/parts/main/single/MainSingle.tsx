@@ -1,4 +1,4 @@
-import Postbody from './PostBody'
+import Postbody from '@/components/organisms/parts/main/post/PostBody'
 
 type MainSingleProps = {
   content: any

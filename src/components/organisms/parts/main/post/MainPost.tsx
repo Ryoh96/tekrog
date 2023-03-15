@@ -1,8 +1,7 @@
+import Postbody from '@/components/organisms/parts/main/post/PostBody'
+import PostFoot from '@/components/organisms/parts/main/post/PostFoot'
+import PostHead from '@/components/organisms/parts/main/post/PostHead'
 import type { Post } from '@/graphql/generated/graphql'
-
-import Postbody from './PostBody'
-import PostFoot from './PostFoot'
-import PostHead from './PostHead'
 
 type MainPostProps = {
   post: Post & {

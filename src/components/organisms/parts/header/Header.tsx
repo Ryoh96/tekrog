@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-import HumbuggerButton from '../atoms/HumbuggerButton'
-import PageContainer from '../layout/PageContainer'
-import Logo from '../molecules/Logo'
-import Gnav from '../organisms/Gnav'
-import PcOnly from '../utils/PcOnly'
-import SpOnly from '../utils/SpOnly'
+import HumbuggerButton from '@/components/atoms/HumbuggerButton'
+import PageContainer from '@/components/layout/PageContainer'
+import Logo from '@/components/molecules/Logo'
+import Gnav from '@/components/organisms/parts/header/Gnav'
+import PcOnly from '@/components/utils/PcOnly'
+import SpOnly from '@/components/utils/SpOnly'
 
 const HeaderWrapper = styled.header`
   position: relative;

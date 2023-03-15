@@ -1,21 +1,16 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
+import Card from '@/components/organisms/ui/Card'
+import NumericPager from '@/components/organisms/ui/NumericPager'
 import type { PostConnection } from '@/graphql/generated/graphql'
-
-import Card from './Card'
-import MainTitle from './MainTitle'
-import NumericPager from './NumericPager'
 
 type MainTopProps = {
   posts: PostConnection & { edges: { cursor: string }[] }
   totalPages: number
   current?: number
   type?: string
-  pageInfo?: {
-    type: string
-    name: string
-  }
+  title?: JSX.Element
 }
 
 const CardWrapper = styled.div`
@@ -43,17 +38,17 @@ const NumericPagerWrapper = styled.div`
 
 const MainContentWrapper = styled.div``
 
-const MainTop = ({
+const MainTopPage = ({
   posts,
   totalPages,
-  pageInfo,
+  title,
   current = 1,
   type = '/',
 }: MainTopProps) => {
   return (
     <MainTopWrapper>
       <MainContentWrapper>
-        {pageInfo && <MainTitle pageInfo={pageInfo} />}
+        {title}
         <CardWrapper>
           {posts.nodes.map((node) => (
             <Link key={node.uri} href={node.uri}>
@@ -78,4 +73,4 @@ const MainTop = ({
   )
 }
 
-export default MainTop
+export default MainTopPage

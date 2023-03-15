@@ -1,21 +1,21 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 
+import PageTopButton from '@/components/atoms/PageTopButton'
 import MainArea from '@/components/layout/MainArea'
 import PageContainer from '@/components/layout/PageContainer'
 import SideArea from '@/components/layout/SideArea'
 import TwoColumnContainer from '@/components/layout/TwoColumnsContainer'
 import Breadcrumb from '@/components/molecules/Breadcrumb'
 import SearchForm from '@/components/molecules/SearchForm'
-import Archive from '@/components/organisms/Archive'
-import Footer from '@/components/organisms/Footer'
-import Header from '@/components/organisms/Header'
-import Hero from '@/components/organisms/Hero'
-import SideCategory from '@/components/organisms/SideCategory'
-import SideRecentPosts from '@/components/organisms/SideRecentPosts'
-import SideTOC from '@/components/organisms/SideTOC'
+import Footer from '@/components/organisms/parts/footer/Footer'
+import Header from '@/components/organisms/parts/header/Header'
+import Hero from '@/components/organisms/parts/header/Hero'
+import SideArchive from '@/components/organisms/parts/side/SideArchive'
+import SideCategory from '@/components/organisms/parts/side/SideCategory'
+import SideRecentPosts from '@/components/organisms/parts/side/SideRecentPosts'
+import SideTOC from '@/components/organisms/parts/side/SideTOC'
 
-import PageTopButton from '../atoms/PageTopButton'
 import PcOnly from '../utils/PcOnly'
 import SpOnly from '../utils/SpOnly'
 
@@ -51,8 +51,8 @@ const Layout = ({
             <SearchForm />
             <SideRecentPosts posts={data.recentPost} />
             <SideCategory categories={data.categories} />
-            <Archive posts={data.archivePosts} />
-           {isPostPage && <SideTOC key={breadcrumbList.at(-1)?.name}/>}
+            <SideArchive posts={data.archivePosts} />
+            {isPostPage && <SideTOC key={breadcrumbList.at(-1)?.name} />}
           </SideArea>
         </TwoColumnContainer>
       </PageContainer>

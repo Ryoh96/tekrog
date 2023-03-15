@@ -3,9 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 import SideContent from '@/components/molecules/SideContent'
+import CategoryTags from '@/components/organisms/ui/CategoryTags'
 import type { Category } from '@/graphql/generated/graphql'
-
-import CategoryTags from './CategoryTags'
 
 const CategoryTagWrapper = styled.div`
   display: flex;

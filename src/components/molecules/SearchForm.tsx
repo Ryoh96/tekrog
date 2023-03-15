@@ -1,5 +1,7 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 import styled from 'styled-components'
 
 import IconButton from '@/components/atoms/IconButton'
@@ -35,10 +37,32 @@ const SearchIconButton = styled(IconButton)`
 `
 
 const SearchForm = () => {
+  const [query, setQuery] = useState('')
+  const router = useRouter()
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.nativeEvent.isComposing || e.key !== 'Enter') return
+    searchQuery(e)
+  }
+  const searchQuery = (
+    e:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    e.preventDefault()
+    const q = encodeURI(query)
+    router.push(`/search/result?s=${q}`)
+  }
+
   return (
     <SearchFormWarpper>
       <SearchIconButton icon={<FontAwesomeIcon icon={faSearch} />} />
-      <Input placeholder="検索ワード" />
+      <Input
+        placeholder="検索ワード"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
+      />
     </SearchFormWarpper>
   )
 }

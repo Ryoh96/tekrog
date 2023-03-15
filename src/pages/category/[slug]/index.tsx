@@ -1,11 +1,10 @@
 import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import path from 'path'
 
 import Layout from '@/components/layout/Layout'
-import MainTop from '@/components/organisms/MainTop'
+import MainEachCategory from '@/components/organisms/parts/main/category/MainEachCategory'
 import { POSTS_PER_PAGE } from '@/constants/number'
-import { getSdk } from '@/graphql/generated/request.ts'
+import { getSdk } from '@/graphql/generated/request'
 import type { CategoryType } from '@/types/CategoryType'
 import { cat2Name } from '@/utils/cat2name'
 
@@ -32,14 +31,11 @@ const Category = ({ data, categoryName, totalPages }: CategoryProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainTop
+        <MainEachCategory
           posts={data.posts}
           totalPages={totalPages}
+          category={categoryName}
           type={`/category/${categoryName}/`}
-          pageInfo={{
-            type: 'category',
-            name: categoryName,
-          }}
         />
       </Layout>
     </>
@@ -56,7 +52,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const allCategories = await client
     .getAllCategoryName()
-    .then((data) => data.categories.nodes)
+    .then((data) => data.categories!.nodes)
   const paths = allCategories.map(({ slug }) => `/category/${slug}`)
   return {
     paths,
@@ -73,9 +69,9 @@ export const getStaticProps: GetStaticProps<CategoryProps> = async ({
   )
   const client = getSdk(graphQLClient)
 
-  const allCursor: { cursor: string }[] = await client
+  const allCursor: any[] = await client
     .getCategoryCursor({ categoryName })
-    .then((data) => data.posts.edges)
+    .then((data) => data.posts!.edges)
 
   const queryParams = {
     first: POSTS_PER_PAGE,

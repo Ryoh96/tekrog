@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 
+import RelatedPosts from '@/components/organisms/parts/main/post/RelatedPosts'
+import CategoryTags from '@/components/organisms/ui/CategoryTags'
+import PrevNextPagers from '@/components/organisms/ui/PrevNextPager'
+import _Share from '@/components/organisms/ui/Share'
 import type { Category, Post } from '@/graphql/generated/graphql'
-
-import PrevNextPagers from '@/components/organisms/PrevNextPager'
-import CategoryTags from './CategoryTags'
-import RelatedPosts from './RelatedPosts'
-import _Share from './Share'
 
 const Meta = styled.div`
   display: flex;
@@ -39,7 +38,7 @@ type PostFootProps = {
 }
 
 const PostFoot = ({ categories, prevPost, nextPost }: PostFootProps) => {
-  console.log(10,prevPost)
+  console.log(10, prevPost)
   return (
     <>
       <Meta>

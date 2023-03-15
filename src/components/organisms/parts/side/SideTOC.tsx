@@ -9,14 +9,13 @@ import styled from 'styled-components'
 
 import PageBottomButton from '@/components/atoms/PageBottomButton'
 import PageTopButton from '@/components/atoms/PageTopButton'
+import _SideContent from '@/components/molecules/SideContent'
 import useCurrentHeadingIndex from '@/hooks/useCurrentHeadingIndex'
 import useHeadingAnchors from '@/hooks/useHeadingAnchors'
 import useHeadingElements from '@/hooks/useHeadingElements'
 import useHeadingNames from '@/hooks/useHeadingNames'
 import useHeadingPositions from '@/hooks/useHeadingPositions'
 import useSideTOCRefs from '@/hooks/useSideTOCRefs'
-
-import _SideContent from '../molecules/SideContent'
 
 const ButtonsWrapper = styled.div`
   display: flex;
@@ -123,8 +122,6 @@ const SideContentInner = styled.div`
   &::-webkit-scrollbar-corner {
   }
 `
-
-
 
 const SideTOC = () => {
   const headingAnchors = useHeadingAnchors()

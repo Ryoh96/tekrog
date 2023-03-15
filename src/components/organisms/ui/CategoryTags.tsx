@@ -1,6 +1,5 @@
+import CategoryTag from '@/components/molecules/CategoryTag'
 import type { Category } from '@/graphql/generated/graphql'
-
-import CategoryTag from '../molecules/CategoryTag'
 
 type CategoryTagsProps = {
   categories: {

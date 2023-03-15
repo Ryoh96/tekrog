@@ -1,11 +1,10 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
+import DateTime from '@/components/atoms/DateTime'
+import CategoryTags from '@/components/organisms/ui/CategoryTags'
+import _Share from '@/components/organisms/ui/Share'
 import type { Category } from '@/graphql/generated/graphql'
-
-import DateTime from '../atoms/DateTime'
-import CategoryTags from './CategoryTags'
-import _Share from './Share'
 
 const Thumbnail = styled.figure`
   width: 100%;
@@ -24,7 +23,7 @@ const Title = styled.h1`
   line-height: 1.6;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
-   font-size: 26px;
+    font-size: 26px;
   }
 `
 

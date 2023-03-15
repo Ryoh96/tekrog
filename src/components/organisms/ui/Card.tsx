@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
+import _DateTime from '@/components/atoms/DateTime'
 import CategoryTag from '@/components/molecules/CategoryTag'
-
-import _DateTime from '../atoms/DateTime'
 
 type CardProps = {
   imgUrl: string

@@ -2,7 +2,7 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainTop from '@/components/organisms/MainTop'
+import MainArchive from '@/components/organisms/parts/main/archive/MainArchive'
 import { getSdk } from '@/graphql/generated/request.ts'
 
 type ArchiveProps = {
@@ -25,14 +25,11 @@ const Archive = ({ data, year, month }: ArchiveProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainTop
+        <MainArchive
           posts={data.posts}
           totalPages={1}
           type={`/archive/${year}/${month}/`}
-          pageInfo = {{
-            type: "archive",
-            name: `${year}年${month}月`
-          }}
+          date={`${year}/${month}`}
         />
       </Layout>
     </>

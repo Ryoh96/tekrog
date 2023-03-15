@@ -2,9 +2,8 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
+import Main from '@/components/organisms/parts/main/common/Main'
 import { getSdk } from '@/graphql/generated/request.ts'
-
-import Main from '../components/organisms/Main'
 
 type PostProps = {
   data: any
@@ -67,15 +66,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPaths.map(({ uri }) => uri)
 
   // single
-  const single = await client.getAllFixedPage().then((data) => data.pages.edges)
+  let single = await client.getAllFixedPage().then((data) => data.pages.edges)
 
+  single = single.filter(({ node }) => node.slug !== 'thanks')
   const singlePaths: string[] = single.map(({ node }) => node.uri)
 
   paths.push(...singlePaths)
   console.log(paths)
   return {
     paths,
-    fallback: "blocking",
+    fallback: 'blocking',
   }
 }
 
@@ -92,22 +92,18 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
 
   const single = await client.getAllFixedPage().then((data) => data.pages.edges)
 
-  const singleSlug: string[] = single.map(({ node }) => node.slug)
-
+  let singleSlug: string[] = single.map(({ node }) => node.slug)
   if (singleSlug.includes(permalink)) {
     isSingle = true
-    console.log('hoge')
     const target = single.filter((edge) => edge.node.uri === `/${permalink}/`)
 
     const cursor: string = target[0].cursor
-    console.log(cursor)
 
     data = await client.getFixedPage({
       id: cursor,
     })
   } else {
     isSingle = false
-    console.log('fuga')
     const edges = await client
       .getAllPathsAndCursor()
       .then((data) => data.posts.edges)
