@@ -52,7 +52,7 @@ const Layout = ({
             <SideRecentPosts posts={data.recentPost} />
             <SideCategory categories={data.categories} />
             <Archive posts={data.archivePosts} />
-           {isPostPage && <SideTOC />}
+           {isPostPage && <SideTOC key={breadcrumbList.at(-1)?.name}/>}
           </SideArea>
         </TwoColumnContainer>
       </PageContainer>
