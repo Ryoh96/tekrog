@@ -21,7 +21,7 @@ const CardWrapper = styled.div`
   position: relative;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
     0 1px 3px 1px rgba(60, 64, 67, 0.15);
-  transition: 0.3s;
+  transition: all 0.3s;
   z-index: 1;
   display: grid;
   align-content: space-between;

@@ -1,0 +1,26 @@
+query getAllCategoriesPage {
+    mainCategory: categories(first: 30)  {
+    nodes {
+      name
+      uri
+      slug
+    }
+  }
+  recentPost: posts(first: 5) {
+    nodes {
+      ...RecentPost
+    }
+  }
+  archivePosts: posts(first: 1000) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+    categories(first: 30) {
+    nodes {
+      ...Category
+    }
+  }
+}

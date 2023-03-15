@@ -68,6 +68,7 @@ const toc = css`
 
         > li {
           display: flex;
+          line-height: 1 !important;
 
           &::before {
             content: '';

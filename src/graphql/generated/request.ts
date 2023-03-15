@@ -7,6 +7,11 @@ export type CategoryFragment = { __typename?: 'Category', count?: number | null,
 
 export type TopPageInfoFragment = { __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null };
 
+export type GetAllCategoriesPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllCategoriesPageQuery = { __typename?: 'RootQuery', mainCategory?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null, slug?: string | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null };
+
 export type GetAllCategoryNameQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -129,6 +134,35 @@ export const TopPageInfoFragmentDoc = gql`
   }
 }
     `;
+export const GetAllCategoriesPageDocument = gql`
+    query getAllCategoriesPage {
+  mainCategory: categories(first: 30) {
+    nodes {
+      name
+      uri
+      slug
+    }
+  }
+  recentPost: posts(first: 5) {
+    nodes {
+      ...RecentPost
+    }
+  }
+  archivePosts: posts(first: 1000) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      ...Category
+    }
+  }
+}
+    ${RecentPostFragmentDoc}
+${CategoryFragmentDoc}`;
 export const GetAllCategoryNameDocument = gql`
     query getAllCategoryName {
   categories(first: 100) {
@@ -427,6 +461,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    getAllCategoriesPage(variables?: GetAllCategoriesPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllCategoriesPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAllCategoriesPageQuery>(GetAllCategoriesPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoriesPage', 'query');
+    },
     getAllCategoryName(variables?: GetAllCategoryNameQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllCategoryNameQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllCategoryNameQuery>(GetAllCategoryNameDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoryName', 'query');
     },

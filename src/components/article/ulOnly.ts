@@ -24,7 +24,7 @@ const ulOnly = css`
 
   li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 
     &::before {
       content: '';
@@ -34,6 +34,8 @@ const ulOnly = css`
       height: 6px;
       background-color: #1f2a82;
       margin-right: 0.6em;
+      margin-top: 0.5em;
+      border-radius: 50%;
     }
   }
 

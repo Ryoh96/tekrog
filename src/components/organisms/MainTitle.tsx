@@ -13,10 +13,18 @@ const MainTitleWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    margin-bottom: 18px;
+  }
 `
 
 const Title = styled.h1`
   font-size: 30px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 26px;
+  }
 `
 
 const IconWrapper = styled.span`

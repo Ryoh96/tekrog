@@ -5,6 +5,8 @@ import Layout from '@/components/layout/Layout'
 import MainTop from '@/components/organisms/MainTop'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import { getSdk } from '@/graphql/generated/request.ts'
+import { cat2Name } from '@/utils/cat2name'
+import { CategoryType } from '@/types/CategoryType'
 
 type CategoryPageProps = {
   data: any
@@ -24,7 +26,11 @@ const CategoryPage = ({
     href: string
   }[] = [
     {
-      name: categoryName,
+      name: "カテゴリー",
+      href: "/category"
+    },
+    {
+      name: cat2Name[categoryName as CategoryType],
       href: `/${categoryName}`,
     },
     {

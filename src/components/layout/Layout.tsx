@@ -30,14 +30,14 @@ type LayoutProps = {
   children: ReactNode
   data: any
   breadcrumbList: { name: string; href: string }[]
-  isPostPage: boolean
+  isPostPage?: boolean
 }
 
 const Layout = ({
   children,
   data,
   breadcrumbList,
-  isPostPage,
+  isPostPage = false,
 }: LayoutProps) => {
   return (
     <>
