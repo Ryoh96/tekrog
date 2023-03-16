@@ -2,12 +2,30 @@ import styled from 'styled-components'
 
 import ScreenReaderOnly from '../utils/ScreenReaderOnly'
 
-const Bar = styled.span`
-  &,
+type HumbuggerButtonProps = {
+  onClick: () => void
+  isOpen: boolean
+}
+
+const HumbuggerButtonWrapper = styled.button<{ isOpen: boolean }>`
+  all: unset;
+  outline: revert;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  position: relative;
+  z-index: 200;
+
+  display: grid;
+  place-items: center;
+
   &::after,
   &::before {
-    height: 3px;
+    grid-area: 1 / -1;
+    content: '';
     width: 32px;
+    height: 1px;
     display: block;
     background-color: #fff;
     z-index: 1000;
@@ -15,26 +33,38 @@ const Bar = styled.span`
   }
 
   &::before {
-    position: absolute;
-    content: '';
-    transform: translateY(-10px);
+    ${({ isOpen }) =>
+      isOpen ? 'transform: rotate(-135deg)' : 'transform: translateY(-10px)'}
   }
 
   &::after {
-    position: absolute;
-    content: '';
-    transform: translateY(10px);
+    ${({ isOpen }) =>
+      isOpen ? 'transform: rotate(135deg)' : 'transform: translateY(10px)'}
+  }
+`
+
+const Bar = styled.span<{ isOpen: boolean }>`
+  & {
+    grid-area: 1 / -1;
+    width: 32px;
+    height: 1px;
+    display: block;
+    background-color: #fff;
+    z-index: 1000;
+    transition: 0.3s ease;
+
+    ${({ isOpen }) => (isOpen ? 'transform: scale(0)' : 'revert')}
   }
 
   position: relative;
 `
 
-const HumbuggerButton = () => {
+const HumbuggerButton = ({ onClick, isOpen }: HumbuggerButtonProps) => {
   return (
-    <>
+    <HumbuggerButtonWrapper onClick={onClick} isOpen={isOpen}>
       <ScreenReaderOnly>Menu</ScreenReaderOnly>
-      <Bar />
-    </>
+      <Bar isOpen={isOpen} />
+    </HumbuggerButtonWrapper>
   )
 }
 

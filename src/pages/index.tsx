@@ -4,7 +4,7 @@ import type { GetStaticProps } from 'next'
 import Layout from '@/components/layout/Layout'
 import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
-import { getSdk } from '@/graphql/generated/request.ts'
+import { getSdk } from '@/graphql/generated/request'
 
 type IndexProps = {
   data: any
@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps<IndexProps> = async () => {
 
   const allCursor: { cursor: string }[] = await client
     .getAllCursor()
-    .then((data: { posts: { edges: any } }) => data.posts.edges)
+    .then((data) => data.posts!.edges)
 
   const totalPosts = allCursor.length
   const totalPages = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)

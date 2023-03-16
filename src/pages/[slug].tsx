@@ -3,7 +3,7 @@ import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
 import Main from '@/components/organisms/parts/main/common/Main'
-import { getSdk } from '@/graphql/generated/request.ts'
+import { getSdk } from '@/graphql/generated/request'
 
 type PostProps = {
   data: any

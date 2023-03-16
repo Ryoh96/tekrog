@@ -1,16 +1,36 @@
 import { GraphQLClient } from 'graphql-request'
 import type { GetServerSideProps } from 'next'
 
-import { getSdk } from '@/graphql/generated/request.ts'
+import Layout from '@/components/layout/Layout'
+import MainSearch from '@/components/organisms/parts/main/search/MainSearch'
+import { getSdk } from '@/graphql/generated/request'
 
 type SearchProps = {
   data: any
+  query: string
 }
 
-const Search = ({ data }: SearchProps) => {
+const Search = ({ data, query }: SearchProps) => {
+  const breadcrumbList: {
+    name: string
+    href: string
+  }[] = [
+    {
+      name: `『${query}』の検索結果`,
+      href: ``,
+    },
+  ]
+
   return (
     <>
-      <>{console.log(data)}</>
+      <Layout data={data} breadcrumbList={breadcrumbList}>
+        <MainSearch
+          posts={data.posts}
+          totalPages={1}
+          type={`/search/result?s=${query}/`}
+          query={query}
+        />
+      </Layout>
     </>
   )
 }
@@ -22,7 +42,6 @@ export const getServerSideProps: GetServerSideProps<SearchProps> = async (
 ) => {
   const receivedQuery = context.query.s as any as string
   const query = decodeURI(receivedQuery)
-  console.log(5555,query)
   const params = { first: 100, query }
 
   const graphQLClient = new GraphQLClient(
@@ -35,6 +54,7 @@ export const getServerSideProps: GetServerSideProps<SearchProps> = async (
   return {
     props: {
       data,
+      query,
     },
   }
 }

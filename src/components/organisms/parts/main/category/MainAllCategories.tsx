@@ -1,6 +1,9 @@
+import { faComputer } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
+import MainIconTitle from '../common/MainIconTitle'
 
 type MainAllCategoriesProps = {
   nodes: {
@@ -55,7 +58,11 @@ const Text = styled.p`
 const MainAllCategories = ({ nodes }: MainAllCategoriesProps) => {
   return (
     <>
-      <Title>カテゴリー一覧</Title>
+      <MainIconTitle
+        icon={<FontAwesomeIcon icon={faComputer}/>}
+      >
+        カテゴリー
+      </MainIconTitle>
       <FlexWrapper>
         {nodes.map((node, index) => (
           <Link key={index} href={node.uri}>

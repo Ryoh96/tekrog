@@ -4,9 +4,13 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import IconButton from '@/components/atoms/IconButton'
+import _IconButton from '@/components/atoms/IconButton'
 
-const SearchFormWarpper = styled.div`
+const IconButton = styled(_IconButton)`
+  border-radius: 9px 0 0 9px;
+`
+
+const SearchFormWrapper = styled.div`
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   width: 100%;
@@ -55,7 +59,7 @@ const SearchForm = () => {
   }
 
   return (
-    <SearchFormWarpper>
+    <SearchFormWrapper>
       <SearchIconButton icon={<FontAwesomeIcon icon={faSearch} />} />
       <Input
         placeholder="検索ワード"
@@ -63,7 +67,7 @@ const SearchForm = () => {
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}
       />
-    </SearchFormWarpper>
+    </SearchFormWrapper>
   )
 }
 

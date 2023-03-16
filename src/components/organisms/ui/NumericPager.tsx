@@ -18,6 +18,7 @@ const NumericPagerWrapper = styled.div`
 `
 
 const NumericPager = ({ total, current, type }: NumericPagerProps) => {
+  if (total === 1) return null
   return (
     <NumericPagerWrapper>
       {current !== 1 && (
