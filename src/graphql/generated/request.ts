@@ -46,6 +46,11 @@ export type CategoryFragment = { __typename?: 'Category', count?: number | null,
 
 export type TopPageInfoFragment = { __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null };
 
+export type GetContactPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetContactPageQuery = { __typename?: 'RootQuery', recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+
 export type GetStartCursorQueryVariables = Exact<{
   index: Scalars['String'];
 }>;
@@ -259,6 +264,28 @@ export const GetCategoryPageDocument = gql`
 }
     ${TopPageInfoFragmentDoc}
 ${RecentPostFragmentDoc}
+${CategoryFragmentDoc}`;
+export const GetContactPageDocument = gql`
+    query getContactPage {
+  recentPost: posts(first: 5) {
+    nodes {
+      ...RecentPost
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      ...Category
+    }
+  }
+  archivePosts: posts(first: 1000) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+}
+    ${RecentPostFragmentDoc}
 ${CategoryFragmentDoc}`;
 export const GetStartCursorDocument = gql`
     query getStartCursor($index: String!) {
@@ -518,6 +545,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getCategoryPage(variables: GetCategoryPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCategoryPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCategoryPageQuery>(GetCategoryPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryPage', 'query');
+    },
+    getContactPage(variables?: GetContactPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetContactPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetContactPageQuery>(GetContactPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getContactPage', 'query');
     },
     getStartCursor(variables: GetStartCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetStartCursorQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetStartCursorQuery>(GetStartCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getStartCursor', 'query');

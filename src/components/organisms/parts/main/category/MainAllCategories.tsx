@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
+
 import MainIconTitle from '../common/MainIconTitle'
 
 type MainAllCategoriesProps = {
@@ -39,7 +40,6 @@ const TextWrapper = styled.div`
   transition: all 0.3s;
   z-index: 1;
 
-
   &:hover {
     transform: scale(1.05);
     z-index: 2;
@@ -58,9 +58,7 @@ const Text = styled.p`
 const MainAllCategories = ({ nodes }: MainAllCategoriesProps) => {
   return (
     <>
-      <MainIconTitle
-        icon={<FontAwesomeIcon icon={faComputer}/>}
-      >
+      <MainIconTitle icon={<FontAwesomeIcon icon={faComputer} />}>
         カテゴリー
       </MainIconTitle>
       <FlexWrapper>

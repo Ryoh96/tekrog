@@ -1,0 +1,19 @@
+query getContactPage {
+  recentPost: posts(first: 5) {
+    nodes {
+      ...RecentPost
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      ...Category
+    }
+  }
+    archivePosts: posts(first: 1000) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import { GraphQLClient } from 'graphql-request'
-import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainEachCategory from '@/components/organisms/parts/main/category/MainEachCategory'
+import MainEachCategoryTitle from '@/components/organisms/parts/main/category/MainEachCategoryTitle'
+import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import { getSdk } from '@/graphql/generated/request'
 import type { CategoryType } from '@/types/CategoryType'
@@ -14,7 +15,11 @@ type CategoryProps = {
   totalPages: number
 }
 
-const Category = ({ data, categoryName, totalPages }: CategoryProps) => {
+const Category: NextPage<CategoryProps> = ({
+  data,
+  categoryName,
+  totalPages,
+}) => {
   const breadcrumbList: {
     name: string
     href: string
@@ -31,10 +36,10 @@ const Category = ({ data, categoryName, totalPages }: CategoryProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainEachCategory
+        <MainTopPage
+          title={<MainEachCategoryTitle category={categoryName} />}
           posts={data.posts}
           totalPages={totalPages}
-          category={categoryName}
           type={`/category/${categoryName}/`}
         />
       </Layout>

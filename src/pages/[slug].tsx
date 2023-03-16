@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request'
-import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
 import Main from '@/components/organisms/parts/main/common/Main'
@@ -10,7 +10,7 @@ type PostProps = {
   isSingle: boolean
 }
 
-const Post = ({ data, isSingle }: PostProps) => {
+const Post: NextPage<PostProps> = ({ data, isSingle }) => {
   const content = isSingle
     ? data
     : {

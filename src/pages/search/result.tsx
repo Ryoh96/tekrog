@@ -1,8 +1,12 @@
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { GraphQLClient } from 'graphql-request'
-import type { GetServerSideProps } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
+import MainIconTitle from '@/components/organisms/parts/main/common/MainIconTitle'
 import MainSearch from '@/components/organisms/parts/main/search/MainSearch'
+import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { getSdk } from '@/graphql/generated/request'
 
 type SearchProps = {
@@ -10,7 +14,7 @@ type SearchProps = {
   query: string
 }
 
-const Search = ({ data, query }: SearchProps) => {
+const Search: NextPage<SearchProps> = ({ data, query }) => {
   const breadcrumbList: {
     name: string
     href: string
@@ -24,11 +28,16 @@ const Search = ({ data, query }: SearchProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainSearch
+        <MainTopPage
+          title={
+            <MainIconTitle
+              icon={<FontAwesomeIcon icon={faSearch} />}
+            >{`『${query}』の検索結果`}</MainIconTitle>
+          }
           posts={data.posts}
           totalPages={1}
+          current={1}
           type={`/search/result?s=${query}/`}
-          query={query}
         />
       </Layout>
     </>

@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request'
-import type { GetStaticProps } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
 import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
@@ -11,7 +11,7 @@ type IndexProps = {
   totalPages: number
 }
 
-const Index = ({ data, totalPages }: IndexProps) => {
+const Index: NextPage<IndexProps> = ({ data, totalPages }) => {
   const breadcrumbList: {
     name: string
     href: string

@@ -1,9 +1,13 @@
+import { faCalendar } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { GraphQLClient } from 'graphql-request'
-import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
 import MainArchive from '@/components/organisms/parts/main/archive/MainArchive'
-import { getSdk } from '@/graphql/generated/request.ts'
+import MainIconTitle from '@/components/organisms/parts/main/common/MainIconTitle'
+import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
+import { getSdk } from '@/graphql/generated/request'
 
 type ArchiveProps = {
   data: any
@@ -11,7 +15,7 @@ type ArchiveProps = {
   month: number
 }
 
-const Archive = ({ data, year, month }: ArchiveProps) => {
+const Archive: NextPage<ArchiveProps> = ({ data, year, month }) => {
   const breadcrumbList: {
     name: string
     href: string
@@ -25,11 +29,16 @@ const Archive = ({ data, year, month }: ArchiveProps) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainArchive
+        <MainTopPage
+          title={
+            <MainIconTitle icon={<FontAwesomeIcon icon={faCalendar} />}>
+              {`${year}/${month}の記事一覧`}
+            </MainIconTitle>
+          }
           posts={data.posts}
           totalPages={1}
+          current={1}
           type={`/archive/${year}/${month}/`}
-          date={`${year}/${month}`}
         />
       </Layout>
     </>

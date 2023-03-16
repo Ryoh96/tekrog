@@ -1,10 +1,10 @@
 import { GraphQLClient } from 'graphql-request'
-import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
 import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
-import { getSdk } from '@/graphql/generated/request.ts'
+import { getSdk } from '@/graphql/generated/request'
 
 type PageProps = {
   data: any
@@ -12,7 +12,7 @@ type PageProps = {
   totalPages: number
 }
 
-const Page = ({ data, pageNum, totalPages }: PageProps) => {
+const Page: NextPage<PageProps> = ({ data, pageNum, totalPages }) => {
   const breadcrumbList: {
     name: string
     href: string

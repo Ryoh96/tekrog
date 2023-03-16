@@ -2,42 +2,39 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainAllCategories from '@/components/organisms/parts/main/category/MainAllCategories'
 import { getSdk } from '@/graphql/generated/request'
 
+import MainContact from '../../components/organisms/parts/main/contact/MainContact'
 
-type CategoryProps = {
+type ContactProps = {
   data: any
 }
 
-const Category: NextPage<CategoryProps> = ({ data }) => {
+const Contact: NextPage<ContactProps> = ({ data }) => {
   const breadcrumbList: {
     name: string
     href: string
   }[] = [
     {
-      name: 'カテゴリー',
-      href: '/category',
+      name: 'お問い合わせ',
+      href: '/contact',
     },
   ]
   return (
-    <>
-      <Layout data={data} breadcrumbList={breadcrumbList}>
-        <MainAllCategories nodes={data.mainCategory.nodes} />
-      </Layout>
-    </>
+    <Layout data={data} breadcrumbList={breadcrumbList}>
+      <MainContact />
+    </Layout>
   )
 }
 
-export default Category
+export default Contact
 
-export const getStaticProps: GetStaticProps<CategoryProps> = async () => {
+export const getStaticProps: GetStaticProps<ContactProps> = async () => {
   const graphQLCluent = new GraphQLClient(
     process.env.END_POINT ?? 'https://tekrog.com/graphql'
   )
   const client = getSdk(graphQLCluent)
-
-  const data = await client.getAllCategoriesPage()
+  const data = await client.getContactPage()
 
   return {
     props: {
