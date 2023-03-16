@@ -1,3 +1,3 @@
-const breadkpoints = { sp: 767, sm: 560 }
+const breakpoints = { sp: 767, sm: 560 }
 
-export default breadkpoints
+export default breakpoints

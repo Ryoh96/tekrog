@@ -27,9 +27,8 @@ const PrevNextPagerWrapper = styled.div<{ mode: 'prev' | 'next' }>`
   background-color: #fff;
 
   transition: 0.3s;
+  box-shadow: ${({ theme }) => theme.boxShadow.near};
   z-index: 2;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
-    0 1px 3px 1px rgba(60, 64, 67, 0.15);
   width: 92%;
   position: relative;
   margin-inline: auto;
@@ -39,7 +38,7 @@ const PrevNextPagerWrapper = styled.div<{ mode: 'prev' | 'next' }>`
   &:hover {
     transform: scale(1.05);
     z-index: 3;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: ${({ theme }) => theme.boxShadow.far};
 
     &::after {
       z-index: -1;

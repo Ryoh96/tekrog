@@ -9,7 +9,7 @@ const h2 = css`
   padding-bottom: 16px;
   padding-top: 18px;
   padding-left: 14px;
-  border-left: 10px solid #ffcf08;
+  border-left: 10px solid ${({ theme }) => theme.color.page.main};
   line-height: 1.5;
 
   + * {

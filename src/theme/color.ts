@@ -4,6 +4,7 @@ import type { ShareType } from '@/types/ShareType'
 const color: {
   category: Record<CategoryType, `#${string}`>
   share: Record<ShareType, `#${string}`>
+  page: Record<String, String>
 } = {
   category: {
     javascript: '#f9bb2b',
@@ -28,6 +29,10 @@ const color: {
     line: '#05c756',
     hatena: '#029dd4',
   },
+  page: {
+    main: '#1f2a82',
+    accent: '#ffcf08'
+  }
 }
 
 export default color

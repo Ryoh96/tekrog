@@ -9,8 +9,7 @@ type HorizontalCardProps = {
 const HorizontalCardWrapper = styled.div`
   display: flex;
   gap: 6px;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
-    0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  box-shadow: ${({ theme }) => theme.boxShadow.near};
   z-index: 2;
   min-height: 82px;
   overflow: hidden;
@@ -22,11 +21,8 @@ const HorizontalCardWrapper = styled.div`
   &:hover,
   &:focus {
     transform: scale(1.05);
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-    
+    box-shadow: ${({ theme }) => theme.boxShadow.far};
   }
-
-  
 `
 
 const ImageWrapper = styled.figure`

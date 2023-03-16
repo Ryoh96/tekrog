@@ -33,8 +33,7 @@ const TextWrapper = styled.div`
   display: flex;
   gap: 0.5em;
   align-items: center;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
-    0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  box-shadow: ${({ theme }) => theme.boxShadow.near};
   padding: 10px;
   border-radius: 10px;
   transition: all 0.3s;
@@ -43,7 +42,7 @@ const TextWrapper = styled.div`
   &:hover {
     transform: scale(1.05);
     z-index: 2;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: ${({ theme }) => theme.boxShadow.far};
   }
 `
 

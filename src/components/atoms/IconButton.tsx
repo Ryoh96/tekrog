@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 
-const IconButtonWrrper = styled.div`
+const IconButtonWrapper = styled.div`
   display: grid;
   place-content: center;
-  background: #1f2a82;
+  background: ${({theme}) => theme.gradient.main};
   height: 48px;
   width: 44px;
   cursor: pointer;
@@ -16,7 +16,7 @@ const IconButtonWrrper = styled.div`
   &:hover {
     transform: scale(1.05);
     z-index: 2;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: ${({ theme }) => theme.boxShadow.far};
   }
 
   > * {
@@ -29,7 +29,7 @@ type IconButtonProps = {
 }
 
 const IconButton = ({ icon, className }: IconButtonProps) => {
-  return <IconButtonWrrper className={className}>{icon}</IconButtonWrrper>
+  return <IconButtonWrapper className={className}>{icon}</IconButtonWrapper>
 }
 
 export default IconButton

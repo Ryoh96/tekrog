@@ -15,6 +15,14 @@ declare module 'styled-components' {
     color: {
       category: Record<CategoryType, `#${string}`>
       share: Record<ShareType, `#${string}`>
+      page: {
+        main: `#${string}`
+        accent: `#${string}`
+      }
+    }
+    boxShadow: {
+      near: string
+      far: string
     }
   }
 }

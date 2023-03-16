@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
-import { ChangeEvent, useCallback } from 'react'
+import type { ChangeEvent } from 'react'
+import { useCallback } from 'react'
 import styled from 'styled-components'
 
 const Select = styled.select`
@@ -23,7 +24,7 @@ const Select = styled.select`
   &:hover {
     transform: scale(1.05);
     z-index: 2;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: ${({ theme }) => theme.boxShadow.far};
     background-position: calc(100% - 24px) 70%;
   }
 `
@@ -41,9 +42,12 @@ const DropDown = ({ value, links }: DropDownProps) => {
   console.log(links)
   const router = useRouter()
 
-  const selectValue = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-    router.push(links[Number(e.target.value)])
-  }, [router])
+  const selectValue = useCallback(
+    (e: ChangeEvent<HTMLSelectElement>) => {
+      router.push(links[Number(e.target.value)])
+    },
+    [links, router]
+  )
 
   return (
     <Select onChange={(e) => selectValue(e)}>
