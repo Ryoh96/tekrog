@@ -69,6 +69,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let single = await client.getAllFixedPage().then((data) => data.pages.edges)
 
   single = single.filter(({ node }) => node.slug !== 'thanks')
+  single = single.filter(({ node }) => node.slug !== 'contact')
   const singlePaths: string[] = single.map(({ node }) => node.uri)
 
   paths.push(...singlePaths)

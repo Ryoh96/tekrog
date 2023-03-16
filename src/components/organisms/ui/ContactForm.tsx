@@ -6,7 +6,9 @@ import _Button from '../../atoms/Button'
 import SendEmail from './SendEmail'
 
 const ErrorText = styled.strong`
-  color: 'red';
+  color: red;
+  font-size: 0.8em;
+  font-weight: bold;
 `
 
 type TestFormData = {
@@ -33,7 +35,7 @@ const Form = styled.form`
   }
 `
 
-const FormPartsWrapper = styled.label`
+const FormLabel = styled.label`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -60,12 +62,19 @@ const TextArea = styled.textarea`
   height: 7em;
 `
 
+const FormParts = styled.div`
+  display: grid;
+  gap: 0.6em;
+`
+
 const ContactForm = ({ onCompleted }: ContactFormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<TestFormData>()
+    formState: { errors, dirtyFields },
+  } = useForm<TestFormData>({
+    mode: 'onChange',
+  })
 
   const [isSend, setIsSend] = useState(false)
   const [isError, setIsError] = useState(false)
@@ -93,6 +102,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
   }
 
   const onSubmit = async (data) => {
+    if (Object.keys(errors).length) return
     await sendEmail(data)
     console.log('send')
   }
@@ -102,17 +112,66 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
       {isError && <ErrorText>エラーが発生しました</ErrorText>}
       {!isSend ? (
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <FormPartsWrapper>
-            <span>名前:</span> <input {...register('name')} />
-          </FormPartsWrapper>
-          <FormPartsWrapper>
-            <span>メールアドレス:</span> <input {...register('email')} />
-          </FormPartsWrapper>
-          <FormPartsWrapper>
+          <FormLabel>
+            <span>名前:</span>{' '}
+            <FormParts>
+              <input
+                type="text"
+                {...register('name', {
+                  required: {
+                    value: true,
+                    message: '※入力してください',
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: '※最大文字数を超えています',
+                  },
+                })}
+              />
+              {errors.name && <ErrorText>{errors.name.message}</ErrorText>}
+            </FormParts>
+          </FormLabel>
+          <FormLabel>
+            <span>メールアドレス:</span>{' '}
+            <FormParts>
+              <input
+                type="email "
+                {...register('email', {
+                  required: {
+                    value: true,
+                    message: '※入力してください',
+                  },
+                  pattern: {
+                    value: /\S+@\S+\.\S+/,
+                    message: '※メールアドレスの形式が正しくありません',
+                  },
+                })}
+              />
+              {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
+            </FormParts>
+          </FormLabel>
+          <FormLabel>
             <span>お問い合わせ内容:</span>
-            <TextArea {...register('message')}></TextArea>
-          </FormPartsWrapper>
-          <Button type="submit">送信</Button>
+            <FormParts>
+              <TextArea
+                {...register('message', {
+                  required: {
+                    value: true,
+                    message: '※入力して下さい',
+                  },
+                })}
+              ></TextArea>
+              {errors.message && (
+                <ErrorText>{errors.message.message}</ErrorText>
+              )}
+            </FormParts>
+          </FormLabel>
+          <Button
+            type="submit"
+            disabled={!!Object.keys(errors).length || !(dirtyFields.name && dirtyFields.email && dirtyFields.message)}
+          >
+            送信
+          </Button>
         </Form>
       ) : (
         <SendEmail />
