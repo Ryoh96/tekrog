@@ -26,7 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     ${data.email}
     
     お問い合わせ内容
-    ${data.msg}
+    ${data.message}
     `,
   })
 
@@ -42,7 +42,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     ${data.email}
     
     お問い合わせ内容
-    ${data.msg}
+    ${data.message}
     `,
   })
 
