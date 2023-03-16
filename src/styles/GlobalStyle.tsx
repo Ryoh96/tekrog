@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import { Reset } from 'styled-reset'
 
-
 const Base = createGlobalStyle`
   * {
     font-size: 16px;
@@ -46,6 +45,14 @@ const Base = createGlobalStyle`
 
   article {
     height: 100%;
+  }
+
+  input,
+  textarea {
+    &::placeholder {
+    font-family: YuGothic, Hiragino Kaku Gothic Pro, Meiryo, sans-serif;;
+
+    }
   }
 `
 
