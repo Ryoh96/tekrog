@@ -29,6 +29,20 @@ const CardWrapper = styled.div`
   border-radius: 10px;
   height: 100%;
 
+  img {
+    animation: fade 2s;
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
   &:hover {
     transform: scale(1.05);
     z-index: 2;
@@ -122,7 +136,6 @@ const Card = ({ imgUrl, title, categories, date, desc }: CardProps) => {
             <CategoryTag
               categoryName={category.name}
               key={category.name}
-              link={category.uri}
             />
           ))}
         </CategoryTagWrapper>

@@ -51,8 +51,13 @@ const Base = createGlobalStyle`
   textarea {
     &::placeholder {
     font-family: YuGothic, Hiragino Kaku Gothic Pro, Meiryo, sans-serif;;
-
     }
+  }
+
+  object {
+    width: fit-content;
+    overflow-clip-margin: 30px !important;
+    overflow: visible !important;
   }
 `
 

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 type TagProps = {
   children: ReactNode
@@ -9,6 +9,7 @@ type TagProps = {
     width: number
     color: `#${string}`
   }
+  hoverable?: boolean
 }
 
 const TagWrapper = styled.span<TagProps>`
@@ -26,18 +27,26 @@ const TagWrapper = styled.span<TagProps>`
   align-items: center;
   transition: all 0.3s;
   z-index: 1;
-  width: fit-content;
+  /* width: fit-content; */
 
-  &:hover,
-  &:focus {
-    transform: scale(1.05);
-    z-index: 2;
-    box-shadow: ${({ theme }) => theme.boxShadow.far};
-  }
+  ${({ hoverable }) =>
+    hoverable &&
+    css`
+      &:hover,
+      &:focus {
+        transform: scale(1.05);
+        z-index: 2;
+        box-shadow: ${({ theme }) => theme.boxShadow.far};
+      }
+    `}
 `
 
-const Tag = ({ children, ...props }: TagProps) => {
-  return <TagWrapper {...props}>{children}</TagWrapper>
+const Tag = ({ children, hoverable = true, ...props }: TagProps) => {
+  return (
+    <TagWrapper {...props} hoverable={hoverable}>
+      {children}
+    </TagWrapper>
+  )
 }
 
 export default Tag

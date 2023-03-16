@@ -26,9 +26,33 @@ const CategoryTag = ({ categoryName, count, link }: CategoryTagProps) => {
   const theme = useTheme()
   const category = name2Cat[categoryName]
   return (
-    <object>
-      <Link href={link ?? ''}>
-        <Tag color="#fff" bgColor={theme.color.category[category]}>
+    <>
+      {link ? (
+        <Link href={link ?? ''}>
+          <Tag color="#fff" bgColor={theme.color.category[category]}>
+            <ImageWrapper>
+              <Image
+                src={`/logo-${category}.png`}
+                alt=""
+                width={20}
+                height={20}
+                style={{ objectFit: 'contain' }}
+              />
+            </ImageWrapper>
+            <TagText>
+              <>
+                {categoryName}
+                {count && <span> ({count})</span>}
+              </>
+            </TagText>
+          </Tag>
+        </Link>
+      ) : (
+        <Tag
+          color="#fff"
+          bgColor={theme.color.category[category]}
+          hoverable={false}
+        >
           <ImageWrapper>
             <Image
               src={`/logo-${category}.png`}
@@ -45,8 +69,8 @@ const CategoryTag = ({ categoryName, count, link }: CategoryTagProps) => {
             </>
           </TagText>
         </Tag>
-      </Link>
-    </object>
+      )}
+    </>
   )
 }
 

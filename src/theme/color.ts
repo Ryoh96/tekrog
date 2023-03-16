@@ -4,7 +4,7 @@ import type { ShareType } from '@/types/ShareType'
 const color: {
   category: Record<CategoryType, `#${string}`>
   share: Record<ShareType, `#${string}`>
-  page: Record<String, String>
+  page: Record<string, `#${string}`>
 } = {
   category: {
     javascript: '#f9bb2b',
