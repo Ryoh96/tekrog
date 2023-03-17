@@ -18,13 +18,15 @@ const Text = styled.p`
 
 type ShareProps = {
   className?: string
+  title: string
+  url: string
 }
 
-const Share = ({ className }: ShareProps) => {
+const Share = ({ className, title, url }: ShareProps) => {
   return (
     <ShareWrapper className={className}>
       <Text>シェア！</Text>
-      <ShareIcons />
+      <ShareIcons title={title} url={url}/>
     </ShareWrapper>
   )
 }

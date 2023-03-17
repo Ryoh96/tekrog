@@ -40,6 +40,7 @@ type PostHeadProps = {
   categories: {
     nodes: Category[]
   }
+  uri: string
 }
 
 const CategoryTagsWrapper = styled.div`
@@ -57,7 +58,7 @@ const Share = styled(_Share)`
   }
 `
 
-const PostHead = ({ title, date, imgUrl, categories }: PostHeadProps) => {
+const PostHead = ({ title, date, imgUrl, categories, uri }: PostHeadProps) => {
   return (
     <>
       <Title>{title}</Title>
@@ -79,7 +80,7 @@ const PostHead = ({ title, date, imgUrl, categories }: PostHeadProps) => {
           quality={75}
         />
       </Thumbnail>
-      <Share />
+      <Share title={title} url={`${process.env.NEXT_PUBLIC_SITE_URL}${uri}`}/>
     </>
   )
 }

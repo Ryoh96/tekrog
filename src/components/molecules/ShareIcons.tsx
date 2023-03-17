@@ -12,17 +12,28 @@ const ShareIconsWrapper = styled.div`
   gap: 16px;
 `
 
-const ShareIcons = () => {
+type ShareIconsProps = {
+  url: string
+  title: string
+}
+
+const ShareIcons = ({ url, title }: ShareIconsProps) => {
   const theme = useTheme()
   return (
     <ShareIconsWrapper>
       {shareListToIcon.map((share) => (
-        <RoundedIconButton
+        <a
+          href={share.href(url, title)}
           key={share.name}
-          bgColor={theme.color.share[share.name]}
-          icon={share?.icon as IconDefinition}
-          content={share.content}
-        />
+          target="_blank"
+          rel="nofollow noopener"
+        >
+          <RoundedIconButton
+            bgColor={theme.color.share[share.name]}
+            icon={share?.icon as IconDefinition}
+            content={share.content}
+          />
+        </a>
       ))}
     </ShareIconsWrapper>
   )

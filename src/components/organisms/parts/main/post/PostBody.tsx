@@ -110,7 +110,6 @@ const Postbody = ({ content }: PostBodyProps) => {
             if (node.name === 'img') {
               //@ts-ignore
               const { src, alt, width, height, class: clazz } = node.attribs
-              console.log(203, clazz)
               const url = String(src).startsWith('//') ? 'https:' + src : src
               if (clazz === 'lkc-thumbnail-img') {
                 return <Image src={url} alt={alt} width={150} height={150} />

@@ -61,7 +61,6 @@ const RelatedPosts = ({ categories }: RelatedPostsProps) => {
     }))
   )
 
-  console.log(333333, relatedPostsAll)
 
   const titles: string[] = []
   const uniqueRelatedPosts = relatedPostsAll.filter((post) => {

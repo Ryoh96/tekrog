@@ -22,6 +22,7 @@ const MainPost = ({ post }: MainPostProps) => {
         date={post.date}
         imgUrl={post.featuredImage.node.sourceUrl}
         categories={post.categories}
+        uri={post.uri}
       />
       <Postbody content={post.content} />
       <PostFoot
