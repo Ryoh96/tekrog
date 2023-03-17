@@ -1,14 +1,14 @@
-import '@/prism/prism.js'
-
 import parse from 'html-react-parser'
 import Image from 'next/image'
+import Prism from 'prismjs'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 
 import { styles } from '@/components/article'
 
 const WordPressText = styled.div`
   ul,
-  ol{
+  ol {
     line-height: 1.6;
   }
 
@@ -32,23 +32,16 @@ const WordPressText = styled.div`
     margin-bottom: 1em;
     padding-inline: 0.5em;
     line-height: 2;
+  }
 
-    /* &::before {
-      content: "";
-      display: inline-block;
-      width: 1em; */
-
-    }
-
-    img {
+  img {
     max-width: 100%;
     height: auto;
   }
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
-      font-size: 14px;
-    }
-  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    font-size: 14px;
+  }
 
   strong {
     font-weight: bold;
@@ -101,6 +94,9 @@ type PostBodyProps = {
 }
 
 const Postbody = ({ content }: PostBodyProps) => {
+  useEffect(() => {
+    Prism.highlightAll()
+  })
   return (
     <>
       <WordPressText>

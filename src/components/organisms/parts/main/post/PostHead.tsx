@@ -75,6 +75,7 @@ const PostHead = ({ title, date, imgUrl, categories, uri }: PostHeadProps) => {
           fill
           style={{
             objectFit: 'contain',
+            aspect
           }}
           sizes="50vw"
           quality={75}

@@ -1,7 +1,7 @@
 import { faWarning } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { GraphQLClient } from 'graphql-request'
-import type { GetStaticProps, NextPage, NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import styled from 'styled-components'
 
