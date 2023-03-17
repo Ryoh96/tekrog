@@ -13,6 +13,17 @@ const Thumbnail = styled.figure`
 
   img {
     position: static !important;
+    animation: fade 2s;
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 `
 
@@ -75,12 +86,13 @@ const PostHead = ({ title, date, imgUrl, categories, uri }: PostHeadProps) => {
           fill
           style={{
             objectFit: 'contain',
+            aspectRatio: '2000 / 1125',
           }}
           sizes="50vw"
           quality={75}
         />
       </Thumbnail>
-      <Share title={title} url={`${process.env.NEXT_PUBLIC_SITE_URL}${uri}`}/>
+      <Share title={title} url={`${process.env.NEXT_PUBLIC_SITE_URL}${uri}`} />
     </>
   )
 }

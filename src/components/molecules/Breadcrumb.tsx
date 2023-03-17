@@ -57,10 +57,7 @@ const Breadcrumb = ({ breadcrumbList }: BreadcrumbProps) => {
   return (
     <PageContainer>
       <nav aria-label="Breadcrumb">
-        <BreadcrumbList
-          itemScope
-          itemType="https://schema.org/BreadcrumbList"
-        >
+        <BreadcrumbList itemScope itemType="https://schema.org/BreadcrumbList">
           {list.map((item, index) => (
             <li
               key={index}
@@ -72,16 +69,16 @@ const Breadcrumb = ({ breadcrumbList }: BreadcrumbProps) => {
                 href={item.href}
                 itemProp="item"
                 itemScope
-                itemType='https://schema.org/WebPage'
+                itemType="https://schema.org/WebPage"
                 itemID={item.href}
-                aria-current={index === list.length-1 ? "page" : undefined}
+                aria-current={index === list.length - 1 ? 'page' : undefined}
               >
                 {index === 0 && (
                   <IconWrapper>
                     <FontAwesomeIcon icon={faHome} />
                   </IconWrapper>
                 )}
-                <Title>{item.name}</Title>
+                <Title itemProp="name">{item.name}</Title>
                 {index !== list.length - 1 && (
                   <FontAwesomeIcon icon={faChevronRight} />
                 )}
