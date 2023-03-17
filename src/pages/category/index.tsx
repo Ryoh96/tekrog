@@ -11,18 +11,19 @@ type CategoryProps = {
 }
 
 const Category: NextPage<CategoryProps> = ({ data }) => {
+  const title = "カテゴリー"
   const breadcrumbList: {
     name: string
     href: string
   }[] = [
     {
-      name: 'カテゴリー',
+      name: title,
       href: '/category',
     },
   ]
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList}>
+      <Layout data={data} breadcrumbList={breadcrumbList} title={title}>
         <MainAllCategories nodes={data.mainCategory.nodes} />
       </Layout>
     </>

@@ -10,7 +10,7 @@ const Main = ({ isSingle, data }: MainProps) => {
   return (
     <>
       {isSingle ? (
-        <MainSingle content={data.page.content} />
+        <MainSingle content={data.content} />
       ) : (
         <MainPost post={data} />
       )}

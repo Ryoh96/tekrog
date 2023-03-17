@@ -22,6 +22,8 @@ const CategoryPage = ({
   totalPages,
   pageNum,
 }: CategoryPageProps) => {
+  const title = cat2Name[categoryName as CategoryType] 
+
   const breadcrumbList: {
     name: string
     href: string
@@ -31,7 +33,7 @@ const CategoryPage = ({
       href: '/category',
     },
     {
-      name: cat2Name[categoryName as CategoryType],
+      name: title,
       href: `/${categoryName}`,
     },
     {
@@ -41,7 +43,7 @@ const CategoryPage = ({
   ]
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList}>
+      <Layout data={data} breadcrumbList={breadcrumbList} title={title}>
         <MainTopPage
           title={<MainEachCategoryTitle category={categoryName} />}
           posts={data.posts}
@@ -80,7 +82,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
       }
     }
   }
-  console.log(paths)
   return {
     paths,
     fallback: false,

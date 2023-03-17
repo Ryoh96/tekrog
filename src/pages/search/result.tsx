@@ -5,7 +5,6 @@ import type { GetServerSideProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
 import MainIconTitle from '@/components/organisms/parts/main/common/MainIconTitle'
-import MainSearch from '@/components/organisms/parts/main/search/MainSearch'
 import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { getSdk } from '@/graphql/generated/request'
 
@@ -15,6 +14,7 @@ type SearchProps = {
 }
 
 const Search: NextPage<SearchProps> = ({ data, query }) => {
+  const title = `『${query}』の検索結果`
   const breadcrumbList: {
     name: string
     href: string
@@ -27,7 +27,7 @@ const Search: NextPage<SearchProps> = ({ data, query }) => {
 
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList}>
+      <Layout data={data} breadcrumbList={breadcrumbList} title={title}>
         <MainTopPage
           title={
             <MainIconTitle

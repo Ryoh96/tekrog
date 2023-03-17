@@ -28,7 +28,7 @@ const MainEachCategoryTitle = ({ category }: MainTitleProps) => {
           width={44}
           style={{ objectFit: 'contain' }}
         />
-        <Title>{`${cat2Name[category as CategoryType]}の記事一覧`}</Title>
+        <Title>{`${cat2Name[category as CategoryType]}`}</Title>
       </>
     </MainTitle>
   )

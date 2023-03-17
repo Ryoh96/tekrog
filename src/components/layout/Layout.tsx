@@ -18,6 +18,7 @@ import SideTOC from '@/components/organisms/parts/side/SideTOC'
 
 import PcOnly from '../utils/PcOnly'
 import SpOnly from '../utils/SpOnly'
+import Meta from '../organisms/parts/meta/Meta'
 
 const PageTopButtonWrapper = styled.div`
   position: fixed;
@@ -31,6 +32,7 @@ type LayoutProps = {
   data: any
   breadcrumbList: { name: string; href: string }[]
   isPostPage?: boolean
+  title?: string
 }
 
 const Layout = ({
@@ -38,9 +40,13 @@ const Layout = ({
   data,
   breadcrumbList,
   isPostPage = false,
+  title
 }: LayoutProps) => {
   return (
     <>
+      <Meta 
+        pageTitle={title}
+      />
       <Header />
       <Hero />
       <Breadcrumb breadcrumbList={breadcrumbList} />

@@ -20,6 +20,7 @@ const Category: NextPage<CategoryProps> = ({
   categoryName,
   totalPages,
 }) => {
+  const title = cat2Name[categoryName as CategoryType]
   const breadcrumbList: {
     name: string
     href: string
@@ -29,13 +30,13 @@ const Category: NextPage<CategoryProps> = ({
       href: '/category',
     },
     {
-      name: cat2Name[categoryName as CategoryType],
+      name: title,
       href: `/${categoryName}`,
     },
   ]
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList}>
+      <Layout data={data} breadcrumbList={breadcrumbList} title={title}>
         <MainTopPage
           title={<MainEachCategoryTitle category={categoryName} />}
           posts={data.posts}

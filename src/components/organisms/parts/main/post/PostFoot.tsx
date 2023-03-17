@@ -38,7 +38,6 @@ type PostFootProps = {
 }
 
 const PostFoot = ({ categories, prevPost, nextPost }: PostFootProps) => {
-  console.log(10, prevPost)
   return (
     <>
       <Meta>

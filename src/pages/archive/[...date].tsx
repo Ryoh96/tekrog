@@ -16,23 +16,24 @@ type ArchiveProps = {
 }
 
 const Archive: NextPage<ArchiveProps> = ({ data, year, month }) => {
+  const title = `${year}年${month}月の投稿`
   const breadcrumbList: {
     name: string
     href: string
   }[] = [
     {
-      name: `${year}年${month}月の投稿`,
+      name: title,
       href: `/archive/${year}/${month}`,
     },
   ]
 
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList}>
+      <Layout data={data} breadcrumbList={breadcrumbList} title={title}>
         <MainTopPage
           title={
             <MainIconTitle icon={<FontAwesomeIcon icon={faCalendar} />}>
-              {`${year}/${month}の記事一覧`}
+              {title}
             </MainIconTitle>
           }
           posts={data.posts}

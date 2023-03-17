@@ -39,7 +39,6 @@ type DropDownProps = {
 }
 
 const DropDown = ({ value, links }: DropDownProps) => {
-  console.log(links)
   const router = useRouter()
 
   const selectValue = useCallback(

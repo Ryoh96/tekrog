@@ -12,37 +12,42 @@ type PostProps = {
 
 const Post: NextPage<PostProps> = ({ data, isSingle }) => {
   const content = isSingle
-    ? data
+    ? data.page
     : {
         ...data.post,
         prevPost: data.prevPost,
         nextPost: data.nextPost,
       }
+  const title = content.title
 
   const breadcrumbList = isSingle
     ? [
         {
-          name: content.page.title,
-          href: content.page.uri,
+          name: title,
+          href: content.uri,
         },
       ]
     : [
+        {
+          name: "カテゴリー",
+          href: "/category"
+        },
         {
           name: content.categories.nodes[0].name,
           href: content.categories.nodes[0].uri,
         },
         {
-          name: content.title,
+          name: title,
           href: content.uri,
         },
       ]
-
   return (
     <>
       <Layout
         data={data}
         breadcrumbList={breadcrumbList}
         isPostPage={isSingle ? false : true}
+        title={title}
       >
         <Main data={content} isSingle={isSingle} />
       </Layout>
@@ -73,7 +78,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const singlePaths: string[] = single.map(({ node }) => node.uri)
 
   paths.push(...singlePaths)
-  console.log(paths)
   return {
     paths,
     fallback: 'blocking',
