@@ -13,18 +13,24 @@ type PageProps = {
 }
 
 const Page: NextPage<PageProps> = ({ data, pageNum, totalPages }) => {
+  const url = `/page/${pageNum}`
   const breadcrumbList: {
     name: string
     href: string
   }[] = [
     {
       name: `ページ${pageNum}`,
-      href: `/page/${pageNum}`,
+      href: url,
     },
   ]
+
+  const meta = {
+    url,
+  }
+
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList}>
+      <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
         <MainTopPage
           posts={data.posts}
           totalPages={totalPages}

@@ -2,6 +2,7 @@ query getPostPage($id: ID!, $key: String!) {
   post(id: $id) {
     content
     date
+    excerpt
     categories {
       nodes {
         name

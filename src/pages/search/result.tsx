@@ -15,24 +15,36 @@ type SearchProps = {
 
 const Search: NextPage<SearchProps> = ({ data, query }) => {
   const title = `『${query}』の検索結果`
+  const desc = `『${query}』の検索結果を表示するページです。`
+  const url = `/search/result?s=${encodeURI(query)}`
   const breadcrumbList: {
     name: string
     href: string
   }[] = [
     {
-      name: `『${query}』の検索結果`,
-      href: ``,
+      name: title,
+      href: url,
     },
   ]
 
+  const meta = {
+    title,
+    desc,
+    url
+  }
+
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList} title={title}>
+      <Layout
+        data={data}
+        breadcrumbList={breadcrumbList}
+        meta={meta}
+      >
         <MainTopPage
           title={
             <MainIconTitle
               icon={<FontAwesomeIcon icon={faSearch} />}
-            >{`『${query}』の検索結果`}</MainIconTitle>
+            >{title}</MainIconTitle>
           }
           posts={data.posts}
           totalPages={1}

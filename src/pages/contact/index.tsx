@@ -12,17 +12,30 @@ type ContactProps = {
 
 const Contact: NextPage<ContactProps> = ({ data }) => {
   const title = 'お問い合わせ'
+  const desc = 'お問い合わせのページです。'
+  const url = "/contact"
   const breadcrumbList: {
     name: string
     href: string
   }[] = [
     {
       name: title,
-      href: '/contact',
+      href: url,
     },
   ]
+
+  const meta = {
+    title,
+    desc,
+    url
+  }
+
   return (
-    <Layout data={data} breadcrumbList={breadcrumbList} title={title}>
+    <Layout
+      data={data}
+      breadcrumbList={breadcrumbList}
+      meta={meta}
+    >
       <MainContact />
     </Layout>
   )

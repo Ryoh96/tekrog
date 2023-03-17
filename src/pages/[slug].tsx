@@ -20,34 +20,40 @@ const Post: NextPage<PostProps> = ({ data, isSingle }) => {
       }
   const title = content.title
 
-  const breadcrumbList = isSingle
-    ? [
-        {
-          name: title,
-          href: content.uri,
-        },
-      ]
-    : [
-        {
-          name: "カテゴリー",
-          href: "/category"
-        },
-        {
-          name: content.categories.nodes[0].name,
-          href: content.categories.nodes[0].uri,
-        },
-        {
-          name: title,
-          href: content.uri,
-        },
-      ]
+  let desc: string | undefined
+  let imgUrl: string | undefined
+
+  if (isSingle) {
+    desc = `『${title}』のページです。`
+  } else {
+    const excerpt = data.post.excerpt
+    desc = /<p>(.*?)<\/p>/.exec(excerpt)?.[1]
+    imgUrl = data.post.featuredImage.node.sourceUrl
+  }
+
+  const url = content.uri
+
+  const breadcrumbList = [
+    {
+      name: title,
+      href: url,
+    },
+  ]
+
+  const meta = {
+    title,
+    desc,
+    url,
+    imgUrl
+  }
+
   return (
     <>
       <Layout
         data={data}
         breadcrumbList={breadcrumbList}
         isPostPage={isSingle ? false : true}
-        title={title}
+        meta={meta}
       >
         <Main data={content} isSingle={isSingle} />
       </Layout>

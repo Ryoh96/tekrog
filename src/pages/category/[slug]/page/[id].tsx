@@ -22,7 +22,9 @@ const CategoryPage = ({
   totalPages,
   pageNum,
 }: CategoryPageProps) => {
-  const title = cat2Name[categoryName as CategoryType] 
+  const title = cat2Name[categoryName as CategoryType]
+  const desc = `${title}の記事一覧です。`
+  const url = `/category/${categoryName}`
 
   const breadcrumbList: {
     name: string
@@ -34,16 +36,27 @@ const CategoryPage = ({
     },
     {
       name: title,
-      href: `/${categoryName}`,
+      href: url,
     },
     {
       name: `ページ${pageNum}`,
-      href: `/${categoryName}/page/${pageNum}`,
+      href: `${url}/page/${pageNum}`,
     },
   ]
+
+  const meta = {
+    title,
+    desc,
+    url: `${url}/page/${pageNum}`,
+  }
+
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList} title={title}>
+      <Layout
+        data={data}
+        breadcrumbList={breadcrumbList}
+        meta={meta}
+      >
         <MainTopPage
           title={<MainEachCategoryTitle category={categoryName} />}
           posts={data.posts}

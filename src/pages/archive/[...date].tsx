@@ -4,7 +4,6 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainArchive from '@/components/organisms/parts/main/archive/MainArchive'
 import MainIconTitle from '@/components/organisms/parts/main/common/MainIconTitle'
 import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { getSdk } from '@/graphql/generated/request'
@@ -17,19 +16,31 @@ type ArchiveProps = {
 
 const Archive: NextPage<ArchiveProps> = ({ data, year, month }) => {
   const title = `${year}年${month}月の投稿`
+  const desc = `${year}年${month}月の投稿記事一覧です。`
+  const url = `/archive/${year}/${month}`
   const breadcrumbList: {
     name: string
     href: string
   }[] = [
     {
       name: title,
-      href: `/archive/${year}/${month}`,
+      href: url,
     },
   ]
 
+  const meta = {
+    title,
+    desc,
+    url
+  }
+
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList} title={title}>
+      <Layout
+        data={data}
+        breadcrumbList={breadcrumbList}
+        meta={meta}
+      >
         <MainTopPage
           title={
             <MainIconTitle icon={<FontAwesomeIcon icon={faCalendar} />}>

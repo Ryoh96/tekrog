@@ -32,7 +32,12 @@ type LayoutProps = {
   data: any
   breadcrumbList: { name: string; href: string }[]
   isPostPage?: boolean
-  title?: string
+  meta : {
+    title?: string
+    desc?: string
+    url?: string
+    imgUrl?: string
+  }
 }
 
 const Layout = ({
@@ -40,13 +45,11 @@ const Layout = ({
   data,
   breadcrumbList,
   isPostPage = false,
-  title
+  meta
 }: LayoutProps) => {
   return (
     <>
-      <Meta 
-        pageTitle={title}
-      />
+      <Meta {...meta}/>
       <Header />
       <Hero />
       <Breadcrumb breadcrumbList={breadcrumbList} />

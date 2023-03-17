@@ -5,25 +5,37 @@ import Layout from '@/components/layout/Layout'
 import MainAllCategories from '@/components/organisms/parts/main/category/MainAllCategories'
 import { getSdk } from '@/graphql/generated/request'
 
-
 type CategoryProps = {
   data: any
 }
 
 const Category: NextPage<CategoryProps> = ({ data }) => {
-  const title = "カテゴリー"
+  const title = 'カテゴリー'
+  const desc = 'カテゴリー一覧のページです。'
+  const url = "/category"
   const breadcrumbList: {
     name: string
     href: string
   }[] = [
     {
       name: title,
-      href: '/category',
+      href: url,
     },
   ]
+
+  const meta = {
+    title,
+    desc,
+    url
+  }
+
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList} title={title}>
+      <Layout
+        data={data}
+        breadcrumbList={breadcrumbList}
+        meta={meta}
+      >
         <MainAllCategories nodes={data.mainCategory.nodes} />
       </Layout>
     </>
