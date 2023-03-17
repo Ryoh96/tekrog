@@ -2,9 +2,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import HumbuggerButton from '@/components/atoms/HumbuggerButton'
+import HamburgerButton from '@/components/atoms/HamburgerButton'
 import SearchForm from '@/components/molecules/SearchForm'
-import PcOnly from '@/components/utils/PcOnly'
 import SpOnly from '@/components/utils/SpOnly'
 
 const gnavItems = [
@@ -50,7 +49,7 @@ const Gnav = () => {
 
   return (
     <>
-      <GnavList isOpen={isMenuOpen}>
+      <GnavList isOpen={isMenuOpen} id="hamburger-menu">
         <>
           {gnavItems.map((item) => (
             <Link href={item.href} key={item.title}>
@@ -63,7 +62,7 @@ const Gnav = () => {
         </>
       </GnavList>
       <SpOnly>
-        <HumbuggerButton onClick={toggleGnav} isOpen={isMenuOpen} />
+        <HamburgerButton onClick={toggleGnav} isOpen={isMenuOpen} />
       </SpOnly>
       {isMenuOpen && (
         <style jsx global>{`

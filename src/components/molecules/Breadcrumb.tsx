@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 import PageContainer from './../layout/PageContainer'
 
-const BreadcrumbWrapper = styled.div`
+const BreadcrumbList = styled.ol`
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -56,21 +56,41 @@ const Breadcrumb = ({ breadcrumbList }: BreadcrumbProps) => {
   const list = [{ name: 'ホーム', href: '/' }, ...breadcrumbList]
   return (
     <PageContainer>
-      <BreadcrumbWrapper>
-        {list.map((item, index) => (
-          <StyledLink key={index} href={item.href}>
-            {index === 0 && (
-              <IconWrapper>
-                <FontAwesomeIcon icon={faHome} />
-              </IconWrapper>
-            )}
-            <Title>{item.name}</Title>
-            {index !== list.length - 1 && (
-              <FontAwesomeIcon icon={faChevronRight} />
-            )}
-          </StyledLink>
-        ))}
-      </BreadcrumbWrapper>
+      <nav aria-label="Breadcrumb">
+        <BreadcrumbList
+          itemScope
+          itemType="https://schema.org/BreadcrumbList"
+        >
+          {list.map((item, index) => (
+            <li
+              key={index}
+              itemProp="itemListElement"
+              itemScope
+              itemType="https://schema.org/ListItem"
+            >
+              <StyledLink
+                href={item.href}
+                itemProp="item"
+                itemScope
+                itemType='https://schema.org/WebPage'
+                itemID={item.href}
+                aria-current={index === list.length-1 ? "page" : undefined}
+              >
+                {index === 0 && (
+                  <IconWrapper>
+                    <FontAwesomeIcon icon={faHome} />
+                  </IconWrapper>
+                )}
+                <Title>{item.name}</Title>
+                {index !== list.length - 1 && (
+                  <FontAwesomeIcon icon={faChevronRight} />
+                )}
+              </StyledLink>
+              <meta itemProp="position" content={`${index + 1}`} />
+            </li>
+          ))}
+        </BreadcrumbList>
+      </nav>
     </PageContainer>
   )
 }

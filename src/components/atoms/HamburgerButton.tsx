@@ -2,12 +2,12 @@ import styled from 'styled-components'
 
 import ScreenReaderOnly from '../utils/ScreenReaderOnly'
 
-type HumbuggerButtonProps = {
+type HamburgerButtonProps = {
   onClick: () => void
   isOpen: boolean
 }
 
-const HumbuggerButtonWrapper = styled.button<{ isOpen: boolean }>`
+const HamburgerButtonWrapper = styled.button<{ isOpen: boolean }>`
   all: unset;
   outline: revert;
   -webkit-tap-highlight-color: transparent;
@@ -59,13 +59,13 @@ const Bar = styled.span<{ isOpen: boolean }>`
   position: relative;
 `
 
-const HumbuggerButton = ({ onClick, isOpen }: HumbuggerButtonProps) => {
+const HamburgerButton = ({ onClick, isOpen }: HamburgerButtonProps) => {
   return (
-    <HumbuggerButtonWrapper onClick={onClick} isOpen={isOpen}>
+    <HamburgerButtonWrapper onClick={onClick} isOpen={isOpen} aria-label="メニュー" aria-expanded={isOpen} aria-controls="hamburger-menu">
       <ScreenReaderOnly>Menu</ScreenReaderOnly>
       <Bar isOpen={isOpen} />
-    </HumbuggerButtonWrapper>
+    </HamburgerButtonWrapper>
   )
 }
 
-export default HumbuggerButton
+export default HamburgerButton

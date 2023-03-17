@@ -58,6 +58,11 @@ export type GetStartCursorQueryVariables = Exact<{
 
 export type GetStartCursorQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null };
 
+export type GetNotFoundPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetNotFoundPageQuery = { __typename?: 'RootQuery', recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null };
+
 export type GetAllPathsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -296,6 +301,28 @@ export const GetStartCursorDocument = gql`
   }
 }
     `;
+export const GetNotFoundPageDocument = gql`
+    query getNotFoundPage {
+  recentPost: posts(first: 5) {
+    nodes {
+      ...RecentPost
+    }
+  }
+  archivePosts: posts(first: 1000) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+  categories(first: 30) {
+    nodes {
+      ...Category
+    }
+  }
+}
+    ${RecentPostFragmentDoc}
+${CategoryFragmentDoc}`;
 export const GetAllPathsDocument = gql`
     query getAllPaths {
   posts(first: 1000) {
@@ -552,6 +579,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getStartCursor(variables: GetStartCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetStartCursorQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetStartCursorQuery>(GetStartCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getStartCursor', 'query');
+    },
+    getNotFoundPage(variables?: GetNotFoundPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetNotFoundPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetNotFoundPageQuery>(GetNotFoundPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getNotFoundPage', 'query');
     },
     getAllPaths(variables?: GetAllPathsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllPathsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllPathsQuery>(GetAllPathsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPaths', 'query');

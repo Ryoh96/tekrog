@@ -86,7 +86,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   paths.push(...singlePaths)
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
   }
 }
 
