@@ -52,6 +52,7 @@ type PostHeadProps = {
     nodes: Category[]
   }
   uri: string
+  blurImg: string | null
 }
 
 const CategoryTagsWrapper = styled.div`
@@ -69,7 +70,14 @@ const Share = styled(_Share)`
   }
 `
 
-const PostHead = ({ title, date, imgUrl, categories, uri }: PostHeadProps) => {
+const PostHead = ({
+  title,
+  date,
+  imgUrl,
+  categories,
+  uri,
+  blurImg,
+}: PostHeadProps) => {
   return (
     <>
       <Title>{title}</Title>
@@ -90,6 +98,8 @@ const PostHead = ({ title, date, imgUrl, categories, uri }: PostHeadProps) => {
           }}
           sizes="50vw"
           quality={75}
+          placeholder="blur"
+          blurDataURL={blurImg ?? ""}
         />
       </Thumbnail>
       <Share title={title} url={`${process.env.NEXT_PUBLIC_SITE_URL}${uri}`} />

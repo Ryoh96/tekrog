@@ -60,12 +60,24 @@ const WordPressText = styled.div`
     ${styles.lkc}
   }
 
+  .linkcard {
+    a {
+      color: currentColor !important;
+      text-decoration: none;
+    }
+  }
+
   .point {
     ${styles.point}
   }
 
+
   .ulOnly {
     ${styles.ulOnly}
+  }
+
+  .ulUI {
+    ${styles.ulUI}
   }
 
   .olUI {
@@ -82,6 +94,20 @@ const WordPressText = styled.div`
 
   .error {
     ${styles.error}
+  }
+
+  .warning {
+    ${styles.warning}
+  }
+
+  a {
+    text-decoration: underline;
+    font-weight: bold;
+    color: ${({ theme }) => theme.color.page.main};
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   > *:last-child {

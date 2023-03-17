@@ -135,6 +135,7 @@ const lkc = css`
     align-self: center;
     line-height: 1.6;
     font-size: 15px;
+    font-weight: normal;
     @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
       font-size: 12px;
     }

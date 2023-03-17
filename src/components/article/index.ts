@@ -10,6 +10,8 @@ import pre from './pre'
 import table from './table'
 import toc from './toc'
 import ulOnly from './ulOnly'
+import ulUI from './ulUI'
+import warning from './warning'
 
 export const styles = {
   h2,
@@ -22,6 +24,8 @@ export const styles = {
   ulOnly,
   table,
   olUI,
+  ulUI,
   error,
-  blockquote
+  blockquote,
+  warning,
 }

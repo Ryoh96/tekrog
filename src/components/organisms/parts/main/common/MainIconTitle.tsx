@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import MainTitle from '../common/MainTitle'
 
 const Title = styled.h1`
-  font-size: 30px;
+  font-size: 36px;
+  font-weight: bold;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
     font-size: 26px;

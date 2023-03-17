@@ -12,9 +12,10 @@ type MainPostProps = {
       nodes: Post[]
     }
   }
+  blurImg: string | null
 }
 
-const MainPost = ({ post }: MainPostProps) => {
+const MainPost = ({ post, blurImg }: MainPostProps) => {
   return (
     <>
       <PostHead
@@ -23,6 +24,7 @@ const MainPost = ({ post }: MainPostProps) => {
         imgUrl={post.featuredImage.node.sourceUrl}
         categories={post.categories}
         uri={post.uri}
+        blurImg={blurImg}
       />
       <Postbody content={post.content} />
       <PostFoot

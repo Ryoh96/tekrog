@@ -1,5 +1,6 @@
 import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { getPlaiceholder } from 'plaiceholder'
 
 import Layout from '@/components/layout/Layout'
 import Main from '@/components/organisms/parts/main/common/Main'
@@ -8,9 +9,10 @@ import { getSdk } from '@/graphql/generated/request'
 type PostProps = {
   data: any
   isSingle: boolean
+  blurImg: string | null
 }
 
-const Post: NextPage<PostProps> = ({ data, isSingle }) => {
+const Post: NextPage<PostProps> = ({ data, isSingle, blurImg }) => {
   const content = isSingle
     ? data.page
     : {
@@ -44,7 +46,7 @@ const Post: NextPage<PostProps> = ({ data, isSingle }) => {
     title,
     desc,
     url,
-    imgUrl
+    imgUrl,
   }
 
   return (
@@ -55,7 +57,7 @@ const Post: NextPage<PostProps> = ({ data, isSingle }) => {
         isPostPage={isSingle ? false : true}
         meta={meta}
       >
-        <Main data={content} isSingle={isSingle} />
+        <Main data={content} isSingle={isSingle} blurImg={blurImg} />
       </Layout>
     </>
   )
@@ -100,6 +102,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
 
   let isSingle: boolean
   let data: any
+  let blurImg: string | null = null
 
   const single = await client.getAllFixedPage().then((data) => data.pages.edges)
 
@@ -129,12 +132,18 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
     }
 
     data = await client.getPostPage(queryParams)
+
+    const { base64 } = await getPlaiceholder(
+      data.post.featuredImage.node.sourceUrl
+    )
+    blurImg = base64
   }
 
   return {
     props: {
       data,
       isSingle,
+      blurImg,
     },
   }
 }
