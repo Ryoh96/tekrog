@@ -17,7 +17,7 @@ const pre = css`
   &[class*='file-httpd'] {
     border-radius: 10px;
     margin-bottom: 2em;
-    margin-top: -0.5em;
+    margin-top: 10px;
 
     &::before {
       white-space: pre-wrap;
@@ -30,6 +30,7 @@ const pre = css`
         rgba(8, 68, 163, 1) 0%,
         rgba(162, 31, 149, 1) 100%
       );
+      /* background-color:rgba(162, 31, 149, 1); */
       color: #fff;
       display: block;
       padding: 6px 18px 6px 16px;

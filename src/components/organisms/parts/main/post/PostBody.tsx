@@ -18,6 +18,10 @@ const WordPressText = styled.div`
 
   h3 {
     ${styles.h3}
+
+    + p + h4 {
+      margin-top: 2em;
+    }
   }
 
   h4 {
@@ -31,7 +35,16 @@ const WordPressText = styled.div`
   p {
     margin-bottom: 1em;
     padding-inline: 0.5em;
-    line-height: 2;
+    line-height: 1.8;
+    
+  }
+
+  > p:not([class]) {
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 1em;
+    }
   }
 
   img {

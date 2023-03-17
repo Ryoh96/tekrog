@@ -38,7 +38,11 @@ const lkc = css`
       top: -10px;
       left: -47px;
       padding-top: 30px;
-      background-color: red;
+      background: linear-gradient(
+        129deg,
+        rgba(174, 22, 181, 1) 0%,
+        rgba(219, 17, 74, 1) 100%
+      );
       color: #fff;
       display: grid;
       place-content: center;

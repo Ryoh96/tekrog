@@ -84,7 +84,7 @@ const Meta = styled.div`
 `
 
 const Title = styled.p`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   margin-top: 10px;
   margin-bottom: 10px;

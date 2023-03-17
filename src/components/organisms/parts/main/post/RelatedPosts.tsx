@@ -15,6 +15,11 @@ const CardWrapper = styled.div`
   gap: 40px 3%;
   margin-block: 20px;
 
+  p {
+    font-weight: normal;
+    font-size: 15px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 32px 3%;
@@ -26,7 +31,7 @@ const CardWrapper = styled.div`
 `
 
 const RelatedPostTitle = styled.p`
-  font-size: 24px;
+  font-size: 32px;
   margin-top: 0.2em;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
@@ -39,6 +44,9 @@ const RelatedTitleWrapper = styled.div`
   align-items: center;
   gap: 0.5em;
   margin-left: 0.3em;
+  border-bottom: 7px solid #1f2a82;
+  border-image: ${({ theme }) => theme.gradient.main};
+  border-image-slice: 1;
 
   svg {
     font-size: 24px;
@@ -60,7 +68,6 @@ const RelatedPosts = ({ categories }: RelatedPostsProps) => {
       uri: n.uri,
     }))
   )
-
 
   const titles: string[] = []
   const uniqueRelatedPosts = relatedPostsAll.filter((post) => {

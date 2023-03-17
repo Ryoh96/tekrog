@@ -63,7 +63,7 @@ const SideTocTitle = styled.a`
 const IconWrapper = styled.div<{ isActive: boolean; isLast: boolean }>`
   svg {
     font-size: 11px;
-    color: ${({ isActive }) => (isActive ? '#3f2fc8' : '#afc2c4')};
+    color: ${({ isActive }) => (isActive ? '#5b1cef' : '#afc2c4')};
     border: 4px solid;
     border-color: ${({ isActive }) => (isActive ? '#ff0' : 'transparent')};
     border-radius: 50%;

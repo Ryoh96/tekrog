@@ -4,8 +4,8 @@ const point = css`
   border: 5px solid #1f2a82;
   padding: 20px;
   position: relative;
-  margin-top: 72px;
-  margin-bottom: 40px;
+  margin-top: 62px;
+  margin-bottom: 20px;
   border-radius: 0 5px 5px;
   box-sizing: border-box;
   font-size: 16px;

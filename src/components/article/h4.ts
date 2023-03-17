@@ -11,8 +11,11 @@ const h4 = css`
   padding: 0.5em;
   font-weight: 700;
   font-size: 18px;
-  margin-top: 2.5em;
-  margin-bottom: 1em;
+  margin: 3em 0.3em 0.6em;
+
+  + * {
+    margin-top: 0;
+  }
 `
 
 export default h4

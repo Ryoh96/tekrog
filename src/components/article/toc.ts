@@ -45,6 +45,11 @@ const toc = css`
     font-size: 16px;
     display: grid;
     /* text-decoration: underline; */
+    
+    a {
+      text-decoration: none !important;
+    }
+
 
     a:hover {
       opacity: 0.6;
@@ -52,6 +57,7 @@ const toc = css`
 
     li {
       margin: 8px 1em;
+
       @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
         font-size: 14px;
       }
