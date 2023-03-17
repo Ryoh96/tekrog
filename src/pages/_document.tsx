@@ -1,3 +1,7 @@
+import type { DocumentContext } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
+import { ServerStyleSheet } from 'styled-components'
+
 // export default function Document() {
 //   return (
 //     <Html lang="ja">
@@ -9,9 +13,6 @@
 //     </Html>
 //   )
 // }
-import type { DocumentContext } from 'next/document'
-import Document, { Head, Html, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

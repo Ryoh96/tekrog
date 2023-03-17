@@ -12,6 +12,8 @@ import { theme } from '@/theme'
 // Prevent fontawesome from dynamically adding its css since we did it manually above
 config.autoAddCss = false
 
+
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>

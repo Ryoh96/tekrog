@@ -1,0 +1,27 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "prismjs",
+      {
+        "languages": [
+          "javascript",
+          "css",
+          "markup",
+          "php",
+          "typescript",
+          "tsx",
+          "python",
+          "graphql",
+          "bash",
+          "scss",
+          "graphql"
+        ],
+        "plugins": ["line-numbers"],
+        "theme": "twilight",
+        "css": true
+      }
+    ],
+    ["styled-components"]
+  ]
+}

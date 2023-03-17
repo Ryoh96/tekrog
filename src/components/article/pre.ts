@@ -5,11 +5,12 @@ const pre = css`
     font-size: 12px;
   }
 
- >  code {
+  border: none !important;
+  > code {
     /* overflow: auto !important; */
-    white-space: pre-wrap!important;
-    word-wrap: break-word!important;
-    overflow: auto!important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow: auto !important;
   }
 
   &[class*='language-'],
@@ -17,7 +18,7 @@ const pre = css`
     border-radius: 10px;
     margin-bottom: 2em;
     margin-top: -0.5em;
-    
+
     &::before {
       white-space: pre-wrap;
       font-weight: 700;
