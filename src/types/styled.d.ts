@@ -9,6 +9,7 @@ declare module 'styled-components' {
       main: string
     }
     breakpoints: {
+      xl: number
       sp: number
       sm: number
     }

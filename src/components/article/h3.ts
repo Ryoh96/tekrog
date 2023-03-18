@@ -1,12 +1,11 @@
 import { css } from 'styled-components'
 
 const h3 = css`
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
   margin-bottom: 0.8em;
   margin-inline: 0.5em;
-  padding: 8px;
-  padding-left: 0.7em;
+  padding: 6px 0.6em 5px;
   border-top: 3px solid #1f2a82;
   border-bottom: 3px solid #1f2a82;
   line-height: 1.5;

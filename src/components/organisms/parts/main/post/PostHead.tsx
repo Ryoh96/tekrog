@@ -28,6 +28,11 @@ const Thumbnail = styled.figure`
 `
 
 const Title = styled.h1`
+  @media (min-width: ${({ theme }) => theme.breakpoints.xl}px) {
+    font-size: 38px;
+    margin-block: 10px 36px;
+  }
+
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 24px;

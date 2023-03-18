@@ -8,6 +8,7 @@ import SideArea from '@/components/layout/SideArea'
 import TwoColumnContainer from '@/components/layout/TwoColumnsContainer'
 import Breadcrumb from '@/components/molecules/Breadcrumb'
 import SearchForm from '@/components/molecules/SearchForm'
+import GoogleAdsense from '@/components/organisms/adsense/GoogleAdsense'
 import Footer from '@/components/organisms/parts/footer/Footer'
 import Header from '@/components/organisms/parts/header/Header'
 import Hero from '@/components/organisms/parts/header/Hero'
@@ -16,9 +17,9 @@ import SideCategory from '@/components/organisms/parts/side/SideCategory'
 import SideRecentPosts from '@/components/organisms/parts/side/SideRecentPosts'
 import SideTOC from '@/components/organisms/parts/side/SideTOC'
 
+import Meta from '../organisms/parts/meta/Meta'
 import PcOnly from '../utils/PcOnly'
 import SpOnly from '../utils/SpOnly'
-import Meta from '../organisms/parts/meta/Meta'
 
 const PageTopButtonWrapper = styled.div`
   position: fixed;
@@ -32,7 +33,7 @@ type LayoutProps = {
   data: any
   breadcrumbList: { name: string; href: string }[]
   isPostPage?: boolean
-  meta : {
+  meta?: {
     title?: string
     desc?: string
     url?: string
@@ -45,11 +46,11 @@ const Layout = ({
   data,
   breadcrumbList,
   isPostPage = false,
-  meta
+  meta,
 }: LayoutProps) => {
   return (
     <>
-      <Meta {...meta}/>
+      <Meta {...meta} />
       <Header />
       <Hero />
       <Breadcrumb breadcrumbList={breadcrumbList} />
@@ -59,9 +60,25 @@ const Layout = ({
           <SideArea>
             <SearchForm />
             <SideRecentPosts posts={data.recentPost} />
+            <GoogleAdsense
+              style={{
+                display: 'inline-block',
+                width: '324px',
+                height: '270px',
+              }}
+              slot="6447253650"
+            />
             <SideCategory categories={data.categories} />
             <SideArchive posts={data.archivePosts} />
             {isPostPage && <SideTOC key={breadcrumbList.at(-1)?.name} />}
+            <GoogleAdsense
+              style={{
+                display: 'inline-block',
+                width: '324px',
+                height: '270px',
+              }}
+              slot="6447253650"
+            />
           </SideArea>
         </TwoColumnContainer>
       </PageContainer>

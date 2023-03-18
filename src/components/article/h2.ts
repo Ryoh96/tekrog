@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 
 const h2 = css`
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 0.6em;
   font-weight: 700;
   background: ${({ theme }) => theme.gradient.main};
@@ -29,7 +29,7 @@ const h2 = css`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
-    font-size: 22px;
+    font-size: 20px;
     padding-block: 11px;
   }
 `

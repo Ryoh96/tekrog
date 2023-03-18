@@ -4,10 +4,11 @@ import type { GetStaticProps, NextPage } from 'next'
 import Layout from '@/components/layout/Layout'
 import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
+import type { GetTopPageQuery } from '@/graphql/generated/request'
 import { getSdk } from '@/graphql/generated/request'
 
 type IndexProps = {
-  data: any
+  data: GetTopPageQuery
   totalPages: number
 }
 
@@ -37,7 +38,7 @@ export const getStaticProps: GetStaticProps<IndexProps> = async () => {
   const client = getSdk(graphQLCluent)
   const data = await client.getTopPage(queryParams)
 
-  const allCursor: { cursor: string }[] = await client
+  const allCursor = await client
     .getAllCursor()
     .then((data) => data.posts!.edges)
 

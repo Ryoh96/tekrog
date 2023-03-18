@@ -13,7 +13,7 @@ const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px 3%;
-  margin-block: 20px;
+  margin-block: 20px 50px;
 
   p {
     font-weight: normal;
@@ -31,7 +31,7 @@ const CardWrapper = styled.div`
 `
 
 const RelatedPostTitle = styled.p`
-  font-size: 32px;
+  font-size: 26px;
   margin-top: 0.2em;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {

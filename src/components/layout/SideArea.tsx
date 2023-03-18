@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 
+import { SIDE_AREA_WIDTH } from '@/constants/number'
+
 const SideAreaWrapper = styled.aside`
-  flex: 0 0 324px;
+  flex: 0 0 ${SIDE_AREA_WIDTH};
   display: flex;
 `
 

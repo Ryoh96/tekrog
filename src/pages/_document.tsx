@@ -1,5 +1,6 @@
 import type { DocumentContext } from 'next/document'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 import { ServerStyleSheet } from 'styled-components'
 
 // export default function Document() {
@@ -44,7 +45,13 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="ja">
-        <Head />
+        <Head>
+          {/* <Script
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5954645555619996"
+            crossOrigin="anonymous"
+            strategy="beforeInteractive"
+          /> */}
+        </Head>
         <body>
           <Main />
           <NextScript />
