@@ -13,7 +13,6 @@ const CategoryTags = ({ categories }: CategoryTagsProps) => {
       ? node.uri.slice(node.uri.indexOf('/', node.uri.indexOf('/') + 1) )
       : node.uri
   )
-  console.log(999, url)
   return (
     <>
       {categories.nodes.map(
