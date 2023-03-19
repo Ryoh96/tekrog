@@ -3006,6 +3006,10 @@ export enum MimeTypeEnum {
 
 /** An object with an ID */
 export type Node = {
+  title: any;
+  categories: any;
+  featuredImage: any;
+  uri: any;
   /** The globally unique ID for the object */
   id: Scalars['ID'];
 };

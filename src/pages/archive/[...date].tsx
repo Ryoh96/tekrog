@@ -6,10 +6,10 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Layout from '@/components/layout/Layout'
 import MainIconTitle from '@/components/organisms/parts/main/common/MainIconTitle'
 import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
-import { getSdk } from '@/graphql/generated/request'
+import { type GetArchivePageQuery, getSdk } from '@/graphql/generated/request'
 
 type ArchiveProps = {
-  data: any
+  data: GetArchivePageQuery
   year: number
   month: number
 }
@@ -31,16 +31,12 @@ const Archive: NextPage<ArchiveProps> = ({ data, year, month }) => {
   const meta = {
     title,
     desc,
-    url
+    url,
   }
 
   return (
     <>
-      <Layout
-        data={data}
-        breadcrumbList={breadcrumbList}
-        meta={meta}
-      >
+      <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
         <MainTopPage
           title={
             <MainIconTitle icon={<FontAwesomeIcon icon={faCalendar} />}>

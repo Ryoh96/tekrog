@@ -2,18 +2,18 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import { getSdk } from '@/graphql/generated/request'
+import { type GetContactPageQuery, getSdk } from '@/graphql/generated/request'
 
 import MainContact from '../../components/organisms/parts/main/contact/MainContact'
 
 type ContactProps = {
-  data: any
+  data: GetContactPageQuery
 }
 
 const Contact: NextPage<ContactProps> = ({ data }) => {
   const title = 'お問い合わせ'
   const desc = 'お問い合わせのページです。'
-  const url = "/contact"
+  const url = '/contact'
   const breadcrumbList: {
     name: string
     href: string
@@ -27,15 +27,11 @@ const Contact: NextPage<ContactProps> = ({ data }) => {
   const meta = {
     title,
     desc,
-    url
+    url,
   }
 
   return (
-    <Layout
-      data={data}
-      breadcrumbList={breadcrumbList}
-      meta={meta}
-    >
+    <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
       <MainContact />
     </Layout>
   )

@@ -1,5 +1,6 @@
 import type { CategoryType } from '@/types/CategoryType'
 import type { ShareType } from '@/types/ShareType'
+import { graphql } from './../graphql/generated/gql';
 
 const color: {
   category: Record<CategoryType, `#${string}`>
@@ -16,11 +17,12 @@ const color: {
     wordpress: '#1f6f93',
     react: '#5acbe8',
     laravel: '#f28c8e',
-    sass: '#ed87c0',
+    sass: '#CD6799',
     appli: '#555',
     php: '#7f80be',
     math: '#9261a7',
     news: '#a4ca66',
+    graphql: '#f059bf'
   },
   share: {
     twitter: '#1e9af0',

@@ -93,6 +93,9 @@ const pre = css`
   &[class*='language-tsx']::before {
     content: 'React';
   }
+  &[class*='language-graphql']::before {
+    content: 'GraphQL';
+  }
 `
 
 export default pre

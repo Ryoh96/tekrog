@@ -5,12 +5,12 @@ import Layout from '@/components/layout/Layout'
 import MainEachCategoryTitle from '@/components/organisms/parts/main/category/MainEachCategoryTitle'
 import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
-import { getSdk } from '@/graphql/generated/request'
+import { type GetCategoryPageQuery, getSdk } from '@/graphql/generated/request'
 import type { CategoryType } from '@/types/CategoryType'
 import { cat2Name } from '@/utils/cat2name'
 
 type CategoryPageProps = {
-  data: any
+  data: GetCategoryPageQuery
   pageNum: number
   categoryName: string
   totalPages: number
@@ -52,11 +52,7 @@ const CategoryPage = ({
 
   return (
     <>
-      <Layout
-        data={data}
-        breadcrumbList={breadcrumbList}
-        meta={meta}
-      >
+      <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
         <MainTopPage
           title={<MainEachCategoryTitle category={categoryName} />}
           posts={data.posts}

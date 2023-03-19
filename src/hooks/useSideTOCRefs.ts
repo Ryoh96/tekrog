@@ -5,7 +5,7 @@ const useSideTOCRefs = (
   headingNames: [string, string][],
   currentHeadingIndex: number
 ) => {
-  const sideContentInnerRef = useRef<HTMLDivElement | null>()
+  const sideContentInnerRef = useRef<HTMLDivElement | null>(null)
   const offset = 60
   const titleRef = useRef<RefObject<HTMLAnchorElement>[]>([])
 

@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 import Card from '@/components/organisms/ui/Card'
 import NumericPager from '@/components/organisms/ui/NumericPager'
-import type { PostConnection } from '@/graphql/generated/graphql'
+import type { GetTopPageQuery } from '@/graphql/generated/request'
 
 type MainTopProps = {
-  posts: PostConnection & { edges: { cursor: string }[] }
+  posts: GetTopPageQuery['posts']
   totalPages: number
   current?: number
   type?: string
@@ -50,20 +50,28 @@ const MainTopPage = ({
       <MainContentWrapper>
         {title}
         <CardWrapper>
-          {posts.nodes.map((node) => (
-            <Link key={node.uri} href={node.uri}>
-              <article>
-                <Card
-                  key={node.uri}
-                  title={node.title}
-                  categories={node.categories.nodes}
-                  date={node.date}
-                  imgUrl={node.featuredImage.node.sourceUrl}
-                  desc={node.excerpt.slice(3, node.excerpt.length - 5)}
-                />
-              </article>
-            </Link>
-          ))}
+          {posts?.nodes.map(
+            (node) =>
+              node && (
+                <Link key={node.uri} href={node.uri ?? ''}>
+                  <article>
+                    <Card
+                      key={node.uri}
+                      title={node.title ?? ''}
+                      categories={
+                        node.categories!.nodes as any as {
+                          name: string
+                          uri: string
+                        }[]
+                      }
+                      date={node.date ?? ''}
+                      imgUrl={node.featuredImage?.node.sourceUrl ?? ''}
+                      desc={node.excerpt?.slice(3, node.excerpt.length - 5)}
+                    />
+                  </article>
+                </Link>
+              )
+          )}
         </CardWrapper>
       </MainContentWrapper>
       <NumericPagerWrapper>

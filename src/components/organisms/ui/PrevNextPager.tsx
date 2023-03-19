@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
 
-import type { Post } from '@/graphql/generated/graphql'
+import type { NextPost, PrevPost } from '@/types/Page'
 
 type PrevNextPagerProps = {
   mode: 'prev' | 'next'
@@ -136,32 +136,28 @@ const PrevNextPagersWrapper = styled.div`
 `
 
 type PrevNextPagersProp = {
-  prevPost: {
-    nodes: Post[]
-  }
-  nextPost: {
-    nodes: Post[]
-  }
+  prevPost: PrevPost
+  nextPost: NextPost
 }
 
 const PrevNextPagers = ({ prevPost, nextPost }: PrevNextPagersProp) => {
   return (
     <PrevNextPagersWrapper>
-      {prevPost.nodes[0] && (
-        <Link href={prevPost.nodes[0].uri}>
+      {prevPost && (
+        <Link href={prevPost.uri as string}>
           <PrevNextPager
             mode="prev"
-            imgUrl={prevPost.nodes[0].featuredImage.node.sourceUrl}
-            title={prevPost.nodes[0].title}
+            imgUrl={prevPost.featuredImage?.node.sourceUrl as string}
+            title={prevPost.title as string}
           />
         </Link>
       )}
-      {nextPost.nodes[0] && (
-        <Link href={nextPost.nodes[0].uri}>
+      {nextPost && (
+        <Link href={nextPost.uri as string}>
           <PrevNextPager
             mode="next"
-            imgUrl={nextPost.nodes[0].featuredImage.node.sourceUrl}
-            title={nextPost.nodes[0].title}
+            imgUrl={nextPost.featuredImage?.node.sourceUrl as string}
+            title={nextPost.title as string}
           />
         </Link>
       )}

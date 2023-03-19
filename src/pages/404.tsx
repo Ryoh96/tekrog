@@ -6,6 +6,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 import Layout from '@/components/layout/Layout'
+import type { GetNotFoundPageQuery } from '@/graphql/generated/request'
 import { getSdk } from '@/graphql/generated/request'
 
 import MainIconTitle from './../components/organisms/parts/main/common/MainIconTitle'
@@ -27,7 +28,7 @@ const StyledLink = styled(Link)`
 `
 
 type NotFoundProps = {
-  data: any
+  data: GetNotFoundPageQuery
 }
 
 const NotFound: NextPage<NotFoundProps> = ({ data }: NotFoundProps) => {

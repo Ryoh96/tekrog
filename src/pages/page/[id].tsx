@@ -4,10 +4,10 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Layout from '@/components/layout/Layout'
 import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
-import { getSdk } from '@/graphql/generated/request'
+import { getSdk, type GetTopPageQuery } from '@/graphql/generated/request'
 
 type PageProps = {
-  data: any
+  data: GetTopPageQuery
   pageNum: number
   totalPages: number
 }

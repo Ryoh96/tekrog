@@ -5,6 +5,8 @@ import CategoryTags from '@/components/organisms/ui/CategoryTags'
 import PrevNextPagers from '@/components/organisms/ui/PrevNextPager'
 import _Share from '@/components/organisms/ui/Share'
 import type { Category, Post } from '@/graphql/generated/graphql'
+import type { GetPostPageQuery } from '@/graphql/generated/request'
+import type { NextPost, PrevPost } from '@/types/Page'
 
 const Meta = styled.div`
   display: flex;
@@ -29,22 +31,29 @@ type PostFootProps = {
   categories: {
     nodes: Category[]
   }
-  prevPost: {
-    nodes: Post[]
-  }
-  nextPost: {
-    nodes: Post[]
-  }
+  prevPost: PrevPost
+  nextPost: NextPost
+  title: string
+  uri: string
 }
 
-const PostFoot = ({ categories, prevPost, nextPost }: PostFootProps) => {
+const PostFoot = ({
+  categories,
+  prevPost,
+  nextPost,
+  title,
+  uri,
+}: PostFootProps) => {
   return (
     <>
       <Meta>
         <CategoryTagsWrapper>
           <CategoryTags categories={categories} />
         </CategoryTagsWrapper>
-        <Share />
+        <Share
+          title={title}
+          url={`${process.env.NEXT_PUBLIC_SITE_URL}${uri}`}
+        />
       </Meta>
       <RelatedPosts categories={categories} />
       <PrevNextPagers prevPost={prevPost} nextPost={nextPost} />

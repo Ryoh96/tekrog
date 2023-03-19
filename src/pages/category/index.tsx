@@ -3,16 +3,19 @@ import type { GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
 import MainAllCategories from '@/components/organisms/parts/main/category/MainAllCategories'
-import { getSdk } from '@/graphql/generated/request'
+import {
+  type GetAllCategoriesPageQuery,
+  getSdk,
+} from '@/graphql/generated/request'
 
 type CategoryProps = {
-  data: any
+  data: GetAllCategoriesPageQuery
 }
 
 const Category: NextPage<CategoryProps> = ({ data }) => {
   const title = 'カテゴリー'
   const desc = 'カテゴリー一覧のページです。'
-  const url = "/category"
+  const url = '/category'
   const breadcrumbList: {
     name: string
     href: string
@@ -26,16 +29,12 @@ const Category: NextPage<CategoryProps> = ({ data }) => {
   const meta = {
     title,
     desc,
-    url
+    url,
   }
 
   return (
     <>
-      <Layout
-        data={data}
-        breadcrumbList={breadcrumbList}
-        meta={meta}
-      >
+      <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
         <MainAllCategories nodes={data.mainCategory.nodes} />
       </Layout>
     </>

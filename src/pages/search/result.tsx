@@ -6,10 +6,10 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Layout from '@/components/layout/Layout'
 import MainIconTitle from '@/components/organisms/parts/main/common/MainIconTitle'
 import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
-import { getSdk } from '@/graphql/generated/request'
+import { getSdk, type SearchPostsQuery } from '@/graphql/generated/request'
 
 type SearchProps = {
-  data: any
+  data: SearchPostsQuery
   query: string
 }
 
@@ -30,21 +30,17 @@ const Search: NextPage<SearchProps> = ({ data, query }) => {
   const meta = {
     title,
     desc,
-    url
+    url,
   }
 
   return (
     <>
-      <Layout
-        data={data}
-        breadcrumbList={breadcrumbList}
-        meta={meta}
-      >
+      <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
         <MainTopPage
           title={
-            <MainIconTitle
-              icon={<FontAwesomeIcon icon={faSearch} />}
-            >{title}</MainIconTitle>
+            <MainIconTitle icon={<FontAwesomeIcon icon={faSearch} />}>
+              {title}
+            </MainIconTitle>
           }
           posts={data.posts}
           totalPages={1}

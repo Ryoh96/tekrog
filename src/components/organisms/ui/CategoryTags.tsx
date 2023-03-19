@@ -8,16 +8,22 @@ type CategoryTagsProps = {
 }
 
 const CategoryTags = ({ categories }: CategoryTagsProps) => {
+  const url = categories.nodes.map((node) =>
+    node.uri.split('/').length === 5
+      ? node.uri.slice(node.uri.indexOf('/', node.uri.indexOf('/') + 1) )
+      : node.uri
+  )
+  console.log(999, url)
   return (
     <>
       {categories.nodes.map(
-        (category) =>
+        (category, index) =>
           category.count !== null && (
             <CategoryTag
               key={category.name}
               categoryName={category.name}
               count={category.count}
-              link={category.uri}
+              link={url[index]}
             />
           )
       )}

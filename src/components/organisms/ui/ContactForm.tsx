@@ -89,7 +89,6 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
           message,
         }),
       })
-      console.log('Response received')
       if (res.status === 200) {
         onCompleted()
         setIsSend(true)
@@ -168,7 +167,10 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
           </FormLabel>
           <Button
             type="submit"
-            disabled={!!Object.keys(errors).length || !(dirtyFields.name && dirtyFields.email && dirtyFields.message)}
+            disabled={
+              !!Object.keys(errors).length ||
+              !(dirtyFields.name && dirtyFields.email && dirtyFields.message)
+            }
           >
             送信
           </Button>

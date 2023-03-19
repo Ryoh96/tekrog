@@ -5,7 +5,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ['tekrog.com', "www.google.com", "s.wordpress.com"],
+    domains: [process.env.HOST , "www.google.com", "s.wordpress.com"],
   },
   eslint: {
     ignoreDuringBuilds: true,

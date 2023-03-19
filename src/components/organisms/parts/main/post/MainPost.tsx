@@ -1,17 +1,12 @@
 import Postbody from '@/components/organisms/parts/main/post/PostBody'
 import PostFoot from '@/components/organisms/parts/main/post/PostFoot'
 import PostHead from '@/components/organisms/parts/main/post/PostHead'
-import type { Post } from '@/graphql/generated/graphql'
+import type { Category, Post } from '@/graphql/generated/graphql'
+import type { GetPostPageQuery } from '@/graphql/generated/request'
+import type { NextPost, PostPageQuery, PrevPost } from '@/types/Page'
 
 type MainPostProps = {
-  post: Post & {
-    prevPost: {
-      nodes: Post[]
-    }
-    nextPost: {
-      nodes: Post[]
-    }
-  }
+  post: PostPageQuery
   blurImg: string | null
 }
 
@@ -19,16 +14,26 @@ const MainPost = ({ post, blurImg }: MainPostProps) => {
   return (
     <>
       <PostHead
-        title={post.title}
-        date={post.date}
-        imgUrl={post.featuredImage.node.sourceUrl}
-        categories={post.categories}
-        uri={post.uri}
+        title={post.title as string}
+        date={post.date as string}
+        imgUrl={post.featuredImage?.node.sourceUrl as string}
+        categories={
+          post.categories as {
+            nodes: Category[]
+          }
+        }
+        uri={post.uri as string}
         blurImg={blurImg}
       />
-      <Postbody content={post.content} />
+      <Postbody content={post.content as string} />
       <PostFoot
-        categories={post.categories}
+        title={post.title as string}
+        uri={post.uri as string}
+        categories={
+          post.categories as {
+            nodes: Category[]
+          }
+        }
         prevPost={post.prevPost}
         nextPost={post.nextPost}
       />

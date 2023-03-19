@@ -13,3 +13,4 @@ export type CategoryType =
   | 'typescript'
   | 'vuejs'
   | 'wordpress'
+  | 'graphql'

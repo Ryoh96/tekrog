@@ -18,6 +18,7 @@ export const cat2Name: Record<CategoryType, string> = {
   typescript: 'TypeScript',
   vuejs: 'Vue.js',
   wordpress: 'WordPress',
+  graphql: 'GraphQL'
 }
 
 export const name2Cat: Record<string, CategoryType> = invertObject(cat2Name)
