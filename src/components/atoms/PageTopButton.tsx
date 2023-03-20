@@ -17,7 +17,7 @@ const Button = styled.div`
   cursor: pointer;
   border-radius: 50%;
   transition: transform 0.3s;
-  
+
   &:hover {
     transform: scale(1.1);
   }
@@ -31,8 +31,8 @@ const Anchor = styled.a``
 const PageTopButton = () => {
   const toPageTop = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    document.body.scrollIntoView({ 
-      // behavior: 'smooth' 
+    document.body.scrollIntoView({
+      // behavior: 'smooth'
     })
   }, [])
   return (

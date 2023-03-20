@@ -2,7 +2,7 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
+import MainTopPage from '@/components/layout/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import { getSdk, type GetTopPageQuery } from '@/graphql/generated/request'
 
@@ -49,11 +49,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   )
   const client = getSdk(graphQLClient)
 
-  const allCursor: { cursor: string }[] = await client
+  const allCursor = await client
     .getAllCursor()
-    .then((data) => data.posts.edges)
+    .then((data) => data.posts?.edges)
 
-  const totalPosts = allCursor.length
+  const totalPosts = allCursor?.length ?? 1
   const totalPage = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)
   const paths = [...Array(totalPage)].map((_, i) => `/page/${i + 1}`)
   paths.shift()
@@ -70,17 +70,17 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   )
   const client = getSdk(graphQLClient)
 
-  const allCursor: { cursor: string }[] = await client
+  const allCursor = await client
     .getAllCursor()
-    .then((data) => data.posts.edges)
+    .then((data) => data.posts?.edges)
 
   const queryParams = {
-    after: allCursor[(pageNum - 1) * POSTS_PER_PAGE - 1].cursor,
+    after: allCursor?.[(pageNum - 1) * POSTS_PER_PAGE - 1].cursor,
     first: POSTS_PER_PAGE,
   }
   const data = await client.getTopPage(queryParams)
 
-  const totalPosts = allCursor.length
+  const totalPosts = allCursor?.length ?? 1
   const totalPages = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)
 
   return {

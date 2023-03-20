@@ -7,7 +7,7 @@ import Card from '@/components/organisms/ui/Card'
 import type { Category } from '@/graphql/generated/graphql'
 import shuffleArray from '@/utils/shuffleArray'
 
-const RelatedPostsWrapper = styled.div``
+const PostRelatedWrapper = styled.div``
 
 const CardWrapper = styled.div`
   display: grid;
@@ -53,32 +53,39 @@ const RelatedTitleWrapper = styled.div`
   }
 `
 
-type RelatedPostsProps = {
+type PostRelatedProps = {
   categories: {
     nodes: Category[]
   }
 }
 
-const RelatedPosts = ({ categories }: RelatedPostsProps) => {
-  const relatedPostsAll = categories.nodes.flatMap((node) =>
-    node.posts?.nodes.map((n) => ({
-      title: n.title,
-      categories: n.categories.nodes,
-      imgUrl: n.featuredImage.node.sourceUrl,
-      uri: n.uri,
-    }))
+const PostRelated = ({ categories }: PostRelatedProps) => {
+  const PostRelatedAll = categories.nodes.flatMap((node) =>
+    node.posts?.nodes.map(
+      (n: {
+        title: string
+        categories: { nodes: any }
+        featuredImage: { node: { sourceUrl: string } }
+        uri: string
+      }) => ({
+        title: n.title,
+        categories: n.categories.nodes,
+        imgUrl: n.featuredImage.node.sourceUrl,
+        uri: n.uri,
+      })
+    )
   )
 
   const titles: string[] = []
-  const uniqueRelatedPosts = relatedPostsAll.filter((post) => {
+  const uniquePostRelated = PostRelatedAll.filter((post) => {
     return titles.includes(post?.title) ? false : titles.push(post?.title)
   })
 
-  const relatedPostsShuffled = shuffleArray(uniqueRelatedPosts)
-  const posts = relatedPostsShuffled.slice(0, 6)
+  const PostRelatedShuffled = shuffleArray(uniquePostRelated)
+  const posts = PostRelatedShuffled.slice(0, 6)
 
   return (
-    <RelatedPostsWrapper>
+    <PostRelatedWrapper>
       <RelatedTitleWrapper>
         <FontAwesomeIcon icon={faPencil} />
         <RelatedPostTitle>関連記事</RelatedPostTitle>
@@ -100,8 +107,8 @@ const RelatedPosts = ({ categories }: RelatedPostsProps) => {
           </>
         ))}
       </CardWrapper>
-    </RelatedPostsWrapper>
+    </PostRelatedWrapper>
   )
 }
 
-export default RelatedPosts
+export default PostRelated

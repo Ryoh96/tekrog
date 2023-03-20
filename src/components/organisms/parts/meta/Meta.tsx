@@ -11,7 +11,7 @@ const Meta = ({
   title: pageTitle,
   desc: pageDesc,
   url: pageUrl,
-  imgUrl
+  imgUrl,
 }: MetaProps) => {
   const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE
   const siteType = process.env.NEXT_PUBLIC_SITE_TYPE
@@ -25,7 +25,7 @@ const Meta = ({
 
   const url = pageUrl ? `${siteUrl}${pageUrl}` : siteUrl
 
-  const img = imgUrl ?? "/thumb-null.png"
+  const img = imgUrl ?? '/thumb-null.png'
 
   return (
     <Head>
@@ -45,11 +45,11 @@ const Meta = ({
       <link rel="icon" href={siteIcon} />
       <link rel="apple-touch-icon" href={siteIcon} />
 
-      <meta property='pg:image' content={img} />
-      <meta property='og:image:width' content="2000" />
-      <meta property='og:image:height' content="1125" />
+      <meta property="pg:image" content={img} />
+      <meta property="og:image:width" content="2000" />
+      <meta property="og:image:height" content="1125" />
 
-      <meta name="twitter:card" content="summary_large_image"/>
+      <meta name="twitter:card" content="summary_large_image" />
     </Head>
   )
 }

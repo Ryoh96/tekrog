@@ -55,7 +55,7 @@ const SendEmail = ({ sec = 10 }: SendEmailProps) => {
 
     setTimeout(() => {
       clearInterval(id)
-      router.push("/")
+      router.push('/')
     }, sec * 1000)
 
     return () => clearInterval(id)
@@ -65,7 +65,7 @@ const SendEmail = ({ sec = 10 }: SendEmailProps) => {
     <>
       <p>お問い合わせが完了しました！</p>
       <p>メッセージが確認でき次第、折り返しご連絡致します。</p>
-      <div style={{paddingBottom: "30px"}} />
+      <div style={{ paddingBottom: '30px' }} />
       <Bold>※{count}秒後にトップページへ戻ります</Bold>
       <BarWrapper>
         <Bar sec={sec} />

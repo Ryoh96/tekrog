@@ -1,8 +1,5 @@
 import 'styled-components'
 
-import type { CategoryType } from '@/types/CategoryType'
-import type { ShareType } from '@/types/ShareType'
-
 declare module 'styled-components' {
   export interface DefaultTheme {
     gradient: {
@@ -14,12 +11,9 @@ declare module 'styled-components' {
       sm: number
     }
     color: {
-      category: Record<CategoryType, `#${string}`>
-      share: Record<ShareType, `#${string}`>
-      page: {
-        main: `#${string}`
-        accent: `#${string}`
-      }
+      category: Record<string, string>
+      share: Record<string, string>
+      page: Record<string, string>
     }
     boxShadow: {
       near: string

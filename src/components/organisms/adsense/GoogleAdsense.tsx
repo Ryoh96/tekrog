@@ -12,9 +12,9 @@ type GoogleAdsenseProps = {
 const GoogleAdsense = ({
   slot,
   style = { display: 'block' },
-  format = "auto",
+  format = 'auto',
   responsive = 'false',
-  layout
+  layout,
 }: GoogleAdsenseProps) => {
   const { asPath } = useRouter()
 

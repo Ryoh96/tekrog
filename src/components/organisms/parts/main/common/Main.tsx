@@ -1,15 +1,6 @@
-import MainPost from '@/components/organisms/parts/main/post/MainPost'
-import MainSingle from '@/components/organisms/parts/main/single/MainSingle'
-import type {
-  GetFixedPageQuery,
-  GetPostPageQuery,
-} from '@/graphql/generated/request'
-import type {
-  FixedPageQuery,
-  NextPost,
-  PostPageQuery,
-  PrevPost,
-} from '@/types/Page'
+import FixedMain from '@/components/organisms/parts/main/fixed/FixedMain'
+import PostMain from '@/components/organisms/parts/main/post/PostMain'
+import type { FixedPageQuery, PostPageQuery } from '@/types/Page'
 
 type MainProps = {
   data: FixedPageQuery | PostPageQuery
@@ -23,13 +14,13 @@ const Main = ({ data, blurImg, isSingle }: MainProps) => {
     <>
       {isSingle ? (
         <>
-          <MainSingle
+          <FixedMain
             content={data?.content as string}
             title={data?.title as string}
           />
         </>
       ) : (
-        <MainPost post={data as PostPageQuery} blurImg={blurImg} />
+        <PostMain post={data as PostPageQuery} blurImg={blurImg} />
       )}
     </>
   )

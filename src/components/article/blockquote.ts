@@ -18,7 +18,7 @@ const blockquote = css`
     margin-inline-start: 1.3em;
 
     &:hover {
-      opacity: .7;
+      opacity: 0.7;
     }
   }
 `

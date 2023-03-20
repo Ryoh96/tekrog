@@ -22,7 +22,7 @@ const h2 = css`
 
   &:not(:first-of-type) {
     margin-top: 80px;
-    
+
     @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
       margin-top: 60px;
     }

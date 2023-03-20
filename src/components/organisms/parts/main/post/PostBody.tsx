@@ -1,5 +1,7 @@
+import type { HTMLReactParserOptions } from 'html-react-parser'
 import parse, { domToReact } from 'html-react-parser'
 import Image from 'next/image'
+import Link from 'next/link'
 import Prism from 'prismjs'
 import { useEffect } from 'react'
 import styled from 'styled-components'
@@ -71,6 +73,10 @@ const WordPressText = styled.div`
 
   .lkc {
     ${styles.lkc}
+
+    &-url-info {
+      /* display: none; */
+    }
   }
 
   .linkcard {
@@ -133,42 +139,85 @@ type PostBodyProps = {
 
 const Postbody = ({ content }: PostBodyProps) => {
   let count = 0
+  const src = process.env.NEXT_PUBLIC_SRC ?? ''
+  const srcLength = src.length
+  const lsr = src.slice(8, srcLength)
 
   useEffect(() => {
     Prism.highlightAll()
   })
+
+  const options: HTMLReactParserOptions = {
+    //@ts-ignore
+    replace: ({ name, attribs, children }) => {
+      if (name === 'img') {
+        const { alt, width, height, class: clazz } = attribs
+        const url = String(attribs.src).startsWith('//')
+          ? 'https:' + attribs.src
+          : attribs.src
+        if (clazz === 'lkc-thumbnail-img') {
+          return <Image src={url} alt={alt} width={150} height={150} />
+        } else if (clazz === 'lkc-favicon' && attribs.src.includes(lsr)) {
+          return (
+            <Image
+              src="/gear-kr-nb.svg"
+              width={16}
+              height={16}
+              alt=""
+              style={{
+                backgroundColor: '#000',
+              }}
+            />
+          )
+        } else {
+          return <Image alt="" {...attribs} />
+        }
+      }
+
+      if (name === 'h2') {
+        return (
+          <>
+            {count++ % 2 === 0 && (
+              <GoogleAdsense
+                style={{ display: 'block', textAlign: 'center' }}
+                layout="in-article"
+                format="fluid"
+                slot="1534380891"
+              />
+            )}
+            <h2 {...attribs}>{domToReact(children, options)}</h2>
+          </>
+        )
+      }
+      if (name === 'a') {
+        const { class: clazz, href } = attribs
+        if (clazz && clazz.includes('lkc-link')) {
+          return (
+            <Link href={href.slice(srcLength)} className={clazz}>
+              {domToReact(children, options)}
+            </Link>
+          )
+        }
+      }
+      if (name === 'div') {
+        const { class: clazz, href } = attribs
+        if (
+          clazz &&
+          clazz.includes('lkc-url-info') &&
+          children[0].data.includes(src)
+        ) {
+          return (
+            <div {...attribs}>
+              {`https://tekrog.com` + children[0].data.slice(srcLength)}
+            </div>
+          )
+        }
+      }
+    },
+  }
   return (
     <>
-      <WordPressText>
-        {parse(content, {
-          //@ts-ignore
-          replace: ({ name, attribs, children }) => {
-            if (name === 'img') {
-              const { src, alt, width, height, class: clazz } = attribs
-              const url = String(src).startsWith('//') ? 'https:' + src : src
-              if (clazz === 'lkc-thumbnail-img') {
-                return <Image src={url} alt={alt} width={150} height={150} />
-              }
-              return <Image src={url} width={width} alt={alt} height={height} />
-            }
-            if (name === 'h2') {
-              return (
-                <>
-                  {count++ % 2 === 0 && (
-                    <GoogleAdsense
-                      style={{ display: 'block', textAlign: 'center' }}
-                      layout="in-article"
-                      format='fluid'
-                      slot="1534380891"
-                    />
-                  )}
-                  <h2 {...attribs}>{domToReact(children)}</h2>
-                </>
-              )
-            }
-          },
-        })}
-      </WordPressText>
+      <WordPressText>{parse(content, options)}</WordPressText>
     </>
   )
 }

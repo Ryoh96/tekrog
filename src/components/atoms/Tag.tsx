@@ -3,11 +3,11 @@ import styled, { css } from 'styled-components'
 
 type TagProps = {
   children: ReactNode
-  bgColor: `#${string}`
-  color: `#${string}`
+  bgColor: string
+  color: string
   border?: {
     width: number
-    color: `#${string}`
+    color: string
   }
   hoverable?: boolean
 }

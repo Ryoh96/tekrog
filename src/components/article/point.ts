@@ -54,7 +54,6 @@ const point = css`
       margin-top: 0.5em;
     }
   }
-
 `
 
 export default point

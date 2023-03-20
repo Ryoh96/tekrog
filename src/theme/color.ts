@@ -1,11 +1,7 @@
-import type { CategoryType } from '@/types/CategoryType'
-import type { ShareType } from '@/types/ShareType'
-import { graphql } from './../graphql/generated/gql';
-
 const color: {
-  category: Record<CategoryType, `#${string}`>
-  share: Record<ShareType, `#${string}`>
-  page: Record<string, `#${string}`>
+  category: Record<string, string>
+  share: Record<string, string>
+  page: Record<string, string>
 } = {
   category: {
     javascript: '#f9bb2b',
@@ -22,7 +18,7 @@ const color: {
     php: '#7f80be',
     math: '#9261a7',
     news: '#a4ca66',
-    graphql: '#f059bf'
+    graphql: '#f059bf',
   },
   share: {
     twitter: '#1e9af0',
@@ -33,8 +29,8 @@ const color: {
   },
   page: {
     main: '#1f2a82',
-    accent: '#ffcf08'
-  }
+    accent: '#ffcf08',
+  },
 }
 
 export default color

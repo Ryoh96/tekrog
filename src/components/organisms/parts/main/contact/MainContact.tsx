@@ -1,4 +1,7 @@
-import { faChampagneGlasses, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import {
+  faChampagneGlasses,
+  faEnvelope,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useCallback, useState } from 'react'
 import styled from 'styled-components'
@@ -13,7 +16,9 @@ const ContactFormWrapper = styled.div`
 
 const MainContact = () => {
   const [isCompleted, setIsCompleted] = useState(false)
-  const onCompleted = useCallback(() => {setIsCompleted(true)}, [])
+  const onCompleted = useCallback(() => {
+    setIsCompleted(true)
+  }, [])
   return (
     <>
       {!isCompleted ? (
@@ -21,10 +26,12 @@ const MainContact = () => {
           お問い合わせ
         </MainIconTitle>
       ) : (
-        <MainIconTitle icon={<FontAwesomeIcon icon={faChampagneGlasses} />}>お問い合わせ完了</MainIconTitle>
+        <MainIconTitle icon={<FontAwesomeIcon icon={faChampagneGlasses} />}>
+          お問い合わせ完了
+        </MainIconTitle>
       )}
       <ContactFormWrapper>
-      <ContactForm onCompleted={onCompleted}/>
+        <ContactForm onCompleted={onCompleted} />
       </ContactFormWrapper>
     </>
   )

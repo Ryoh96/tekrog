@@ -4,18 +4,23 @@ generates:
   src/graphql/generated/:
     preset: 'client'
     plugins:
+      - add:
+          content: '// @ts-nocheck'
       - typescript
       - typescript-resolvers
     config:
-      maybeValue: "T"
+      maybeValue: 'T'
       avoidOptionals: true
   src/graphql/generated/request.ts:
-    # preset: import-types
-    # presetConfig:
-      # typesPath: "./types"
     documents: 'src/graphql/operations/**/*.graphql'
+    preset: import-types
+    presetConfig:
+      typesPath: "./types"
+    config:
+      maybeValue: 'T'
+      avoidOptionals: true
     plugins:
-      # - typescript
+      - add:
+         content: '// @ts-nocheck'
       - typescript-operations
-      # - typescript-react-apollo
       - typescript-graphql-request

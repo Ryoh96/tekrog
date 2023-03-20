@@ -41,7 +41,7 @@ type GearProps = GearImageProps & {
 }
 
 const Gear = ({ src, width, height, ...props }: GearProps) => {
-  return <GearImage src={src} width={width} height={height} alt="" {...props}/>
+  return <GearImage src={src} width={width} height={height} alt="" {...props} />
 }
 
 export default Gear

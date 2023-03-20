@@ -1,119 +1,122 @@
+// @ts-nocheck
+import * as Types from './types';
+
 import { GraphQLClient } from 'graphql-request';
 import * as Dom from 'graphql-request/dist/types.dom';
 import gql from 'graphql-tag';
-export type GetAllPostDateQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllPostDateQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetAllPostDateQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+export type GetAllPostDateQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
-export type GetArchivePageQueryVariables = Exact<{
-  year: Scalars['Int'];
-  month: Scalars['Int'];
+export type GetArchivePageQueryVariables = Types.Exact<{
+  year: Types.Scalars['Int'];
+  month: Types.Scalars['Int'];
 }>;
 
 
-export type GetArchivePageQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+export type GetArchivePageQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, date: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } }, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string }> } }> }, recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
-export type GetAllCategoriesPageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllCategoriesPageQuery = { __typename?: 'RootQuery', mainCategory?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null, slug?: string | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null };
-
-export type GetAllCategoryNameQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllCategoriesPageQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetAllCategoryNameQuery = { __typename?: 'RootQuery', categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', slug?: string | null }> } | null };
+export type GetAllCategoriesPageQuery = { __typename?: 'RootQuery', mainCategory: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string, slug: string }> }, recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> } };
 
-export type GetCategoryCursorQueryVariables = Exact<{
-  categoryName: Scalars['String'];
+export type GetAllCategoryNameQueryVariables = Types.Exact<{ [key: string]: never; }>;
+
+
+export type GetAllCategoryNameQuery = { __typename?: 'RootQuery', categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', slug: string }> } };
+
+export type GetCategoryCursorQueryVariables = Types.Exact<{
+  categoryName: Types.Scalars['String'];
 }>;
 
 
-export type GetCategoryCursorQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null };
+export type GetCategoryCursorQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> } };
 
-export type GetCategoryPageQueryVariables = Exact<{
-  after?: InputMaybe<Scalars['String']>;
-  first: Scalars['Int'];
-  categoryName: Scalars['String'];
+export type GetCategoryPageQueryVariables = Types.Exact<{
+  after: Types.InputMaybe<Types.Scalars['String']>;
+  first: Types.Scalars['Int'];
+  categoryName: Types.Scalars['String'];
 }>;
 
 
-export type GetCategoryPageQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+export type GetCategoryPageQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, date: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } }, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string }> } }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> }, recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
-export type RecentPostFragment = { __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null };
+export type RecentPostFragment = { __typename?: 'Post', title: string, uri: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } };
 
-export type CategoryFragment = { __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null };
+export type CategoryFragment = { __typename?: 'Category', count: number, name: string, uri: string };
 
-export type TopPageInfoFragment = { __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null };
+export type TopPageInfoFragment = { __typename?: 'Post', title: string, uri: string, date: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } }, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string }> } };
 
-export type GetContactPageQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetContactPageQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetContactPageQuery = { __typename?: 'RootQuery', recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+export type GetContactPageQuery = { __typename?: 'RootQuery', recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
-export type GetStartCursorQueryVariables = Exact<{
-  index: Scalars['String'];
+export type GetStartCursorQueryVariables = Types.Exact<{
+  index: Types.Scalars['String'];
 }>;
 
 
-export type GetStartCursorQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null };
+export type GetStartCursorQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> } };
 
-export type GetNotFoundPageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetNotFoundPageQuery = { __typename?: 'RootQuery', recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null };
-
-export type GetAllPathsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetNotFoundPageQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetAllPathsQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', uri?: string | null }> } | null };
+export type GetNotFoundPageQuery = { __typename?: 'RootQuery', recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> } };
 
-export type GetAllPathsAndCursorQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllPathsQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetAllPathsAndCursorQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null, node: { __typename?: 'Post', uri?: string | null } }> } | null };
+export type GetAllPathsQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', uri: string }> } };
 
-export type GetPostPageQueryVariables = Exact<{
-  id: Scalars['ID'];
-  key: Scalars['String'];
+export type GetAllPathsAndCursorQueryVariables = Types.Exact<{ [key: string]: never; }>;
+
+
+export type GetAllPathsAndCursorQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string, node: { __typename?: 'Post', uri: string } }> } };
+
+export type GetPostPageQueryVariables = Types.Exact<{
+  id: Types.Scalars['ID'];
+  key: Types.Scalars['String'];
 }>;
 
 
-export type GetPostPageQuery = { __typename?: 'RootQuery', post?: { __typename?: 'Post', content?: string | null, date?: string | null, excerpt?: string | null, title?: string | null, uri?: string | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null, posts?: { __typename?: 'CategoryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', uri?: string | null, name?: string | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null } | null, nextPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, prevPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+export type GetPostPageQuery = { __typename?: 'RootQuery', post: { __typename?: 'Post', content: string, date: string, excerpt: string, title: string, uri: string, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string, posts: { __typename?: 'CategoryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', uri: string, name: string }> }, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> } }> }, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }, nextPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, prevPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
-export type SearchPostsQueryVariables = Exact<{
-  query: Scalars['String'];
-  first: Scalars['Int'];
-  after?: InputMaybe<Scalars['String']>;
+export type SearchPostsQueryVariables = Types.Exact<{
+  query: Types.Scalars['String'];
+  first: Types.Scalars['Int'];
+  after: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
 
-export type SearchPostsQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+export type SearchPostsQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, date: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } }, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string }> } }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> }, recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
-export type GetAllFixedPageQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllFixedPageQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetAllFixedPageQuery = { __typename?: 'RootQuery', pages?: { __typename?: 'RootQueryToPageConnection', edges: Array<{ __typename?: 'RootQueryToPageConnectionEdge', cursor?: string | null, node: { __typename?: 'Page', uri?: string | null, slug?: string | null } }> } | null };
+export type GetAllFixedPageQuery = { __typename?: 'RootQuery', pages: { __typename?: 'RootQueryToPageConnection', edges: Array<{ __typename?: 'RootQueryToPageConnectionEdge', cursor: string, node: { __typename?: 'Page', uri: string, slug: string } }> } };
 
-export type GetFixedPageQueryVariables = Exact<{
-  id: Scalars['ID'];
+export type GetFixedPageQueryVariables = Types.Exact<{
+  id: Types.Scalars['ID'];
 }>;
 
 
-export type GetFixedPageQuery = { __typename?: 'RootQuery', page?: { __typename?: 'Page', content?: string | null, title?: string | null, uri?: string | null } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+export type GetFixedPageQuery = { __typename?: 'RootQuery', page: { __typename?: 'Page', content: string, title: string, uri: string }, recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
-export type GetAllCursorQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllCursorQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetAllCursorQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null };
+export type GetAllCursorQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> } };
 
-export type GetTopPageQueryVariables = Exact<{
-  after?: InputMaybe<Scalars['String']>;
-  first: Scalars['Int'];
+export type GetTopPageQueryVariables = Types.Exact<{
+  after: Types.InputMaybe<Types.Scalars['String']>;
+  first: Types.Scalars['Int'];
 }>;
 
 
-export type GetTopPageQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, date?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name?: string | null, uri?: string | null }> } | null }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor?: string | null }> } | null, recentPost?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl?: string | null } } | null }> } | null, categories?: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count?: number | null, name?: string | null, uri?: string | null }> } | null, archivePosts?: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date?: string | null } }> } | null };
+export type GetTopPageQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, date: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } }, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string }> } }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> }, recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
 export const RecentPostFragmentDoc = gql`
     fragment RecentPost on Post {
@@ -556,56 +559,56 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    getAllPostDate(variables?: GetAllPostDateQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllPostDateQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetAllPostDateQuery>(GetAllPostDateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPostDate', 'query');
+    getAllPostDate(variables?: Types.GetAllPostDateQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllPostDateQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllPostDateQuery>(GetAllPostDateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPostDate', 'query');
     },
-    getArchivePage(variables: GetArchivePageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetArchivePageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetArchivePageQuery>(GetArchivePageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getArchivePage', 'query');
+    getArchivePage(variables: Types.GetArchivePageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetArchivePageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetArchivePageQuery>(GetArchivePageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getArchivePage', 'query');
     },
-    getAllCategoriesPage(variables?: GetAllCategoriesPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllCategoriesPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetAllCategoriesPageQuery>(GetAllCategoriesPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoriesPage', 'query');
+    getAllCategoriesPage(variables?: Types.GetAllCategoriesPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllCategoriesPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCategoriesPageQuery>(GetAllCategoriesPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoriesPage', 'query');
     },
-    getAllCategoryName(variables?: GetAllCategoryNameQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllCategoryNameQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetAllCategoryNameQuery>(GetAllCategoryNameDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoryName', 'query');
+    getAllCategoryName(variables?: Types.GetAllCategoryNameQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllCategoryNameQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCategoryNameQuery>(GetAllCategoryNameDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoryName', 'query');
     },
-    getCategoryCursor(variables: GetCategoryCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCategoryCursorQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetCategoryCursorQuery>(GetCategoryCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryCursor', 'query');
+    getCategoryCursor(variables: Types.GetCategoryCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetCategoryCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetCategoryCursorQuery>(GetCategoryCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryCursor', 'query');
     },
-    getCategoryPage(variables: GetCategoryPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCategoryPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetCategoryPageQuery>(GetCategoryPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryPage', 'query');
+    getCategoryPage(variables: Types.GetCategoryPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetCategoryPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetCategoryPageQuery>(GetCategoryPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryPage', 'query');
     },
-    getContactPage(variables?: GetContactPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetContactPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetContactPageQuery>(GetContactPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getContactPage', 'query');
+    getContactPage(variables?: Types.GetContactPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetContactPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetContactPageQuery>(GetContactPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getContactPage', 'query');
     },
-    getStartCursor(variables: GetStartCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetStartCursorQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetStartCursorQuery>(GetStartCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getStartCursor', 'query');
+    getStartCursor(variables: Types.GetStartCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetStartCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetStartCursorQuery>(GetStartCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getStartCursor', 'query');
     },
-    getNotFoundPage(variables?: GetNotFoundPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetNotFoundPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetNotFoundPageQuery>(GetNotFoundPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getNotFoundPage', 'query');
+    getNotFoundPage(variables?: Types.GetNotFoundPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetNotFoundPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetNotFoundPageQuery>(GetNotFoundPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getNotFoundPage', 'query');
     },
-    getAllPaths(variables?: GetAllPathsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllPathsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetAllPathsQuery>(GetAllPathsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPaths', 'query');
+    getAllPaths(variables?: Types.GetAllPathsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllPathsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllPathsQuery>(GetAllPathsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPaths', 'query');
     },
-    getAllPathsAndCursor(variables?: GetAllPathsAndCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllPathsAndCursorQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetAllPathsAndCursorQuery>(GetAllPathsAndCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPathsAndCursor', 'query');
+    getAllPathsAndCursor(variables?: Types.GetAllPathsAndCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllPathsAndCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllPathsAndCursorQuery>(GetAllPathsAndCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPathsAndCursor', 'query');
     },
-    getPostPage(variables: GetPostPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPostPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetPostPageQuery>(GetPostPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPostPage', 'query');
+    getPostPage(variables: Types.GetPostPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetPostPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetPostPageQuery>(GetPostPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPostPage', 'query');
     },
-    searchPosts(variables: SearchPostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SearchPostsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<SearchPostsQuery>(SearchPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'searchPosts', 'query');
+    searchPosts(variables: Types.SearchPostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.SearchPostsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.SearchPostsQuery>(SearchPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'searchPosts', 'query');
     },
-    getAllFixedPage(variables?: GetAllFixedPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllFixedPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetAllFixedPageQuery>(GetAllFixedPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllFixedPage', 'query');
+    getAllFixedPage(variables?: Types.GetAllFixedPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllFixedPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllFixedPageQuery>(GetAllFixedPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllFixedPage', 'query');
     },
-    getFixedPage(variables: GetFixedPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetFixedPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetFixedPageQuery>(GetFixedPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getFixedPage', 'query');
+    getFixedPage(variables: Types.GetFixedPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetFixedPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetFixedPageQuery>(GetFixedPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getFixedPage', 'query');
     },
-    getAllCursor(variables?: GetAllCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllCursorQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetAllCursorQuery>(GetAllCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCursor', 'query');
+    getAllCursor(variables?: Types.GetAllCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCursorQuery>(GetAllCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCursor', 'query');
     },
-    getTopPage(variables: GetTopPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTopPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetTopPageQuery>(GetTopPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTopPage', 'query');
+    getTopPage(variables: Types.GetTopPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetTopPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetTopPageQuery>(GetTopPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTopPage', 'query');
     }
   };
 }

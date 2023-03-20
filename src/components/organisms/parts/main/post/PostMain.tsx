@@ -5,12 +5,12 @@ import type { Category, Post } from '@/graphql/generated/graphql'
 import type { GetPostPageQuery } from '@/graphql/generated/request'
 import type { NextPost, PostPageQuery, PrevPost } from '@/types/Page'
 
-type MainPostProps = {
+type PostMainProps = {
   post: PostPageQuery
   blurImg: string | null
 }
 
-const MainPost = ({ post, blurImg }: MainPostProps) => {
+const PostMain = ({ post, blurImg }: PostMainProps) => {
   return (
     <>
       <PostHead
@@ -41,4 +41,4 @@ const MainPost = ({ post, blurImg }: MainPostProps) => {
   )
 }
 
-export default MainPost
+export default PostMain

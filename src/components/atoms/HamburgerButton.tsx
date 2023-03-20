@@ -61,7 +61,13 @@ const Bar = styled.span<{ isOpen: boolean }>`
 
 const HamburgerButton = ({ onClick, isOpen }: HamburgerButtonProps) => {
   return (
-    <HamburgerButtonWrapper onClick={onClick} isOpen={isOpen} aria-label="メニュー" aria-expanded={isOpen} aria-controls="hamburger-menu">
+    <HamburgerButtonWrapper
+      onClick={onClick}
+      isOpen={isOpen}
+      aria-label="メニュー"
+      aria-expanded={isOpen}
+      aria-controls="hamburger-menu"
+    >
       <ScreenReaderOnly>Menu</ScreenReaderOnly>
       <Bar isOpen={isOpen} />
     </HamburgerButtonWrapper>

@@ -1,9 +1,7 @@
-import type { CategoryType } from '@/types/CategoryType'
-
 import { invertObject } from './invertObject'
 
 // カテゴリ名前 to WordPressのカテゴリ名
-export const cat2Name: Record<CategoryType, string> = {
+export const cat2Name: Record<string, string> = {
   appli: 'アプリ',
   css: 'CSS',
   html: 'HTML',
@@ -18,7 +16,7 @@ export const cat2Name: Record<CategoryType, string> = {
   typescript: 'TypeScript',
   vuejs: 'Vue.js',
   wordpress: 'WordPress',
-  graphql: 'GraphQL'
+  graphql: 'GraphQL',
 }
 
-export const name2Cat: Record<string, CategoryType> = invertObject(cat2Name)
+export const name2Cat: Record<string, string> = invertObject(cat2Name)

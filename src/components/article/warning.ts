@@ -27,7 +27,7 @@ const warning = css`
     position: absolute;
     top: -42px;
     left: -5px;
-    background-color:  rgba(241, 184, 11, 1);
+    background-color: rgba(241, 184, 11, 1);
     color: #fff;
     display: block;
     padding: 6px 26px 4px;

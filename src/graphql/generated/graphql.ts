@@ -1,4 +1,5 @@
 /* eslint-disable */
+// @ts-nocheck
 import { GraphQLResolveInfo } from 'graphql';
 export type Maybe<T> = T;
 export type InputMaybe<T> = Maybe<T>;
@@ -3006,10 +3007,6 @@ export enum MimeTypeEnum {
 
 /** An object with an ID */
 export type Node = {
-  title: any;
-  categories: any;
-  featuredImage: any;
-  uri: any;
   /** The globally unique ID for the object */
   id: Scalars['ID'];
 };

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const IconButtonWrapper = styled.div`
   display: grid;
   place-content: center;
-  background: ${({theme}) => theme.gradient.main};
+  background: ${({ theme }) => theme.gradient.main};
   height: 48px;
   width: 44px;
   cursor: pointer;

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import RelatedPosts from '@/components/organisms/parts/main/post/RelatedPosts'
+import PostRelated from '@/components/organisms/parts/main/post/PostRelated'
 import CategoryTags from '@/components/organisms/ui/CategoryTags'
 import PrevNextPagers from '@/components/organisms/ui/PrevNextPager'
 import _Share from '@/components/organisms/ui/Share'
@@ -55,7 +55,7 @@ const PostFoot = ({
           url={`${process.env.NEXT_PUBLIC_SITE_URL}${uri}`}
         />
       </Meta>
-      <RelatedPosts categories={categories} />
+      <PostRelated categories={categories} />
       <PrevNextPagers prevPost={prevPost} nextPost={nextPost} />
     </>
   )

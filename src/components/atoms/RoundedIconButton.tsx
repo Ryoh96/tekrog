@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 
 type RoundedIconButtonProps = {
   icon?: IconDefinition
-  bgColor: `#${string}`
+  bgColor: string
   className?: string
   content?: {
     text: string

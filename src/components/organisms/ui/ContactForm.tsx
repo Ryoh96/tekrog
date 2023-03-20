@@ -11,7 +11,7 @@ const ErrorText = styled.strong`
   font-weight: bold;
 `
 
-type TestFormData = {
+type FormData = {
   name: string
   email: string
   message: string
@@ -72,14 +72,14 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
     register,
     handleSubmit,
     formState: { errors, dirtyFields },
-  } = useForm<TestFormData>({
+  } = useForm<FormData>({
     mode: 'onChange',
   })
 
   const [isSend, setIsSend] = useState(false)
   const [isError, setIsError] = useState(false)
 
-  const sendEmail = async ({ name, email, message }) => {
+  const sendEmail = async ({ name, email, message }: FormData) => {
     try {
       const res = await fetch('/api/mail', {
         method: 'POST',
@@ -100,10 +100,9 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
     }
   }
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FormData) => {
     if (Object.keys(errors).length) return
     await sendEmail(data)
-    console.log('send')
   }
 
   return (

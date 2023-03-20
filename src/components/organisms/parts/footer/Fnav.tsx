@@ -42,7 +42,7 @@ const Fnav = () => {
     <FnavList>
       {fnavItems.map((item) => (
         <Link href={item.link} key={item.name}>
-          <FnavItem >{item.name}</FnavItem>
+          <FnavItem>{item.name}</FnavItem>
         </Link>
       ))}
     </FnavList>

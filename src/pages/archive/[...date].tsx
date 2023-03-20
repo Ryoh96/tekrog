@@ -4,8 +4,8 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
+import MainTopPage from '@/components/layout/MainTopPage'
 import MainIconTitle from '@/components/organisms/parts/main/common/MainIconTitle'
-import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { type GetArchivePageQuery, getSdk } from '@/graphql/generated/request'
 
 type ArchiveProps = {
@@ -62,11 +62,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const client = getSdk(graphQLClient)
 
   const allDate = await client.getAllPostDate().then((data) => data.posts)
-  const date = allDate.edges.map((edge) => edge.node.date.slice(0, 7))
-  const yearMonthSet = new Set<string>(date)
+  const date = allDate?.edges.map((edge) => edge?.node?.date?.slice(0, 7))
+  const yearMonthSet = new Set<string | undefined>(date)
 
-  const yearMonthList: string[] = [...yearMonthSet].map((ym) =>
-    ym.replace('-', '/')
+  const yearMonthList: (string | undefined)[] = [...yearMonthSet].map((ym) =>
+    ym?.replace('-', '/')
   )
 
   const paths = yearMonthList.map((ym) => `/archive/${ym}`)

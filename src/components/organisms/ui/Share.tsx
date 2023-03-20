@@ -26,7 +26,7 @@ const Share = ({ className, title, url }: ShareProps) => {
   return (
     <ShareWrapper className={className}>
       <Text>シェア！</Text>
-      <ShareIcons title={title} url={url}/>
+      <ShareIcons title={title} url={url} />
     </ShareWrapper>
   )
 }

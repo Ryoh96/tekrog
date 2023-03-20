@@ -4,8 +4,8 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetServerSideProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
+import MainTopPage from '@/components/layout/MainTopPage'
 import MainIconTitle from '@/components/organisms/parts/main/common/MainIconTitle'
-import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { getSdk, type SearchPostsQuery } from '@/graphql/generated/request'
 
 type SearchProps = {

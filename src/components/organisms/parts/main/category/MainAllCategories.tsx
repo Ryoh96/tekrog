@@ -4,14 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 
+import type { GetAllCategoriesPageQuery } from '@/graphql/generated/request'
+
 import MainIconTitle from '../common/MainIconTitle'
 
 type MainAllCategoriesProps = {
-  nodes: {
-    name: string
-    uri: string
-    slug: string
-  }[]
+  nodes: NonNullable<GetAllCategoriesPageQuery['mainCategory']>['nodes']
 }
 
 const Title = styled.h1`
@@ -62,7 +60,7 @@ const MainAllCategories = ({ nodes }: MainAllCategoriesProps) => {
       </MainIconTitle>
       <FlexWrapper>
         {nodes.map((node, index) => (
-          <Link key={index} href={node.uri}>
+          <Link key={index} href={node.uri ?? ''}>
             <TextWrapper>
               <Image
                 src={`/ttl-${node.slug}.png`}

@@ -610,7 +610,7 @@
 
 "@graphql-codegen/add@^4.0.1":
   version "4.0.1"
-  resolved "https://registry.npmjs.org/@graphql-codegen/add/-/add-4.0.1.tgz"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/add/-/add-4.0.1.tgz#c187af820fdd2fc7a9c1c2453bc389cd4e16699e"
   integrity sha512-A7k+9eRfrKyyNfhWEN/0eKz09R5cp4XXxUuNLQAVm/aohmVI2xdMV4lM02rTlM6Pyou3cU/v0iZnhgo6IRpqeg==
   dependencies:
     "@graphql-codegen/plugin-helpers" "^4.1.0"

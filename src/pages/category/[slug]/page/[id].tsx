@@ -2,8 +2,8 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
+import MainTopPage from '@/components/layout/MainTopPage'
 import MainEachCategoryTitle from '@/components/organisms/parts/main/category/MainEachCategoryTitle'
-import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import { type GetCategoryPageQuery, getSdk } from '@/graphql/generated/request'
 import type { CategoryType } from '@/types/CategoryType'
@@ -75,14 +75,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const allCategories = await client
     .getAllCategoryName()
-    .then((data) => data.categories.nodes)
-  const allCategoryNames = allCategories.map(({ slug }) => slug)
+    .then((data) => data.categories?.nodes)
+  const allCategoryNames = allCategories?.map(({ slug }) => slug) as string[]
   const paths: string[] = []
   for (const categoryName of allCategoryNames) {
-    const allCursor: { cursor: string }[] = await client
+    const allCursor = await client
       .getCategoryCursor({ categoryName })
-      .then((data) => data.posts.edges)
-    const totalPosts = allCursor.length
+      .then((data) => data.posts?.edges)
+    const totalPosts = allCursor?.length ?? 0
     const totalPage = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)
 
     if (totalPage > 1) {
@@ -108,18 +108,18 @@ export const getStaticProps: GetStaticProps<CategoryPageProps> = async ({
   )
   const client = getSdk(graphQLClient)
 
-  const allCursor: { cursor: string }[] = await client
+  const allCursor = await client
     .getCategoryCursor({ categoryName })
-    .then((data) => data.posts.edges)
+    .then((data) => data.posts?.edges)
 
   const queryParams = {
-    after: allCursor[(pageNum - 1) * POSTS_PER_PAGE - 1].cursor,
+    after: allCursor?.[(pageNum - 1) * POSTS_PER_PAGE - 1].cursor,
     first: POSTS_PER_PAGE,
     categoryName,
   }
   const data = await client.getCategoryPage(queryParams)
 
-  const totalPosts = allCursor.length
+  const totalPosts = allCursor?.length ?? 0
   const totalPages = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)
 
   return {

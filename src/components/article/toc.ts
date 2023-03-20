@@ -45,11 +45,10 @@ const toc = css`
     font-size: 16px;
     display: grid;
     /* text-decoration: underline; */
-    
+
     a {
       text-decoration: none !important;
     }
-
 
     a:hover {
       opacity: 0.6;

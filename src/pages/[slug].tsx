@@ -30,8 +30,8 @@ const Post: NextPage<PostProps> = ({ data, isSingle, blurImg }) => {
       prevPost: data.prevPost?.nodes[0] as PrevPost,
       nextPost: data.nextPost?.nodes[0] as NextPost,
     }
-  } else if (isGetFixedPageQuery(data)) {
-    content = data.page
+  } else  {
+    content = data!.page
   }
 
   const title = content?.title as string
@@ -72,7 +72,6 @@ const Post: NextPage<PostProps> = ({ data, isSingle, blurImg }) => {
       >
         <Main data={content} blurImg={blurImg} isSingle={isSingle} />
       </Layout>
-      <>{console.log(content)}</>
     </>
   )
 }

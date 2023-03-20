@@ -2,7 +2,7 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainTopPage from '@/components/organisms/parts/main/top/MainTopPage'
+import MainTopPage from '@/components/layout/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import type { GetTopPageQuery } from '@/graphql/generated/request'
 import { getSdk } from '@/graphql/generated/request'

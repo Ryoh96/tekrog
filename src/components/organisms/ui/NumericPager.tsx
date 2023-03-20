@@ -29,7 +29,10 @@ const NumericPager = ({ total, current, type }: NumericPagerProps) => {
         </Link>
       )}
       {[...Array(total)].map((_, index) => (
-        <Link href={index === 0 ? `${type}` :`${type}page/${index + 1}`} key={index}>
+        <Link
+          href={index === 0 ? `${type}` : `${type}page/${index + 1}`}
+          key={index}
+        >
           <NumericPagerItem current={current === index + 1 ? true : false}>
             {index + 1}
           </NumericPagerItem>

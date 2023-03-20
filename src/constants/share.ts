@@ -39,8 +39,7 @@ export const shareListToIcon: {
     name: 'get-pocket',
     hasIcon: true,
     icon: faGetPocket,
-    href: (url, title) =>
-      `http://getpocket.com/edit?url=${url}&title=${title}`,
+    href: (url, title) => `http://getpocket.com/edit?url=${url}&title=${title}`,
   },
   {
     name: 'line',

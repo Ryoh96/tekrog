@@ -136,7 +136,6 @@ const SideTOC = () => {
 
   const scrollToHeading = useCallback(
     (index: number) => {
-      console.log(headingElements[index])
       const element = headingElements[index]
       element.scrollIntoView({
         // behavior: "smooth"

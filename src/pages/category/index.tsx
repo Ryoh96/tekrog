@@ -35,7 +35,9 @@ const Category: NextPage<CategoryProps> = ({ data }) => {
   return (
     <>
       <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
-        <MainAllCategories nodes={data.mainCategory.nodes} />
+        {data.mainCategory && (
+          <MainAllCategories nodes={data.mainCategory.nodes} />
+        )}
       </Layout>
     </>
   )
