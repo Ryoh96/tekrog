@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router.events])
   return (
     <>
-      <Script
+      {/* <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id${GA_GA4_ID}`}
       />
@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
             gtag('config', '${GA_UA_ID}');
           `,
         }}
-      />
+      /> */}
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <ApolloProvider client={client}>
