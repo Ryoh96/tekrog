@@ -1,4 +1,6 @@
-import { useRouter } from 'next/router'
+'use client'
+
+import { useRouter } from 'next/navigation'
 import type { ChangeEvent } from 'react'
 import { useCallback } from 'react'
 import styled from 'styled-components'

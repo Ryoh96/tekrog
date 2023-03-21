@@ -1,6 +1,7 @@
 import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
+import React from 'react'
 import styled from 'styled-components'
 
 import Card from '@/components/organisms/ui/Card'
@@ -92,10 +93,10 @@ const PostRelated = ({ categories }: PostRelatedProps) => {
       </RelatedTitleWrapper>
       <CardWrapper>
         {posts.map((post, index) => (
-          <>
+          <React.Fragment key={index}>
             {post && (
-              <Link key={index} href={post.uri}>
-                <article key={index}>
+              <Link href={post.uri}>
+                <article>
                   <Card
                     title={post.title}
                     categories={post.categories}
@@ -104,7 +105,7 @@ const PostRelated = ({ categories }: PostRelatedProps) => {
                 </article>
               </Link>
             )}
-          </>
+          </React.Fragment>
         ))}
       </CardWrapper>
     </PostRelatedWrapper>
