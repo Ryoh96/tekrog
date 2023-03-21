@@ -15,7 +15,6 @@
     "format:eslint": "yarn lint:eslint --fix",
     "format:prettier": "yarn lint:prettier --write",
     "typecheck": "tsc",
-    "prepare": "husky install",
     "codegen": "graphql-codegen --config codegen.yml",
     "test": "jest"
   },
