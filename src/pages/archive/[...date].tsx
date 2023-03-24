@@ -6,7 +6,14 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Layout from '@/components/layout/Layout'
 import MainTopPage from '@/components/layout/MainTopPage'
 import MainIconTitle from '@/components/organisms/parts/main/common/MainIconTitle'
-import { type GetArchivePageQuery, getSdk } from '@/graphql/generated/request'
+import type {
+  GetArchivePageQuery,
+  GetArchivePostsQuery,
+  GetArchiveQuery,
+  GetCategoriesQuery,
+  GetRecentPostsQuery,
+} from '@/graphql/generated/request'
+import { getSdk } from '@/graphql/generated/request'
 
 type ArchiveProps = {
   data: GetArchivePageQuery
@@ -86,10 +93,36 @@ export const getStaticProps: GetStaticProps<ArchiveProps> = async ({
   )
   const client = getSdk(graphQLClient)
 
-  const data = await client.getArchivePage({
+  // const data = await client.getArchivePage({
+  //   year: Number(year),
+  //   month: Number(month),
+  // })
+
+  const queryParams = {
     year: Number(year),
     month: Number(month),
-  })
+  }
+
+  const [posts, recentPost, categories, archivePosts] = await Promise.all<
+    [
+      Promise<GetArchiveQuery>,
+      Promise<GetRecentPostsQuery>,
+      Promise<GetCategoriesQuery>,
+      Promise<GetArchivePostsQuery>
+    ]
+  >([
+    client.getArchive(queryParams),
+    client.getRecentPosts(),
+    client.getCategories(),
+    client.getArchivePosts(),
+  ])
+
+  const data = {
+    posts: posts.posts,
+    recentPost: recentPost.recentPost,
+    categories: categories.categories,
+    archivePosts: archivePosts.archivePosts,
+  }
 
   return {
     props: {

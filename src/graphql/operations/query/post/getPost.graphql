@@ -1,0 +1,59 @@
+query getPost($id: ID!, $key: String!) {
+  post(id: $id) {
+    content
+    date
+    excerpt
+    categories {
+      nodes {
+        name
+        uri
+        posts(first: 100) {
+          nodes {
+            title
+            uri
+            categories {
+              nodes {
+                uri
+                name
+              }
+            }
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+    }
+    title
+    featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+    uri
+  }
+  nextPost: posts(after: $key, first: 1) {
+    nodes {
+      title
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      uri
+    }
+  }
+  prevPost: posts(before: $key, last: 1) {
+    nodes {
+      title
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      uri
+    }
+  }
+}

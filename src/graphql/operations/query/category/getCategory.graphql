@@ -1,0 +1,10 @@
+query getCategory($after: String, $first: Int!, $categoryName: String!) {
+  posts(first: $first, after: $after, where: {categoryName: $categoryName}) {
+    nodes {
+      ...TopPageInfo
+    }
+    edges {
+      cursor
+    }
+  }
+}

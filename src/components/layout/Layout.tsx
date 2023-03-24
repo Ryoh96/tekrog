@@ -56,7 +56,7 @@ const Layout = ({
       <Breadcrumb breadcrumbList={breadcrumbList} />
       <PageContainer>
         <TwoColumnContainer>
-          <MainArea>{children}</MainArea>
+          <MainArea data-testid="main-area">{children}</MainArea>
           <SideArea>
             <SearchForm />
             <SideRecentPosts posts={data.recentPost} />
@@ -68,8 +68,10 @@ const Layout = ({
               }}
               slot="6447253650"
             />
-            <SideCategory categories={data.categories} />
-            <SideArchive posts={data.archivePosts} />
+            <SideCategory
+              categories={data.categories}
+            />
+            <SideArchive posts={data.archivePosts} data-testid="side-archive" />
             {isPostPage && <SideTOC key={breadcrumbList.at(-1)?.name} />}
             <GoogleAdsense
               style={{

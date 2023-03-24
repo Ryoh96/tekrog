@@ -1,0 +1,9 @@
+query getAllCategories {
+    mainCategory: categories(first: 30)  {
+    nodes {
+      name
+      uri
+      slug
+    }
+  }
+}

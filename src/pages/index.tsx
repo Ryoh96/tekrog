@@ -4,7 +4,12 @@ import type { GetStaticProps, NextPage } from 'next'
 import Layout from '@/components/layout/Layout'
 import MainTopPage from '@/components/layout/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
-import type { GetTopPageQuery } from '@/graphql/generated/request'
+import type {
+  GetArchivePostsQuery,
+  GetCategoriesQuery,
+  GetRecentPostsQuery,
+  GetTopPageQuery,
+} from '@/graphql/generated/request'
 import { getSdk } from '@/graphql/generated/request'
 
 type IndexProps = {
@@ -36,7 +41,26 @@ export const getStaticProps: GetStaticProps<IndexProps> = async () => {
     process.env.END_POINT ?? 'https://tekrog.com/graphql'
   )
   const client = getSdk(graphQLCluent)
-  const data = await client.getTopPage(queryParams)
+  const [posts, recentPost, categories, archivePosts] = await Promise.all<
+    [
+      Promise<GetTopPageQuery>,
+      Promise<GetRecentPostsQuery>,
+      Promise<GetCategoriesQuery>,
+      Promise<GetArchivePostsQuery>
+    ]
+  >([
+    client.getTopPagePosts(queryParams),
+    client.getRecentPosts(),
+    client.getCategories(),
+    client.getArchivePosts(),
+  ])
+
+  const data = {
+    posts: posts.posts,
+    recentPost: recentPost.recentPost,
+    categories: categories.categories,
+    archivePosts: archivePosts.archivePosts,
+  }
 
   const allCursor = await client
     .getAllCursor()

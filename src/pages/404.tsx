@@ -6,7 +6,12 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 import Layout from '@/components/layout/Layout'
-import type { GetNotFoundPageQuery } from '@/graphql/generated/request'
+import type {
+  GetArchivePostsQuery,
+  GetCategoriesQuery,
+  GetNotFoundPageQuery,
+  GetRecentPostsQuery,
+} from '@/graphql/generated/request'
 import { getSdk } from '@/graphql/generated/request'
 
 import MainIconTitle from './../components/organisms/parts/main/common/MainIconTitle'
@@ -64,7 +69,19 @@ export const getStaticProps: GetStaticProps<NotFoundProps> = async () => {
   )
   const client = getSdk(graphQLCluent)
 
-  const data = await client.getNotFoundPage()
+  const [recentPost, categories, archivePosts] = await Promise.all<
+    [
+      Promise<GetRecentPostsQuery>,
+      Promise<GetCategoriesQuery>,
+      Promise<GetArchivePostsQuery>
+    ]
+  >([client.getRecentPosts(), client.getCategories(), client.getArchivePosts()])
+
+  const data = {
+    recentPost: recentPost.recentPost,
+    categories: categories.categories,
+    archivePosts: archivePosts.archivePosts,
+  }
 
   return {
     props: {

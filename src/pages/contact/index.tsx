@@ -2,7 +2,13 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import { type GetContactPageQuery, getSdk } from '@/graphql/generated/request'
+import type {
+  GetArchivePostsQuery,
+  GetCategoriesQuery,
+  GetContactPageQuery,
+  GetRecentPostsQuery,
+} from '@/graphql/generated/request'
+import { getSdk } from '@/graphql/generated/request'
 
 import MainContact from '../../components/organisms/parts/main/contact/MainContact'
 
@@ -44,7 +50,18 @@ export const getStaticProps: GetStaticProps<ContactProps> = async () => {
     process.env.END_POINT ?? 'https://tekrog.com/graphql'
   )
   const client = getSdk(graphQLCluent)
-  const data = await client.getContactPage()
+  const [recentPost, categories, archivePosts] = await Promise.all<
+    [
+      Promise<GetRecentPostsQuery>,
+      Promise<GetCategoriesQuery>,
+      Promise<GetArchivePostsQuery>
+    ]
+  >([client.getRecentPosts(), client.getCategories(), client.getArchivePosts()])
+  const data = {
+    recentPost: recentPost.recentPost,
+    categories: categories.categories,
+    archivePosts: archivePosts.archivePosts,
+  }
 
   return {
     props: {

@@ -1,0 +1,9 @@
+query getArchivePosts {
+  archivePosts: posts(first: 1000) {
+    edges {
+      node {
+        date
+      }
+    }
+  }
+}

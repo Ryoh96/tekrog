@@ -23,7 +23,7 @@ const HeaderContainer = styled.div`
 
 const Header = () => {
   return (
-    <HeaderWrapper>
+    <HeaderWrapper data-testid="header">
       <PageContainer>
         <HeaderContainer>
           <Logo />

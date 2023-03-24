@@ -5,8 +5,12 @@ import { getPlaiceholder } from 'plaiceholder'
 import Layout from '@/components/layout/Layout'
 import Main from '@/components/organisms/parts/main/common/Main'
 import type {
+  GetArchivePostsQuery,
+  GetCategoriesQuery,
   GetFixedPageQuery,
+  GetFixedQuery,
   GetPostPageQuery,
+  GetRecentPostsQuery,
 } from '@/graphql/generated/request'
 import { getSdk } from '@/graphql/generated/request'
 import type {
@@ -30,7 +34,7 @@ const Post: NextPage<PostProps> = ({ data, isSingle, blurImg }) => {
       prevPost: data.prevPost?.nodes[0] as PrevPost,
       nextPost: data.nextPost?.nodes[0] as NextPost,
     }
-  } else  {
+  } else {
     content = data!.page
   }
 
@@ -114,6 +118,13 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
   let isSingle: boolean
   let data: GetFixedPageQuery | GetPostPageQuery | null = null
   let blurImg: string | null = null
+  const [recentPost, categories, archivePosts] = await Promise.all<
+    [
+      Promise<GetRecentPostsQuery>,
+      Promise<GetCategoriesQuery>,
+      Promise<GetArchivePostsQuery>
+    ]
+  >([client.getRecentPosts(), client.getCategories(), client.getArchivePosts()])
 
   const single = await client
     .getAllFixedPage()
@@ -126,9 +137,16 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
 
     const cursor = target?.[0].cursor
 
-    data = await client.getFixedPage({
+    const page = await client.getFixed({
       id: cursor,
     })
+
+    data = {
+      page: page.page,
+      recentPost: recentPost.recentPost,
+      categories: categories.categories,
+      archivePosts: archivePosts.archivePosts,
+    }
 
     if (isGetFixedPageQuery(data))
       return {
@@ -153,7 +171,13 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
       key: cursor,
     }
 
-    data = (await client.getPostPage(queryParams)) as GetPostPageQuery
+    const post = await client.getPost(queryParams)
+    data = {
+      post: post.post,
+      recentPost: recentPost.recentPost,
+      categories: categories.categories,
+      archivePosts: archivePosts.archivePosts,
+    } as any as GetPostPageQuery
 
     if (isGetPostPageQuery(data)) {
       const { base64 } = await getPlaiceholder(

@@ -17,16 +17,16 @@ import { theme } from '@/theme'
 config.autoAddCss = false
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter()
-  useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      pageview(url)
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+  // const router = useRouter()
+  // useEffect(() => {
+  //   const handleRouteChange = (url: string) => {
+  //     pageview(url)
+  //   }
+  //   router.events.on('routeChangeComplete', handleRouteChange)
+  //   return () => {
+  //     router.events.off('routeChangeComplete', handleRouteChange)
+  //   }
+  // }, [router.events])
   return (
     <>
       {/* <Script

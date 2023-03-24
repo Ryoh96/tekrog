@@ -6,7 +6,9 @@ import SideContent from '@/components/molecules/SideContent'
 import CategoryTags from '@/components/organisms/ui/CategoryTags'
 import type { Category } from '@/graphql/generated/graphql'
 
-const CategoryTagWrapper = styled.div`
+const CategoryTagWrapper = styled.div.attrs({
+  'data-testid': 'side-categories',
+})`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;

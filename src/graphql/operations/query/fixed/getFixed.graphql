@@ -1,0 +1,7 @@
+query getFixed($id: ID!) {
+  page(id: $id) {
+    content
+    title
+    uri
+  }
+}

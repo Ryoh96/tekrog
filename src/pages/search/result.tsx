@@ -6,7 +6,14 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Layout from '@/components/layout/Layout'
 import MainTopPage from '@/components/layout/MainTopPage'
 import MainIconTitle from '@/components/organisms/parts/main/common/MainIconTitle'
-import { getSdk, type SearchPostsQuery } from '@/graphql/generated/request'
+import type {
+  GetArchivePostsQuery,
+  GetCategoriesQuery,
+  GetRecentPostsQuery,
+  GetSearchQuery,
+  SearchPostsQuery,
+} from '@/graphql/generated/request'
+import { getSdk } from '@/graphql/generated/request'
 
 type SearchProps = {
   data: SearchPostsQuery
@@ -59,14 +66,33 @@ export const getServerSideProps: GetServerSideProps<SearchProps> = async (
 ) => {
   const receivedQuery = context.query.s as any as string
   const query = decodeURI(receivedQuery)
-  const params = { first: 100, query }
+  const queryParams = { first: 100, query }
 
   const graphQLClient = new GraphQLClient(
     process.env.END_POINT ?? 'https://tekrog.com/graphql'
   )
   const client = getSdk(graphQLClient)
 
-  const data = await client.searchPosts(params)
+  const [posts, recentPost, categories, archivePosts] = await Promise.all<
+    [
+      Promise<GetSearchQuery>,
+      Promise<GetRecentPostsQuery>,
+      Promise<GetCategoriesQuery>,
+      Promise<GetArchivePostsQuery>
+    ]
+  >([
+    client.getSearch(queryParams),
+    client.getRecentPosts(),
+    client.getCategories(),
+    client.getArchivePosts(),
+  ])
+
+  const data = {
+    posts: posts.posts,
+    recentPost: recentPost.recentPost,
+    categories: categories.categories,
+    archivePosts: archivePosts.archivePosts,
+  }
 
   return {
     props: {

@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 
-const MainAreaWrapper = styled.div`
+const MainAreaWrapper = styled.div.attrs({
+  "data-testid": "main-area"
+})`
   flex: 1 1 auto;
   overflow-x: hidden;
   background-color: #fff;

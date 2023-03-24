@@ -3,10 +3,14 @@ import type { GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
 import MainAllCategories from '@/components/organisms/parts/main/category/MainAllCategories'
-import {
-  type GetAllCategoriesPageQuery,
-  getSdk,
+import type {
+  GetAllCategoriesPageQuery,
+  GetAllCategoriesQuery,
+  GetArchivePostsQuery,
+  GetCategoriesQuery,
+  GetRecentPostsQuery,
 } from '@/graphql/generated/request'
+import { getSdk } from '@/graphql/generated/request'
 
 type CategoryProps = {
   data: GetAllCategoriesPageQuery
@@ -51,7 +55,26 @@ export const getStaticProps: GetStaticProps<CategoryProps> = async () => {
   )
   const client = getSdk(graphQLCluent)
 
-  const data = await client.getAllCategoriesPage()
+  const [mainCategory, recentPost, categories, archivePosts] = await Promise.all<
+    [
+      Promise<GetAllCategoriesQuery>,
+      Promise<GetRecentPostsQuery>,
+      Promise<GetCategoriesQuery>,
+      Promise<GetArchivePostsQuery>
+    ]
+  >([
+    client.getAllCategories(),
+    client.getRecentPosts(),
+    client.getCategories(),
+    client.getArchivePosts(),
+  ])
+
+  const data = {
+    mainCategory: mainCategory.mainCategory,
+    recentPost: recentPost.recentPost,
+    categories: categories.categories,
+    archivePosts: archivePosts.archivePosts,
+  }
 
   return {
     props: {

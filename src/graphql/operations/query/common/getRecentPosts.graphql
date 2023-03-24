@@ -1,0 +1,7 @@
+query getRecentPosts {
+  recentPost: posts(first: 5) {
+    nodes {
+      ...RecentPost
+    }
+  }
+}

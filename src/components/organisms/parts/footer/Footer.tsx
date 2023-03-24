@@ -22,7 +22,7 @@ const Copy = styled.p`
 
 const Footer = () => {
   return (
-    <FooterWrapper>
+    <FooterWrapper data-testid="footer">
       <PageContainer>
         <FooterContainer>
           <Fnav />

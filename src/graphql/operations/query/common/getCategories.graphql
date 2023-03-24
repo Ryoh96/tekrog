@@ -1,0 +1,7 @@
+query getCategories {
+  categories(first: 30) {
+    nodes {
+      ...Category
+    }
+  }
+}

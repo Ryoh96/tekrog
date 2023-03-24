@@ -1,0 +1,10 @@
+query getTopPagePosts($after: String, $first: Int!) {
+  posts(first: $first, after: $after) {
+    nodes {
+      ...TopPageInfo
+    }
+    edges {
+      cursor
+    }
+  }
+}

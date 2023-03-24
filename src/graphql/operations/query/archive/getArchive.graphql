@@ -1,0 +1,8 @@
+query getArchive($year: Int!, $month: Int!) {
+  posts(first: 1000, where: {dateQuery: {year: $year, month: $month}}) {
+    nodes {
+      ...TopPageInfo
+    }
+  }
+
+}

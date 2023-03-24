@@ -5,7 +5,14 @@ import Layout from '@/components/layout/Layout'
 import MainTopPage from '@/components/layout/MainTopPage'
 import MainEachCategoryTitle from '@/components/organisms/parts/main/category/MainEachCategoryTitle'
 import { POSTS_PER_PAGE } from '@/constants/number'
-import { type GetCategoryPageQuery, getSdk } from '@/graphql/generated/request'
+import type {
+  GetArchivePostsQuery,
+  GetCategoriesQuery,
+  GetCategoryPageQuery,
+  GetCategoryQuery,
+  GetRecentPostsQuery,
+} from '@/graphql/generated/request'
+import { getSdk } from '@/graphql/generated/request'
 import type { CategoryType } from '@/types/CategoryType'
 import { cat2Name } from '@/utils/cat2name'
 
@@ -117,7 +124,27 @@ export const getStaticProps: GetStaticProps<CategoryPageProps> = async ({
     first: POSTS_PER_PAGE,
     categoryName,
   }
-  const data = await client.getCategoryPage(queryParams)
+
+  const [posts, recentPost, categories, archivePosts] = await Promise.all<
+    [
+      Promise<GetCategoryQuery>,
+      Promise<GetRecentPostsQuery>,
+      Promise<GetCategoriesQuery>,
+      Promise<GetArchivePostsQuery>
+    ]
+  >([
+    client.getCategory(queryParams),
+    client.getRecentPosts(),
+    client.getCategories(),
+    client.getArchivePosts(),
+  ])
+
+  const data = {
+    posts: posts.posts,
+    recentPost: recentPost.recentPost,
+    categories: categories.categories,
+    archivePosts: archivePosts.archivePosts,
+  }
 
   const totalPosts = allCursor?.length ?? 0
   const totalPages = Math.floor((totalPosts - 1) / POSTS_PER_PAGE + 1)

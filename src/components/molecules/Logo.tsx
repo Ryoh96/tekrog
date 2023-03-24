@@ -26,7 +26,7 @@ const LogoWrapper = styled.div`
 const Logo = () => {
   return (
     <Link href="/">
-      <LogoWrapper>
+      <LogoWrapper data-testid="logo">
         <Image src={Icon} width={50} height={50} alt="" />
         <BlogName large={90} small={80} />
       </LogoWrapper>
