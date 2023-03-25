@@ -1,6 +1,4 @@
-"use client"
-
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
@@ -61,7 +59,7 @@ const SendEmail = ({ sec = 10 }: SendEmailProps) => {
     }, sec * 1000)
 
     return () => clearInterval(id)
-  }, [sec])
+  }, [router, sec])
 
   return (
     <>

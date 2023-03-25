@@ -4045,7 +4045,7 @@ fill-range@^7.0.1:
 
 find-root@^1.1.0:
   version "1.1.0"
-  resolved "https://registry.npmjs.org/find-root/-/find-root-1.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/find-root/-/find-root-1.1.0.tgz#abcfc8ba76f708c42a97b3d685b7e9450bfb9ce4"
   integrity sha512-NKfW6bec6GfKc0SGx1e07QZY9PE99u0Bft/0rzSD5k3sO/vwkVUpDUKVm5Gpp5Ue3YfShPFTX2070tDs5kB9Ng==
 
 find-up@^4.0.0, find-up@^4.1.0:
@@ -4534,6 +4534,11 @@ ieee754@^1.1.13:
   version "1.2.1"
   resolved "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
+
+ignore-loader@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/ignore-loader/-/ignore-loader-0.1.2.tgz#d81f240376d0ba4f0d778972c3ad25874117a463"
+  integrity sha512-yOJQEKrNwoYqrWLS4DcnzM7SEQhRKis5mB+LdKKh4cPmGYlLPR0ozRzHV5jmEk2IxptqJNQA5Cc0gw8Fj12bXA==
 
 ignore@^5.2.0:
   version "5.2.4"
@@ -5928,7 +5933,7 @@ negotiator@0.6.3:
 
 next-page-tester@^0.33.0:
   version "0.33.0"
-  resolved "https://registry.npmjs.org/next-page-tester/-/next-page-tester-0.33.0.tgz"
+  resolved "https://registry.yarnpkg.com/next-page-tester/-/next-page-tester-0.33.0.tgz#95cec539ff451ef2dad19497e6ab537f441d77bf"
   integrity sha512-9YgSskZtr742KR8p5xhSIOp6nkaIpOCsahVTPG2690RFuO1x0pxcnNli6ZlkapS+YIWDpSV/7gJX3SvWK4Qi5g==
   dependencies:
     "@types/express" "^4.17.13"

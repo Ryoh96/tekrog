@@ -9,6 +9,7 @@ const getYearMonth = (post: Partial<Post>) => {
   for (const ym of yearMonthSet) {
     yearMonthList.push(ym.split('-') as [string, string])
   }
+
   return yearMonthList
 }
 

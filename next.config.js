@@ -6,8 +6,9 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["xs363422.xsrv.jp" , "www.google.com", "s.wordpress.com"],
+    domains: ['xs363422.xsrv.jp', 'www.google.com', 's.wordpress.com'],
   },
+  
 }
 
 module.exports = nextConfig

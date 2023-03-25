@@ -17,8 +17,11 @@ const SideArchiveWrapper = styled.div.attrs({
 
 const SideArchive = ({ posts }: SideArchiveProps) => {
   const yearMonth = getYearMonth(posts)
-  const archives = ['月を選択', ...yearMonth.map((ym) => ym.join('年') + '月')]
+  const archives = ['月を選択', ...yearMonth.map((ym) => { 
+    return ym.join('年') + '月'}
+  )]
   const links = yearMonth.map((ym) => `/archive/${ym.join('/')}`)
+  links.unshift("")
   return (
     <SideContent
       title="アーカイブ"

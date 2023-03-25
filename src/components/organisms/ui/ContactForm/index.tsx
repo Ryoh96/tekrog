@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
 
-import _Button from '../../../atoms/Button'
-import SendEmail from '../SendEmail'
+import _Button from '@/components//atoms/Button'
+import SendEmail from '@/components/organisms/ui//SendEmail'
 
 const ErrorText = styled.strong`
   color: red;
@@ -22,7 +22,7 @@ type ContactFormProps = {
 }
 
 const Button = styled(_Button).attrs({
-  "data-testid": "submit-button"
+  'data-testid': 'submit-button',
 })`
   margin-top: 30px;
   width: 200px;
@@ -60,7 +60,7 @@ const FormLabel = styled.label`
 `
 
 const TextArea = styled.textarea.attrs({
-  "data-testid":"input-message"
+  'data-testid': 'input-message',
 })`
   width: 100%;
   height: 7em;

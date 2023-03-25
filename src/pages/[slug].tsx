@@ -101,7 +101,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const singlePaths = single?.map(({ node }) => node.uri) as string[]
 
   paths.push(...singlePaths)
-  console.log(1919191919,paths)
   return {
     paths,
     fallback: false,
