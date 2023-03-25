@@ -170,7 +170,15 @@ const Postbody = ({ content }: PostBodyProps) => {
             />
           )
         } else {
-          return <Image alt="" {...attribs} className={clazz} />
+          return (
+            <Image
+              alt=""
+              src={attribs.src}
+              width={width}
+              height={height}
+              className={clazz}
+            />
+          )
         }
       }
 
@@ -185,7 +193,9 @@ const Postbody = ({ content }: PostBodyProps) => {
                 slot="1534380891"
               />
             )}
-            <h2 {...attribs} className={attribs.class}>{domToReact(children, options)}</h2>
+            <h2 className={attribs.class}>
+              {domToReact(children, options)}
+            </h2>
           </>
         )
       }
@@ -207,7 +217,7 @@ const Postbody = ({ content }: PostBodyProps) => {
           children[0].data.includes(src)
         ) {
           return (
-            <div {...attribs} className={clazz}>
+            <div className={clazz}>
               {`https://tekrog.com` + children[0].data.slice(srcLength)}
             </div>
           )

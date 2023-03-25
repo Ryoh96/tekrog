@@ -15,7 +15,9 @@ type CardProps = {
   desc?: string
 }
 
-const CardWrapper = styled.div`
+const CardWrapper = styled.div.attrs({
+  "data-testid": "card"
+})`
   cursor: pointer;
   position: relative;
   box-shadow: ${({ theme }) => theme.boxShadow.near};

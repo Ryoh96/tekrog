@@ -8,6 +8,7 @@ import type {
   GetArchivePostsQuery,
   GetCategoriesQuery,
   GetRecentPostsQuery,
+  GetTopPagePostsQuery,
   GetTopPageQuery,
 } from '@/graphql/generated/request'
 import { getSdk } from '@/graphql/generated/request'
@@ -43,7 +44,7 @@ export const getStaticProps: GetStaticProps<IndexProps> = async () => {
   const client = getSdk(graphQLCluent)
   const [posts, recentPost, categories, archivePosts] = await Promise.all<
     [
-      Promise<GetTopPageQuery>,
+      Promise<GetTopPagePostsQuery>,
       Promise<GetRecentPostsQuery>,
       Promise<GetCategoriesQuery>,
       Promise<GetArchivePostsQuery>
@@ -61,6 +62,7 @@ export const getStaticProps: GetStaticProps<IndexProps> = async () => {
     categories: categories.categories,
     archivePosts: archivePosts.archivePosts,
   }
+
 
   const allCursor = await client
     .getAllCursor()

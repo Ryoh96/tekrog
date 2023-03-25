@@ -11,3 +11,5 @@ if (typeof global.TextDecoder === 'undefined') {
 }
 
 global.fetch = fetch
+
+

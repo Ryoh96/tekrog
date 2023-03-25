@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
 
-import _Button from '../../atoms/Button'
-import SendEmail from './SendEmail'
+import _Button from '../../../atoms/Button'
+import SendEmail from '../SendEmail'
 
 const ErrorText = styled.strong`
   color: red;
@@ -21,7 +21,9 @@ type ContactFormProps = {
   onCompleted: () => void
 }
 
-const Button = styled(_Button)`
+const Button = styled(_Button).attrs({
+  "data-testid": "submit-button"
+})`
   margin-top: 30px;
   width: 200px;
   margin-inline: auto;
@@ -57,7 +59,9 @@ const FormLabel = styled.label`
   }
 `
 
-const TextArea = styled.textarea`
+const TextArea = styled.textarea.attrs({
+  "data-testid":"input-message"
+})`
   width: 100%;
   height: 7em;
 `
@@ -125,6 +129,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
                     message: '※最大文字数を超えています',
                   },
                 })}
+                data-testid="input-name"
               />
               {errors.name && <ErrorText>{errors.name.message}</ErrorText>}
             </FormParts>
@@ -144,6 +149,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
                     message: '※メールアドレスの形式が正しくありません',
                   },
                 })}
+                data-testid="input-email"
               />
               {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
             </FormParts>
@@ -155,7 +161,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
                 {...register('message', {
                   required: {
                     value: true,
-                    message: '※入力して下さい',
+                    message: '※入力してください',
                   },
                 })}
               ></TextArea>

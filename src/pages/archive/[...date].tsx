@@ -93,11 +93,6 @@ export const getStaticProps: GetStaticProps<ArchiveProps> = async ({
   )
   const client = getSdk(graphQLClient)
 
-  // const data = await client.getArchivePage({
-  //   year: Number(year),
-  //   month: Number(month),
-  // })
-
   const queryParams = {
     year: Number(year),
     month: Number(month),

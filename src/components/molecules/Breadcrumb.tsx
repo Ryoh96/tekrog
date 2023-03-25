@@ -56,7 +56,7 @@ const Breadcrumb = ({ breadcrumbList }: BreadcrumbProps) => {
   const list = [{ name: 'ホーム', href: '/' }, ...breadcrumbList]
   return (
     <PageContainer>
-      <nav aria-label="Breadcrumb">
+      <nav aria-label="Breadcrumb" data-testid="breadcrumb">
         <BreadcrumbList itemScope itemType="https://schema.org/BreadcrumbList">
           {list.map((item, index) => (
             <li
