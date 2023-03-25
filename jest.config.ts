@@ -1,4 +1,11 @@
-module.exports = {
+const nextJest = require('next/jest')
+
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: './',
+})
+
+module.exports = createJestConfig({
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   setupFilesAfterEnv: [
@@ -19,6 +26,7 @@ module.exports = {
     'process.env.NODE_ENV': 'test',
     'process.env.NEXT_TELEMETRY_DISABLED': '1', // テレメトリを無効化する
   },
-}
+  silentWarn: true,
+})
 
 export {}

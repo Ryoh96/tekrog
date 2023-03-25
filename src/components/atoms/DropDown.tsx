@@ -5,7 +5,9 @@ import type { ChangeEvent } from 'react'
 import { useCallback } from 'react'
 import styled from 'styled-components'
 
-const Select = styled.select`
+const Select = styled.select.attrs({
+  "data-testid": "select-archives"
+})`
   width: 100%;
   border: 1px solid #000;
   padding: 10px;
