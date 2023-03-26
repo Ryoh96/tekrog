@@ -50,7 +50,6 @@ const Meta = ({
       <meta property="og:image:height" content="630" />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:image" content={img} />
       
     </Head>
   )
