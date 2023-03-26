@@ -3,11 +3,11 @@ import { css } from 'styled-components'
 const h2 = css`
   font-size: 22px;
   margin-top: 30px;
-  margin-bottom: 0.6em;
+  margin-bottom: 1em;
   font-weight: 700;
   background: ${({ theme }) => theme.gradient.main};
   color: #fff;
-  padding-bottom: 14px;
+  padding-bottom: 12px;
   padding-top: 16px;
   padding-left: 14px;
   border-left: 10px solid ${({ theme }) => theme.color.page.accent};

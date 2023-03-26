@@ -5,7 +5,7 @@ const h3 = css`
   font-weight: 700;
   margin-bottom: 0.8em;
   margin-inline: 0.5em;
-  padding: 6px 0.6em 5px;
+  padding: 8px 0.6em 5px;
   border-top: 3px solid #1f2a82;
   border-bottom: 3px solid #1f2a82;
   line-height: 1.5;

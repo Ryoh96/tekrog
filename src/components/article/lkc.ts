@@ -100,7 +100,7 @@ const lkc = css`
   &-content {
     display: grid;
     grid-template-rows: auto auto;
-    grid-column: auto auto;
+    grid-template-columns: 120px auto;
     grid-template-areas:
       'figure title'
       'figure excerpt';
