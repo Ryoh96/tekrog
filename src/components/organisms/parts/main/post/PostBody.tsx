@@ -128,6 +128,10 @@ const WordPressText = styled.div`
     }
   }
 
+  .ads{
+    margin-bottom: 30px;
+  }
+
   > *:last-child {
     margin-bottom: 50px;
   }

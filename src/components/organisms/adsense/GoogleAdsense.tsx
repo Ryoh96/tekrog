@@ -32,7 +32,7 @@ const GoogleAdsense = ({
   }, [asPath])
 
   return (
-    <div>
+    <div className='ads'>
       <ins
         className="adsbygoogle"
         style={style}
