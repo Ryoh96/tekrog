@@ -186,7 +186,7 @@ const Postbody = ({ content }: PostBodyProps) => {
       if (name === 'h2') {
         return (
           <>
-            {count++ % 2 === 0 && (
+            {count++ % 2 === 0 && count < 6 && (
               <GoogleAdsense
                 style={{ display: 'block', textAlign: 'center' }}
                 layout="in-article"

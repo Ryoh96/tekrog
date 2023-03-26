@@ -66,6 +66,8 @@ const Post: NextPage<PostProps> = ({ data, isSingle, blurImg }) => {
     url,
     imgUrl,
   }
+
+  // console.log(content)
   return (
     <>
       <Layout
@@ -174,6 +176,8 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
     const post = await client.getPost(queryParams)
     data = {
       post: post.post,
+      prevPost: post.prevPost,
+      nextPost: post.nextPost,
       recentPost: recentPost.recentPost,
       categories: categories.categories,
       archivePosts: archivePosts.archivePosts,
