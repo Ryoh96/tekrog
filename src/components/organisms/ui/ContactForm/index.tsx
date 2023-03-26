@@ -120,7 +120,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
       body: new URLSearchParams(data).toString(),
     })
       .then((res) => setIsSend(true))
-      .catch((e) => console.error(e))
+      .catch((e) => console.error("Form Error", e))
   }
 
   return (
@@ -128,6 +128,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
       {isError && <ErrorText>エラーが発生しました</ErrorText>}
       {!isSend ? (
         <Form onSubmit={handleSubmit(onSubmit)}>
+          <input type="hidden" name="form-name" value="contact" />
           {/* <Form> */}
           <FormLabel>
             <span>名前:</span>{' '}
