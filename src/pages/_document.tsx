@@ -46,11 +46,11 @@ export default class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
-          {/* <Script
+          <Script
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5954645555619996"
             crossOrigin="anonymous"
             strategy="afterInteractive"
-          /> */}
+          />
         </Head>
         <body>
           <Main />
