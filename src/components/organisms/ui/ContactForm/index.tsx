@@ -29,7 +29,11 @@ const Button = styled(_Button).attrs({
   margin-inline: auto;
 `
 
-const Form = styled.form`
+const Form = styled.form.attrs({
+  "data-netlify": "true",
+  action: "/thanks",
+  method: "POST"
+})`
   display: grid;
   gap: 1em;
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
@@ -113,7 +117,8 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
     <>
       {isError && <ErrorText>エラーが発生しました</ErrorText>}
       {!isSend ? (
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        // <Form onSubmit={handleSubmit(onSubmit)}>// for local
+        <Form>
           <FormLabel>
             <span>名前:</span>{' '}
             <FormParts>
