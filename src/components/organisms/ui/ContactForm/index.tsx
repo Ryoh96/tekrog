@@ -31,7 +31,7 @@ const Button = styled(_Button).attrs({
 
 const Form = styled.form.attrs({
   "data-netlify": "true",
-  action: "/thanks",
+  action: "/contact/thanks",
   method: "POST"
 })`
   display: grid;
