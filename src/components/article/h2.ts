@@ -2,6 +2,7 @@ import { css } from 'styled-components'
 
 const h2 = css`
   font-size: 22px;
+  margin-top: 30px;
   margin-bottom: 0.6em;
   font-weight: 700;
   background: ${({ theme }) => theme.gradient.main};
