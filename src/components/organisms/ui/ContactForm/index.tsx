@@ -87,7 +87,6 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
 
   const [isSend, setIsSend] = useState(false)
   const [isError, setIsError] = useState(false)
-  const router = useRouter()
 
   const sendEmail = async ({ name, email, message }: FormData) => {
     try {
@@ -119,7 +118,10 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(data).toString(),
     })
-      .then(() => setIsSend(true))
+      .then(() => {
+        setIsSend(true)
+        onCompleted()
+      })
       .catch(() => setIsError(true))
   }
 
