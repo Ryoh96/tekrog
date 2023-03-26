@@ -116,7 +116,8 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
     // await sendEmail(data)
     fetch('/', {
       method: 'POST',
-      body: new URLSearchParams(data),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
     })
       .then((res) => setIsSend(true))
       .catch((e) => console.error(e))
