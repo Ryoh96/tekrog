@@ -105,6 +105,7 @@ const PostHead = ({
           quality={75}
           placeholder="blur"
           blurDataURL={blurImg ?? ''}
+          priority
         />
       </Thumbnail>
       <Share title={title} url={`${process.env.NEXT_PUBLIC_SITE_URL}${uri}`} />
