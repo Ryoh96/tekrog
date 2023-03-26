@@ -27,7 +27,7 @@ export const shareListToIcon: {
     name: 'twitter',
     hasIcon: true,
     icon: faTwitter,
-    href: (url, title) => `https://twiter.com/share?url=${url}&text=${title}`,
+    href: (url, title) => `https://twitter.com/share?url=${url}&text=${title}`,
   },
   {
     name: 'facebook',
