@@ -16,6 +16,7 @@ type FormData = {
   name: string
   email: string
   message: string
+  "form-name"?: string
 }
 
 type ContactFormProps = {
@@ -114,6 +115,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
   const onSubmit = async (data: FormData) => {
     if (Object.keys(errors).length) return
     // await sendEmail(data)
+    data["form-name"] = "contact"
     fetch('/', {
       method: 'POST',
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -128,7 +130,6 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
       {isError && <ErrorText>エラーが発生しました</ErrorText>}
       {!isSend ? (
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <input type="hidden" name="form-name" value="contact" />
           {/* <Form> */}
           <FormLabel>
             <span>名前:</span>{' '}
