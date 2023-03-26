@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
@@ -30,9 +31,10 @@ const Button = styled(_Button).attrs({
 `
 
 const Form = styled.form.attrs({
-  "data-netlify": "true",
-  action: "/contact/thanks",
-  method: "POST"
+  name: 'contact',
+  'data-netlify': 'true',
+  // action: "/contact/thanks",
+  // method: "POST"
 })`
   display: grid;
   gap: 1em;
@@ -86,6 +88,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
 
   const [isSend, setIsSend] = useState(false)
   const [isError, setIsError] = useState(false)
+  const router = useRouter()
 
   const sendEmail = async ({ name, email, message }: FormData) => {
     try {
@@ -110,15 +113,21 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
 
   const onSubmit = async (data: FormData) => {
     if (Object.keys(errors).length) return
-    await sendEmail(data)
+    // await sendEmail(data)
+    fetch('/', {
+      method: 'POST',
+      body: new URLSearchParams(data),
+    })
+      .then((res) => setIsSend(true))
+      .catch((e) => console.error(e))
   }
 
   return (
     <>
       {isError && <ErrorText>エラーが発生しました</ErrorText>}
       {!isSend ? (
-        // <Form onSubmit={handleSubmit(onSubmit)}>// for local
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          {/* <Form> */}
           <FormLabel>
             <span>名前:</span>{' '}
             <FormParts>
