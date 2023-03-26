@@ -27,7 +27,7 @@ const MainContact = ({ isPosted }: MainContactProps) => {
   }, [])
   return (
     <>
-      {/* {!isCompleted ? (
+      {!isCompleted ? (
         <MainIconTitle icon={<FontAwesomeIcon icon={faEnvelope} />}>
           お問い合わせ
         </MainIconTitle>
@@ -38,24 +38,7 @@ const MainContact = ({ isPosted }: MainContactProps) => {
       )}
       <ContactFormWrapper>
         <ContactForm onCompleted={onCompleted} />
-      </ContactFormWrapper> */}
-      {!isPosted ? (
-        <>
-          <MainIconTitle icon={<FontAwesomeIcon icon={faEnvelope} />}>
-            お問い合わせ
-          </MainIconTitle>
-          <ContactFormWrapper>
-            <ContactForm onCompleted={onCompleted} />
-          </ContactFormWrapper>
-        </>
-      ) : (
-        <>
-          <MainIconTitle icon={<FontAwesomeIcon icon={faChampagneGlasses} />}>
-            お問い合わせ完了
-          </MainIconTitle>
-          <SendEmail />
-        </>
-      )}
+      </ContactFormWrapper>
     </>
   )
 }

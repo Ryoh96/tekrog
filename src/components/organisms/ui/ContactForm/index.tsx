@@ -32,10 +32,8 @@ const Button = styled(_Button).attrs({
 `
 
 const Form = styled.form.attrs({
-  name: 'contactForm',
+  name: 'contact',
   'data-netlify': 'true',
-  // action: "/contact/thanks",
-  // method: "POST"
 })`
   display: grid;
   gap: 1em;
@@ -115,15 +113,14 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
   const onSubmit = async (data: FormData) => {
     if (Object.keys(errors).length) return
     // await sendEmail(data)
-    // data["form-name"] = "contact"
     console.log(new URLSearchParams(data).toString())
     fetch('/', {
       method: 'POST',
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(data).toString(),
     })
-      .then((res) => setIsSend(true))
-      .catch((e) => console.error("Form Error", e))
+      .then(() => setIsSend(true))
+      .catch(() => setIsError(true))
   }
 
   return (
@@ -131,8 +128,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
       {isError && <ErrorText>エラーが発生しました</ErrorText>}
       {!isSend ? (
         <Form onSubmit={handleSubmit(onSubmit)}>
-          {/* <Form> */}
-          <input type="hidden" {...register('form-name')} value="contactForm"/>
+          <input type="hidden" {...register('form-name')} value="contact"/>
           <FormLabel>
             <span>名前:</span>{' '}
             <FormParts>
