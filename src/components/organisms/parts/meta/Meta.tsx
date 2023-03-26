@@ -45,7 +45,7 @@ const Meta = ({
       <link rel="icon" href={siteIcon} />
       <link rel="apple-touch-icon" href={siteIcon} />
 
-      <meta property="pg:image" content={img} />
+      <meta property="og:image" content={img} />
       <meta property="og:image:width" content="2000" />
       <meta property="og:image:height" content="1125" />
 
