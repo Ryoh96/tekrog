@@ -73,14 +73,7 @@ const Layout = ({
             />
             <SideArchive posts={data.archivePosts} data-testid="side-archive" />
             {isPostPage && <SideTOC key={breadcrumbList.at(-1)?.name} />}
-            <GoogleAdsense
-              style={{
-                display: 'inline-block',
-                width: '324px',
-                height: '270px',
-              }}
-              slot="6447253650"
-            />
+
           </SideArea>
         </TwoColumnContainer>
       </PageContainer>

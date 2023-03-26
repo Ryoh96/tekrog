@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import PageBottomButton from '@/components/atoms/PageBottomButton'
 import PageTopButton from '@/components/atoms/PageTopButton'
 import _SideContent from '@/components/molecules/SideContent'
+import GoogleAdsense from '@/components/organisms/adsense/GoogleAdsense'
 import useCurrentHeadingIndex from '@/hooks/useCurrentHeadingIndex'
 import useHeadingAnchors from '@/hooks/useHeadingAnchors'
 import useHeadingElements from '@/hooks/useHeadingElements'
@@ -180,6 +181,14 @@ const SideTOC = () => {
         <PageTopButton />
         <PageBottomButton />
       </ButtonsWrapper>
+      <GoogleAdsense
+        style={{
+          display: 'inline-block',
+          width: '324px',
+          height: '270px',
+        }}
+        slot="6447253650"
+      />
     </SideTOCWrapper>
   )
 }

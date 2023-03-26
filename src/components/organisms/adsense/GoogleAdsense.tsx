@@ -27,12 +27,12 @@ const GoogleAdsense = ({
         {}
       )
     } catch (error) {
-      // Pass
+      console.error(error)
     }
   }, [asPath])
 
   return (
-    <div>
+    <div key={asPath}>
       <ins
         className="adsbygoogle"
         style={style}
