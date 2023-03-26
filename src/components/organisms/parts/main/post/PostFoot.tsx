@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import GoogleAdsense from '@/components/organisms/adsense/GoogleAdsense'
 import PostRelated from '@/components/organisms/parts/main/post/PostRelated'
 import CategoryTags from '@/components/organisms/ui/CategoryTags'
 import PrevNextPagers from '@/components/organisms/ui/PrevNextPager'
@@ -55,6 +56,12 @@ const PostFoot = ({
           url={`${process.env.NEXT_PUBLIC_SITE_URL}${uri}`}
         />
       </Meta>
+      <GoogleAdsense
+        style={{ display: 'block', textAlign: 'center' }}
+        layout="in-article"
+        format="fluid"
+        slot="1534380891"
+      />
       <PostRelated categories={categories} />
       <PrevNextPagers prevPost={prevPost} nextPost={nextPost} />
     </>
