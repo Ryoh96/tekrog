@@ -37,7 +37,7 @@ const WordPressText = styled.div`
 
   p {
     margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     padding-inline: 0.5em;
     line-height: 1.8;
   }
