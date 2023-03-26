@@ -16,7 +16,7 @@ type FormData = {
   name: string
   email: string
   message: string
-  "form-name"?: string
+  "form-name": string
 }
 
 type ContactFormProps = {
@@ -32,7 +32,7 @@ const Button = styled(_Button).attrs({
 `
 
 const Form = styled.form.attrs({
-  name: 'contact',
+  name: 'contactForm',
   'data-netlify': 'true',
   // action: "/contact/thanks",
   // method: "POST"
@@ -115,7 +115,8 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
   const onSubmit = async (data: FormData) => {
     if (Object.keys(errors).length) return
     // await sendEmail(data)
-    data["form-name"] = "contact"
+    // data["form-name"] = "contact"
+    console.log(new URLSearchParams(data).toString())
     fetch('/', {
       method: 'POST',
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -131,6 +132,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
       {!isSend ? (
         <Form onSubmit={handleSubmit(onSubmit)}>
           {/* <Form> */}
+          <input type="hidden" {...register('form-name')} value="contactForm"/>
           <FormLabel>
             <span>名前:</span>{' '}
             <FormParts>
