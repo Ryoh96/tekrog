@@ -46,8 +46,8 @@ const Meta = ({
       <link rel="apple-touch-icon" href={siteIcon} />
 
       <meta property="og:image" content={img} />
-      <meta property="og:image:width" content="2000" />
-      <meta property="og:image:height" content="1125" />
+      <meta property="og:image:width" content="1120" />
+      <meta property="og:image:height" content="630" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:image" content={img} />
