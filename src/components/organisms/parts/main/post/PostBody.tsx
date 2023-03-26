@@ -36,6 +36,7 @@ const WordPressText = styled.div`
   }
 
   p {
+    margin-top: 1em;
     margin-bottom: 1em;
     padding-inline: 0.5em;
     line-height: 1.8;
@@ -128,6 +129,31 @@ const WordPressText = styled.div`
     }
   }
 
+  svg {
+    max-width: 100%;
+    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+      transform: scale(0.9);
+      max-width: 105%;
+    }
+  }
+
+  .def {
+    border: 4px solid #ffabce;
+    border-radius: 10px;
+    padding: 16px 30px;
+    @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+      padding: 8px 10px;
+    }
+    p {
+      margin-top: 0;
+      font-weight: 700;
+      text-decoration: underline;
+
+      &::before {
+        content: '【定義】';
+      }
+    }
+  }
 
   > *:last-child {
     margin-bottom: 50px;
@@ -194,9 +220,7 @@ const Postbody = ({ content }: PostBodyProps) => {
                 slot="1534380891"
               />
             )}
-            <h2 className={attribs.class}>
-              {domToReact(children, options)}
-            </h2>
+            <h2 className={attribs.class}>{domToReact(children, options)}</h2>
           </>
         )
       }

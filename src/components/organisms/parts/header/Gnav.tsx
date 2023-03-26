@@ -9,6 +9,7 @@ import SpOnly from '@/components/utils/SpOnly'
 const gnavItems = [
   { title: 'HOME', href: '/' },
   { title: 'ABOUT', href: '/about' },
+  { title: 'CATEGORY', href: '/category' },
   { title: 'CONTACT', href: '/contact' },
 ]
 
