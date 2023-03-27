@@ -185,7 +185,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
 
     if (isGetPostPageQuery(data)) {
       const { base64 } = await getPlaiceholder(
-        data.post?.featuredImage?.node.sourceUrl ?? '/thumb-tekrog.com'
+        data.post?.featuredImage?.node.sourceUrl ?? '/thumb-tekrog.png'
       )
       blurImg = base64
       return {
