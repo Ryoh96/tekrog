@@ -50,7 +50,10 @@ const Meta = ({
       <meta property="og:image:height" content="630" />
 
       <meta name="twitter:card" content="summary_large_image" />
-      
+      <meta
+        name="google-site-verification"
+        content="uimt5sjWOaYik7u2oIBNrN2jpzaGbn4QR88YSWNPD-8"
+      />
     </Head>
   )
 }
