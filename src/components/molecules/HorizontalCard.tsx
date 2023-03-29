@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
+import { DEFAULT_IMAGE } from '@/constants/strings'
+
 type HorizontalCardProps = {
-  src: string
+  src?: string
   title: string
 }
 
@@ -52,7 +54,10 @@ const Title = styled.p`
   padding: 4px;
 `
 
-const HorizontalCard = ({ src, title }: HorizontalCardProps) => {
+const HorizontalCard = ({
+  src = DEFAULT_IMAGE,
+  title,
+}: HorizontalCardProps) => {
   return (
     <HorizontalCardWrapper>
       <ImageWrapper>

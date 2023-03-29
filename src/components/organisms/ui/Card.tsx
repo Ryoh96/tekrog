@@ -3,9 +3,10 @@ import styled from 'styled-components'
 
 import _DateTime from '@/components/atoms/DateTime'
 import CategoryTag from '@/components/molecules/CategoryTag'
+import { DEFAULT_IMAGE } from '@/constants/strings'
 
 type CardProps = {
-  imgUrl: string
+  imgUrl?: string
   date?: string
   title: string
   categories?: {
@@ -16,7 +17,7 @@ type CardProps = {
 }
 
 const CardWrapper = styled.div.attrs({
-  "data-testid": "card"
+  'data-testid': 'card',
 })`
   cursor: pointer;
   position: relative;
@@ -114,7 +115,13 @@ const DateTime = styled(_DateTime)`
   /* margin-left: auto; */
 `
 
-const Card = ({ imgUrl, title, categories, date, desc }: CardProps) => {
+const Card = ({
+  imgUrl = DEFAULT_IMAGE,
+  title,
+  categories,
+  date,
+  desc,
+}: CardProps) => {
   return (
     <CardWrapper>
       <CardContentWrapper>

@@ -65,7 +65,7 @@ const MainTopPage = ({
                         }[]
                       }
                       date={node.date ?? ''}
-                      imgUrl={node.featuredImage?.node.sourceUrl ?? ''}
+                      imgUrl={node.featuredImage?.node.sourceUrl}
                       desc={node.excerpt?.slice(3, node.excerpt.length - 5)}
                     />
                   </article>

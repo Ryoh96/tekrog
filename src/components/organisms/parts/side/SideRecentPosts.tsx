@@ -32,7 +32,7 @@ const SideRecentPosts = ({ posts }: SideRecentPostsProps) => {
           <Link href={post.uri} key={index}>
             <article>
               <HorizontalCard
-                src={post.featuredImage.node.sourceUrl}
+                src={post.featuredImage?.node.sourceUrl}
                 title={post.title}
               />
             </article>

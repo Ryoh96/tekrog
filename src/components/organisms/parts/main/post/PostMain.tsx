@@ -16,7 +16,7 @@ const PostMain = ({ post, blurImg }: PostMainProps) => {
       <PostHead
         title={post.title as string}
         date={post.date as string}
-        imgUrl={post.featuredImage?.node.sourceUrl as string}
+        imgUrl={post.featuredImage?.node.sourceUrl}
         categories={
           post.categories as {
             nodes: Category[]

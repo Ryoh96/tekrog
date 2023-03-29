@@ -66,7 +66,7 @@ const PostRelated = ({ categories }: PostRelatedProps) => {
       (n: any) => ({
         title: n.title,
         categories: n.categories.nodes,
-        imgUrl: n.featuredImage.node.sourceUrl,
+        imgUrl: n.featuredImage?.node.sourceUrl,
         uri: n.uri,
       })
     )

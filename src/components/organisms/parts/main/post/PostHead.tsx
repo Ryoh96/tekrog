@@ -52,7 +52,7 @@ const Meta = styled.div`
 type PostHeadProps = {
   title: string
   date: string
-  imgUrl: string
+  imgUrl?: string
   categories: {
     nodes: Category[]
   }
@@ -92,22 +92,24 @@ const PostHead = ({
         </CategoryTagsWrapper>
         <DateTime>{date}</DateTime>
       </Meta>
-      <Thumbnail>
-        <Image
-          src={imgUrl}
-          alt={title}
-          fill
-          style={{
-            objectFit: 'contain',
-            aspectRatio: '2000 / 1125',
-          }}
-          sizes="50vw"
-          quality={75}
-          placeholder="blur"
-          blurDataURL={blurImg ?? ''}
-          priority
-        />
-      </Thumbnail>
+      {imgUrl && (
+        <Thumbnail>
+          <Image
+            src={imgUrl}
+            alt={title}
+            fill
+            style={{
+              objectFit: 'contain',
+              aspectRatio: '2000 / 1125',
+            }}
+            sizes="50vw"
+            quality={75}
+            placeholder="blur"
+            blurDataURL={blurImg ?? ''}
+            priority
+          />
+        </Thumbnail>
+      )}
       <Share title={title} url={`${process.env.NEXT_PUBLIC_SITE_URL}${uri}`} />
     </>
   )
