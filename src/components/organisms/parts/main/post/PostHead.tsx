@@ -80,9 +80,15 @@ const PostHead = ({
   date,
   imgUrl,
   categories,
-  uri,
+  uri: pageUrl,
   blurImg,
 }: PostHeadProps) => {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL as string
+
+  let url = pageUrl[0] === '/' ? pageUrl?.substring(1) : pageUrl
+  url = url ? `${siteUrl}${url}` : siteUrl
+  url = url?.replace(/\/$/, '') || url
+  
   return (
     <>
       <Title>{title}</Title>
@@ -110,7 +116,7 @@ const PostHead = ({
           />
         </Thumbnail>
       )}
-      <Share title={title} url={`${process.env.NEXT_PUBLIC_SITE_URL}${uri}`} />
+      <Share title={title} url={url} />
     </>
   )
 }
