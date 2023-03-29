@@ -23,7 +23,8 @@ const Meta = ({
 
   const desc = pageDesc ?? process.env.NEXT_PUBLIC_SITE_DESC
 
-  const url = pageUrl ? `${siteUrl}${pageUrl}` : siteUrl
+  let url = pageUrl?.startsWith("/") ? pageUrl?.substring(1) : pageUrl
+  url = url ? `${siteUrl}${url}` : siteUrl
 
   const img = imgUrl ?? '/thumb-null.png'
 
