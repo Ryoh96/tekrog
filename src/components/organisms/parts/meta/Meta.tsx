@@ -23,10 +23,11 @@ const Meta = ({
 
   const desc = pageDesc ?? process.env.NEXT_PUBLIC_SITE_DESC
 
-  let url = pageUrl?.startsWith("/") ? pageUrl?.substring(1) : pageUrl
+  let url = pageUrl?.[0] === "/" ? pageUrl?.substring(1) : pageUrl
   url = url ? `${siteUrl}${url}` : siteUrl
+  url = url?.replace(/\/$/, "") || url
 
-  const img = imgUrl ?? '/thumb-null.png'
+  const img = imgUrl ?? '/thumb-tekrog.png'
 
   return (
     <Head>
