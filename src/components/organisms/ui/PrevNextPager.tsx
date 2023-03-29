@@ -4,11 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
 
+import { DEFAULT_IMAGE } from '@/constants/strings'
 import type { NextPost, PrevPost } from '@/types/Page'
 
 type PrevNextPagerProps = {
   mode: 'prev' | 'next'
-  imgUrl: string
+  imgUrl?: string
   title: string
 }
 
@@ -107,7 +108,11 @@ const Title = styled.p`
   }
 `
 
-const PrevNextPager = ({ mode, imgUrl, title }: PrevNextPagerProps) => {
+const PrevNextPager = ({
+  mode,
+  imgUrl = DEFAULT_IMAGE,
+  title,
+}: PrevNextPagerProps) => {
   return (
     <PrevNextPagerWrapper mode={mode}>
       <IconWrapper mode={mode}>
@@ -147,7 +152,7 @@ const PrevNextPagers = ({ prevPost, nextPost }: PrevNextPagersProp) => {
         <Link href={prevPost.uri as string}>
           <PrevNextPager
             mode="prev"
-            imgUrl={prevPost.featuredImage?.node.sourceUrl as string}
+            imgUrl={prevPost.featuredImage?.node.sourceUrl}
             title={prevPost.title as string}
           />
         </Link>
@@ -156,7 +161,7 @@ const PrevNextPagers = ({ prevPost, nextPost }: PrevNextPagersProp) => {
         <Link href={nextPost.uri as string}>
           <PrevNextPager
             mode="next"
-            imgUrl={nextPost.featuredImage?.node.sourceUrl as string}
+            imgUrl={nextPost.featuredImage?.node.sourceUrl}
             title={nextPost.title as string}
           />
         </Link>
