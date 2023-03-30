@@ -19,6 +19,11 @@ const NumericPagerItemWrapper = styled.div<{ current: boolean }>`
   z-index: 1;
   border: 1px solid currentColor;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
+    width: 33px;
+    height: 33px;
+  }
+
   &:hover {
     transform: scale(1.05);
     z-index: 2;
