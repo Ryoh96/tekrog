@@ -27,6 +27,7 @@ const TagWrapper = styled.span<TagProps>`
   align-items: center;
   transition: all 0.3s;
   z-index: 1;
+  text-shadow: 0 0 5px #00000058;
   /* width: fit-content; */
 
   ${({ hoverable }) =>

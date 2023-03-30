@@ -4,7 +4,7 @@ const color: {
   page: Record<string, string>
 } = {
   category: {
-    javascript: '#f9bb2b',
+    javascript: '#f7d514',
     html: '#f98343',
     typescript: '#2475ba',
     vuejs: '#4db49f',
@@ -12,13 +12,14 @@ const color: {
     python: '#d6cc02',
     wordpress: '#1f6f93',
     react: '#5acbe8',
-    laravel: '#f28c8e',
+    laravel: '#e34d42',
     sass: '#CD6799',
-    appli: '#555',
+    appli: '#4eb54f',
     php: '#7f80be',
     math: '#9261a7',
     news: '#a4ca66',
     graphql: '#f059bf',
+    nextjs: '#333'
   },
   share: {
     twitter: '#1e9af0',

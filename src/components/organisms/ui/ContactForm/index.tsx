@@ -109,10 +109,8 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
     }
   }
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = (data: FormData) => {
     if (Object.keys(errors).length) return
-    // await sendEmail(data)
-    console.log(new URLSearchParams(data).toString())
     fetch('/', {
       method: 'POST',
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
