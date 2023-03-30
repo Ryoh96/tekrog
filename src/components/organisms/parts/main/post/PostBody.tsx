@@ -239,6 +239,8 @@ const Postbody = ({ content }: PostBodyProps) => {
         if (
           clazz &&
           clazz.includes('lkc-url-info') &&
+          children[0] &&
+          children[0].data &&
           children[0].data.includes(src)
         ) {
           return (
