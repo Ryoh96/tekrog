@@ -10,7 +10,7 @@ import { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 import client from '@/graphql/apollo/client'
-import { GA_GA4_ID, GA_UA_ID, pageview } from '@/lib/gtag'
+import { GA_GA4_ID, pageview } from '@/lib/gtag'
 import GlobalStyle from '@/styles/GlobalStyle'
 import { theme } from '@/theme'
 // Prevent fontawesome from dynamically adding its css since we did it manually above
@@ -43,7 +43,6 @@ export default function App({ Component, pageProps }: AppProps) {
             gtag('js', new Date());
           
             gtag('config', '${GA_GA4_ID}');
-            gtag('config', '${GA_UA_ID}');
           `,
         }}
       />

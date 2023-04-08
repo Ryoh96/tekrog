@@ -109,9 +109,10 @@ const PostHead = ({
               aspectRatio: '2000 / 1125',
             }}
             sizes="50vw"
-            quality={75}
+            quality={60}
             placeholder="blur"
             blurDataURL={blurImg ?? ''}
+            loading="eager"
             priority
           />
         </Thumbnail>
