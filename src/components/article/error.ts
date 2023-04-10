@@ -17,8 +17,7 @@ const error = css`
   box-sizing: border-box;
   font-size: 16px;
   background-color: #e8c7ce;
-  line-height: 1.5;
-  display: grid;
+  line-height: 1.8;
   gap: 1em;
 
   &::before {
