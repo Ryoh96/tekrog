@@ -3,7 +3,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { getPlaiceholder } from 'plaiceholder'
 
 import Layout from '@/components/layout/Layout'
-import Main from '@/components/organisms/parts/main/common/Main'
+import Main from '@/components/templates/main/common/Main'
 import type {
   GetArchivePostsQuery,
   GetCategoriesQuery,

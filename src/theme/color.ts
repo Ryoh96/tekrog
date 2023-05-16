@@ -4,13 +4,13 @@ const color: {
   page: Record<string, string>
 } = {
   category: {
-    javascript: '#f7d514',
+    javascript: '#e6c81e',
     html: '#f98343',
     typescript: '#2475ba',
     vuejs: '#4db49f',
     css: '#4779ed',
-    python: '#d6cc02',
-    wordpress: '#1f6f93',
+    python: '#3471A3',
+    wordpress: '#1d5975',
     react: '#5acbe8',
     laravel: '#e34d42',
     sass: '#CD6799',
@@ -19,7 +19,7 @@ const color: {
     math: '#9261a7',
     news: '#a4ca66',
     graphql: '#f059bf',
-    nextjs: '#333'
+    nextjs: '#333',
   },
   share: {
     twitter: '#1e9af0',

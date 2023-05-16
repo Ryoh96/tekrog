@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
-import Card from '@/components/organisms/ui/Card'
+import Card from '@/components/organisms/Card'
 import type { Category } from '@/graphql/generated/graphql'
 import shuffleArray from '@/utils/shuffleArray'
 

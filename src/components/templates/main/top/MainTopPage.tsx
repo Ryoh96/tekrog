@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
-import Card from '@/components/organisms/ui/Card'
-import NumericPager from '@/components/organisms/ui/NumericPager'
+import Card from '@/components/organisms/Card'
+import NumericPager from '@/components/organisms/NumericPager'
 import type { GetArchivePageQuery, GetTopPageQuery } from '@/graphql/generated/request'
 
 type MainTopProps = {

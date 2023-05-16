@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useCallback, useState } from 'react'
 import styled from 'styled-components'
 
-import SendEmail from '@/components/organisms/ui/SendEmail'
+import ContactForm from '@/components/organisms/ContactForm'
+import SendEmail from '@/components/organisms/SendEmail'
 
-import ContactForm from '../../../ui/ContactForm'
 import MainIconTitle from '../common/MainIconTitle'
 
 const ContactFormWrapper = styled.div`

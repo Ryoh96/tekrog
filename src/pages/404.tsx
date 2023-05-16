@@ -6,6 +6,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 import Layout from '@/components/layout/Layout'
+import MainIconTitle from '@/components/templates/main/common/MainIconTitle'
 import type {
   GetArchivePostsQuery,
   GetCategoriesQuery,
@@ -13,8 +14,6 @@ import type {
   GetRecentPostsQuery,
 } from '@/graphql/generated/request'
 import { getSdk } from '@/graphql/generated/request'
-
-import MainIconTitle from './../components/organisms/parts/main/common/MainIconTitle'
 
 const Text = styled.p`
   margin-top: 30px;

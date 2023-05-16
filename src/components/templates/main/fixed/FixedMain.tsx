@@ -2,7 +2,7 @@ import { faGrav } from '@fortawesome/free-brands-svg-icons'
 import { faBomb, faKey, faPerson } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import PostBody from '@/components/organisms/parts/main/post/PostBody'
+import PostBody from '@/components/templates/main/post/PostBody'
 
 import MainIconTitle from '../common/MainIconTitle'
 

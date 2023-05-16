@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-import PostRelated from '@/components/organisms/parts/main/post/PostRelated'
-import CategoryTags from '@/components/organisms/ui/CategoryTags'
-import PrevNextPagers from '@/components/organisms/ui/PrevNextPager'
-import _Share from '@/components/organisms/ui/Share'
+import CategoryTags from '@/components/organisms/CategoryTags'
+import PrevNextPagers from '@/components/organisms/PrevNextPager'
+import _Share from '@/components/organisms/Share'
+import PostRelated from '@/components/templates/main/post/PostRelated'
 import type { Category, Post } from '@/graphql/generated/graphql'
 import type { GetPostPageQuery } from '@/graphql/generated/request'
 import type { NextPost, PrevPost } from '@/types/Page'

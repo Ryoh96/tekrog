@@ -1,6 +1,7 @@
 import { css } from 'styled-components'
 
 const pre = css`
+  font-family: Menlo, Monaco, 'Courier New', monospace !important;
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
     font-size: 12px;
   }
@@ -11,6 +12,7 @@ const pre = css`
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
     overflow: auto !important;
+    font-family: Menlo, Monaco, 'Courier New', monospace !important;
   }
 
   &[class*='language-'],

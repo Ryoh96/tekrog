@@ -2,7 +2,7 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainTopPage from '@/components/layout/MainTopPage'
+import MainTopPage from '@/components/templates/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import type {
   GetArchivePostsQuery,
@@ -62,7 +62,6 @@ export const getStaticProps: GetStaticProps<IndexProps> = async () => {
     categories: categories.categories,
     archivePosts: archivePosts.archivePosts,
   }
-
 
   const allCursor = await client
     .getAllCursor()

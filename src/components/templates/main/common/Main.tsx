@@ -1,5 +1,5 @@
-import FixedMain from '@/components/organisms/parts/main/fixed/FixedMain'
-import PostMain from '@/components/organisms/parts/main/post/PostMain'
+import FixedMain from '@/components/templates/main/fixed/FixedMain'
+import PostMain from '@/components/templates/main/post/PostMain'
 import type { FixedPageQuery, PostPageQuery } from '@/types/Page'
 
 type MainProps = {

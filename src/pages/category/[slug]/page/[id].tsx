@@ -2,8 +2,8 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainTopPage from '@/components/layout/MainTopPage'
-import MainEachCategoryTitle from '@/components/organisms/parts/main/category/MainEachCategoryTitle'
+import MainEachCategoryTitle from '@/components/templates/main/category/MainEachCategoryTitle'
+import MainTopPage from '@/components/templates/main/top/MainTopPage'
 import { POSTS_PER_PAGE } from '@/constants/number'
 import type {
   GetArchivePostsQuery,

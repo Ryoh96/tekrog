@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import PageContainer from '@/components/layout/PageContainer'
 import Logo from '@/components/molecules/Logo'
-import Gnav from '@/components/organisms/parts/header/Gnav'
+import Gnav from '@/components/templates/header/Gnav'
 
 const HeaderWrapper = styled.header`
   position: relative;

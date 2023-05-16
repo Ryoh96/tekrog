@@ -2,6 +2,7 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
+import MainContact from '@/components/templates/main/contact/MainContact'
 import type {
   GetArchivePostsQuery,
   GetCategoriesQuery,
@@ -9,8 +10,6 @@ import type {
   GetRecentPostsQuery,
 } from '@/graphql/generated/request'
 import { getSdk } from '@/graphql/generated/request'
-
-import MainContact from '../../components/organisms/parts/main/contact/MainContact'
 
 type ContactProps = {
   data: GetContactPageQuery

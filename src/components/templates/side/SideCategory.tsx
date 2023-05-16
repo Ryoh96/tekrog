@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 import SideContent from '@/components/molecules/SideContent'
-import CategoryTags from '@/components/organisms/ui/CategoryTags'
+import CategoryTags from '@/components/organisms/CategoryTags'
 import type { Category } from '@/graphql/generated/graphql'
 
 const CategoryTagWrapper = styled.div.attrs({

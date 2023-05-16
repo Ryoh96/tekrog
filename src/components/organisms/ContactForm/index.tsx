@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
 
 import _Button from '@/components//atoms/Button'
-import SendEmail from '@/components/organisms/ui//SendEmail'
+import SendEmail from '@/components/organisms/SendEmail'
 
 const ErrorText = styled.strong`
   color: red;

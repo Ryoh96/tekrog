@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styled, { useTheme } from 'styled-components'
 
-import _MainTitle from '@/components/organisms/parts/main/common/MainTitle'
+import _MainTitle from '@/components/templates/main/common/MainTitle'
 import type { CategoryType } from '@/types/CategoryType'
 import { cat2Name } from '@/utils/cat2name'
 

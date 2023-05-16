@@ -2,7 +2,7 @@ import { GraphQLClient } from 'graphql-request'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Layout from '@/components/layout/Layout'
-import MainAllCategories from '@/components/organisms/parts/main/category/MainAllCategories'
+import MainAllCategories from '@/components/templates/main/category/MainAllCategories'
 import type {
   GetAllCategoriesPageQuery,
   GetAllCategoriesQuery,

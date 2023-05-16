@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import styled from 'styled-components'
 
-import TitleBlock from '../layout/TitleBlock'
+import TitleBlock from './TitleBlock'
 
 const SideContentContainer = styled.div`
   padding: 20px 12px;

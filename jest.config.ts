@@ -26,7 +26,6 @@ module.exports = createJestConfig({
     'process.env.NODE_ENV': 'test',
     'process.env.NEXT_TELEMETRY_DISABLED': '1', // テレメトリを無効化する
   },
-  silentWarn: true,
 })
 
 export {}

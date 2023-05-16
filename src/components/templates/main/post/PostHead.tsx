@@ -2,8 +2,8 @@ import Image from 'next/image'
 import styled from 'styled-components'
 
 import DateTime from '@/components/atoms/DateTime'
-import CategoryTags from '@/components/organisms/ui/CategoryTags'
-import _Share from '@/components/organisms/ui/Share'
+import CategoryTags from '@/components/organisms/CategoryTags'
+import _Share from '@/components/organisms/Share'
 import type { Category } from '@/graphql/generated/graphql'
 
 const Thumbnail = styled.figure`

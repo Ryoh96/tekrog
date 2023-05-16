@@ -23,6 +23,7 @@ const ButtonsWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+  margin-bottom: 16px;
 `
 
 const SideContent = styled(_SideContent)`
@@ -123,6 +124,9 @@ const SideContentInner = styled.div`
   &::-webkit-scrollbar-corner {
   }
 `
+const PageTopButtonText = styled.p`
+  color: #fff;
+`
 
 const SideTOC = () => {
   const headingAnchors = useHeadingAnchors()
@@ -178,8 +182,8 @@ const SideTOC = () => {
         </SideContentInner>
       </SideContent>
       <ButtonsWrapper>
+        <PageTopButtonText>Page Top</PageTopButtonText>
         <PageTopButton />
-        <PageBottomButton />
       </ButtonsWrapper>
       <GoogleAdsense
         style={{

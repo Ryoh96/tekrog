@@ -70,7 +70,7 @@ const HorizontalCard = ({
             objectFit: 'cover',
           }}
           sizes="200px"
-          quality={70}
+          quality={50}
         />
       </ImageWrapper>
       <Title>{title}</Title>
