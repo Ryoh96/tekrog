@@ -9,6 +9,7 @@ import SendEmail from '@/components/organisms/SendEmail'
 const ErrorText = styled.strong`
   color: red;
   font-size: 0.8em;
+  
   font-weight: bold;
 `
 
