@@ -9,7 +9,7 @@ import SendEmail from '@/components/organisms/SendEmail'
 const ErrorText = styled.strong`
   color: red;
   font-size: 0.8em;
-  
+
   font-weight: bold;
 `
 
@@ -17,7 +17,7 @@ type FormData = {
   name: string
   email: string
   message: string
-  "form-name": string
+  'form-name': string
 }
 
 type ContactFormProps = {
@@ -114,7 +114,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
     if (Object.keys(errors).length) return
     fetch('/', {
       method: 'POST',
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(data).toString(),
     })
       .then(() => {
@@ -129,7 +129,7 @@ const ContactForm = ({ onCompleted }: ContactFormProps) => {
       {isError && <ErrorText>エラーが発生しました</ErrorText>}
       {!isSend ? (
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <input type="hidden" {...register('form-name')} value="contact"/>
+          <input type="hidden" {...register('form-name')} value="contact" />
           <FormLabel>
             <span>名前:</span>{' '}
             <FormParts>

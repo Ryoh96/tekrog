@@ -42,7 +42,12 @@ const Search: NextPage<SearchProps> = ({ data, query }) => {
 
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
+      <Layout
+        data={data}
+        breadcrumbList={breadcrumbList}
+        meta={meta}
+        title="ブログ内検索"
+      >
         <MainTopPage
           title={
             <MainIconTitle icon={<FontAwesomeIcon icon={faSearch} />}>

@@ -1,9 +1,12 @@
 import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import Image from 'next/image'
 import { getPlaiceholder } from 'plaiceholder'
+import styled from 'styled-components'
 
 import Layout from '@/components/layout/Layout'
 import Main from '@/components/templates/main/common/Main'
+import type { Category } from '@/graphql/generated/graphql'
 import type {
   GetArchivePostsQuery,
   GetCategoriesQuery,
@@ -19,6 +22,32 @@ import type {
   PostPageQuery,
   PrevPost,
 } from '@/types/Page'
+
+const ImageWrapper = styled.figure`
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+
+  background-color: #000;
+  background: ${({ theme }) => theme.gradient.dark};
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+  img {
+    position: static !important;
+    animation: fade 2s;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+  }
+`
 
 type PostProps = {
   data: GetFixedPageQuery | GetPostPageQuery | undefined
@@ -52,22 +81,28 @@ const Post: NextPage<PostProps> = ({ data, isSingle, blurImg }) => {
   }
 
   const url = content?.uri as string
-
   const breadcrumbList = [
     {
       name: title,
       href: url,
     },
   ]
-
   const meta = {
     title,
     desc,
     url,
     imgUrl,
   }
+  const postInfo = isSingle
+    ? undefined
+    : {
+        date: (content as PostPageQuery).date,
+        categories: (content as PostPageQuery).categories as {
+          nodes: Category[]
+        },
+        uri: (content as PostPageQuery).uri,
+      }
 
-  // console.log(content)
   return (
     <>
       <Layout
@@ -75,8 +110,34 @@ const Post: NextPage<PostProps> = ({ data, isSingle, blurImg }) => {
         breadcrumbList={breadcrumbList}
         isPostPage={isSingle ? false : true}
         meta={meta}
+        title={content.title}
+        post={postInfo}
+        hero={
+          !isSingle ? (
+            <ImageWrapper>
+              <Image
+                src={
+                  (content as PostPageQuery)?.featuredImage?.node.sourceUrl ??
+                  '/thumb-tekrog.png'
+                }
+                alt="thumbnail"
+                fill
+                style={{
+                  objectFit: 'cover',
+                  aspectRatio: '1700 / 825',
+                }}
+                sizes="50vw"
+                quality={60}
+                placeholder="blur"
+                blurDataURL={blurImg ?? ''}
+                loading="eager"
+                priority
+              />
+            </ImageWrapper>
+          ) : undefined
+        }
       >
-        <Main data={content} blurImg={blurImg} isSingle={isSingle} />
+        <Main data={content} isSingle={isSingle} />
       </Layout>
     </>
   )

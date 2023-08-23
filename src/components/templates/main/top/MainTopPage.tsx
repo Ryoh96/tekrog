@@ -3,10 +3,13 @@ import styled from 'styled-components'
 
 import Card from '@/components/organisms/Card'
 import NumericPager from '@/components/organisms/NumericPager'
-import type { GetArchivePageQuery, GetTopPageQuery } from '@/graphql/generated/request'
+import type {
+  GetArchivePageQuery,
+  GetTopPageQuery,
+} from '@/graphql/generated/request'
 
 type MainTopProps = {
-  posts: GetTopPageQuery['posts'] | GetArchivePageQuery["posts"]
+  posts: GetTopPageQuery['posts'] | GetArchivePageQuery['posts']
   totalPages: number
   current?: number
   type?: string

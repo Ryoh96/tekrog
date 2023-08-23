@@ -54,16 +54,14 @@ const Text = styled.p`
 
 const MainAllCategories = ({ nodes }: MainAllCategoriesProps) => {
   const url = nodes.map((node) =>
-  node.uri &&
-  node.uri.split('/').length === 5
-    ? node.uri.slice(node.uri.indexOf('/', node.uri.indexOf('/') + 1))
-    : node.uri
-)
+    node.uri && node.uri.split('/').length === 5
+      ? node.uri.slice(node.uri.indexOf('/', node.uri.indexOf('/') + 1))
+      : node.uri
+  )
   return (
-    
     <>
       <MainIconTitle icon={<FontAwesomeIcon icon={faComputer} />}>
-        カテゴリー
+        カテゴリー一覧
       </MainIconTitle>
       <FlexWrapper>
         {nodes.map((node, index) => (

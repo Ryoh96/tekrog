@@ -11,11 +11,11 @@ const BreadcrumbList = styled.ol`
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 20px;
+  padding: 16px 20px;
   color: #fff;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
-    padding: 14px 20px;
+    padding: 6px 20px;
   }
 `
 

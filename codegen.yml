@@ -15,12 +15,12 @@ generates:
     documents: 'src/graphql/operations/**/*.graphql'
     preset: import-types
     presetConfig:
-      typesPath: "./types"
+      typesPath: './types'
     config:
       maybeValue: 'T'
       avoidOptionals: true
     plugins:
       - add:
-         content: '// @ts-nocheck'
+          content: '// @ts-nocheck'
       - typescript-operations
       - typescript-graphql-request

@@ -62,14 +62,12 @@ type PostRelatedProps = {
 
 const PostRelated = ({ categories }: PostRelatedProps) => {
   const PostRelatedAll = categories.nodes.flatMap((node) =>
-    node.posts?.nodes.map(
-      (n: any) => ({
-        title: n.title,
-        categories: n.categories.nodes,
-        imgUrl: n.featuredImage?.node.sourceUrl,
-        uri: n.uri,
-      })
-    )
+    node.posts?.nodes.map((n: any) => ({
+      title: n.title,
+      categories: n.categories.nodes,
+      imgUrl: n.featuredImage?.node.sourceUrl,
+      uri: n.uri,
+    }))
   )
 
   const titles: string[] = []

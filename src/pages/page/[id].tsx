@@ -1,5 +1,6 @@
 import { GraphQLClient } from 'graphql-request'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import Image from 'next/image'
 
 import Layout from '@/components/layout/Layout'
 import MainTopPage from '@/components/templates/main/top/MainTopPage'
@@ -17,7 +18,6 @@ type PageProps = {
   pageNum: number
   totalPages: number
 }
-
 const Page: NextPage<PageProps> = ({ data, pageNum, totalPages }) => {
   const url = `/page/${pageNum}`
   const breadcrumbList: {
@@ -36,7 +36,12 @@ const Page: NextPage<PageProps> = ({ data, pageNum, totalPages }) => {
 
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
+      <Layout
+        data={data}
+        breadcrumbList={breadcrumbList}
+        meta={meta}
+        title="投稿記事一覧"
+      >
         <MainTopPage
           posts={data.posts}
           totalPages={totalPages}

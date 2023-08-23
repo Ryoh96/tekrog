@@ -9,8 +9,7 @@ type CategoryTagsProps = {
 
 const CategoryTags = ({ categories }: CategoryTagsProps) => {
   const url = categories.nodes.map((node) =>
-    node.uri &&
-    node.uri.split('/').length === 5
+    node.uri && node.uri.split('/').length === 5
       ? node.uri.slice(node.uri.indexOf('/', node.uri.indexOf('/') + 1))
       : node.uri
   )

@@ -4,6 +4,7 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     gradient: {
       main: string
+      dark: string
     }
     breakpoints: {
       xl: number

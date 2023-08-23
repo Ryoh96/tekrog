@@ -43,7 +43,12 @@ const Archive: NextPage<ArchiveProps> = ({ data, year, month }) => {
 
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
+      <Layout
+        data={data}
+        breadcrumbList={breadcrumbList}
+        meta={meta}
+        title="アーカイブ"
+      >
         <MainTopPage
           title={
             <MainIconTitle icon={<FontAwesomeIcon icon={faCalendar} />}>

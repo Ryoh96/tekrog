@@ -52,6 +52,7 @@ export default class MyDocument extends Document {
             strategy="afterInteractive"
           />
         </Head>
+
         <body>
           <Main />
           <NextScript />

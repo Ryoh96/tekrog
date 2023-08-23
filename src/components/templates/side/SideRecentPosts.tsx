@@ -8,8 +8,7 @@ import SideContent from '@/components/molecules/SideContent'
 import type { Post } from '@/graphql/generated/graphql'
 
 const HorizontalCardWrapper = styled.div.attrs({
-  'data-testid':"side-recent-posts"
-
+  'data-testid': 'side-recent-posts',
 })`
   display: grid;
   gap: 18px;

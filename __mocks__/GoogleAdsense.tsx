@@ -1,7 +1,5 @@
 const GoogleAdsense = () => {
-  return (
-    <div>Mocked GoogleAdsense</div>
-  )
+  return <div>Mocked GoogleAdsense</div>
 }
 
 export default GoogleAdsense

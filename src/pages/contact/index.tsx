@@ -36,7 +36,12 @@ const Contact: NextPage<ContactProps> = ({ data }) => {
   }
 
   return (
-    <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
+    <Layout
+      data={data}
+      breadcrumbList={breadcrumbList}
+      meta={meta}
+      title="お問い合わせ"
+    >
       <MainContact />
     </Layout>
   )

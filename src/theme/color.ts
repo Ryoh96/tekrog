@@ -19,7 +19,7 @@ const color: {
     math: '#9261a7',
     news: '#a4ca66',
     graphql: '#f059bf',
-    nextjs: '#333',
+    nextjs: '#000',
   },
   share: {
     twitter: '#1e9af0',

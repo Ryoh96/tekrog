@@ -25,7 +25,7 @@ const Index: NextPage<IndexProps> = ({ data, totalPages }) => {
   }[] = []
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList}>
+      <Layout data={data} breadcrumbList={breadcrumbList} title="投稿記事一覧">
         <MainTopPage posts={data.posts} totalPages={totalPages} />
       </Layout>
     </>

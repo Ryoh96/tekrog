@@ -4,12 +4,10 @@ import type { FixedPageQuery, PostPageQuery } from '@/types/Page'
 
 type MainProps = {
   data: FixedPageQuery | PostPageQuery
-
-  blurImg: string | null
   isSingle: boolean
 }
 
-const Main = ({ data, blurImg, isSingle }: MainProps) => {
+const Main = ({ data, isSingle }: MainProps) => {
   return (
     <>
       {isSingle ? (
@@ -20,7 +18,7 @@ const Main = ({ data, blurImg, isSingle }: MainProps) => {
           />
         </>
       ) : (
-        <PostMain post={data as PostPageQuery} blurImg={blurImg} />
+        <PostMain post={data as PostPageQuery} />
       )}
     </>
   )

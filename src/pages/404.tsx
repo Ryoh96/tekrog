@@ -45,9 +45,14 @@ const NotFound: NextPage<NotFoundProps> = ({ data }: NotFoundProps) => {
       href: '',
     },
   ]
+
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList}>
+      <Layout
+        data={data}
+        breadcrumbList={breadcrumbList}
+        title="404 NOT FOUND!"
+      >
         <MainIconTitle icon={<FontAwesomeIcon icon={faWarning} />}>
           404 お探しのページが見つかりません
         </MainIconTitle>

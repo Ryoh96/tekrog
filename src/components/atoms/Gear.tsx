@@ -10,8 +10,8 @@ type GearImageProps = {
 
 const GearImage = styled(Image)<GearImageProps>`
   position: absolute;
-  opacity: 0.5;
-  z-index: 1;
+  opacity: 0.15;
+  z-index: -1;
   top: ${(props) =>
     props.top !== undefined ? String(props.top) + 'px' : 'auto'};
   right: ${(props) =>
@@ -41,7 +41,17 @@ type GearProps = GearImageProps & {
 }
 
 const Gear = ({ src, width, height, ...props }: GearProps) => {
-  return <GearImage src={src} width={width} height={height} alt="" {...props} loading='eager' quality={10} />
+  return (
+    <GearImage
+      src={src}
+      width={width}
+      height={height}
+      alt=""
+      {...props}
+      loading="eager"
+      quality={10}
+    />
+  )
 }
 
 export default Gear

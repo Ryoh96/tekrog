@@ -12,16 +12,16 @@ type DateTimeProps = {
 const DateTimeWrapper = styled.div<{ className?: string }>`
   display: flex;
   gap: 6px;
-  font-size: 12px;
-  color: #333;
+  font-size: 14px;
+  color: #fff;
   width: 10em;
   align-items: center;
 `
 
 const IconWrapper = styled.div`
   svg {
+    color: #fff;
     font-size: 14px;
-    color: #333;
   }
 `
 

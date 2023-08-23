@@ -17,5 +17,5 @@ export const data = {
   mockedPost,
   mockedRecentPosts,
   mockedData,
-  mockedTopPagePost  
+  mockedTopPagePost,
 }

@@ -59,7 +59,12 @@ const CategoryPage = ({
 
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
+      <Layout
+        data={data}
+        breadcrumbList={breadcrumbList}
+        meta={meta}
+        title="カテゴリー別記事一覧"
+      >
         <MainTopPage
           title={<MainEachCategoryTitle category={categoryName} />}
           posts={data.posts}

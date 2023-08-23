@@ -38,7 +38,12 @@ const Category: NextPage<CategoryProps> = ({ data }) => {
 
   return (
     <>
-      <Layout data={data} breadcrumbList={breadcrumbList} meta={meta}>
+      <Layout
+        data={data}
+        breadcrumbList={breadcrumbList}
+        meta={meta}
+        title="カテゴリー"
+      >
         {data.mainCategory && (
           <MainAllCategories nodes={data.mainCategory.nodes} />
         )}
@@ -55,19 +60,20 @@ export const getStaticProps: GetStaticProps<CategoryProps> = async () => {
   )
   const client = getSdk(graphQLCluent)
 
-  const [mainCategory, recentPost, categories, archivePosts] = await Promise.all<
-    [
-      Promise<GetAllCategoriesQuery>,
-      Promise<GetRecentPostsQuery>,
-      Promise<GetCategoriesQuery>,
-      Promise<GetArchivePostsQuery>
-    ]
-  >([
-    client.getAllCategories(),
-    client.getRecentPosts(),
-    client.getCategories(),
-    client.getArchivePosts(),
-  ])
+  const [mainCategory, recentPost, categories, archivePosts] =
+    await Promise.all<
+      [
+        Promise<GetAllCategoriesQuery>,
+        Promise<GetRecentPostsQuery>,
+        Promise<GetCategoriesQuery>,
+        Promise<GetArchivePostsQuery>
+      ]
+    >([
+      client.getAllCategories(),
+      client.getRecentPosts(),
+      client.getCategories(),
+      client.getArchivePosts(),
+    ])
 
   const data = {
     mainCategory: mainCategory.mainCategory,

@@ -68,7 +68,7 @@ afterAll(() => {
 })
 
 describe('Top Page', () => {
-  test('test', async  () => {
+  test('test', async () => {
     const { page } = await getPage({
       route: '/',
     })
