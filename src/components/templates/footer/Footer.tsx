@@ -26,7 +26,7 @@ const Footer = () => {
       <PageContainer>
         <FooterContainer>
           <Fnav />
-          <Copy>copyright ©︎ 2021-2023 TeKRog All Rights Reserved.</Copy>
+          <Copy>copyright ©︎ 2021-2024 TeKRog All Rights Reserved.</Copy>
         </FooterContainer>
       </PageContainer>
     </FooterWrapper>

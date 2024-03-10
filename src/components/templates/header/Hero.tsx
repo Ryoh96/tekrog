@@ -10,6 +10,7 @@ import Gear2 from '@/images/gear02.svg'
 import Gear3 from '@/images/gear03.svg'
 import Gear4 from '@/images/gear04.svg'
 import Gear5 from '@/images/gear05.svg'
+import Gear6 from '@/images/gear13.svg'
 
 const Wrapper = styled.div`
   position: relative;
@@ -87,9 +88,10 @@ const Hero = ({
     <Wrapper>
       <Gear src={Gear1} width={200} height={200} bottom={-130} left={0} />
       <Gear src={Gear2} width={300} height={300} top={-160} left={200} />
-      <Gear src={Gear3} width={120} height={120} top={50} right={300} />
+      <Gear src={Gear3} width={120} height={120} top={30} right={300} />
       <Gear src={Gear4} width={100} height={100} top={-20} left={60} />
       <Gear src={Gear5} width={260} height={260} top={0} right={20} />
+      <Gear src={Gear6} width={200} height={360} top={10} right={400} />
       {content}
       <BreadcrumbWrapper>
         <Breadcrumb breadcrumbList={breadcrumbList} />
