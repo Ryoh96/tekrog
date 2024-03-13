@@ -26,7 +26,7 @@ const Search: NextPage<SearchProps> = ({ data, query }) => {
   const url = `/search/result?s=${encodeURI(query)}`
   const breadcrumbList: {
     name: string 
-    href: string
+    href: string 
   }[] = [
     {
       name: title,
