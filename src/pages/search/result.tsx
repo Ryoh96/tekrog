@@ -33,7 +33,7 @@ const Search: NextPage<SearchProps> = ({ data, query }) => {
       href: url,
     },
   ]
-
+　
   const meta = {
     title,
     desc,
