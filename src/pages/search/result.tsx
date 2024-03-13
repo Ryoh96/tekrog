@@ -25,7 +25,7 @@ const Search: NextPage<SearchProps> = ({ data, query }) => {
   const desc = `『${query}』の検索結果を表示するページです。`
   const url = `/search/result?s=${encodeURI(query)}`
   const breadcrumbList: {
-    name: string
+    name: string 
     href: string
   }[] = [
     {
