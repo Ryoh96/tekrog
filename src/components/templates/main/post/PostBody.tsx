@@ -8,6 +8,8 @@ import styled from 'styled-components'
 
 import { styles } from '@/components/article'
 import GoogleAdsense from '@/components/organisms/adsense/GoogleAdsense'
+import { InlineMath, BlockMath } from 'react-katex'
+import 'katex/dist/katex.min.css'
 
 const WordPressText = styled.div`
   ul,
@@ -158,6 +160,13 @@ const WordPressText = styled.div`
   > *:last-child {
     margin-bottom: 50px;
   }
+
+  figure.aligncenter {
+    text-align: center;
+      > img {
+        margin-inline: auto;
+      }
+  }
 `
 
 type PostBodyProps = {
@@ -212,7 +221,7 @@ const Postbody = ({ content }: PostBodyProps) => {
       if (name === 'h2') {
         return (
           <>
-            {count++ % 2 === 0 && count < 6 && (
+            {count++ % 2 === 0 && count < 8 && (
               <GoogleAdsense
                 style={{ display: 'block', textAlign: 'center' }}
                 layout="in-article"
@@ -248,6 +257,18 @@ const Postbody = ({ content }: PostBodyProps) => {
               {`https://tekrog.com` + children[0].data.slice(srcLength)}
             </div>
           )
+        }
+      }
+      if (name === "p") {
+        const { class: clazz } = attribs
+        if (clazz && clazz.includes("math")) {
+          return <BlockMath>{domToReact(children, options)}</BlockMath>
+        }
+      }
+      if (name === "strong") {
+        const { class: clazz } = attribs
+        if (clazz && clazz.includes("math")) {
+          return <InlineMath>{domToReact(children, options)}</InlineMath>
         }
       }
     },

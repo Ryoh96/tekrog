@@ -14,3 +14,4 @@ export type CategoryType =
   | 'vuejs'
   | 'wordpress'
   | 'graphql'
+  | 'ml'
