@@ -19,21 +19,20 @@ type SearchProps = {
   data: SearchPostsQuery
   query: string
 }
- 
+
 const Search: NextPage<SearchProps> = ({ data, query }) => {
   const title = `『${query}』の検索結果`
   const desc = `『${query}』の検索結果を表示するページです。`
   const url = `/search/result?s=${encodeURI(query)}`
   const breadcrumbList: {
-    name: string 
-    href: string 
+    name: string
+    href: string
   }[] = [
     {
       name: title,
       href: url,
     },
   ]
-　
   const meta = {
     title,
     desc,

@@ -1,15 +1,16 @@
+import 'katex/dist/katex.min.css'
+
 import type { HTMLReactParserOptions } from 'html-react-parser'
 import parse, { domToReact } from 'html-react-parser'
 import Image from 'next/image'
 import Link from 'next/link'
 import Prism from 'prismjs'
 import { useEffect } from 'react'
+import { BlockMath,InlineMath } from 'react-katex'
 import styled from 'styled-components'
 
 import { styles } from '@/components/article'
 import GoogleAdsense from '@/components/organisms/adsense/GoogleAdsense'
-import { InlineMath, BlockMath } from 'react-katex'
-import 'katex/dist/katex.min.css'
 
 const WordPressText = styled.div`
   ul,
@@ -163,9 +164,9 @@ const WordPressText = styled.div`
 
   figure.aligncenter {
     text-align: center;
-      > img {
-        margin-inline: auto;
-      }
+    > img {
+      margin-inline: auto;
+    }
   }
 `
 
@@ -259,15 +260,15 @@ const Postbody = ({ content }: PostBodyProps) => {
           )
         }
       }
-      if (name === "p") {
+      if (name === 'p') {
         const { class: clazz } = attribs
-        if (clazz && clazz.includes("math")) {
+        if (clazz && clazz.includes('math')) {
           return <BlockMath>{domToReact(children, options)}</BlockMath>
         }
       }
-      if (name === "strong") {
+      if (name === 'strong') {
         const { class: clazz } = attribs
-        if (clazz && clazz.includes("math")) {
+        if (clazz && clazz.includes('math')) {
           return <InlineMath>{domToReact(children, options)}</InlineMath>
         }
       }

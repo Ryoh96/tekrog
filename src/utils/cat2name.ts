@@ -18,7 +18,7 @@ export const cat2Name: Record<string, string> = {
   wordpress: 'WordPress',
   graphql: 'GraphQL',
   nextjs: 'Next.js',
-  ml: '機械学習'
+  ml: '機械学習',
 }
 
 export const name2Cat: Record<string, string> = invertObject(cat2Name)

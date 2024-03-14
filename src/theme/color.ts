@@ -20,7 +20,7 @@ const color: {
     news: '#a4ca66',
     graphql: '#f059bf',
     nextjs: '#000',
-    ml: '#572a00'
+    ml: '#572a00',
   },
   share: {
     twitter: '#1e9af0',
