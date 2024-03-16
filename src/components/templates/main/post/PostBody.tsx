@@ -13,7 +13,7 @@ import { styles } from '@/components/article'
 import GoogleAdsense from '@/components/organisms/adsense/GoogleAdsense'
 
 const WordPressText = styled.div`
-  ul,
+  ul, 
   ol {
     line-height: 1.6;
   }
