@@ -20,7 +20,7 @@ const WordPressText = styled.div`
 
   h2 {
     ${styles.h2}
-  }
+  } 
 
   h3 {
     ${styles.h3}
