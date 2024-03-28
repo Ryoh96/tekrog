@@ -6,21 +6,21 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Prism from 'prismjs'
 import { useEffect } from 'react'
-import { BlockMath,InlineMath } from 'react-katex'
+import { BlockMath, InlineMath } from 'react-katex'
 import styled from 'styled-components'
 
 import { styles } from '@/components/article'
 import GoogleAdsense from '@/components/organisms/adsense/GoogleAdsense'
 
 const WordPressText = styled.div`
-  ul, 
+  ul,
   ol {
     line-height: 1.6;
   }
 
   h2 {
     ${styles.h2}
-  } 
+  }
 
   h3 {
     ${styles.h3}

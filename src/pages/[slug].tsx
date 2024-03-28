@@ -132,6 +132,10 @@ const Post: NextPage<PostProps> = ({ data, isSingle, blurImg }) => {
                 blurDataURL={blurImg ?? ''}
                 loading="eager"
                 priority
+                key={
+                  (content as PostPageQuery)?.featuredImage?.node.sourceUrl ??
+                  '/thumb-tekrog.png'
+                }
               />
             </ImageWrapper>
           ) : undefined
