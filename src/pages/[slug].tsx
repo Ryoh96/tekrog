@@ -127,7 +127,7 @@ const Post: NextPage<PostProps> = ({ data, isSingle, blurImg }) => {
                   aspectRatio: '1700 / 825',
                 }}
                 sizes="50vw"
-                quality={60}
+                quality={70}
                 placeholder="blur"
                 blurDataURL={blurImg ?? ''}
                 loading="eager"

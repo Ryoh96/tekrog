@@ -48,8 +48,7 @@ const Gear = ({ src, width, height, ...props }: GearProps) => {
       height={height}
       alt=""
       {...props}
-      loading="eager"
-      quality={10}
+      quality={5}
     />
   )
 }
