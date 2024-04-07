@@ -132,7 +132,8 @@ const Card = ({
             fill
             style={{ objectFit: 'contain', aspectRatio: 'auto 2000 / 1125' }}
             sizes="(max-width: 560px) 30vw, 20vw"
-            quality={50}
+            quality={40}
+            priority
           />
         </ImageWrapper>
         <Title>{title}</Title>
