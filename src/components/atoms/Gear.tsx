@@ -24,7 +24,7 @@ const GearImage = styled(Image)<GearImageProps>`
   animation: rotation infinite 30s linear;
 
   @keyframes rotation {
-    0% {
+    0% { 
       transform: rotate(0deg);
     } 
 
