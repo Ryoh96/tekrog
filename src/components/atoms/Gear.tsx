@@ -30,7 +30,7 @@ const GearImage = styled(Image)<GearImageProps>`
 
     100% {
       transform: rotate(360deg);
-    }
+    } 
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {
