@@ -24,13 +24,13 @@ const GearImage = styled(Image)<GearImageProps>`
   animation: rotation infinite 30s linear;
 
   @keyframes rotation {
-    0% { 
+    0% {
       transform: rotate(0deg);
-    } 
+    }
 
     100% {
       transform: rotate(360deg);
-    } 
+    }
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sp}px) {

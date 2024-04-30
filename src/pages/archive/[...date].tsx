@@ -23,7 +23,7 @@ type ArchiveProps = {
 
 const Archive: NextPage<ArchiveProps> = ({ data, year, month }) => {
   const title = `${year}年${month}月の投稿`
-  const desc = `${year}年${month}月の投稿記事一覧です。` 
+  const desc = `${year}年${month}月の投稿記事一覧です。`
   const url = `/archive/${year}/${month}`
   const breadcrumbList: {
     name: string

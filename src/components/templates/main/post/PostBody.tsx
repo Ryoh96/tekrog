@@ -36,7 +36,7 @@ const WordPressText = styled.div`
 
   .toc {
     ${styles.toc}
-  } 
+  }
 
   p {
     margin-top: 1em;
