@@ -66,11 +66,9 @@ const ContactForm = () => {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData as any).toString(),
       })
-      console.log("hoge")
       setClientErrors(undefined)
       router.push("/contact/thanks")
     } catch (err) {
-      console.log(err)
       if (!(err instanceof ZodError)) throw err
       setClientErrors(transformFieldErrors(err))
     }
@@ -82,8 +80,9 @@ const ContactForm = () => {
       onSubmit={handleSubmit}
       {...stylex.props(styles.form)}
       data-netlify="true"
+      name="contact"
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="contact" value="contact" />
       <FormItem>
         <Label htmlFor="name">
           <span>名前:</span>
