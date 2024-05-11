@@ -40,7 +40,7 @@ const Card = ({
             }}
             sizes="(max-width: 560px) 30vw 20vw"
             quality={40}
-            property=""
+            priority
             {...stylex.props(styles.img)}
           />
         </figure>
