@@ -65,7 +65,7 @@ const ContactForm = () => {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData as any).toString(),
-      })
+      }, )
       setClientErrors(undefined)
       router.push("/contact/thanks")
     } catch (err) {
@@ -81,9 +81,8 @@ const ContactForm = () => {
       {...stylex.props(styles.form)}
       data-netlify="true"
       name="contact"
-      method='post'
     >
-      <input type="hidden" name="contact" value="contact" />
+      <input type="hidden" name="form-name" value="contact" />
       <FormItem>
         <Label htmlFor="name">
           <span>名前:</span>
