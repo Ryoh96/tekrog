@@ -1,0 +1,15 @@
+@use '../utils/variables' as v;
+
+h4 {
+  border-bottom: 4px solid v.$color-main;
+  border-image: v.$gradient-sub;
+  border-image-slice: 1;
+  padding: 0.5em;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 3em 0.3em 0.6em;
+
+  + * {
+    margin-top: 0;
+  }
+}

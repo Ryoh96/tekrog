@@ -3,7 +3,7 @@ import {
   faFacebookF,
   faGetPocket,
   faLine,
-  faTwitter,
+  faXTwitter,
 } from '@fortawesome/free-brands-svg-icons'
 
 import type { ShareType } from '@/types/ShareType'
@@ -14,38 +14,41 @@ type Content = {
   fontWeight: number
 }
 
-type a = (typeof shareListToIcon)[0]['icon']
-
 export const shareListToIcon: {
   name: ShareType
   hasIcon: boolean
   icon?: IconDefinition
   content?: Content
   href: (url: string, title?: string) => string
+  color: string
 }[] = [
   {
-    name: 'twitter',
+    name: 'X',
     hasIcon: true,
-    icon: faTwitter,
+    icon: faXTwitter,
     href: (url, title) => `https://twitter.com/share?url=${url}&text=${title}`,
+    color: '#000',
   },
   {
     name: 'facebook',
     hasIcon: true,
     icon: faFacebookF,
     href: (url) => `http://www.facebook.com/share.php?u=${url}`,
+    color: '#3b5998',
   },
   {
     name: 'get-pocket',
     hasIcon: true,
     icon: faGetPocket,
     href: (url, title) => `http://getpocket.com/edit?url=${url}&title=${title}`,
+    color: '#ef4156',
   },
   {
     name: 'line',
     hasIcon: true,
     icon: faLine,
     href: (url, title) => `http://line.me/R/msg/text/?${url}%0a${title}`,
+    color: '#05c756',
   },
   {
     name: 'hatena',
@@ -57,5 +60,6 @@ export const shareListToIcon: {
     },
     href: (url, title) =>
       `http://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${title}`,
+    color: '#029dd4',
   },
 ]

@@ -1,0 +1,8 @@
+query getStaticPage($name: String!) {
+  pages(where: {name: $name}) {
+    nodes {
+      title
+      content
+    }
+  }
+}

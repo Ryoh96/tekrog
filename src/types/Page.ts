@@ -11,9 +11,8 @@ export type NextPost = NonNullable<
 >['nodes'][number]
 
 export type FixedPageQuery = GetFixedPageQuery['page']
-export type PostPageQuery =
-  | GetPostPageQuery['post'] & {
-      prevPost: PrevPost
-    } & {
-      nextPost: NextPost
-    }
+export type PostPageQuery = GetPostPageQuery['post'] & {
+  prevPost: PrevPost
+} & {
+  nextPost: NextPost
+}

@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'https://tekrog.com/graphql'
+schema: 'https://xs363422.xsrv.jp/glLRkIDa6p/8GpzKbLjQZ'
 generates:
   src/graphql/generated/:
     preset: 'client'

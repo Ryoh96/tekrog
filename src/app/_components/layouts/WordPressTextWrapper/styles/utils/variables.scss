@@ -1,0 +1,37 @@
+// color
+$color-main: #1f2a82;
+$color-sub: #3626bf;
+$color-accent: #ffcf08;
+
+// gradient
+$gradient-main: linear-gradient(
+  132deg,
+  rgba(8, 68, 163, 1) 0%,
+  rgba(71, 27, 193, 1) 100%
+);
+$gradient-sub: linear-gradient(
+  149deg,
+  rgba(2, 54, 144, 1) 0%,
+  rgba(49, 168, 200, 1) 100%
+);
+$gradient-accent: linear-gradient(
+  132deg,
+  rgba(8, 68, 163, 1) 0%,
+  rgba(162, 31, 149, 1) 100%
+);
+
+// media query
+$breakpoints: (
+  sp: '(max-width: 768px)',
+);
+
+// shadow
+$shadow:
+  0 10px 20px rgba(0, 0, 0, 0.19),
+  0 6px 6px rgba(0, 0, 0, 0.23);
+$shadow-narrow:
+  0 1px 2px 0 rgba(60, 64, 67, 0.5),
+  0 1px 3px 1px rgba(60, 64, 67, 0.2);
+$shadow-far:
+  0 19px 38px rgba(0, 0, 0, 0.3),
+  0 15px 12px rgba(0, 0, 0, 0.22);

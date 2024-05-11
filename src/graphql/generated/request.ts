@@ -1,25 +1,25 @@
 // @ts-nocheck
 import * as Types from './types';
 
-import { GraphQLClient } from 'graphql-request';
-import * as Dom from 'graphql-request/dist/types.dom';
+import { GraphQLClient, RequestOptions } from 'graphql-request';
 import gql from 'graphql-tag';
+type GraphQLClientRequestHeaders = RequestOptions['requestHeaders'];
 export type GetAllPostDateQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
 export type GetAllPostDateQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
 export type GetArchiveQueryVariables = Types.Exact<{
-  year: Types.Scalars['Int'];
-  month: Types.Scalars['Int'];
+  year: Types.Scalars['Int']['input'];
+  month: Types.Scalars['Int']['input'];
 }>;
 
 
 export type GetArchiveQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, date: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } }, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string }> } }> } };
 
 export type GetArchivePageQueryVariables = Types.Exact<{
-  year: Types.Scalars['Int'];
-  month: Types.Scalars['Int'];
+  year: Types.Scalars['Int']['input'];
+  month: Types.Scalars['Int']['input'];
 }>;
 
 
@@ -41,25 +41,25 @@ export type GetAllCategoryNameQueryVariables = Types.Exact<{ [key: string]: neve
 export type GetAllCategoryNameQuery = { __typename?: 'RootQuery', categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', slug: string }> } };
 
 export type GetCategoryQueryVariables = Types.Exact<{
-  after: Types.InputMaybe<Types.Scalars['String']>;
-  first: Types.Scalars['Int'];
-  categoryName: Types.Scalars['String'];
+  after: Types.InputMaybe<Types.Scalars['String']['input']>;
+  first: Types.Scalars['Int']['input'];
+  categoryName: Types.Scalars['String']['input'];
 }>;
 
 
 export type GetCategoryQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, date: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } }, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string }> } }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> } };
 
 export type GetCategoryCursorQueryVariables = Types.Exact<{
-  categoryName: Types.Scalars['String'];
+  categoryName: Types.Scalars['String']['input'];
 }>;
 
 
 export type GetCategoryCursorQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> } };
 
 export type GetCategoryPageQueryVariables = Types.Exact<{
-  after: Types.InputMaybe<Types.Scalars['String']>;
-  first: Types.Scalars['Int'];
-  categoryName: Types.Scalars['String'];
+  after: Types.InputMaybe<Types.Scalars['String']['input']>;
+  first: Types.Scalars['Int']['input'];
+  categoryName: Types.Scalars['String']['input'];
 }>;
 
 
@@ -81,6 +81,13 @@ export type GetCategoriesQueryVariables = Types.Exact<{ [key: string]: never; }>
 
 export type GetCategoriesQuery = { __typename?: 'RootQuery', categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> } };
 
+export type GetPageMetaBySlugQueryVariables = Types.Exact<{
+  uri: Types.Scalars['String']['input'];
+}>;
+
+
+export type GetPageMetaBySlugQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', title: string, modified: string, date: string, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string }> } } }> } };
+
 export type GetRecentPostsQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
@@ -97,21 +104,21 @@ export type GetAllFixedPageQueryVariables = Types.Exact<{ [key: string]: never; 
 export type GetAllFixedPageQuery = { __typename?: 'RootQuery', pages: { __typename?: 'RootQueryToPageConnection', edges: Array<{ __typename?: 'RootQueryToPageConnectionEdge', cursor: string, node: { __typename?: 'Page', uri: string, slug: string } }> } };
 
 export type GetFixedQueryVariables = Types.Exact<{
-  id: Types.Scalars['ID'];
+  id: Types.Scalars['ID']['input'];
 }>;
 
 
 export type GetFixedQuery = { __typename?: 'RootQuery', page: { __typename?: 'Page', content: string, title: string, uri: string } };
 
 export type GetFixedPageQueryVariables = Types.Exact<{
-  id: Types.Scalars['ID'];
+  id: Types.Scalars['ID']['input'];
 }>;
 
 
 export type GetFixedPageQuery = { __typename?: 'RootQuery', page: { __typename?: 'Page', content: string, title: string, uri: string }, recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
 export type GetStartCursorQueryVariables = Types.Exact<{
-  index: Types.Scalars['String'];
+  index: Types.Scalars['String']['input'];
 }>;
 
 
@@ -121,6 +128,13 @@ export type GetNotFoundPageQueryVariables = Types.Exact<{ [key: string]: never; 
 
 
 export type GetNotFoundPageQuery = { __typename?: 'RootQuery', recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> } };
+
+export type GetStaticPageQueryVariables = Types.Exact<{
+  name: Types.Scalars['String']['input'];
+}>;
+
+
+export type GetStaticPageQuery = { __typename?: 'RootQuery', pages: { __typename?: 'RootQueryToPageConnection', nodes: Array<{ __typename?: 'Page', title: string, content: string }> } };
 
 export type GetAllPathsQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
@@ -133,34 +147,41 @@ export type GetAllPathsAndCursorQueryVariables = Types.Exact<{ [key: string]: ne
 export type GetAllPathsAndCursorQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string, node: { __typename?: 'Post', uri: string } }> } };
 
 export type GetPostQueryVariables = Types.Exact<{
-  id: Types.Scalars['ID'];
-  key: Types.Scalars['String'];
+  id: Types.Scalars['ID']['input'];
+  key: Types.Scalars['String']['input'];
 }>;
 
 
 export type GetPostQuery = { __typename?: 'RootQuery', post: { __typename?: 'Post', content: string, date: string, excerpt: string, title: string, uri: string, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string, posts: { __typename?: 'CategoryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', uri: string, name: string }> }, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> } }> }, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }, nextPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, prevPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> } };
 
 export type GetPostPageQueryVariables = Types.Exact<{
-  id: Types.Scalars['ID'];
-  key: Types.Scalars['String'];
+  id: Types.Scalars['ID']['input'];
+  key: Types.Scalars['String']['input'];
 }>;
 
 
 export type GetPostPageQuery = { __typename?: 'RootQuery', post: { __typename?: 'Post', content: string, date: string, excerpt: string, title: string, uri: string, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string, posts: { __typename?: 'CategoryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', uri: string, name: string }> }, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> } }> }, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }, nextPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, prevPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
+export type GetThumbnailAndTitleQueryVariables = Types.Exact<{
+  name: Types.Scalars['String']['input'];
+}>;
+
+
+export type GetThumbnailAndTitleQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> } };
+
 export type GetSearchQueryVariables = Types.Exact<{
-  query: Types.Scalars['String'];
-  first: Types.Scalars['Int'];
-  after: Types.InputMaybe<Types.Scalars['String']>;
+  query: Types.Scalars['String']['input'];
+  first: Types.Scalars['Int']['input'];
+  after: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 
 export type GetSearchQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, date: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } }, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string }> } }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> } };
 
 export type SearchPostsQueryVariables = Types.Exact<{
-  query: Types.Scalars['String'];
-  first: Types.Scalars['Int'];
-  after: Types.InputMaybe<Types.Scalars['String']>;
+  query: Types.Scalars['String']['input'];
+  first: Types.Scalars['Int']['input'];
+  after: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 
@@ -172,16 +193,16 @@ export type GetAllCursorQueryVariables = Types.Exact<{ [key: string]: never; }>;
 export type GetAllCursorQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> } };
 
 export type GetTopPageQueryVariables = Types.Exact<{
-  after: Types.InputMaybe<Types.Scalars['String']>;
-  first: Types.Scalars['Int'];
+  after: Types.InputMaybe<Types.Scalars['String']['input']>;
+  first: Types.Scalars['Int']['input'];
 }>;
 
 
 export type GetTopPageQuery = { __typename?: 'RootQuery', posts: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, date: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } }, categories: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', name: string, uri: string }> } }>, edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', cursor: string }> }, recentPost: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title: string, uri: string, excerpt: string, featuredImage: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sourceUrl: string } } }> }, categories: { __typename?: 'RootQueryToCategoryConnection', nodes: Array<{ __typename?: 'Category', count: number, name: string, uri: string }> }, archivePosts: { __typename?: 'RootQueryToPostConnection', edges: Array<{ __typename?: 'RootQueryToPostConnectionEdge', node: { __typename?: 'Post', date: string } }> } };
 
 export type GetTopPagePostsQueryVariables = Types.Exact<{
-  after: Types.InputMaybe<Types.Scalars['String']>;
-  first: Types.Scalars['Int'];
+  after: Types.InputMaybe<Types.Scalars['String']['input']>;
+  first: Types.Scalars['Int']['input'];
 }>;
 
 
@@ -394,6 +415,24 @@ export const GetCategoriesDocument = gql`
   }
 }
     ${CategoryFragmentDoc}`;
+export const GetPageMetaBySlugDocument = gql`
+    query getPageMetaBySlug($uri: String!) {
+  posts(where: {name: $uri}) {
+    edges {
+      node {
+        title
+        modified
+        date
+        categories {
+          nodes {
+            name
+          }
+        }
+      }
+    }
+  }
+}
+    `;
 export const GetRecentPostsDocument = gql`
     query getRecentPosts {
   recentPost: posts(first: 5) {
@@ -512,6 +551,16 @@ export const GetNotFoundPageDocument = gql`
 }
     ${RecentPostFragmentDoc}
 ${CategoryFragmentDoc}`;
+export const GetStaticPageDocument = gql`
+    query getStaticPage($name: String!) {
+  pages(where: {name: $name}) {
+    nodes {
+      title
+      content
+    }
+  }
+}
+    `;
 export const GetAllPathsDocument = gql`
     query getAllPaths {
   posts(first: 1000) {
@@ -680,6 +729,20 @@ export const GetPostPageDocument = gql`
   }
 }
     `;
+export const GetThumbnailAndTitleDocument = gql`
+    query getThumbnailAndTitle($name: String!) {
+  posts(where: {name: $name}) {
+    nodes {
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      title
+    }
+  }
+}
+    `;
 export const GetSearchDocument = gql`
     query getSearch($query: String!, $first: Int!, $after: String) {
   posts(first: $first, after: $after, where: {search: $query}) {
@@ -776,93 +839,102 @@ export const GetTopPagePostsDocument = gql`
 }
     ${TopPageInfoFragmentDoc}`;
 
-export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
+export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
 
-const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType) => action();
+const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, _variables) => action();
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    getAllPostDate(variables?: Types.GetAllPostDateQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllPostDateQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllPostDateQuery>(GetAllPostDateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPostDate', 'query');
+    getAllPostDate(variables?: Types.GetAllPostDateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetAllPostDateQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllPostDateQuery>(GetAllPostDateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPostDate', 'query', variables);
     },
-    getArchive(variables: Types.GetArchiveQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetArchiveQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetArchiveQuery>(GetArchiveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getArchive', 'query');
+    getArchive(variables: Types.GetArchiveQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetArchiveQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetArchiveQuery>(GetArchiveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getArchive', 'query', variables);
     },
-    getArchivePage(variables: Types.GetArchivePageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetArchivePageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetArchivePageQuery>(GetArchivePageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getArchivePage', 'query');
+    getArchivePage(variables: Types.GetArchivePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetArchivePageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetArchivePageQuery>(GetArchivePageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getArchivePage', 'query', variables);
     },
-    getAllCategories(variables?: Types.GetAllCategoriesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllCategoriesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCategoriesQuery>(GetAllCategoriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategories', 'query');
+    getAllCategories(variables?: Types.GetAllCategoriesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetAllCategoriesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCategoriesQuery>(GetAllCategoriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategories', 'query', variables);
     },
-    getAllCategoriesPage(variables?: Types.GetAllCategoriesPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllCategoriesPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCategoriesPageQuery>(GetAllCategoriesPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoriesPage', 'query');
+    getAllCategoriesPage(variables?: Types.GetAllCategoriesPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetAllCategoriesPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCategoriesPageQuery>(GetAllCategoriesPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoriesPage', 'query', variables);
     },
-    getAllCategoryName(variables?: Types.GetAllCategoryNameQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllCategoryNameQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCategoryNameQuery>(GetAllCategoryNameDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoryName', 'query');
+    getAllCategoryName(variables?: Types.GetAllCategoryNameQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetAllCategoryNameQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCategoryNameQuery>(GetAllCategoryNameDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCategoryName', 'query', variables);
     },
-    getCategory(variables: Types.GetCategoryQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetCategoryQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetCategoryQuery>(GetCategoryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategory', 'query');
+    getCategory(variables: Types.GetCategoryQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetCategoryQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetCategoryQuery>(GetCategoryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategory', 'query', variables);
     },
-    getCategoryCursor(variables: Types.GetCategoryCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetCategoryCursorQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetCategoryCursorQuery>(GetCategoryCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryCursor', 'query');
+    getCategoryCursor(variables: Types.GetCategoryCursorQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetCategoryCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetCategoryCursorQuery>(GetCategoryCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryCursor', 'query', variables);
     },
-    getCategoryPage(variables: Types.GetCategoryPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetCategoryPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetCategoryPageQuery>(GetCategoryPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryPage', 'query');
+    getCategoryPage(variables: Types.GetCategoryPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetCategoryPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetCategoryPageQuery>(GetCategoryPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategoryPage', 'query', variables);
     },
-    getArchivePosts(variables?: Types.GetArchivePostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetArchivePostsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetArchivePostsQuery>(GetArchivePostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getArchivePosts', 'query');
+    getArchivePosts(variables?: Types.GetArchivePostsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetArchivePostsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetArchivePostsQuery>(GetArchivePostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getArchivePosts', 'query', variables);
     },
-    getCategories(variables?: Types.GetCategoriesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetCategoriesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetCategoriesQuery>(GetCategoriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategories', 'query');
+    getCategories(variables?: Types.GetCategoriesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetCategoriesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetCategoriesQuery>(GetCategoriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCategories', 'query', variables);
     },
-    getRecentPosts(variables?: Types.GetRecentPostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetRecentPostsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetRecentPostsQuery>(GetRecentPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getRecentPosts', 'query');
+    getPageMetaBySlug(variables: Types.GetPageMetaBySlugQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetPageMetaBySlugQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetPageMetaBySlugQuery>(GetPageMetaBySlugDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPageMetaBySlug', 'query', variables);
     },
-    getContactPage(variables?: Types.GetContactPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetContactPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetContactPageQuery>(GetContactPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getContactPage', 'query');
+    getRecentPosts(variables?: Types.GetRecentPostsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetRecentPostsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetRecentPostsQuery>(GetRecentPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getRecentPosts', 'query', variables);
     },
-    getAllFixedPage(variables?: Types.GetAllFixedPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllFixedPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllFixedPageQuery>(GetAllFixedPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllFixedPage', 'query');
+    getContactPage(variables?: Types.GetContactPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetContactPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetContactPageQuery>(GetContactPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getContactPage', 'query', variables);
     },
-    getFixed(variables: Types.GetFixedQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetFixedQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetFixedQuery>(GetFixedDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getFixed', 'query');
+    getAllFixedPage(variables?: Types.GetAllFixedPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetAllFixedPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllFixedPageQuery>(GetAllFixedPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllFixedPage', 'query', variables);
     },
-    getFixedPage(variables: Types.GetFixedPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetFixedPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetFixedPageQuery>(GetFixedPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getFixedPage', 'query');
+    getFixed(variables: Types.GetFixedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetFixedQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetFixedQuery>(GetFixedDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getFixed', 'query', variables);
     },
-    getStartCursor(variables: Types.GetStartCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetStartCursorQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetStartCursorQuery>(GetStartCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getStartCursor', 'query');
+    getFixedPage(variables: Types.GetFixedPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetFixedPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetFixedPageQuery>(GetFixedPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getFixedPage', 'query', variables);
     },
-    getNotFoundPage(variables?: Types.GetNotFoundPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetNotFoundPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetNotFoundPageQuery>(GetNotFoundPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getNotFoundPage', 'query');
+    getStartCursor(variables: Types.GetStartCursorQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetStartCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetStartCursorQuery>(GetStartCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getStartCursor', 'query', variables);
     },
-    getAllPaths(variables?: Types.GetAllPathsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllPathsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllPathsQuery>(GetAllPathsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPaths', 'query');
+    getNotFoundPage(variables?: Types.GetNotFoundPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetNotFoundPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetNotFoundPageQuery>(GetNotFoundPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getNotFoundPage', 'query', variables);
     },
-    getAllPathsAndCursor(variables?: Types.GetAllPathsAndCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllPathsAndCursorQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllPathsAndCursorQuery>(GetAllPathsAndCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPathsAndCursor', 'query');
+    getStaticPage(variables: Types.GetStaticPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetStaticPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetStaticPageQuery>(GetStaticPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getStaticPage', 'query', variables);
     },
-    getPost(variables: Types.GetPostQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetPostQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetPostQuery>(GetPostDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPost', 'query');
+    getAllPaths(variables?: Types.GetAllPathsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetAllPathsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllPathsQuery>(GetAllPathsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPaths', 'query', variables);
     },
-    getPostPage(variables: Types.GetPostPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetPostPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetPostPageQuery>(GetPostPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPostPage', 'query');
+    getAllPathsAndCursor(variables?: Types.GetAllPathsAndCursorQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetAllPathsAndCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllPathsAndCursorQuery>(GetAllPathsAndCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllPathsAndCursor', 'query', variables);
     },
-    getSearch(variables: Types.GetSearchQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetSearchQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetSearchQuery>(GetSearchDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getSearch', 'query');
+    getPost(variables: Types.GetPostQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetPostQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetPostQuery>(GetPostDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPost', 'query', variables);
     },
-    searchPosts(variables: Types.SearchPostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.SearchPostsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.SearchPostsQuery>(SearchPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'searchPosts', 'query');
+    getPostPage(variables: Types.GetPostPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetPostPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetPostPageQuery>(GetPostPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPostPage', 'query', variables);
     },
-    getAllCursor(variables?: Types.GetAllCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetAllCursorQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCursorQuery>(GetAllCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCursor', 'query');
+    getThumbnailAndTitle(variables: Types.GetThumbnailAndTitleQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetThumbnailAndTitleQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetThumbnailAndTitleQuery>(GetThumbnailAndTitleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getThumbnailAndTitle', 'query', variables);
     },
-    getTopPage(variables: Types.GetTopPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetTopPageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetTopPageQuery>(GetTopPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTopPage', 'query');
+    getSearch(variables: Types.GetSearchQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetSearchQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetSearchQuery>(GetSearchDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getSearch', 'query', variables);
     },
-    getTopPagePosts(variables: Types.GetTopPagePostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<Types.GetTopPagePostsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetTopPagePostsQuery>(GetTopPagePostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTopPagePosts', 'query');
+    searchPosts(variables: Types.SearchPostsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.SearchPostsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.SearchPostsQuery>(SearchPostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'searchPosts', 'query', variables);
+    },
+    getAllCursor(variables?: Types.GetAllCursorQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetAllCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetAllCursorQuery>(GetAllCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllCursor', 'query', variables);
+    },
+    getTopPage(variables: Types.GetTopPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetTopPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetTopPageQuery>(GetTopPageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTopPage', 'query', variables);
+    },
+    getTopPagePosts(variables: Types.GetTopPagePostsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Types.GetTopPagePostsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<Types.GetTopPagePostsQuery>(GetTopPagePostsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTopPagePosts', 'query', variables);
     }
   };
 }

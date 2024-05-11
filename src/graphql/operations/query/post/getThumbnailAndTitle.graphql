@@ -1,0 +1,12 @@
+query getThumbnailAndTitle($name: String!) {
+  posts(where: {name: $name}) {
+    nodes {
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      title
+    }
+  }
+}

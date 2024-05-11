@@ -1,0 +1,16 @@
+query getPageMetaBySlug($uri: String!) {
+  posts(where: {name: $uri}) {
+    edges {
+      node {
+        title
+        modified
+        date
+        categories {
+          nodes {
+            name
+          }
+        }
+      }
+    }
+  }
+}
