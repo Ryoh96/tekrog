@@ -56,16 +56,16 @@ const ContactForm = () => {
 
   const errors = clientErrors || formState.error?.fieldErrors
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault()
       const formData = new FormData(e.currentTarget)
       validateFormData(formData)
-      fetch("/", {
+      await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData as any).toString(),
-      }, )
+      },)
       setClientErrors(undefined)
       router.push("/contact/thanks")
     } catch (err) {
