@@ -9,6 +9,7 @@ import { ZodError } from 'zod'
 import Button from '@/app/_components/atoms/Button'
 import * as stylex from '@stylexjs/stylex'
 import { SP } from '@/types/BreakPoints'
+import { redirect } from 'next/navigation'
 
 const FormItem = ({ children }: { children: React.ReactNode }) => {
   return <div {...stylex.props(styles.formItem)}>{children}</div>
@@ -58,7 +59,13 @@ const ContactForm = () => {
     try {
       const formData = new FormData(e.currentTarget)
       validateFormData(formData)
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      })
       setClientErrors(undefined)
+      redirect("/contact/thanks")
     } catch (err) {
       e.preventDefault()
       if (!(err instanceof ZodError)) throw err
@@ -68,7 +75,7 @@ const ContactForm = () => {
 
   return (
     <form
-      action={formDispatch}
+      // action={formDispatch}
       onSubmit={handleSubmit}
       {...stylex.props(styles.form)}
     >
