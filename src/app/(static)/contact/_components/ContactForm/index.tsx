@@ -57,6 +57,7 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     try {
+      e.preventDefault()
       const formData = new FormData(e.currentTarget)
       validateFormData(formData)
       fetch("/", {
@@ -67,7 +68,6 @@ const ContactForm = () => {
       setClientErrors(undefined)
       redirect("/contact/thanks")
     } catch (err) {
-      e.preventDefault()
       if (!(err instanceof ZodError)) throw err
       setClientErrors(transformFieldErrors(err))
     }
@@ -78,6 +78,8 @@ const ContactForm = () => {
       // action={formDispatch}
       onSubmit={handleSubmit}
       {...stylex.props(styles.form)}
+      method="POST" 
+      data-netlify="true"
     >
       <input type="hidden" name="form-name" value="contact" />
       <FormItem>
