@@ -81,6 +81,7 @@ const ContactForm = () => {
       {...stylex.props(styles.form)}
       data-netlify="true"
       name="contact"
+      method='post'
     >
       <input type="hidden" name="contact" value="contact" />
       <FormItem>

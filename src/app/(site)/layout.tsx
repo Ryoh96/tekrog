@@ -24,7 +24,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <SideCategories />
             <SideArchives />
             <SideTOC />
-            <SideGoogleAdsense/>
           </SideArea>
         </TwoColumnsContainer>
       </PageContainer>

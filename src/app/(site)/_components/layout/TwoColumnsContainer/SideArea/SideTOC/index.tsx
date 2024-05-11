@@ -17,6 +17,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { SP } from '@/types/BreakPoints'
 import { usePathname } from 'next/navigation'
+import SideGoogleAdsense from '../SideGoogleAdsense'
 
 const SideTOC = () => {
   const path = usePathname()
@@ -88,6 +89,7 @@ const SideTOC = () => {
               ))}
             </div>
           </SideContent>
+          <SideGoogleAdsense/>
         </div>
       )}
     </>
