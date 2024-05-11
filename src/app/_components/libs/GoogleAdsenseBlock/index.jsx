@@ -27,7 +27,7 @@ class AdCodeWithoutRouter extends React.Component {
     } = this.props
 
     return (
-      <div className="container mx-auto text-center" aria-hidden={true}>
+      <div className="container mx-auto text-center" aria-hidden={true} style={{ minWidth: 360 }}>
         <ins
           className="adsbygoogle"
           style={style}
