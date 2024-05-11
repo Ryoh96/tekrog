@@ -11,7 +11,7 @@ type Props = ComponentPropsWithRef<'div'> & {
 }
 
 const Base = (props: Props) => {
-  return <div {...props} {...stylex.props(style.div, props.styles)} />
+  return <div {...props} {...stylex.props(style.div, props.styles)} />  
 }
 
 const MQ_SP: SP = 768
@@ -24,8 +24,8 @@ const style = stylex.create({
     borderRadius: 10,
     flexGrow: 1,
     boxShadow: shadow.default,
-    [`@media (max-width: ${MQ_SP})`]: {
-      padding: '26px 22px',
+    [`@media (max-width: ${MQ_SP}px)`]: {
+      padding: '16px',
     },
   },
 })
