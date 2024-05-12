@@ -74,11 +74,16 @@ const styles = stylex.create({
       zIndex: 2,
       boxShadow: shadow.far,
     },
+    [`@media (max-width: ${MQ_SP}px)`]: {
+      ":not(__) > img": {
+        width: 28
+      }
+    }
   },
   p: {
     fontSize: 20,
     [`@media (max-width: ${MQ_SP}px)`]: {
-      fontSize: 18,
+      fontSize: 14,
     },
   },
 })

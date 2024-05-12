@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import HamburgerButton from './HamburgerButton'
 import { SP } from '@/types/BreakPoints'
+import { useRouter } from 'next/navigation'
 
 const gnavItems = [
   { title: 'HOME', href: '/' },
@@ -16,17 +17,22 @@ const gnavItems = [
 
 const Gnav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
+  const router = useRouter()
   const toggleGnav = () => setIsMenuOpen((prevState) => !prevState)
+
+  const handleClick = (href: string) => {
+    router.push(href)
+    setIsMenuOpen(false)
+  }
 
   return (
     <nav>
       <ul {...stylex.props(styles.ul, isMenuOpen && styles.isMenuOpen)}>
         <>
           {gnavItems.map((item) => (
-            <Link href={item.href} key={item.title}>
+            <span key={item.title} onClick={() => handleClick(item.href)}>
               <li {...stylex.props(styles.li)}>{item.title}</li>
-            </Link>
+            </span>
           ))}
         </>
       </ul>
@@ -39,9 +45,9 @@ const Gnav = () => {
             overflow: hidden;
             position: fixed;
             width: 100%;
-          }
-        `}</style>
-      )}
+          } 
+        `}</style>  
+      )} 
     </nav>
   )
 }
@@ -62,6 +68,7 @@ const styles = stylex.create({
       transition: 'transform 0.4s',
       fontSize: 32,
       transform: null,
+      zIndex: 999
     },
   },
   isMenuOpen: {

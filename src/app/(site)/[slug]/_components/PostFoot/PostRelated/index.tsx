@@ -51,12 +51,12 @@ const PostRelated = ({ categories }: { categories: Category[] }) => {
                   categories={post.categories}
                   imgUrl={post.imgUrl}
                   style={styles.cardTitle}
-                />
-              </Link>
+                /> 
+              </Link> 
             ),
         )}
       </div>
-    </div>
+    </div> 
   )
 }
 
@@ -71,7 +71,7 @@ const styles = stylex.create({
     marginLeft: '0.3em',
     borderBottom: '7px solid #1f2a82',
     borderImage: gradient.accent,
-    borderImageSlice: 1,
+    borderImageSlice: 1, 
     ':not(#__unused__) svg': {
       fontSize: 24,
       [`@media (max-width:${MQ_SP}px)`]: {
@@ -89,15 +89,16 @@ const styles = stylex.create({
   cardWrapper: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateRows: '1fr',
     gap: '40px 3%',
     marginBlock: '20px 50px',
     [`@media (max-width:${MQ_SP}px)`]: {
       gridTemplateColumns: 'repeat(2, 1fr)',
       gap: '32px 3%',
     },
-    [`@media (max-width:${MQ_SM}px)`]: {
-      gridTemplateColumns: null,
-      display: 'block',
+    [`@media (max-width: ${MQ_SM}px)`]: {
+      gridTemplateColumns: '1fr !important',
+      gap: '24px',
     },
   },
   cardTitle: {
