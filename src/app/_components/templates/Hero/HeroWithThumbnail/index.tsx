@@ -26,7 +26,7 @@ const HeroWithThumbnail = ({
   )
 
   const imgUrl =
-    data?.posts.nodes[0]?.featuredImage.node.sourceUrl ?? '/thumb-tekrog.png'
+    data?.posts.nodes[0]?.featuredImage?.node.sourceUrl ?? '/thumb-tekrog.png'
 
   return (
     <>

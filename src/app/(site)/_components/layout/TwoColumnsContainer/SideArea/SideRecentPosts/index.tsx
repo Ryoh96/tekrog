@@ -25,7 +25,7 @@ const SideRecentPosts = async () => {
           <Link href={post.uri} key={post.uri}>
             <article>
               <HorizontalCard
-                src={post.featuredImage.node.sourceUrl}
+                src={post.featuredImage?.node.sourceUrl}
                 title={post.title}
               />
             </article>
