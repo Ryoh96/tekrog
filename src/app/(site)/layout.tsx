@@ -20,7 +20,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <SideArea>
             <SearchForm />
             <SideRecentPosts />
-            <SideGoogleAdsense/>
+            <SideGoogleAdsense />
             <SideCategories />
             <SideArchives />
             <SideTOC />

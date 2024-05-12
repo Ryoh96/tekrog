@@ -61,13 +61,13 @@ const ContactForm = () => {
       e.preventDefault()
       const formData = new FormData(e.currentTarget)
       validateFormData(formData)
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData as any).toString(),
-      },)
+      })
       setClientErrors(undefined)
-      router.push("/contact/thanks")
+      router.push('/contact/thanks')
     } catch (err) {
       if (!(err instanceof ZodError)) throw err
       setClientErrors(transformFieldErrors(err))

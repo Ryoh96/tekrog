@@ -11,7 +11,7 @@ type Props = ComponentPropsWithRef<'div'> & {
 }
 
 const Base = (props: Props) => {
-  return <div {...props} {...stylex.props(style.div, props.styles)} />  
+  return <div {...props} {...stylex.props(style.div, props.styles)} />
 }
 
 const MQ_SP: SP = 768

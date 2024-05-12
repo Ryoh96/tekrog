@@ -1,4 +1,4 @@
-import GoogleAdsenseBlock from "@/app/_components/libs/GoogleAdsenseBlock"
+import GoogleAdsenseBlock from '@/app/_components/libs/GoogleAdsenseBlock'
 
 const SideGoogleAdsense = () => {
   return (
@@ -9,7 +9,7 @@ const SideGoogleAdsense = () => {
         width: '324px',
         height: '270px',
       }}
-      slot="6447253650" 
+      slot="6447253650"
     />
   )
 }

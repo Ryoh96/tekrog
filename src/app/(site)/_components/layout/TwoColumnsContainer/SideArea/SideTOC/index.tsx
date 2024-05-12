@@ -89,7 +89,7 @@ const SideTOC = () => {
               ))}
             </div>
           </SideContent>
-          <SideGoogleAdsense/>
+          <SideGoogleAdsense />
         </div>
       )}
     </>

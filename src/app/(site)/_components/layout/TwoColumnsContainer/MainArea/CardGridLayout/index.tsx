@@ -59,8 +59,8 @@ const CardGridLayout = ({
         )}
       </div>
       <div {...stylex.props(styles.pager)}>
-        <NumericPager totalPages={totalPages} current={current} type={type} /> 
-      </div> 
+        <NumericPager totalPages={totalPages} current={current} type={type} />
+      </div>
     </>
   )
 }
@@ -74,8 +74,8 @@ const styles = stylex.create({
     gap: '32px 3%',
     marginBlock: 20,
     [`@media (max-width: ${MQ_SM}px)`]: {
-      gridTemplateColumns: "1fr",
-      gap: "24px"
+      gridTemplateColumns: '1fr',
+      gap: '24px',
     },
   },
   pager: {

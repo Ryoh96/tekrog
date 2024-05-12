@@ -11,7 +11,7 @@ const PageContainer = (props: Props) => {
   return (
     <div
       {...stylex.props(styles.div, props.isNarrow && styles.narrow)}
-      {...props} 
+      {...props}
     />
   )
 }
@@ -25,7 +25,7 @@ const styles = stylex.create({
     marginInline: 'auto',
     position: 'relative',
     [`@media (max-width: ${MQ_SP})px`]: {
-      width: "98%"
+      width: '98%',
     },
   },
   narrow: {

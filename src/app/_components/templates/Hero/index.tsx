@@ -1,89 +1,62 @@
 'use client'
-import {
-  GetThumbnailAndTitleDocument,
-  GetThumbnailAndTitleQuery,
-} from '@/graphql/generated/request'
+
 import React from 'react'
 import Breadcrumb from './Breadcrumb'
 import BlogName from '@/images/blog_name.png'
 import Image from 'next/image'
 import * as stylex from '@stylexjs/stylex'
 import { SP } from '@/types/BreakPoints'
-import { useSuspenseQuery } from '@apollo/client'
 import { usePathname, useSearchParams } from 'next/navigation'
 import style from './style.module.scss'
 import { tokens } from '../../../_styles/tokens.stylex'
+import { isPartialMatch } from '@/app/_utils/isPartialMatchString'
+import HeroWithThumbnail from './HeroWithThumbnail'
 
-const notThumbnailPageList = ['/']
+const notThumbnailPageList = [
+  '/about',
+  '/category',
+  '/contact',
+  '/archive',
+  '/page',
+  '/search/',
+  '/privacy-policy',
+]
 
 const Hero = () => {
   const pathname = usePathname()
   const searchParams = useSearchParams().get('s') ?? undefined
-
-  const { data } = useSuspenseQuery<GetThumbnailAndTitleQuery>(
-    GetThumbnailAndTitleDocument,
-    {
-      variables: {
-        name: pathname.substring(1),
-      },
-    },
-  )
-
-  const imgUrl =
-    !notThumbnailPageList.includes(pathname) &&
-    data.posts?.nodes[0]?.featuredImage
-      ? data?.posts.nodes[0]?.featuredImage.node.sourceUrl ??
-        '/thumb-tekrog.png'
-      : undefined
+  const hasNotThumbnail = isPartialMatch(pathname, notThumbnailPageList) || pathname === "/"
 
   return (
     <div className={style.wrapper}>
-      {imgUrl ? (
-        <figure className={style.figure}>
-          <Image
-            src={imgUrl}
-            alt="thumbnail"
-            fill
-            style={{
-              objectFit: 'cover',
-              aspectRatio: '1700 / 825',
-            }}
-            sizes="50vw"
-            quality={70}
-            loading="eager"
-            priority
-            className={style.img}
-          />
-        </figure>
+      {hasNotThumbnail ? (
+        <>
+          <div {...stylex.props(styles.container)}>
+            <Image
+              src={BlogName}
+              alt="TekRog"
+              sizes="100vw"
+              {...stylex.props(styles.blogName)}
+            />
+            <p {...stylex.props(styles.p)}>プログラミングの備忘録と情報発信</p>
+            <div {...stylex.props(styles.breadcrumb)}>
+              <Breadcrumb pathname={pathname} searchParams={searchParams} />
+            </div>
+          </div>
+        </>
       ) : (
-        <div {...stylex.props(styles.container)}>
-          <Image
-            src={BlogName}
-            alt="TekRog"
-            sizes="100vw"
-            {...stylex.props(styles.blogName)}
-          />
-          <p {...stylex.props(styles.p)}>プログラミングの備忘録と情報発信</p>
-        </div>
-      )}
-      <div {...stylex.props(styles.breadcrumb)}>
-        <Breadcrumb
+        <HeroWithThumbnail
           pathname={pathname}
-          title={data.posts.nodes[0]?.title}
-          searchParams={searchParams}
+          breadCrumbStyle={styles.breadcrumb}
         />
-      </div>
+      )}
+
       <div {...stylex.props(styles.filter)} />
     </div>
   )
 }
 
 const MQ_SP: SP = 768
-
-const fade = stylex.keyframes({
-  from: { opacity: 0 },
-  to: { opacity: 1 },
-})
 
 const rotate = stylex.keyframes({
   from: { [tokens.angle]: '0deg' },
