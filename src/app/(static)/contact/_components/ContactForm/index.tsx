@@ -56,22 +56,22 @@ const ContactForm = () => {
 
   const errors = clientErrors || formState.error?.fieldErrors
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    try {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       const formData = new FormData(e.currentTarget)
       validateFormData(formData)
-      await fetch('/', {
+      fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData as any).toString(),
+        cache: "no-store"
+      }).then(() => {
+        setClientErrors(undefined)
+        router.push('/contact/thanks')
+      }).catch((err) => {
+        if (!(err instanceof ZodError)) throw err
+        setClientErrors(transformFieldErrors(err))
       })
-      setClientErrors(undefined)
-      router.push('/contact/thanks')
-    } catch (err) {
-      if (!(err instanceof ZodError)) throw err
-      setClientErrors(transformFieldErrors(err))
-    }
   }
 
   return (
@@ -82,7 +82,7 @@ const ContactForm = () => {
       data-netlify="true"
       name="contact"
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="contact" /> 
       <FormItem>
         <Label htmlFor="name">
           <span>名前:</span>

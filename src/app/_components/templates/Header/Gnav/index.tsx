@@ -2,7 +2,6 @@
 
 import SPOnly from '@/app/_components/utils/SPOnly'
 import * as stylex from '@stylexjs/stylex'
-import Link from 'next/link'
 import { useState } from 'react'
 import HamburgerButton from './HamburgerButton'
 import { SP } from '@/types/BreakPoints'
