@@ -50,7 +50,7 @@ const Card = ({
         )}
       </div>
       <div {...stylex.props(styles.meta)}>
-        {date && <DateTime>{date}</DateTime>}
+        {/* {date && <DateTime>{date}</DateTime>} */}
         {categories && <CategoryTags categories={categories} />}
       </div>
     </div>
