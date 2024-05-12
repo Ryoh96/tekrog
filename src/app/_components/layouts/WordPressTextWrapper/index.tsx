@@ -55,10 +55,11 @@ const WordPressTextWrapper = ({ children }: { children: string }) => {
           <>
             {count++ % 2 === 0 && count < 8 && (
               <GoogleAdsenseBlock
-                style={{ display: 'block', textAlign: 'center' }}
+                style={{ display: 'block', textAlign: 'center', width: "100%" }}
                 layout="in-article"
                 format="fluid"
                 slot="1534380891"
+                responsive={true}
               />
             )}
             <h2 className={attribs.class}>{domToReact(children, options)}</h2>

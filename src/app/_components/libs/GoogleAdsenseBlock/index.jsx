@@ -4,7 +4,11 @@ import { useRouter } from 'next/navigation'
 
 class AdCodeWithoutRouter extends React.Component {
   renderAds() {
-    ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+    try {
+      ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   componentDidMount() {
@@ -28,7 +32,6 @@ class AdCodeWithoutRouter extends React.Component {
 
     return (
       <div
-        className="container mx-auto text-center"
         aria-hidden={true}
         style={{ minWidth: 360 }}
       >
