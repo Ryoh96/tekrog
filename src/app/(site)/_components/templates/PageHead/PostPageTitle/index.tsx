@@ -6,9 +6,8 @@ import {
 } from '@/graphql/generated/request'
 import { useSuspenseQuery } from '@apollo/client'
 import * as stylex from '@stylexjs/stylex'
-import { usePathname, useSearchParams } from 'next/navigation'
 import { SP } from '@/types/BreakPoints'
-import { cat2Name, name2Cat } from '@/app/_utils/cat2name'
+import { name2Cat } from '@/app/_utils/cat2name'
 import Share from '@/app/_components/organisms/Share'
 import { Suspense } from 'react'
 import Loading from '@/app/loading'
@@ -40,7 +39,7 @@ const PostPageTitle = ({ pathname }: { pathname: string }) => {
   let meta: Meta = data.posts.edges[0]?.node
 
   return (
-    <div {...stylex.props(styles.wrapper)}>
+    meta && <div {...stylex.props(styles.wrapper)}>
       <Suspense fallback={<Loading />}>
         <PageTitle title={title} />
       </Suspense>

@@ -17,6 +17,7 @@ const GoogleAnalytics = () => {
 
   return (
     <>
+      {console.log("--test-console--")}
       <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_GA4_ID}`}

@@ -9,7 +9,7 @@ import { ZodError } from 'zod'
 import Button from '@/app/_components/atoms/Button'
 import * as stylex from '@stylexjs/stylex'
 import { SP } from '@/types/BreakPoints'
-import { redirect, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 const FormItem = ({ children }: { children: React.ReactNode }) => {
   return <div {...stylex.props(styles.formItem)}>{children}</div>

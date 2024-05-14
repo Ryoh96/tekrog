@@ -2,9 +2,10 @@
 
 import { cat2Name } from '@/app/_utils/cat2name'
 import { usePathname, useSearchParams } from 'next/navigation'
-import React from 'react'
+import React, { Suspense } from 'react'
 import PageTitle from './PageTitle'
 import PostPageTitle from './PostPageTitle'
+import Loading from '@/app/_components/atoms/Loading'
 
 const PageHead = () => {
   const pathname = usePathname()
@@ -45,7 +46,9 @@ const PageHead = () => {
       {title !== null ? (
         <PageTitle title={title} />
       ) : (
-        <PostPageTitle pathname={pathname} />
+        <Suspense fallback={<Loading/>}>
+          <PostPageTitle pathname={pathname} />
+        </Suspense>
       )}
     </>
   )
